@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Airportname:</b>
+  <%= @travel.airPortName %>
+</p>
+
+<p>
+  <b>Departure:</b>
+  <%= @travel.departure %>
+</p>
+
+<p>
+  <b>Arrival:</b>
+  <%= @travel.arrival %>
+</p>
+
+
+<%= link_to 'Edit', edit_travel_path(@travel) %> |
+<%= link_to 'Back', travels_path %>
