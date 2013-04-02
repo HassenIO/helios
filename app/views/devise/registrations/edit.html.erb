@@ -31,14 +31,14 @@
 
   <div class="span6">
     <h2>Cars</h2>
-    <% resource.cars do |car| %>
+    <% resource.cars.each do |car| %>
         <p>Car: <%= link_to car.brand, car %></p>
     <% end %>
 
 
     <h2>Travels</h2>
-    <% resource.travels.all do |travel| %>
-        <p>Travel: <%= link_to travel.airPortName, travel %></p>
+    <% resource.travels.each do |travel| %>
+        <p>Travel: <%= link_to travel.airPortName, [resource,travel] %></p>
     <% end %>
     <%= link_to "Add travel", new_user_travel_path(resource) %>
   </div>
