@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Airportname</th>
+    <th>Airport</th>
     <th>Departure</th>
     <th>Arrival</th>
     <th></th>
@@ -15,13 +15,13 @@
     <td><%= travel.airPortName %></td>
     <td><%= travel.departure %></td>
     <td><%= travel.arrival %></td>
-    <td><%= link_to 'Show', travel %></td>
-    <td><%= link_to 'Edit', edit_travel_path(travel) %></td>
-    <td><%= link_to 'Destroy', travel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', [@user,travel] %></td>
+    <td><%= link_to 'Edit', edit_user_travel_path(@user, travel) %></td>
+    <td><%= link_to 'Destroy', [@user,travel], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Travel', new_travel_path %>
+<%= link_to 'New Travel', new_user_travel_path(@user) %>
