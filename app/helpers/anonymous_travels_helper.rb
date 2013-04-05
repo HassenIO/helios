@@ -1,0 +1,2 @@
+module AnonymousTravelsHelper
+end

@@ -1,6 +1,7 @@
 class TravelsController < ApplicationController
 
   before_filter :load_user
+  before_filter :authenticate_user!, :only => [:checkout]
   # GET /travels
   # GET /travels.json
   def index
@@ -15,7 +16,7 @@ class TravelsController < ApplicationController
   # GET /travels/1
   # GET /travels/1.json
   def show
-    @travel = Travel.find(params[:id])
+    @travel = @user.travels.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -86,7 +87,7 @@ class TravelsController < ApplicationController
   private
 
   def load_user
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 
 

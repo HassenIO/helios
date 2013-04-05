@@ -1,24 +1,31 @@
-
 $blue: #186388;
 $orange: #e74f1e;
 
-$navbarBackground:  $blue;
+$navbarBackground: $blue;
 $navbarBackgroundHighlight: $blue;
 $navbarText: #fff;
 $navbarLinkColor: #fff;
-$navbarLinkColorHover : $orange ;
+$navbarLinkColorHover: $orange;
 
+$btnPrimaryBackground: $blue !default;
+$btnPrimaryBackgroundHighlight: $orange;
 
 @import "bootstrap";
-body { padding-top: 60px; }
+body {
+  padding-top: 60px;
+}
+
 @import "bootstrap-responsive";
 
+//navbar bottom
 .navbar.navbar-fixed-bottom {
   .navbar-inner {
     border: none;
     background-color: $orange;
     background-image: none;
   }
+
 }
+
 
 

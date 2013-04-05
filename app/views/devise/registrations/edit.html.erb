@@ -32,9 +32,9 @@
   <div class="span6">
     <h2>Cars</h2>
     <% resource.cars.each do |car| %>
-        <p>Car: <%= link_to car.brand, car %></p>
+        <p>Car: <%= link_to car.brand, [resource,car] %></p>
     <% end %>
-
+    <%= link_to "Add car", new_user_car_path(resource) %>
 
     <h2>Travels</h2>
     <% resource.travels.each do |travel| %>
