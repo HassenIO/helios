@@ -5,6 +5,7 @@
     <th>Airport</th>
     <th>Departure</th>
     <th>Arrival</th>
+    <th>Car</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +16,7 @@
     <td><%= travel.airPortName %></td>
     <td><%= travel.departure %></td>
     <td><%= travel.arrival %></td>
+    <td><%= travel.car.try {|car| car.brand + ' ' + car.model}  %></td>
     <td><%= link_to 'Show', [@user,travel] %></td>
     <td><%= link_to 'Edit', edit_user_travel_path(@user, travel) %></td>
     <td><%= link_to 'Destroy', [@user,travel], method: :delete, data: { confirm: 'Are you sure?' } %></td>

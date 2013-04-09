@@ -1,3 +1,6 @@
+<%= javascript_include_tag 'bootstrap-datetimepicker.min' %>
+<%= stylesheet_link_tag 'bootstrap-datetimepicker.min' %>
+
 <%= form_for([@user, @travel]) do |f| %>
     <% if @travel.errors.any? %>
         <div id="error_explanation">
@@ -11,29 +14,165 @@
         </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :airPortName %>
-      <br/>
-      <%= f.text_field :airPortName %>
-    </div>
-    <div class="field">
-      <%= f.label :departure %>
-      <br/>
-      <%= f.datetime_select :departure %>
-    </div>
-    <div class="field">
-      <%= f.label :arrival %>
-      <br/>
-      <%= f.datetime_select :arrival %>
-    </div>
-    <div class="field">
-      <%= f.label :car %>
-      <br/>
-      <%= collection_select(:travel, :car_id, @user.cars.all, :id, :brand, options ={:prompt => "- Select a car"}, :class => "car") %>
-    </div>
+    <fieldset class="hero-unit">
 
 
-    <div class="actions">
-      <%= f.submit %>
+      <div class="control-group input-append">
+        <%= f.label :airPortName %>
+        <div class="controls">
+          <%= f.text_field :airPortName %>
+          <span class="help-block">test</span>
+        </div>
+      </div>
+
+      <div id="travel_departure" class="control-group input-append">
+        <%= f.label :departure %>
+        <div class="controls">
+          <%= f.text_field :departure, 'data-format' => "yyyy-MM-dd HH:mm:ss PP" %>
+          <span class="add-on">
+            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+          </span>
+          <span class="help-block">Date et heure de depart</span>
+        </div>
+      </div>
+
+      <div id="travel_arrival" class="control-group input-append">
+        <%= f.label :arrival %>
+        <div class="controls">
+          <%= f.text_field :arrival, 'data-format' => "yyyy-MM-dd HH:mm:ss PP" %>
+          <span class="add-on">
+            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+          </span>
+          <span class="help-block">Date et heure d'arrivée</span>
+        </div>
+      </div>
+
+    </fieldset>
+
+
+    <%= f.fields_for :car do |car_fields| %>
+        <fieldset name="Car Information" class="hero-unit">
+          <legend>J'enregistre ma voiture</legend>
+          <div class="control-group">
+            <%= car_fields.label :brand %>
+            <div class="controls">
+              <%= car_fields.text_field :brand %>
+              <span class="help-block">test</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= car_fields.label :model %>
+            <div class="controls">
+              <%= car_fields.text_field :model %>
+              <span class="help-block">test</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= car_fields.label :year %>
+            <div class="controls">
+              <%= car_fields.select(:year, options_for_select(Time.now.year - 30..Time.now.year,:selected => car_fields.object.year)) %>
+              <span class="help-block">test</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= car_fields.label :nbSeats %>
+            <div class="controls">
+              <%= car_fields.select(:nbSeats, options_for_select(2..9,:selected => car_fields.object.nbSeats)) %>
+              <span class="help-block">test</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= car_fields.label :km %>
+            <div class="controls">
+              <%= car_fields.select(:km, options_for_select([['0-50000 km', 0], ['50000-100000 km', 50000], ['100000-150000 km', 100000], ['150000 km et plus', 150000]], car_fields.object.km)) %>
+              <span class="help-block">test</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= car_fields.label :license %>
+            <div class="controls">
+              <%= car_fields.text_field :license %>
+              <span class="help-block">test</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="hero-unit">
+          <legend>Informations complementaires</legend>
+          <div class="control-group">
+            <label class="control-label">Vous êtes fumeur ? Vous devez cliquer oui, si vous avez l'habitude
+              de fumer dans votre voiture
+            </label>
+
+            <div class="controls">
+              <label class="checkbox">
+                <%= car_fields.check_box(:isSmoker) %> Oui
+              </label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">Vous transportez des animaux ? Vous devez cliquer oui, si vous transportez
+              regulierement vos animaux de compagnie
+            </label>
+
+            <div class="controls">
+              <label class="checkbox">
+                <%= car_fields.check_box(:acceptedPets) %> Oui
+              </label>
+            </div>
+          </div>
+
+          <label>Au niveau equipement, votre voiture dispose t elle de :</label>
+
+          <div class="control-group">
+            <label class="control-label">Un gps
+            </label>
+
+            <div class="controls">
+              <label class="checkbox">
+                <%= car_fields.check_box(:hasGps) %> Oui
+              </label>
+            </div>
+          </div>
+
+
+          <div class="control-group">
+            <label class="control-label">Un autoradio
+            </label>
+
+            <div class="controls">
+              <label class="checkbox">
+                <%= car_fields.check_box(:hasCarRadio) %> Oui
+              </label>
+            </div>
+          </div>
+
+
+        </fieldset>
+
+    <% end %>
+
+    <div class="form-actions">
+      <%= f.submit 'Soumettre ces informations et obtenir un parking gratuit', :class => "btn btn-primary" %>
     </div>
+
 <% end %>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#travel_departure').datetimepicker({
+//            language: 'pt-BR'
+        });
+
+        $('#travel_arrival').datetimepicker({
+//            language: 'pt-BR'
+        });
+    });
+</script>

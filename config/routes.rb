@@ -20,7 +20,7 @@ TravelerCar::Application.routes.draw do
   end
 
   unauthenticated :user do
-    match "travels" => "anonymous_travels#new"
+    match "/travels" => "anonymous_travels#new"
   end
 
 

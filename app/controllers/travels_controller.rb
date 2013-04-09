@@ -28,7 +28,7 @@ class TravelsController < ApplicationController
   # GET /travels/new.json
   def new
     @travel = @user.travels.new
-
+    @travel.car ||= Car.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @travel }
