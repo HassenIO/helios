@@ -1,6 +1,8 @@
 <%= javascript_include_tag 'bootstrap-datetimepicker.min' %>
 <%= stylesheet_link_tag 'bootstrap-datetimepicker.min' %>
 
+<%= filepicker_js_include_tag %>
+
 <%= form_for([@user, @travel]) do |f| %>
     <% if @travel.errors.any? %>
         <div id="error_explanation">
@@ -14,152 +16,263 @@
         </div>
     <% end %>
 
-    <fieldset class="hero-unit">
 
+    <div class="well">
+      <div class="row-fluid">
 
-      <div class="control-group input-append">
-        <%= f.label :airPortName %>
-        <div class="controls">
-          <%= f.text_field :airPortName %>
-          <span class="help-block">test</span>
+        <div class="span4">
+          <div class="control-group">
+            <%= f.label :airPortName, :class => "control-label" %>
+            <div class="controls">
+              <%= f.text_field :airPortName %>
+              <span class="help-block">test</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div id="travel_departure" class="control-group input-append">
-        <%= f.label :departure %>
-        <div class="controls">
-          <%= f.text_field :departure, 'data-format' => "yyyy-MM-dd HH:mm:ss PP" %>
-          <span class="add-on">
+        <div class="span4">
+
+          <div class="control-group warning">
+            <%= f.label :departure, :class => "control-label" %>
+            <div class="controls input-append date" id="travel_departure_datetimepicker">
+              <%= f.text_field :departure, 'data-format' => "yyyy-MM-dd HH:mm:ss" %>
+              <span class="add-on">
             <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
           </span>
-          <span class="help-block">Date et heure de depart</span>
+              <span class="help-block">Date et heure de départ</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div id="travel_arrival" class="control-group input-append">
-        <%= f.label :arrival %>
-        <div class="controls">
-          <%= f.text_field :arrival, 'data-format' => "yyyy-MM-dd HH:mm:ss PP" %>
-          <span class="add-on">
+        <div class="span4">
+          <div id="travel_arrival" class="control-group">
+            <%= f.label :arrival, :class => "control-label" %>
+            <div class="controls input-append date" id="travel_arrival_datetimepicker">
+              <%= f.text_field :arrival, 'data-format' => "yyyy-MM-dd HH:mm:ss PP" %>
+              <span class="add-on">
             <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
           </span>
-          <span class="help-block">Date et heure d'arrivée</span>
+              <span class="help-block">Date et heure d'arrivée</span>
+            </div>
+          </div>
         </div>
+
       </div>
-
-    </fieldset>
-
+    </div>
 
     <%= f.fields_for :car do |car_fields| %>
-        <fieldset name="Car Information" class="hero-unit">
-          <legend>J'enregistre ma voiture</legend>
-          <div class="control-group">
-            <%= car_fields.label :brand %>
-            <div class="controls">
-              <%= car_fields.text_field :brand %>
-              <span class="help-block">test</span>
-            </div>
+        <div class="row-fluid">
+          <div class="span4">
+            <fieldset name="Car Information" class="well">
+              <legend>J'enregistre ma voiture</legend>
+              <div class="control-group error">
+                <%= car_fields.label :brand, :class => "control-label" %>
+                <div class="controls">
+                  <%= car_fields.text_field :brand %>
+                  <span class="help-block"></span>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <%= car_fields.label :model, :class => "control-label" %>
+                <div class="controls">
+                  <%= car_fields.text_field :model %>
+                  <span class="help-block"></span>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <%= car_fields.label :year, :class => "control-label" %>
+                <div class="controls">
+                  <%= car_fields.select(:year, options_for_select(Time.now.year - 30..Time.now.year, :selected => car_fields.object.year)) %>
+                  <span class="help-block"></span>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <%= car_fields.label :nbSeats, :class => "control-label" %>
+                <div class="controls">
+                  <%= car_fields.select(:nbSeats, options_for_select(2..9, :selected => car_fields.object.nbSeats)) %>
+                  <span class="help-block"></span>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <%= car_fields.label :km, :class => "control-label" %>
+                <div class="controls">
+                  <%= car_fields.select(:km, options_for_select([['0-50000 km', 0], ['50000-100000 km', 50000], ['100000-150000 km', 100000], ['150000 km et plus', 150000]], car_fields.object.km)) %>
+                  <span class="help-block">test</span>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <%= car_fields.label :fuel, :class => "control-label" %>
+                <div class="controls">
+                  <%= car_fields.radio_button(:fuel, 'Essence') %>
+                  <%= label_tag(:fuel_essence, "Essence") %>
+                  <%= car_fields.radio_button(:fuel, 'Diesel') %>
+                  <%= label_tag(:fuel_diesel, "Diesel") %>
+                  <span class="help-block">test</span>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <%= car_fields.label :license, :class => "control-label" %>
+                <div class="controls">
+                  <%= car_fields.text_field :license %>
+                  <span class="help-block">test</span>
+                </div>
+              </div>
+
+
+            </fieldset>
           </div>
 
-          <div class="control-group">
-            <%= car_fields.label :model %>
-            <div class="controls">
-              <%= car_fields.text_field :model %>
-              <span class="help-block">test</span>
-            </div>
+          <div class="span4">
+
+            <fieldset class="well">
+              <legend>Informations complementaires</legend>
+              <div class="control-group">
+                <label class="control-label">Vous êtes fumeur ? Vous devez cliquer oui, si vous avez l'habitude
+                  de fumer dans votre voiture
+                </label>
+
+                <div class="controls">
+                  <label class="checkbox">
+                    <%= car_fields.check_box(:isSmoker) %> Oui
+                  </label>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Vous transportez des animaux ? Vous devez cliquer oui, si vous transportez
+                  regulierement vos animaux de compagnie
+                </label>
+
+                <div class="controls">
+                  <label class="checkbox">
+                    <%= car_fields.check_box(:acceptedPets) %> Oui
+                  </label>
+                </div>
+              </div>
+
+              <label>Au niveau equipement, votre voiture dispose t elle de :</label>
+
+              <div class="control-group">
+                <%= car_fields.label :hasGps, :class => "control-label" %>
+
+                <div class="controls">
+                  <label class="checkbox">
+                    <%= car_fields.check_box(:hasGps) %> Oui
+                  </label>
+                </div>
+              </div>
+
+
+              <div class="control-group">
+                <%= car_fields.label :hasCarRadio, :class => "control-label" %>
+
+                <div class="controls">
+                  <label class="checkbox">
+                    <%= car_fields.check_box(:hasCarRadio) %> Oui
+                  </label>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <%= car_fields.label :hasAirConditioning, :class => "control-label" %>
+
+                <div class="controls">
+                  <label class="checkbox">
+                    <%= car_fields.check_box(:hasAirConditioning) %> Oui
+                  </label>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <%= car_fields.label :hasChildSeat, :class => "control-label" %>
+
+                <div class="controls">
+                  <label class="checkbox">
+                    <%= car_fields.check_box(:hasChildSeat) %> Oui
+                  </label>
+                </div>
+              </div>
+
+            </fieldset>
+
           </div>
 
-          <div class="control-group">
-            <%= car_fields.label :year %>
-            <div class="controls">
-              <%= car_fields.select(:year, options_for_select(Time.now.year - 30..Time.now.year,:selected => car_fields.object.year)) %>
-              <span class="help-block">test</span>
-            </div>
+          <div class="span4">
+            <!--Photos-->
+            <fieldset class="well">
+
+              <div class="well">
+                <a data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker1_url">
+                  <% if @travel.car.filepicker1_url? %>
+                      <%= filepicker_image_tag @travel.car.filepicker1_url, w: 160, h: 160, fit: 'clip' %>
+                  <% else %>
+                      <i class="icon-camera-retro icon-3x   icon-border"></i> Ajouter une photo
+                  <% end %>
+                </a>
+                <%= car_fields.text_field :filepicker1_url, :style => "display: none" %>
+              </div>
+
+              <div class="well">
+                <a data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker2_url">
+                  <% if @travel.car.filepicker2_url? %>
+                      <%= filepicker_image_tag @travel.car.filepicker2_url, w: 160, h: 160, fit: 'crop' %>
+                  <% else %>
+                      <i class="icon-camera-retro icon-3x   icon-border"></i> Ajouter une deuxième photo
+                  <% end %>
+                </a>
+                <%= car_fields.text_field :filepicker2_url, :style => "display: none" %>
+              </div>
+
+              <div class="well">
+                <a data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker3_url" data-target-img>
+                  <% if @travel.car.filepicker3_url? %>
+                      <%= filepicker_image_tag @travel.car.filepicker3_url, w: 160, h: 160, fit: 'clip' %>
+                  <% else %>
+                      <i class="icon-camera-retro icon-3x   icon-border"></i> Ajouter une troisième photo
+                  <% end %>
+                </a>
+
+                <%= car_fields.text_field :filepicker3_url, :style => "display: none" %>
+              </div>
+
+
+            </fieldset>
+
+
           </div>
 
-          <div class="control-group">
-            <%= car_fields.label :nbSeats %>
-            <div class="controls">
-              <%= car_fields.select(:nbSeats, options_for_select(2..9,:selected => car_fields.object.nbSeats)) %>
-              <span class="help-block">test</span>
+        </div>
+
+        <div class="well">
+          <div class="row-fluid">
+            <div class="span12">
+              <div class="control-group">
+                <%= car_fields.label :desc, :for => "control-label" %>
+                <div class="controls">
+                  <%= car_fields.text_area :desc, :class => "span12", :rows => 5 %>
+                  <span class="help-block"></span>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div class="control-group">
-            <%= car_fields.label :km %>
-            <div class="controls">
-              <%= car_fields.select(:km, options_for_select([['0-50000 km', 0], ['50000-100000 km', 50000], ['100000-150000 km', 100000], ['150000 km et plus', 150000]], car_fields.object.km)) %>
-              <span class="help-block">test</span>
-            </div>
-          </div>
-
-          <div class="control-group">
-            <%= car_fields.label :license %>
-            <div class="controls">
-              <%= car_fields.text_field :license %>
-              <span class="help-block">test</span>
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset class="hero-unit">
-          <legend>Informations complementaires</legend>
-          <div class="control-group">
-            <label class="control-label">Vous êtes fumeur ? Vous devez cliquer oui, si vous avez l'habitude
-              de fumer dans votre voiture
-            </label>
-
-            <div class="controls">
-              <label class="checkbox">
-                <%= car_fields.check_box(:isSmoker) %> Oui
-              </label>
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label">Vous transportez des animaux ? Vous devez cliquer oui, si vous transportez
-              regulierement vos animaux de compagnie
-            </label>
-
-            <div class="controls">
-              <label class="checkbox">
-                <%= car_fields.check_box(:acceptedPets) %> Oui
-              </label>
-            </div>
-          </div>
-
-          <label>Au niveau equipement, votre voiture dispose t elle de :</label>
-
-          <div class="control-group">
-            <label class="control-label">Un gps
-            </label>
-
-            <div class="controls">
-              <label class="checkbox">
-                <%= car_fields.check_box(:hasGps) %> Oui
-              </label>
-            </div>
-          </div>
+        </div>
 
 
-          <div class="control-group">
-            <label class="control-label">Un autoradio
-            </label>
-
-            <div class="controls">
-              <label class="checkbox">
-                <%= car_fields.check_box(:hasCarRadio) %> Oui
-              </label>
-            </div>
-          </div>
-
-
-        </fieldset>
 
     <% end %>
 
-    <div class="form-actions">
-      <%= f.submit 'Soumettre ces informations et obtenir un parking gratuit', :class => "btn btn-primary" %>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="form-actions">
+          <%= f.submit 'Soumettre ces informations et obtenir un parking gratuit', :class => "btn btn-primary" %>
+        </div>
+      </div>
     </div>
 
 <% end %>
@@ -167,12 +280,40 @@
 
 <script type="text/javascript">
     $(function () {
-        $('#travel_departure').datetimepicker({
-//            language: 'pt-BR'
+
+        console.log($('#travel_departure_datetimepicker'));
+        $('#travel_departure_datetimepicker').datetimepicker({
+            language: 'pt-BR'   ,
+            format: 'dd/MM/yyyy hh:mm:ss'
         });
 
-        $('#travel_arrival').datetimepicker({
-//            language: 'pt-BR'
+        $('#travel_arrival_datetimepicker').datetimepicker({
+            language: 'pt-BR'
         });
+
+
+        //Put your Filepicker.io API key here:
+        filepicker.setKey('A68xA26uYSfO6TDJM0Qp3z');
+
+        $('a[data-filepicker]').click(function (e) {
+            var $current = $(this);
+            e.preventDefault(); // This keeps the normal link
+            // behavior from happening
+            filepicker.pickAndStore({}, {location: 's3'},
+                    function (fpfiles) {
+                        if (fpfiles.length > 0) {
+                            //check if one file
+                            //save into input
+                            var target = $current.data('target-input');
+                            $('#' + target).val(fpfiles[0].url);
+                            //insert thumbnail of this file
+                            $current.html('<img src=\"' + fpfiles[0].url + '\" class=\"img-rounded\">');
+                        }
+                    });
+        });
+
+
     });
+
+
 </script>

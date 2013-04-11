@@ -20,3 +20,5 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'filepicker-rails'
+gem 'font-awesome-sass-rails'

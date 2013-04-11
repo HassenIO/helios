@@ -61,6 +61,11 @@ GEM
     figaro (0.6.3)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    filepicker-rails (0.0.2)
+      railties (>= 3.1.0, < 5.0)
+    font-awesome-sass-rails (3.0.2.2)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     hashie (1.2.0)
     hike (1.2.1)
     httpauth (0.2.0)
@@ -157,6 +162,8 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise (>= 2.2.3)
   figaro (>= 0.6.3)
+  filepicker-rails
+  font-awesome-sass-rails
   jquery-rails
   omniauth
   omniauth-facebook

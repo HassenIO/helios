@@ -10,12 +10,15 @@ $navbarLinkColorHover: $orange;
 $btnPrimaryBackground: $blue !default;
 $btnPrimaryBackgroundHighlight: $orange;
 
+
 @import "bootstrap";
+@import 'font-awesome';
+@import "bootstrap-responsive";
+
+
 body {
   padding-top: 60px;
 }
-
-@import "bootstrap-responsive";
 
 //navbar bottom
 .navbar.navbar-fixed-bottom {

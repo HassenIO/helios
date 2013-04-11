@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409152218) do
+ActiveRecord::Schema.define(:version => 20130410142941) do
 
   create_table "cars", :force => true do |t|
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "brand"
     t.string   "model"
     t.integer  "travel_id"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(:version => 20130409152218) do
     t.boolean  "hasCarRadio"
     t.boolean  "isSmoker"
     t.boolean  "acceptedPets"
+    t.string   "desc"
+    t.boolean  "hasChildSeat"
+    t.boolean  "hasAirConditioning"
+    t.string   "fuel"
+    t.string   "filepicker1_url"
+    t.string   "filepicker2_url"
+    t.string   "filepicker3_url"
   end
 
   create_table "roles", :force => true do |t|
