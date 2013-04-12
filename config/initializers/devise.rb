@@ -241,10 +241,11 @@ Devise.setup do |config|
   require "omniauth-facebook"
   #OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
 
-  if ENV["RAILS_ENV"] == 'production'
-    config.omniauth :facebook, "370298486423058", "0a5ede29b2d6f31165b5f3be0f119e52"
-  else
+  if Rails.env.development?
+    print "--------------------------DEVELOPPEMENT ENV ---------------------------"
     config.omniauth :facebook, "293967994067315", "5ae5a36faca7df95ab3c3f41ffe9a3c0"
+  else
+    config.omniauth :facebook, "370298486423058", "0a5ede29b2d6f31165b5f3be0f119e52"
   end
 
 
