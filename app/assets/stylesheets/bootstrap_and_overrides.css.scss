@@ -30,5 +30,16 @@ body {
 
 }
 
+//fix carousel center img
+.carousel .item > img {
+  margin:0px auto;
+  display: block;
+  line-height: 1;
+}
 
+
+.field_with_errors {
+  @extend .control-group.error;
+  display: inline;
+}
 

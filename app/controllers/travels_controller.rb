@@ -50,6 +50,7 @@ class TravelsController < ApplicationController
         format.html { redirect_to [@user, @travel], notice: 'Travel was successfully created.' }
         format.json { render json: @travel, status: :created, location: @travel }
       else
+        flash[:error] = 'Travel is not valid, please fix it'
         format.html { render action: "new" }
         format.json { render json: @travel.errors, status: :unprocessable_entity }
       end

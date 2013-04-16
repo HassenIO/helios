@@ -3,24 +3,60 @@
 <%= link_to 'Edit', edit_user_travel_path(@user, @travel) %> |
 <%= link_to 'Back', user_travels_path(@user) %>
 
+<style type="text/css">
+
+
+</style>
+
 <div class="row-fluid">
 
   <div class="span8">
-    <div class="well">
-      <% if @travel.car %>
-          <% if @travel.car.filepicker1_url %>
-              <%= filepicker_image_tag @travel.car.filepicker1_url %>
-          <% end %>
+    <% if @travel.car %>
+        <% images_url = [@travel.car.filepicker1_url, @travel.car.filepicker2_url, @travel.car.filepicker3_url].select { |url| !url.nil? && !url.empty? } %>
+        <div class="well" style="text-align: center">
+          <% if !images_url.empty? %>
+              <div id="myCarousel" class="carousel slide">
+                <ol class="carousel-indicators">
 
-      <% end %>
-    </div>
+                  <% images_url.each_with_index do |item, index| %>
+                      <li data-target="#myCarousel" data-slide-to="<%= index.to_s %>" class="<%= if index == 0 then
+                                                                                                   "active"
+                                                                                                 end %>"></li>
+                  <% end %>
+
+                </ol>
+                <div class="carousel-inner">
+                  <% images_url.each_with_index do |item, index| %>
+                      <div class="item <%= if index == 0 then
+                                             "active"
+                                           end %>">
+
+                        <%= filepicker_image_tag item, height: 525, fit: 'max' %>
+                        <div class="carousel-caption">
+                          <h4><%= @travel.car.brand %> <%= @travel.car.model %></h4>
+
+                          <p><%= @travel.car.desc %></p>
+                        </div>
+                      </div>
+                  <% end %>
+                </div>
+
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+              </div>
+          <% else %>
+              <i class="icon-camera-retro" style="line-height: 300px; font-size: 120px; color: graytext"></i>
+          <% end %>
+        </div>
+
+    <% end %>
 
   </div>
 
   <div class="span4">
 
     <div class="well">
-    <h3>Louer cette voiture</h3>
+      <h3>Louer cette voiture</h3>
 
       <p>
         <%= @travel.car.brand %> <%= @travel.car.model %>
@@ -33,7 +69,6 @@
       <p>
         Prix
       </p>
-
 
 
     </div>
