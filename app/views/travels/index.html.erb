@@ -8,9 +8,11 @@
         <div class="span6">
           <p>  <%= link_to travel.airPortName + ' - ' + travel.departure.to_s + ' -> ' + travel.arrival.to_s, [@user, travel] %></p>
 
-          <%= link_to 'Annuler cette réservation', [@user, travel], method: :delete, data: {confirm: 'Are you sure?'} %>
-          |
-          <%= link_to 'Modifier cette réservation', edit_user_travel_path(@user, travel) %>
+          <% if @user == current_user %>
+              <%= link_to 'Annuler cette réservation', [@user, travel], method: :delete, data: {confirm: 'Are you sure?'} %>
+              |
+              <%= link_to 'Modifier cette réservation', edit_user_travel_path(@user, travel) %>
+          <% end %>
         </div>
 
         <div class="span6">
@@ -32,4 +34,6 @@
 
 <br/>
 
-<%= link_to 'New Travel', new_user_travel_path(@user) %>
+<% if @user == current_user %>
+    <%= link_to 'New Travel', new_user_travel_path(@user) %>
+<% end %>

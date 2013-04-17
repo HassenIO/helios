@@ -12,4 +12,6 @@ class Travel < ActiveRecord::Base
   validates :departure, :presence => true
   validates_associated :car
 
+  belongs_to :user
+
 end

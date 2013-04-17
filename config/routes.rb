@@ -1,5 +1,8 @@
 TravelerCar::Application.routes.draw do
 
+  post "rent_search/search"
+  get "rent_search/index"
+
   authenticated :user do
     root :to => 'home#index'
   end
@@ -16,7 +19,7 @@ TravelerCar::Application.routes.draw do
 
 
   authenticated :user do
-    match "/travels" => redirect {|p, req| "/users/#{req.env["warden"].user(:user).id}/travels"}
+    match "/travels" => redirect {|p, req| "/users/#{req.env["warden"].user(:user).id}/travels/new"}
   end
 
   unauthenticated :user do

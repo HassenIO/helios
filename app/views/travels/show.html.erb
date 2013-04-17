@@ -1,12 +1,12 @@
-<h2><%= @travel.car.brand + ' - ' + @travel.car.model %></h2>
-
-<%= link_to 'Edit', edit_user_travel_path(@user, @travel) %> |
-<%= link_to 'Back', user_travels_path(@user) %>
-
-<style type="text/css">
+<h2><%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %></h2>
 
 
-</style>
+<% if @user == current_user %>
+    <%= link_to 'Edit', edit_user_travel_path(@user, @travel) %> |
+    <%= link_to 'Back', user_travels_path(@user) %>
+<% end %>
+
+
 
 <div class="row-fluid">
 
@@ -19,9 +19,12 @@
                 <ol class="carousel-indicators">
 
                   <% images_url.each_with_index do |item, index| %>
-                      <li data-target="#myCarousel" data-slide-to="<%= index.to_s %>" class="<%= if index == 0 then
-                                                                                                   "active"
-                                                                                                 end %>"></li>
+                      <li data-target="#myCarousel" data-slide-to="<%= index.to_s %>"
+                          class="<%= if index == 0 then
+                                       "active"
+                                     end %>">
+
+                      </li>
                   <% end %>
 
                 </ol>
@@ -33,7 +36,7 @@
 
                         <%= filepicker_image_tag item, height: 525, fit: 'max' %>
                         <div class="carousel-caption">
-                          <h4><%= @travel.car.brand %> <%= @travel.car.model %></h4>
+                          <h4><%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %></h4>
 
                           <p><%= @travel.car.desc %></p>
                         </div>
@@ -59,7 +62,7 @@
       <h3>Louer cette voiture</h3>
 
       <p>
-        <%= @travel.car.brand %> <%= @travel.car.model %>
+        <%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %>
       </p>
 
       <p>

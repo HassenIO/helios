@@ -30,11 +30,9 @@
   </div>
 
   <div class="span6">
-    <h2>Travels</h2>
-    <% resource.travels.each do |travel| %>
-        <p>Travel: <%= link_to travel.airPortName, [resource,travel] %></p>
-    <% end %>
-    <%= link_to "Add travel", new_user_travel_path(resource) %>
+
+    <%= link_to "Mes parkings", user_travels_path(resource) %>
+
   </div>
 
 

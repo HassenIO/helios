@@ -1,23 +1,25 @@
 <div class="row">
-  <div class="span6 box">
-    <h2>J'inscris ma voiture</h2>
+  <div class="span6">
+    <div class="well">
+      <h2>J'inscris ma voiture</h2>
 
-    <p>Parking aeroport gratuit, Service de voiture gratuit, 100% assuré, etc.</p>
+      <p>Parking aeroport gratuit, Service de voiture gratuit, 100% assuré, etc.</p>
 
-    <p>
-      <%= link_to "J\'ai besoin d'un parking et j\'inscris ma voiture", "/travels", :class => "btn btn-primary btn-large" %>
-      <!--<a href="#" class="btn btn-primary btn-large">J'ai besoin d'un parking et j'inscris ma voiture</a>-->
-    </p>
-
+      <p>
+        <%= link_to "J\'ai besoin d'un parking et j\'inscris ma voiture", "/travels", :class => "btn btn-primary btn-large" %>
+      </p>
+    </div>
   </div>
-  <div class="span6 box">
-    <h2>Je loue ma voiture</h2>
+  <div class="span6">
+    <div class="well">
+      <h2>Je loue ma voiture</h2>
 
-    <p>Economiser jusqu'a XX% sur la location, 100% assuré, etc</p>
+      <p>Economiser jusqu'a XX% sur la location, 100% assuré, etc</p>
 
-    <p>
-      <a href="#" class="btn btn-primary btn-large">J'ai besoin de louer une voiture</a>
-    </p>
+      <p>
+        <%= link_to "J'ai besoin de louer une voiture", {:controller => 'rent_search', :action => 'index'}, :class => "btn btn-primary btn-large" %>
+      </p>
+    </div>
   </div>
 </div>
 
@@ -35,8 +37,3 @@
 </div>
 
 
-<!--
-<% @users.each do |user| %>-->
-    <!--<p>User: <%= link_to user.name, user %></p>-->
-    <!--
-<% end %>-->
