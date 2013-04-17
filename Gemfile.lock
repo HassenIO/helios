@@ -84,6 +84,7 @@ GEM
     mime-types (1.21)
     multi_json (1.7.1)
     multipart-post (1.2.0)
+    nokogiri (1.5.9)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -165,6 +166,7 @@ DEPENDENCIES
   filepicker-rails
   font-awesome-sass-rails
   jquery-rails
+  nokogiri
   omniauth
   omniauth-facebook
   pg
