@@ -1,6 +1,5 @@
 class AnonymousTravelsController < ApplicationController
 
-
   # GET /travels/new
   # GET /travels/new.json
   def new
@@ -15,13 +14,11 @@ class AnonymousTravelsController < ApplicationController
   # POST /travels
   # POST /travels.json
   def create
-    print("create")
+
     @travel = Travel.new(params[:travel])
     session[:travel] = @travel
 
-    print("------------------- travel is in session create ---------------- ")
-
-    redirect_to new_user_travel_path(current_user)
+    redirect_to new_travel_path
   end
 
 end

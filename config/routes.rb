@@ -17,6 +17,7 @@ TravelerCar::Application.routes.draw do
   end
 
   resources :rents, only: [:new]
+  resources :travels, only: [:new]
 
   authenticated :user do
     match "/travels" => redirect { |p, req| "/users/#{req.env["warden"].user(:user).id}/travels/new" }

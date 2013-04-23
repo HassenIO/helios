@@ -1,33 +1,70 @@
-<%= form_for  @travel, :url => {:action => 'create'} do |f| %>
-    <% if @travel.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@travel.errors.count, "error") %> prohibited this travel from being saved:</h2>
+<%= javascript_include_tag 'bootstrap-datetimepicker' %>
+<%= stylesheet_link_tag 'bootstrap-datetimepicker.min' %>
 
-          <ul>
-            <% @travel.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
+<%= form_for @travel, :url => {:action => 'create'} do |f| %>
+
+    <div class="well">
+      <div class="row-fluid">
+
+        <div class="span4">
+          <div class="control-group">
+            <%= f.label :airPortName, :class => "control-label" %>
+            <div class="controls">
+              <%= f.text_field :airPortName %>
+            </div>
+          </div>
         </div>
-    <% end %>
 
-    <div class="field">
-      <%= f.label :airPortName %>
-      <br/>
-      <%= f.text_field :airPortName %>
-    </div>
-    <div class="field">
-      <%= f.label :departure %>
-      <br/>
-      <%= f.datetime_select :departure %>
-    </div>
-    <div class="field">
-      <%= f.label :arrival %>
-      <br/>
-      <%= f.datetime_select :arrival %>
+
+        <div class="span4">
+
+          <div class="control-group">
+            <%= f.label :departure, :class => "control-label" %>
+            <div class="controls input-append date" id="travel_departure_datetimepicker">
+              <%= f.text_field :departure, 'data-format' => "yyyy-MM-dd HH:mm:ss PP" %>
+              <span class="add-on">
+            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+          </span>
+              <span class="help-block">Date et heure de départ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="span4">
+          <div id="travel_arrival" class="control-group">
+            <%= f.label :arrival, :class => "control-label" %>
+            <div class="controls input-append date" id="travel_arrival_datetimepicker">
+              <%= f.text_field :arrival, 'data-format' => "yyyy-MM-dd HH:mm:ss PP" %>
+              <span class="add-on">
+            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+          </span>
+              <span class="help-block">Date et heure d'arrivée</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div class="actions">
-      <%= f.submit %>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="form-actions">
+          <%= f.submit 'Soumettre ces informations et obtenir un parking gratuit', :class => "btn btn-primary" %>
+        </div>
+      </div>
     </div>
 <% end %>
+
+<script type="text/javascript">
+    $(function () {
+
+        console.log($('#travel_departure_datetimepicker'));
+        $('#travel_departure_datetimepicker').datetimepicker({
+            language: 'pt-BR'
+        });
+
+        $('#travel_arrival_datetimepicker').datetimepicker({
+            language: 'pt-BR'
+        });
+    });
+</script>
