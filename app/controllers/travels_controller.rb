@@ -1,7 +1,7 @@
 class TravelsController < ApplicationController
 
   before_filter :load_user
-  before_filter :authenticate_user!, :only => [:checkout]
+  before_filter :authenticate_user!, :only => [:checkout, :create, :update, :destroy]
   # GET /travels
   # GET /travels.json
   def index
@@ -16,6 +16,11 @@ class TravelsController < ApplicationController
   # GET /travels/1
   # GET /travels/1.json
   def show
+
+    if params[:rent]
+      @rent = Rent.new(params[:rent])
+    end
+
     @travel = @user.travels.find(params[:id])
 
     respond_to do |format|
@@ -27,7 +32,8 @@ class TravelsController < ApplicationController
   # GET /travels/new
   # GET /travels/new.json
   def new
-    @travel = @user.travels.new
+    @travel = session[:travel] || @user.travels.new
+
     @travel.car ||= Car.new
     respond_to do |format|
       format.html # new.html.erb

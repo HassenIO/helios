@@ -2,7 +2,7 @@ class Travel < ActiveRecord::Base
 
   has_one :car
 
-  attr_accessible :airPortName, :arrival, :departure,:car_attributes
+  attr_accessible :airPortName, :arrival, :departure, :car_attributes
 
   accepts_nested_attributes_for :car
 

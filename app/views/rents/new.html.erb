@@ -1,0 +1,116 @@
+<h2><%= current_user.email %></h2>
+<%= form_for [@user,@rent] do |rent| %>
+    <%= hidden_field(:rent, :airPortName) %>
+    <%= hidden_field(:rent, :startDate) %>
+    <%= hidden_field(:rent, :endDate) %>
+    <%= hidden_field(:rent, :travel_id) %>
+    <%= @rent.travel.id %>
+
+
+    <%= rent.fields_for :driver do |driver_fields| %>
+        <div class="row-fluid">
+          <div class="span6">
+            <div class="control-group">
+              <%= driver_fields.label :license, :class => "control-label" %>
+              <div class="controls">
+                <%= driver_fields.text_field :license %>
+              </div>
+            </div>
+          </div>
+
+          <div class="span6">
+          </div>
+
+        </div>
+
+
+        <div class="row-fluid">
+          <div class="span6">
+
+
+            <div class="control-group">
+              <%= driver_fields.label :first_name, :class => "control-label" %>
+              <div class="controls">
+                <%= driver_fields.text_field :first_name %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <%= driver_fields.label :last_name, :class => "control-label" %>
+              <div class="controls">
+                <%= driver_fields.text_field :last_name %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <%= driver_fields.label :phone, :class => "control-label" %>
+              <div class="controls">
+                <%= driver_fields.text_field :phone %>
+              </div>
+            </div>
+
+
+            <div class="control-group">
+              <%= driver_fields.label :birth_date, :class => "control-label" %>
+              <div class="controls input-append date" id="travel_departure_datetimepicker">
+                <%= driver_fields.text_field :birth_date, 'data-format' => "yyyy-MM-dd HH:mm:ss PP" %>
+                <span class="add-on">
+            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+          </span>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="span6">
+            <div class="control-group">
+              <%= driver_fields.label :address, :class => "control-label" %>
+              <div class="controls">
+                <%= driver_fields.text_field :address %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <%= driver_fields.label :city, :class => "control-label" %>
+              <div class="controls">
+                <%= driver_fields.text_field :city %>
+              </div>
+            </div>
+
+
+            <div class="control-group">
+              <%= driver_fields.label :zip_code, :class => "control-label" %>
+              <div class="controls">
+                <%= driver_fields.text_field :zip_code %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <%= driver_fields.label :country, :class => "control-label" %>
+              <div class="controls">
+                <%= driver_fields.text_field :country %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    <% end %>
+
+    <div class="row-fluid">
+      <div class="span12">
+        <p>Important : afin de protéger les propriétaires des voitures nous effectuons des vérifications diverses pour
+          confirmer votre identité et votre historique de conduite </p>
+      </div>
+    </div>
+
+
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="form-actions">
+          <%= rent.submit 'Louer le véhicule', :class => "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+
+<% end %>

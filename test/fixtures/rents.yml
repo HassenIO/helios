@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  startDate: 2013-04-18 12:06:35
+  endDate: 2013-04-18 12:06:35
+  user: 
+  travel: 
+
+two:
+  startDate: 2013-04-18 12:06:35
+  endDate: 2013-04-18 12:06:35
+  user: 
+  travel: 

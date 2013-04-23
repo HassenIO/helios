@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410142941) do
+ActiveRecord::Schema.define(:version => 20130422131942) do
 
   create_table "cars", :force => true do |t|
     t.datetime "created_at",         :null => false
@@ -34,6 +34,39 @@ ActiveRecord::Schema.define(:version => 20130410142941) do
     t.string   "filepicker1_url"
     t.string   "filepicker2_url"
     t.string   "filepicker3_url"
+    t.integer  "category_id"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.float    "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "drivers", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "country"
+    t.string   "zip_code"
+    t.string   "phone"
+    t.date     "birth_date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "license"
+    t.integer  "rent_id"
+  end
+
+  create_table "rents", :force => true do |t|
+    t.datetime "startDate"
+    t.datetime "endDate"
+    t.integer  "user_id"
+    t.integer  "travel_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "airPortName"
   end
 
   create_table "roles", :force => true do |t|
@@ -54,7 +87,6 @@ ActiveRecord::Schema.define(:version => 20130410142941) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "user_id"
-    t.integer  "car_id"
   end
 
   create_table "users", :force => true do |t|

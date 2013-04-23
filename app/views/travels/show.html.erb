@@ -64,14 +64,23 @@
       <p>
         <%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %>
       </p>
+      <% if @rent %>
+          <p>
+            Entre le <%= @rent.startDate %> et le <%= @rent.endDate %>
+          </p>
 
-      <p>
-        Entre le <%= @travel.departure %> et le <%= @travel.arrival %>
-      </p>
+          <p>
+            <%= ((@rent.endDate - @rent.startDate)/1.day).round %> jours à {prix}
+          </p>
 
-      <p>
-        Prix
-      </p>
+          <p>
+            <%= link_to 'Louer cette voiture', new_rent_path(:rent => params[:rent].merge(:travel_id => @travel.id)), :class => "btn btn-primary" %>
+          </p>
+      <% else %>
+          <p>
+            Entre le <%= @travel.departure %> et le <%= @travel.arrival %>
+          </p>
+      <% end %>
 
 
     </div>

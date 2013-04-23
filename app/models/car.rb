@@ -11,4 +11,6 @@ class Car < ActiveRecord::Base
 
   belongs_to :travels
 
+  has_one :category
+
 end

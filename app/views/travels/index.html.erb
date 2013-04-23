@@ -16,14 +16,20 @@
         </div>
 
         <div class="span6">
-          <% if travel.car %>
-              <% if travel.car.filepicker1_url %>
-                  <%= filepicker_image_tag travel.car.filepicker1_url, width: 100, height: 100, fit: 'clip', class: 'pull-left' %>
-              <% end %>
-              <p> <%= travel.car.try { |car| car.brand + ' ' + car.model } %> </p>
+          <div class="row-fluid">
+            <% if travel.car %>
+                <div class="span4">
+                  <% if travel.car.filepicker1_url %>
+                      <%= filepicker_image_tag travel.car.filepicker1_url, width: 100, height: 100, fit: 'clip', class: 'pull-left' %>
+                  <% end %>
+                </div>
 
+                <div class="span8">
+                  <p> <%= travel.car.try { |car| car.brand + ' ' + car.model } %> </p>
+                </div>
 
-          <% end %>
+            <% end %>
+          </div>
         </div>
 
       </div>

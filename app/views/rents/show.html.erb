@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Startdate:</b>
+  <%= @rent.startDate %>
+</p>
+
+<p>
+  <b>Enddate:</b>
+  <%= @rent.endDate %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @rent.user.email %>
+</p>
+
+<p>
+  <b>Driver:</b>
+  <%= @rent.driver.first_name %>
+</p>
+
+<p>
+  <b>Travel:</b>
+  <%= @rent.travel.airPortName %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_rent_path(@user,@rent) %> |
+<%= link_to 'Back', user_rents_path(@user) %>

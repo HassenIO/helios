@@ -1,6 +1,5 @@
 class AnonymousTravelsController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:checkout]
 
   # GET /travels/new
   # GET /travels/new.json
@@ -13,42 +12,16 @@ class AnonymousTravelsController < ApplicationController
     end
   end
 
-  # GET /travels/1/edit
-  #def edit
-  #  @travel = @user.travels.find(params[:id])
-  #end
-
   # POST /travels
   # POST /travels.json
   def create
+    print("create")
     @travel = Travel.new(params[:travel])
     session[:travel] = @travel
-    #ok go to login page
-    #session["totos_return_to"] = user_travel_url(current_user)
-    redirect_to :action => 'checkout'
 
-    #how to deal after login with session[:travel]
+    print("------------------- travel is in session create ---------------- ")
 
+    redirect_to new_user_travel_path(current_user)
   end
-
-
-  def checkout
-
-    @user = current_user
-    @travel = session[:travel]
-
-    #puts current_user.inspect
-    #puts session[:travel].inspect
-
-    current_user.travels << @travel
-
-    if @travel.save
-       redirect_to user_travel_url(@user, @travel), notice: 'Travel was successfully created.'
-    else
-       render controller: "travels", action: "new"
-    end
-
-  end
-
 
 end

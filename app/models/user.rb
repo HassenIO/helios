@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 
   has_many :cars
   has_many :travels
+  has_many :rents
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
