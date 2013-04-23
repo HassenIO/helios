@@ -1,6 +1,6 @@
-<h1>Editing rent</h1>
+<h2>Modification d'une location</h2>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @rent %> |
-<%= link_to 'Back', rents_path %>
+<%= link_to 'Show', [@user,@rent] %> |
+<%= link_to 'Back', user_rents_path(@user) %>
