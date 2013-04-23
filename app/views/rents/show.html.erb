@@ -1,30 +1,175 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Startdate:</b>
-  <%= @rent.startDate %>
-</p>
-
-<p>
-  <b>Enddate:</b>
-  <%= @rent.endDate %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @rent.user.email %>
-</p>
-
-<p>
-  <b>Driver:</b>
-  <%= @rent.driver.first_name %>
-</p>
-
-<p>
-  <b>Travel:</b>
-  <%= @rent.travel.airPortName %>
-</p>
+<h2>Location à <%= @rent.airPortName %> du <%= @rent.startDate %> au <%= @rent.endDate %></h2>
 
 
-<%= link_to 'Edit', edit_user_rent_path(@user,@rent) %> |
-<%= link_to 'Back', user_rents_path(@user) %>
+<% if @user == current_user %>
+    <%= link_to 'Edit', edit_user_rent_path(@user, @rent) %> |
+    <%= link_to 'Back', user_rents_path(@user) %>
+<% end %>
+
+
+<div class="row-fluid">
+
+  <div class="span8">
+    <% if @rent.travel.car %>
+        <% images_url = [@rent.travel.car.filepicker1_url, @rent.travel.car.filepicker2_url, @rent.travel.car.filepicker3_url].select { |url| !url.nil? && !url.empty? } %>
+        <div class="well" style="text-align: center">
+          <% if !images_url.empty? %>
+              <div id="myCarousel" class="carousel slide">
+                <ol class="carousel-indicators">
+
+                  <% images_url.each_with_index do |item, index| %>
+                      <li data-target="#myCarousel" data-slide-to="<%= index.to_s %>"
+                          class="<%= if index == 0 then
+                                       "active"
+                                     end %>">
+
+                      </li>
+                  <% end %>
+
+                </ol>
+                <div class="carousel-inner">
+                  <% images_url.each_with_index do |item, index| %>
+                      <div class="item <%= if index == 0 then
+                                             "active"
+                                           end %>">
+
+                        <%= filepicker_image_tag item, height: 525, fit: 'max' %>
+                        <div class="carousel-caption">
+                          <h4><%= @rent.travel.car.year.to_s + ' - ' + @rent.travel.car.brand + " " + @rent.travel.car.model %></h4>
+
+                          <p><%= @rent.travel.car.desc %></p>
+                        </div>
+                      </div>
+                  <% end %>
+                </div>
+
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+              </div>
+          <% else %>
+              <i class="icon-camera-retro" style="line-height: 300px; font-size: 120px; color: graytext"></i>
+          <% end %>
+        </div>
+
+    <% end %>
+
+  </div>
+
+  <div class="span4">
+
+    <div class="well">
+      <h3>Information location</h3>
+
+      <p>
+        <%= @rent.travel.car.year.to_s + ' - ' + @rent.travel.car.brand + " " + @rent.travel.car.model %>
+      </p>
+
+      <p>
+        Entre le <%= @rent.startDate %> et le <%= @rent.endDate %>
+      </p>
+
+      <p>
+        <%= ((@rent.endDate - @rent.startDate)/1.day).round %> jours à {prix}
+      </p>
+
+
+    </div>
+
+    <div class="well">
+      <h3>Conducteur</h3>
+
+      <address>
+        <strong><%= @rent.driver.first_name %> <%= @rent.driver.last_name %></strong><br>
+        <%= @rent.driver.address %><br>
+        <%= @rent.driver.city %>, <%= @rent.driver.zip_code%><br>
+        <%= @rent.driver.country %><br>
+        <abbr title="Phone">Tel:</abbr> <%= @rent.driver.phone %>
+      </address>
+
+
+      <p>
+        Licence : <%- @rent.driver.license %> </br>
+        Date de naissance : <%- @rent.driver.birth_date %> </br>
+      </p>
+
+
+    </div>
+
+  </div>
+
+
+</div>
+
+<h3>Details</h3>
+
+<div class="well">
+  <div class="row-fluid">
+    <div class="span4">
+
+      <p>
+        <b>Aeroport :</b>
+        <%= @rent.travel.airPortName %>
+      </p>
+
+      <p>
+        <b>Nombre de places assises :</b>
+        <%= @rent.travel.car.nbSeats %>
+      </p>
+
+      <p>
+        <b>Kilométrage :</b>
+        <%= @rent.travel.car.km %>
+      </p>
+
+      <p>
+        <b>Fuel :</b>
+        <%= @rent.travel.car.fuel %>
+      </p>
+
+    </div>
+
+    <div class="span4">
+      <p>
+        <b>Fumeur autorisé ? </b>
+        <%= @rent.travel.car.isSmoker %>
+      </p>
+
+      <p>
+        <b>Animaux acceptés ? </b>
+        <%= @rent.travel.car.acceptedPets %>
+      </p>
+
+      <p>
+        <b>GPS ? </b>
+        <%= @rent.travel.car.hasGps %>
+      </p>
+
+      <p>
+        <b>Climatisation ? </b>
+        <%= @rent.travel.car.hasAirConditioning %>
+      </p>
+
+      <p>
+        <b>Musique ? </b>
+        <%= @rent.travel.car.hasCarRadio %>
+      </p>
+
+      <p>
+        <b>Siège(s) enfant(s) ? </b>
+        <%= @rent.travel.car.hasChildSeat %>
+      </p>
+
+    </div>
+
+    <div class="span4">
+      <p>
+        <%= @rent.travel.car.desc %>
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
