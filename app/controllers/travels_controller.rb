@@ -34,7 +34,11 @@ class TravelsController < ApplicationController
   # GET /travels/new
   # GET /travels/new.json
   def new
-    @travel = session[:travel] || @user.travels.new
+    if session[:travel]
+      @travel = Travel.new(session[:travel])
+    else
+      @travel= @user.travels.new
+    end
 
     @travel.car ||= Car.new
     @travel.airPort ||= AirPort.find(1)
