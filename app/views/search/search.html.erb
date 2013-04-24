@@ -12,7 +12,7 @@
     <% if @travels.empty? %>
         <h3>Aucun résultat trouvé, modifiez les critères</h3>
     <% else %>
-        <h3><%= @travels.length %> voitures trouvés au depart de <%= @rent.airPortName %> du <%= @rent.startDate %> au <%= @rent.endDate %></h3>
+        <h3><%= @travels.length %> voitures trouvés au depart de <%= @rent.airPort.name %> du <%= @rent.startDate %> au <%= @rent.endDate %></h3>
     <% end %>
   </div>
 </div>
@@ -23,7 +23,7 @@
       <div class="row-fluid">
 
         <div class="span6">
-          <p>  <%= link_to travel.airPortName + ' - ' + travel.departure.to_s + ' -> ' + travel.arrival.to_s, user_travel_url( travel.user, travel, :rent => params[:rent])  %></p>
+          <p>  <%= link_to travel.airPort.name + ' - ' + travel.departure.to_s + ' -> ' + travel.arrival.to_s, user_travel_url( travel.user, travel, :rent => params[:rent])  %></p>
 
         </div>
 

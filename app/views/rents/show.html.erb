@@ -1,4 +1,4 @@
-<h2>Location à <%= @rent.airPortName %> du <%= @rent.startDate %> au <%= @rent.endDate %></h2>
+<h2>Location à <%= @rent.airPort.name %> du <%= @rent.startDate %> au <%= @rent.endDate %></h2>
 
 
 <% if @user == current_user %>
@@ -108,7 +108,7 @@
 
       <p>
         <b>Aeroport :</b>
-        <%= @rent.travel.airPortName %>
+        <%= @rent.travel.airPort.name %>
       </p>
 
       <p>

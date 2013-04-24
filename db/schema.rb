@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422131942) do
+ActiveRecord::Schema.define(:version => 20130424161312) do
+
+  create_table "air_ports", :force => true do |t|
+    t.string "name"
+    t.string "city"
+    t.string "country"
+  end
 
   create_table "cars", :force => true do |t|
     t.datetime "created_at",         :null => false
@@ -64,9 +70,9 @@ ActiveRecord::Schema.define(:version => 20130422131942) do
     t.datetime "endDate"
     t.integer  "user_id"
     t.integer  "travel_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "airPortName"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "airPort_id"
   end
 
   create_table "roles", :force => true do |t|
@@ -81,12 +87,12 @@ ActiveRecord::Schema.define(:version => 20130422131942) do
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "travels", :force => true do |t|
-    t.string   "airPortName"
     t.datetime "departure"
     t.datetime "arrival"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.integer  "airPort_id"
   end
 
   create_table "users", :force => true do |t|

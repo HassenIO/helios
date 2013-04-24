@@ -6,7 +6,7 @@
       <div class="row-fluid">
 
         <div class="span6">
-          <p>  <%= link_to travel.airPortName + ' - ' + travel.departure.to_s + ' -> ' + travel.arrival.to_s, [@user, travel] %></p>
+          <p>  <%= link_to travel.airPort.name + ' - ' + travel.departure.to_s + ' -> ' + travel.arrival.to_s, [@user, travel] %></p>
 
           <% if @user == current_user %>
               <%= link_to 'Annuler cette réservation', [@user, travel], method: :delete, data: {confirm: 'Are you sure?'} %>

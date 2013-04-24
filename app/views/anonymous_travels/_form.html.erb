@@ -8,9 +8,9 @@
 
         <div class="span4">
           <div class="control-group">
-            <%= f.label :airPortName, :class => "control-label" %>
+            <%= f.label :airPort, :class => "control-label" %>
             <div class="controls">
-              <%= f.text_field :airPortName %>
+              <%= f.collection_select(:airPort_id, AirPort.all, :id, :name) %>
             </div>
           </div>
         </div>

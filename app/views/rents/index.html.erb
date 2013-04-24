@@ -6,7 +6,7 @@
       <div class="row-fluid">
 
         <div class="span6">
-          <p>  <%= link_to rent.airPortName + ' - ' + rent.startDate.to_s + ' -> ' + rent.endDate.to_s, [@user, rent] %></p>
+          <p>  <%= link_to rent.airPort.name + ' - ' + rent.startDate.to_s + ' -> ' + rent.endDate.to_s, [@user, rent] %></p>
 
           <% if @user == current_user %>
               <%= link_to 'Annuler cette location', [@user, rent], method: :delete, data: {confirm: 'Are you sure?'} %>

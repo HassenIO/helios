@@ -2,14 +2,14 @@
 
     <div class="well">
       <div class="row-fluid">
-        <div class="span4">A <%= @rent.airPortName %></div>
+        <div class="span4">A <%= @rent.airPort.name %></div>
         <div class="span4">Du <%= @rent.startDate %></div>
         <div class="span4">au <%= @rent.endDate %></div>
       </div>
     </div>
 
 
-    <%= hidden_field(:rent, :airPortName) %>
+    <%= hidden_field(:rent, :airPort_id) %>
     <%= hidden_field(:rent, :startDate) %>
     <%= hidden_field(:rent, :endDate) %>
     <%= hidden_field(:rent, :travel_id) %>

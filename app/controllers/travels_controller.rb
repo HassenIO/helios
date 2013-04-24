@@ -1,7 +1,7 @@
 class TravelsController < ApplicationController
 
-  before_filter :load_user, :only  => [:index, :show]
-  before_filter :load_current_user, :except  => [:index, :show]
+  before_filter :load_user, :only => [:index, :show]
+  before_filter :load_current_user, :except => [:index, :show]
   before_filter :authenticate_user!, :except => :show
 
   # GET /travels
@@ -37,6 +37,7 @@ class TravelsController < ApplicationController
     @travel = session[:travel] || @user.travels.new
 
     @travel.car ||= Car.new
+    @travel.airPort ||= AirPort.find(1)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @travel }
