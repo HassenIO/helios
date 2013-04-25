@@ -1,6 +1,6 @@
 class Car < ActiveRecord::Base
 
-  attr_accessible :brand, :model, :fuel, :nbSeats, :km, :year, :license , :desc
+  attr_accessible :brand, :model, :fuel, :nbSeats, :km, :year, :license , :desc, :category_id
   attr_accessible :hasChildSeat, :hasGps, :hasCarRadio, :isSmoker, :acceptedPets, :hasAirConditioning
   attr_accessible :filepicker1_url, :filepicker2_url, :filepicker3_url
 
@@ -11,6 +11,6 @@ class Car < ActiveRecord::Base
 
   belongs_to :travels
 
-  has_one :category
+  belongs_to :category
 
 end

@@ -3,9 +3,15 @@
     <div class="well">
       <div class="row-fluid">
         <div class="span4">A <%= @rent.airPort.name %></div>
-        <div class="span4">Du <%= @rent.startDate %></div>
-        <div class="span4">au <%= @rent.endDate %></div>
+        <div class="span4">Du <%= @rent.startDate %> au <%= @rent.endDate %></div>
+        <% nbjours = ((@rent.endDate - @rent.startDate)/1.day).round %>
+        <div class="span4">
+          <%= nbjours %> jours à <%= @rent.travel.car.category.price %>€ par jour
+          Total : <%= @rent.travel.car.category.price*nbjours %>€
+        </div>
+
       </div>
+
     </div>
 
 

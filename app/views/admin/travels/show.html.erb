@@ -1,17 +1,18 @@
-<h2>Location à <%= @rent.airPort.name %> du <%= @rent.startDate %> au <%= @rent.endDate %></h2>
+<h2><%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %></h2>
 
 
-<% if @user == current_user %>
-    <%= link_to 'Edit', edit_user_rent_path(@user, @rent) %> |
-    <%= link_to 'Back', user_rents_path(@user) %>
-<% end %>
+
+    <%= link_to 'Edit', edit_admin_travel_path(@travel) %> |
+    <%= link_to 'Back', admin_travels_path %>
+
+
 
 
 <div class="row-fluid">
 
   <div class="span8">
-    <% if @rent.travel.car %>
-        <% images_url = [@rent.travel.car.filepicker1_url, @rent.travel.car.filepicker2_url, @rent.travel.car.filepicker3_url].select { |url| !url.nil? && !url.empty? } %>
+    <% if @travel.car %>
+        <% images_url = [@travel.car.filepicker1_url, @travel.car.filepicker2_url, @travel.car.filepicker3_url].select { |url| !url.nil? && !url.empty? } %>
         <div class="well" style="text-align: center">
           <% if !images_url.empty? %>
               <div id="myCarousel" class="carousel slide">
@@ -35,9 +36,9 @@
 
                         <%= filepicker_image_tag item, height: 525, fit: 'max' %>
                         <div class="carousel-caption">
-                          <h4><%= @rent.travel.car.year.to_s + ' - ' + @rent.travel.car.brand + " " + @rent.travel.car.model %></h4>
+                          <h4><%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %></h4>
 
-                          <p><%= @rent.travel.car.desc %></p>
+                          <p><%= @travel.car.desc %></p>
                         </div>
                       </div>
                   <% end %>
@@ -58,50 +59,28 @@
   <div class="span4">
 
     <div class="well">
-      <h3>Information location</h3>
+      <h3>Louer cette voiture</h3>
 
       <p>
-        <%= @rent.travel.car.year.to_s + ' - ' + @rent.travel.car.brand + " " + @rent.travel.car.model %>
+        <%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %>
       </p>
+      <% if @rent %>
+          <p>
+            Entre le <%= @rent.startDate %> et le <%= @rent.endDate %>
+          </p>
 
-      <p>
-        Entre le <%= @rent.startDate %> et le <%= @rent.endDate %>
-      </p>
+          <p>
+            <%= ((@rent.endDate - @rent.startDate)/1.day).round %> jours à {prix}
+          </p>
 
-      <p>
-        <% nbjours = ((@rent.endDate - @rent.startDate)/1.day).round %>
-        <%= nbjours %> jours à <%= @rent.travel.car.category.price %>€ par jour
-
-      </p>
-
-      <p>
-        Total : <%= @rent.travel.car.category.price*nbjours %>€
-      </p>
-
-
-    </div>
-
-    <div class="well">
-      <h3>Conducteur</h3>
-
-      <address>
-        <strong><%= @rent.driver.first_name %> <%= @rent.driver.last_name %></strong><br>
-        <%= @rent.driver.address %>
-        <br>
-        <%= @rent.driver.city %>, <%= @rent.driver.zip_code %>
-        <br>
-        <%= @rent.driver.country %>
-        <br>
-        <abbr title="Phone">Tel:</abbr> <%= @rent.driver.phone %>
-      </address>
-
-
-      <p>
-        Licence :
-        <%- @rent.driver.license %> </br>
-        Date de naissance :
-        <%- @rent.driver.birth_date %> </br>
-      </p>
+          <p>
+            <%= link_to 'Louer cette voiture', new_rent_path(:rent => params[:rent].merge(:travel_id => @travel.id)), :class => "btn btn-primary" %>
+          </p>
+      <% else %>
+          <p>
+            Entre le <%= @travel.departure %> et le <%= @travel.arrival %>
+          </p>
+      <% end %>
 
 
     </div>
@@ -119,22 +98,22 @@
 
       <p>
         <b>Aeroport :</b>
-        <%= @rent.travel.airPort.name %>
+        <%= @travel.airPort.name %>
       </p>
 
       <p>
         <b>Nombre de places assises :</b>
-        <%= @rent.travel.car.nbSeats %>
+        <%= @travel.car.nbSeats %>
       </p>
 
       <p>
         <b>Kilométrage :</b>
-        <%= @rent.travel.car.km %>
+        <%= @travel.car.km %>
       </p>
 
       <p>
         <b>Fuel :</b>
-        <%= @rent.travel.car.fuel %>
+        <%= @travel.car.fuel %>
       </p>
 
     </div>
@@ -142,39 +121,39 @@
     <div class="span4">
       <p>
         <b>Fumeur autorisé ? </b>
-        <%= @rent.travel.car.isSmoker %>
+        <%= @travel.car.isSmoker %>
       </p>
 
       <p>
         <b>Animaux acceptés ? </b>
-        <%= @rent.travel.car.acceptedPets %>
+        <%= @travel.car.acceptedPets %>
       </p>
 
       <p>
         <b>GPS ? </b>
-        <%= @rent.travel.car.hasGps %>
+        <%= @travel.car.hasGps %>
       </p>
 
       <p>
         <b>Climatisation ? </b>
-        <%= @rent.travel.car.hasAirConditioning %>
+        <%= @travel.car.hasAirConditioning %>
       </p>
 
       <p>
         <b>Musique ? </b>
-        <%= @rent.travel.car.hasCarRadio %>
+        <%= @travel.car.hasCarRadio %>
       </p>
 
       <p>
         <b>Siège(s) enfant(s) ? </b>
-        <%= @rent.travel.car.hasChildSeat %>
+        <%= @travel.car.hasChildSeat %>
       </p>
 
     </div>
 
     <div class="span4">
       <p>
-        <%= @rent.travel.car.desc %>
+        <%= @travel.car.desc %>
       </p>
 
     </div>
@@ -182,5 +161,10 @@
   </div>
 
 </div>
+
+
+
+
+
 
 

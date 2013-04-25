@@ -1,5 +1,3 @@
-
-
 <%= filepicker_js_include_tag %>
 
 
@@ -12,7 +10,8 @@
     <% if @travels.empty? %>
         <h3>Aucun résultat trouvé, modifiez les critères</h3>
     <% else %>
-        <h3><%= @travels.length %> voitures trouvés au depart de <%= @rent.airPort.name %> du <%= @rent.startDate %> au <%= @rent.endDate %></h3>
+        <h3><%= @travels.length %> voitures trouvés au depart de <%= @rent.airPort.name %> du <%= @rent.startDate %>
+          au <%= @rent.endDate %></h3>
     <% end %>
   </div>
 </div>
@@ -22,21 +21,37 @@
     <div class="well">
       <div class="row-fluid">
 
-        <div class="span6">
-          <p>  <%= link_to travel.airPort.name + ' - ' + travel.departure.to_s + ' -> ' + travel.arrival.to_s, user_travel_url( travel.user, travel, :rent => params[:rent])  %></p>
 
-        </div>
-
-        <div class="span6">
+        <div class="span3">
           <% if travel.car %>
               <% if travel.car.filepicker1_url %>
                   <%= filepicker_image_tag travel.car.filepicker1_url, width: 100, height: 100, fit: 'clip', class: 'pull-left' %>
               <% end %>
+          <% end %>
+        </div>
+
+        <div class="span6">
+
+          <% if travel.car %>
               <p> <%= travel.car.try { |car| car.year.to_s + ' -  '+ car.brand+ ' ' + car.model } %> </p>
-              <p> <%= [travel.car.nbSeats, travel.car.fuel, travel.car.km].join(', ') %></p>
+
+              <p> <%= travel.car.category ? travel.car.category.name + ' , ' : '' %> <%= travel.car.nbSeats %> places </p>
+
               <p> <%= travel.car.desc %></p>
+          <% end %>
 
+        </div>
 
+        <div class="span3">
+          <% if travel.car.category %>
+              <% nbjours = ((@rent.endDate - @rent.startDate)/1.day).round %>
+              <p>
+                <%= nbjours %> jours à <%= travel.car.category.price %>€ par jour
+              </p>
+
+              <p> <%= travel.car.category.price*nbjours %>€ </p>
+
+              <%= link_to "Louer", user_travel_url(travel.user, travel, :rent => params[:rent]), :class => "btn btn-primary" %>
           <% end %>
         </div>
 
