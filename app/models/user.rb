@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  ROLES = %w[admin user]
+
   rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

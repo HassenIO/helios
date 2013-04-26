@@ -266,8 +266,6 @@
             <div class="control-group">
               <%= f.label :status, :class => "control-label" %>
               <div class="controls">
-                toto
-                <%= @travel.status %>
                 <%= f.collection_select(:status, Travel::STATUS, :first, :first) %>
               </div>
             </div>
