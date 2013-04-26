@@ -1,4 +1,4 @@
-class Admin::TravelsController < ApplicationController
+class Admin::TravelsController < Admin::BaseController
 
 
   #before_filter :load_user, :only => [:index, :show]
