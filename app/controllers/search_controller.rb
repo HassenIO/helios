@@ -15,7 +15,7 @@ class SearchController < ApplicationController
     # check valid params
     @travels = []
     if params[:rent]
-      @travels = Travel.where('arrival > :end AND departure < :start AND "airPort_id" = :airPort_id',
+      @travels = Travel.where('arrival > :end AND departure < :start AND "airPort_id" = :airPort_id AND status = 1',
                               {:start => params[:rent][:startDate].to_date,
                                :end => params[:rent][:endDate].to_date,
                                :airPort_id => params[:rent][:airPort_id]})

@@ -261,16 +261,32 @@
         </div>
 
 
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="control-group">
+              <%= f.label :status, :class => "control-label" %>
+              <div class="controls">
+                toto
+                <%= @travel.status %>
+                <%= f.collection_select(:status, Travel::STATUS, :first, :first) %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="form-actions">
+              <%= f.submit 'Enregistrer', :class => "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+
+
 
     <% end %>
 
-    <div class="row-fluid">
-      <div class="span12">
-        <div class="form-actions">
-          <%= f.submit 'Soumettre ces informations et obtenir un parking gratuit', :class => "btn btn-primary" %>
-        </div>
-      </div>
-    </div>
 
 <% end %>
 

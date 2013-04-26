@@ -57,6 +57,7 @@ class TravelsController < ApplicationController
   # POST /travels.json
   def create
     @travel = @user.travels.new(params[:travel])
+    @travel.status = :pending
 
     respond_to do |format|
       if @travel.save

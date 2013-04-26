@@ -46,6 +46,7 @@ class Admin::TravelsController < ApplicationController
   def edit
     @travel = Travel.find(params[:id])
     @travel.car.category = Category.new
+
   end
 
   # POST /travels
@@ -55,7 +56,7 @@ class Admin::TravelsController < ApplicationController
 
     respond_to do |format|
       if @travel.save
-        format.html { redirect_to  admin_travel_path(@travel), notice: 'Travel was successfully created.' }
+        format.html { redirect_to admin_travel_path(@travel), notice: 'Travel was successfully created.' }
         format.json { render json: @travel, status: :created, location: @travel }
       else
         flash[:error] = 'Travel is not valid, please fix it'
@@ -69,6 +70,8 @@ class Admin::TravelsController < ApplicationController
   # PUT /travels/1.json
   def update
     @travel = Travel.find(params[:id])
+
+    #TODO : invalid status:active or rent if no category
 
     respond_to do |format|
       if @travel.update_attributes(params[:travel])
