@@ -1,7 +1,7 @@
 <h2>Location à <%= @rent.airPort.name %> du <%= @rent.startDate %> au <%= @rent.endDate %></h2>
 
 
-<% if @user == current_user %>
+<% if can? :update, @rent %>
     <%= link_to 'Edit', edit_user_rent_path(@user, @rent) %> |
     <%= link_to 'Back', user_rents_path(@user) %>
 <% end %>

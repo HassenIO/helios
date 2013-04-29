@@ -1,7 +1,7 @@
 <h2><%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %></h2>
 
 
-<% if @user == current_user %>
+<% if can? :update, @travel %>
     <%= link_to 'Edit', edit_user_travel_path(@user, @travel) %> |
     <%= link_to 'Back', user_travels_path(@user) %>
 <% end %>
