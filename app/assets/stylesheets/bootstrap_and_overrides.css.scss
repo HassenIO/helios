@@ -8,16 +8,22 @@ $navbarLinkColor: #fff;
 $navbarLinkColorHover: $orange;
 
 $btnPrimaryBackground: $blue !default;
-$btnPrimaryBackgroundHighlight: $orange;
-
+$btnPrimaryBackgroundHighlight: $blue;
 
 @import "bootstrap";
 @import 'font-awesome';
 @import "bootstrap-responsive";
 
-
 body {
   padding-top: 60px;
+}
+
+.navbar .brand:hover, .navbar .brand:focus {
+  background-color: $orange !important;
+}
+
+.btn-primary:hover {
+  color: $orange;
 }
 
 //navbar bottom
@@ -32,11 +38,10 @@ body {
 
 //fix carousel center img
 .carousel .item > img {
-  margin:0px auto;
+  margin: 0px auto;
   display: block;
   line-height: 1;
 }
-
 
 .field_with_errors {
   @extend .control-group.error;
