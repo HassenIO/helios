@@ -22,7 +22,7 @@
           <div class="control-group">
             <%= f.label :startDate, :class => "control-label" %>
             <div class="controls input-append date" id="rent_startDate_datetimepicker">
-              <%= f.text_field :startDate, 'data-format' => "yyyy-MM-dd HH:mm:ss PP" %>
+              <%= f.text_field :startDate, 'data-format' => "yyyy-MM-dd HH:mm:ss" %>
               <span class="add-on">
             <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
           </span>
@@ -35,7 +35,7 @@
           <div id="travel_arrival" class="control-group">
             <%= f.label :endDate, :class => "control-label" %>
             <div class="controls input-append date" id="rent_endDate_datetimepicker">
-              <%= f.text_field :endDate, 'data-format' => "yyyy-MM-dd HH:mm:ss PP" %>
+              <%= f.text_field :endDate, 'data-format' => "yyyy-MM-dd HH:mm:ss" %>
               <span class="add-on">
                    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                 </span>
@@ -60,7 +60,6 @@
 <script type="text/javascript">
     $(function () {
 
-        console.log($('#rent_startDate_datetimepicker'));
         $('#rent_startDate_datetimepicker').datetimepicker({
             language: 'pt-BR'
         });
