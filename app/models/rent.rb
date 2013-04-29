@@ -20,4 +20,12 @@ class Rent < ActiveRecord::Base
 
   validates_associated :driver
 
+  def self.valid_attribute?(attrib, value)
+    mock = self.new(attrib => value)
+    unless mock.valid?
+      return !mock.errors.get(attrib).present?
+    end
+    true
+  end
+
 end

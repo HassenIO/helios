@@ -7,7 +7,9 @@
 
 <div class="row-fluid">
   <div class="span12">
-    <% if @travels.empty? %>
+    <% if !@rent.errors.blank? %>
+        <h3>Critères incomplets, veuillez les corriger</h3>
+    <% elsif @travels.empty? %>
         <h3>Aucun résultat trouvé, modifiez les critères</h3>
     <% else %>
         <h3><%= @travels.length %> voitures trouvés au depart de <%= @rent.airPort.name %> du <%= @rent.startDate %>
