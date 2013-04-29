@@ -1,5 +1,7 @@
 class TravelsController < ApplicationController
 
+  load_and_authorize_resource
+
   before_filter :load_user, :only => [:index, :show]
   before_filter :load_current_user, :except => [:index, :show]
   before_filter :authenticate_user!, :except => :show
@@ -7,6 +9,7 @@ class TravelsController < ApplicationController
   # GET /travels
   # GET /travels.json
   def index
+
     @travels = @user.travels.all
 
     respond_to do |format|
@@ -22,8 +25,6 @@ class TravelsController < ApplicationController
     if params[:rent]
       @rent = Rent.new(params[:rent])
     end
-
-    @travel = @user.travels.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -50,7 +51,7 @@ class TravelsController < ApplicationController
 
   # GET /travels/1/edit
   def edit
-    @travel = @user.travels.find(params[:id])
+
   end
 
   # POST /travels
@@ -74,7 +75,6 @@ class TravelsController < ApplicationController
   # PUT /travels/1
   # PUT /travels/1.json
   def update
-    @travel = @user.travels.find(params[:id])
 
     respond_to do |format|
       if @travel.update_attributes(params[:travel])
@@ -90,7 +90,6 @@ class TravelsController < ApplicationController
   # DELETE /travels/1
   # DELETE /travels/1.json
   def destroy
-    @travel = @user.travels.find(params[:id])
     @travel.destroy
 
     respond_to do |format|

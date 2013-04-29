@@ -1,12 +1,14 @@
 class RentsController < ApplicationController
 
+  load_and_authorize_resource
+
   before_filter :load_current_user
   before_filter :authenticate_user!
 
   # GET /rents
   # GET /rents.json
   def index
-    @rents = Rent.all
+    @rents = @user.rents.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +20,7 @@ class RentsController < ApplicationController
   # GET /rents/1
   # GET /rents/1.json
   def show
-    @rent = Rent.find(params[:id])
+    #@rent = Rent.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,7 +46,7 @@ class RentsController < ApplicationController
 
   # GET /rents/1/edit
   def edit
-    @rent = Rent.find(params[:id])
+    #@rent = Rent.find(params[:id])
   end
 
   # POST /rents
@@ -70,7 +72,7 @@ class RentsController < ApplicationController
   # PUT /rents/1
   # PUT /rents/1.json
   def update
-    @rent = Rent.find(params[:id])
+    #@rent = Rent.find(params[:id])
 
     respond_to do |format|
       if @rent.update_attributes(params[:rent])
@@ -86,7 +88,7 @@ class RentsController < ApplicationController
   # DELETE /rents/1
   # DELETE /rents/1.json
   def destroy
-    @rent = Rent.find(params[:id])
+    #@rent = Rent.find(params[:id])
     @rent.destroy
 
     respond_to do |format|

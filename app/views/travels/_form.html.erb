@@ -58,7 +58,6 @@
                 <%= car_fields.label :brand, :class => "control-label" %>
                 <div class="controls">
                   <%= car_fields.text_field :brand %>
-                  <span class="help-block"></span>
                 </div>
               </div>
 
@@ -66,7 +65,6 @@
                 <%= car_fields.label :model, :class => "control-label" %>
                 <div class="controls">
                   <%= car_fields.text_field :model %>
-                  <span class="help-block"></span>
                 </div>
               </div>
 
@@ -74,7 +72,6 @@
                 <%= car_fields.label :year, :class => "control-label" %>
                 <div class="controls">
                   <%= car_fields.select(:year, options_for_select(Time.now.year - 30..Time.now.year, :selected => car_fields.object.year)) %>
-                  <span class="help-block"></span>
                 </div>
               </div>
 
@@ -82,7 +79,6 @@
                 <%= car_fields.label :nbSeats, :class => "control-label" %>
                 <div class="controls">
                   <%= car_fields.select(:nbSeats, options_for_select(2..9, :selected => car_fields.object.nbSeats)) %>
-                  <span class="help-block"></span>
                 </div>
               </div>
 
@@ -90,7 +86,6 @@
                 <%= car_fields.label :km, :class => "control-label" %>
                 <div class="controls">
                   <%= car_fields.select(:km, options_for_select([['0-50000 km', 0], ['50000-100000 km', 50000], ['100000-150000 km', 100000], ['150000 km et plus', 150000]], car_fields.object.km)) %>
-                  <span class="help-block">test</span>
                 </div>
               </div>
 
@@ -101,7 +96,6 @@
                   <%= label_tag(:fuel_essence, "Essence") %>
                   <%= car_fields.radio_button(:fuel, 'Diesel') %>
                   <%= label_tag(:fuel_diesel, "Diesel") %>
-                  <span class="help-block">test</span>
                 </div>
               </div>
 
@@ -109,7 +103,6 @@
                 <%= car_fields.label :license, :class => "control-label" %>
                 <div class="controls">
                   <%= car_fields.text_field :license %>
-                  <span class="help-block">test</span>
                 </div>
               </div>
 

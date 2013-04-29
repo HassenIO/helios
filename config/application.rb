@@ -13,8 +13,8 @@ module TravelerCar
   class Application < Rails::Application
 
     config.generators do |g|
-      
-      
+
+
     end
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -68,8 +68,13 @@ module TravelerCar
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.action_mailer.default_url_options = { :host => 'localhost' }
+    config.action_mailer.default_url_options = {:host => 'localhost'}
 
     config.filepicker_rails.api_key = "A68xA26uYSfO6TDJM0Qp3z"
+
+    if Rails.env.development?
+      ENV['HOST'] ||= "localhost:3000"
+    end
+
   end
 end
