@@ -1,13 +1,17 @@
+<%= javascript_include_tag 'bootstrap-datetimepicker' %>
+<%= stylesheet_link_tag 'bootstrap-datetimepicker.min' %>
+
 <%= form_for [@user, @rent] do |rent| %>
 
     <div class="well">
       <div class="row-fluid">
         <div class="span4">A <%= @rent.airPort.name %></div>
-        <div class="span4">Du <%= @rent.startDate %> au <%= @rent.endDate %></div>
+        <div class="span4"> <%= t(:interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate)) %></div>
         <% nbjours = ((@rent.endDate - @rent.startDate)/1.day).round %>
         <div class="span4">
-          <%= nbjours %> jours à <%= @rent.travel.car.category.price %>€ par jour
-          Total : <%= @rent.travel.car.category.price*nbjours %>€
+          <%= distance_of_time_in_words(@rent.endDate, @rent.startDate) %>
+          <%= number_to_currency(@rent.travel.car.category.price) %> <%= t(:byDay) %>
+          <%= t(:total) %> <%= number_to_currency(@rent.travel.car.category.price*nbjours) %>
         </div>
 
       </div>
@@ -66,8 +70,8 @@
 
             <div class="control-group">
               <%= driver_fields.label :birth_date, :class => "control-label" %>
-              <div class="controls input-append date" id="travel_departure_datetimepicker">
-                <%= driver_fields.text_field :birth_date, 'data-format' => "yyyy-MM-dd HH:mm:ss PP" %>
+              <div class="controls input-append date" id="driver_birthdate_datetimepicker">
+                <%= driver_fields.text_field :birth_date, 'data-format' => "yyyy-MM-dd" %>
                 <span class="add-on">
             <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
           </span>
@@ -113,8 +117,7 @@
 
     <div class="row-fluid">
       <div class="span12">
-        <p>Important : afin de protéger les propriétaires des voitures nous effectuons des vérifications diverses pour
-          confirmer votre identité et votre historique de conduite </p>
+        <p><%= t(".conditions") %></p>
       </div>
     </div>
 
@@ -122,9 +125,22 @@
     <div class="row-fluid">
       <div class="span12">
         <div class="form-actions">
-          <%= rent.submit 'Louer le véhicule', :class => "btn btn-primary" %>
+          <%= rent.submit :class => "btn btn-primary" %>
         </div>
       </div>
     </div>
 
 <% end %>
+
+
+<script type="text/javascript">
+    $(function () {
+
+        $('#driver_birthdate_datetimepicker').datetimepicker({
+            language: 'pt-BR',
+            pickTime: false
+        });
+
+    });
+
+</script>

@@ -1,46 +1,47 @@
 <%= link_to "Travelercar", root_path, :class => 'brand' %>
 <ul class="nav">
   <li>
-    <%= link_to 'J\'inscris ma voiture', '/travels' %>
+    <%= link_to t(:register_travel), '/travels' %>
   </li>
   <li>
-    <%= link_to 'Je loue une voiture', '/search' %>
+    <%= link_to t(:rent_car), "/search" %>
   </li>
   <li>
-    <a>Comment ça marche</a>
+    <%= link_to t(:how_its_work) %>
   </li>
   <li>
-    <a>Besoin d'aide ?</a>
+    <%= link_to t(:help) %>
   </li>
   <% if user_signed_in? %>
       <li class="dropdown">
         <a class="dropdown-toggle"
            data-toggle="dropdown"
            href="#">
-          Mon compte
+          <%= t(:account) %>
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
           <% if current_user.has_role? :admin %>
               <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">Administration</a>
+                <a tabindex="-1" href="#"><%= t(:administration) %></a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to 'Parkings', admin_travels_path %></li>
-                  <li><%= link_to 'Utilisateurs', users_path %></li>
+                  <li><%= link_to t(:admin_travels), admin_travels_path %></li>
+                  <!--<li><%= link_to t(:admin_parkings), admin_travels_path %></li>-->
+                  <li><%= link_to t(:admin_users), users_path %></li>
                 </ul>
               </li>
           <% end %>
           <li>
-            <%= link_to 'Mes informations', edit_user_registration_path %>
+            <%= link_to t(:my_informations), edit_user_registration_path %>
           </li>
           <li>
-            <%= link_to 'Mes parkings', user_travels_path(current_user) %>
+            <%= link_to t(:my_travels), user_travels_path(current_user) %>
           </li>
           <li>
-            <%= link_to 'Mes locations', user_rents_path(current_user) %>
+            <%= link_to t(:my_rents), user_rents_path(current_user) %>
           </li>
           <li>
-            <%= link_to 'Déconnecter', destroy_user_session_path, :method => 'delete' %>
+            <%= link_to t(:logout), destroy_user_session_path, :method => 'delete' %>
           </li>
 
 
@@ -48,10 +49,10 @@
       </li>
   <% else %>
       <li>
-        <%= link_to 'Connecter', new_user_session_path %>
+        <%= link_to t(:login), new_user_session_path %>
       </li>
       <li>
-        <%= link_to 'S\'inscrire', new_user_registration_path %>
+        <%= link_to t(:register), new_user_registration_path %>
       </li>
   <% end %>
 </ul>

@@ -1,23 +1,23 @@
 <div class="row">
   <div class="span6">
     <div class="well">
-      <h2>J'inscris ma voiture</h2>
+      <h2><%= t('.register_travel') %></h2>
 
-      <p>Parking aeroport gratuit, Service de voiture gratuit, 100% assuré, etc.</p>
+      <p><%= t('.register_travel_msg') %></p>
 
       <p>
-        <%= link_to "J\'ai besoin d'un parking et j\'inscris ma voiture", "/travels", :class => "btn btn-primary btn-large" %>
+        <%= link_to t(".register_travel"), "/travels", :class => "btn btn-primary btn-large" %>
       </p>
     </div>
   </div>
   <div class="span6">
     <div class="well">
-      <h2>Je loue ma voiture</h2>
+      <h2><%= t(".rent_car") %></h2>
 
-      <p>Economiser jusqu'a XX% sur la location, 100% assuré, etc</p>
+      <p><%= t(".rent_car_msg") %></p>
 
       <p>
-        <%= link_to "J'ai besoin de louer une voiture", {:controller => 'search', :action => 'index'}, :class => "btn btn-primary btn-large" %>
+        <%= link_to t(".rent_car"), {:controller => 'search', :action => 'index'}, :class => "btn btn-primary btn-large" %>
       </p>
     </div>
   </div>
@@ -25,13 +25,9 @@
 
 <div class="row">
   <div class="span12">
-    <h2>Comment ça marche</h2>
+    <h2><%= t(".how_its_work") %></h2>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <p><%= t(".how_its_work_msg") %>
     </p>
   </div>
 </div>

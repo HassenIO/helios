@@ -1,4 +1,4 @@
-<h1>Gérer mes réservations de parking</h1>
+<h2><%= t(".title") %> </h2>
 
 <% @travels.each do |travel| %>
 
@@ -41,5 +41,5 @@
 <br/>
 
 <% if @user == current_user %>
-    <%= link_to 'New Travel', new_user_travel_path(@user) %>
+    <%= link_to t(:register_travel), new_user_travel_path(@user) %>
 <% end %>

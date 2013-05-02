@@ -1,37 +1,39 @@
 TravelerCar::Application.routes.draw do
 
+  root :controller => "home", :action => "index"
 
-  authenticated :user do
-    root :to => 'home#index'
+  scope "/:locale" do
+
+    devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
+
+    resources :users do
+      resources :travels
+      resources :cars
+      resources :rents
+    end
+    resources :rents, only: [:new]
+    resources :travels, only: [:new]
+
+    namespace :admin do
+      resources :travels
+    end
+
+
+
+    authenticated :user do
+      get "/travels", to: redirect { |p, req| "/#{p[:locale]}/users/#{req.env["warden"].user(:user).id}/travels/new" }
+    end
+
+    unauthenticated :user do
+      get '/travels', to: 'anonymous_travels#new'
+    end
+
+    match ':controller(/:action(/:id))'
   end
 
-  root :to => "home#index"
 
-  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
+  get "/travels", to: redirect("/"+I18n.locale.to_s+'/travels')
 
-
-  resources :users do
-    resources :travels
-    resources :cars
-    resources :rents
-  end
-
-  resources :rents, only: [:new]
-  resources :travels, only: [:new]
-
-
-  authenticated :user do
-    match "/travels" => redirect { |p, req| "/users/#{req.env["warden"].user(:user).id}/travels/new" }
-  end
-
-  unauthenticated :user do
-    match "/travels" => "anonymous_travels#new"
-  end
-
-  namespace :admin do
-    resources :travels
-  end
-
-  match ':controller(/:action(/:id))'
+  get "/search", to: redirect("/"+I18n.locale.to_s+'/search')
 
 end
