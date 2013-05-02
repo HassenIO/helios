@@ -20,7 +20,7 @@ class SearchController < ApplicationController
     respond_to do |format|
       if rent_partial_validation(@rent)
         @rent.valid?
-        flash[:error] = 'Critères incorrects'
+        flash[:error] = 'Criteres incorrects'
         format.html # search.html.erb
         format.json { render json: @rent.errors, status: :unprocessable_entity }
       else
