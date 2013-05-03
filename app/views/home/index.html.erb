@@ -6,7 +6,7 @@
       <p><%= t('.register_travel_msg') %></p>
 
       <p>
-        <%= link_to t(".register_travel"), "/travels", :class => "btn btn-primary btn-large" %>
+        <%= link_to t(".register_travel"), {:controller => :travels}, :class => "btn btn-primary btn-large" %>
       </p>
     </div>
   </div>
@@ -17,7 +17,7 @@
       <p><%= t(".rent_car_msg") %></p>
 
       <p>
-        <%= link_to t(".rent_car"), {:controller => 'search', :action => 'index'}, :class => "btn btn-primary btn-large" %>
+        <%= link_to t(".rent_car"), {:controller => :search}, :class => "btn btn-primary btn-large" %>
       </p>
     </div>
   </div>

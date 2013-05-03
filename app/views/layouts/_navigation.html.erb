@@ -1,10 +1,10 @@
 <%= link_to "Travelercar", root_path, :class => 'brand' %>
 <ul class="nav">
   <li>
-    <%= link_to t(:register_travel), '/travels' %>
+    <%= link_to t(:register_travel), {:controller => :travels} %>
   </li>
   <li>
-    <%= link_to t(:rent_car), "/search" %>
+    <%= link_to t(:rent_car), {:controller => :search} %>
   </li>
   <li>
     <%= link_to t(:how_its_work) %>
