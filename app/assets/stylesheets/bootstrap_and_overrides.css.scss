@@ -48,3 +48,18 @@ body {
   display: inline;
 }
 
+//fix error label with datetimepicker
+.date > .field_with_errors {
+  display: inline-block;
+  overflow: visible;
+  position: relative;
+
+  .help-inline {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 14px;
+  }
+}
+
+

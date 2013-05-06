@@ -18,9 +18,8 @@ class SearchController < ApplicationController
     @rent = Rent.new(params[:rent])
 
     respond_to do |format|
-      if rent_partial_validation(@rent)
+      if !rent_partial_validation(@rent)
         @rent.valid?
-        flash[:error] = 'Criteres incorrects'
         format.html # search.html.erb
         format.json { render json: @rent.errors, status: :unprocessable_entity }
       else
@@ -40,6 +39,13 @@ class SearchController < ApplicationController
 
   private
   def rent_partial_validation(rent)
-    !Rent.valid_attribute?(:airPort_id, rent.airPort_id) or !Rent.valid_attribute?(:startDate, rent.startDate) or !Rent.valid_attribute?(:endDate, rent.endDate)
+    #!Rent.valid_attribute?(:airPort_id, rent.airPort_id) or !Rent.valid_attribute?(:startDate, rent.startDate) or !Rent.valid_attribute?(:startDate, rent.endDate)
+
+    unless rent.valid?
+      errors = rent.errors
+      return (!errors.get(:airPort_id).present? or !errors.get(:startDate).present? or !errors.get(:endDate).present?)
+    end
+    true
+
   end
 end

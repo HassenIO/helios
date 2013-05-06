@@ -7,13 +7,10 @@
 
 <div class="row-fluid">
   <div class="span12">
-    <% if !@rent.errors.blank? %>
-        <h3>Critères incomplets, veuillez les corriger</h3>
-    <% elsif @travels.empty? %>
-        <h3>Aucun résultat trouvé, modifiez les critères</h3>
+    <% if @travels.empty? %>
+        <h3><%= t(".no_results")%></h3>
     <% else %>
-        <h3><%= @travels.length %> voitures trouvés au depart de <%= @rent.airPort.name %> du <%= @rent.startDate %>
-          au <%= @rent.endDate %></h3>
+        <h3><%= t(".results", :airPort => @rent.airPort.name, :startDate => @rent.startDate, :endDate => @rent.endDate) %></h3>
     <% end %>
   </div>
 </div>
@@ -37,7 +34,7 @@
           <% if travel.car %>
               <p> <%= travel.car.try { |car| car.year.to_s + ' -  '+ car.brand+ ' ' + car.model } %> </p>
 
-              <p> <%= travel.car.category ? travel.car.category.name + ' , ' : '' %> <%= travel.car.nbSeats %> places </p>
+              <p> <%= travel.car.category ? travel.car.category.name + ' , ' : '' %> <%= travel.car.nbSeats %> <%= t(:helpers.label.car.nbSeats) %></p>
 
               <p> <%= travel.car.desc %></p>
           <% end %>
@@ -46,14 +43,15 @@
 
         <div class="span3">
           <% if travel.car.category %>
+
+              <%= t(:interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate)) %>
               <% nbjours = ((@rent.endDate - @rent.startDate)/1.day).round %>
-              <p>
-                <%= nbjours %> jours à <%= travel.car.category.price %>€ par jour
-              </p>
 
-              <p> <%= travel.car.category.price*nbjours %>€ </p>
+                <%= distance_of_time_in_words(@rent.endDate, @rent.startDate) %>
+                <%= number_to_currency(travel.car.category.price) %> <%= t(:byDay) %>
+                <%= t(:total) %> <%= number_to_currency(travel.car.category.price*nbjours) %>
 
-              <%= link_to "Louer", user_travel_url(travel.user, travel, :rent => params[:rent]), :class => "btn btn-primary" %>
+              <%= link_to t('.rent'), user_travel_url(travel.user, travel, :rent => params[:rent]), :class => "btn btn-primary" %>
           <% end %>
         </div>
 

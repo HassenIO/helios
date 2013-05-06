@@ -166,6 +166,54 @@ fr:
       two_words_connector: " et "
       last_word_connector: " et "
 
+
+  errors: &errors
+    format: "%{attribute} %{message}"
+    messages: &errors_messages
+      inclusion: "n'est pas inclus(e) dans la liste"
+      exclusion: "n'est pas disponible"
+      invalid: "n'est pas valide"
+      confirmation: "ne concorde pas avec la confirmation"
+      accepted: "doit être accepté(e)"
+      empty: "doit être rempli(e)"
+      blank: "doit être rempli(e)"
+      too_long:
+        one: "est trop long (pas plus d'un caractère)"
+        other: "est trop long (pas plus de %{count} caractères)"
+      too_short:
+        one: "est trop court (au moins un caractère)"
+        other: "est trop court (au moins %{count} caractères)"
+      wrong_length:
+        one: "ne fait pas la bonne longueur (doit comporter un seul caractère)"
+        other: "ne fait pas la bonne longueur (doit comporter %{count} caractères)"
+      not_a_number: "n'est pas un nombre"
+      not_an_integer: "doit être un nombre entier"
+      greater_than: "doit être supérieur à %{count}"
+      greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
+      equal_to: "doit être égal à %{count}"
+      less_than: "doit être inférieur à %{count}"
+      less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
+      odd: "doit être impair"
+      even: "doit être pair"
+      taken: "n'est pas disponible"
+      record_invalid: "La validation a échoué : %{errors}"
+      cannot_be_past: "ne doit pas être passée"
+      cannot_be_before_departure: "ne peut être avant la date de départ"
+      cannot_be_before_start: "ne peut être avant la date de début"
+
+    template: &errors_template
+      header:
+        one:   "Impossible d'enregistrer ce(tte) %{model} : 1 erreur"
+        other: "Impossible d'enregistrer ce(tte) %{model} : %{count} erreurs"
+      body: "Veuillez vérifier les champs suivants : "
+
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    errors:
+      <<: *errors
+
 #  Commun
 
 
@@ -238,12 +286,24 @@ fr:
     form:
       car_legend: "J'enregistre ma voiture"
       car_options_legend: "Informations complémentaires"
+      car_photos_legend: "J'ajoute des photos"
     edit:
       title: "Je modifie ma demande de parking"
     show:
       details: "Details"
     index:
       title: "Gérer mes parkings"
+
+  search:
+    form:
+      find: "Trouver"
+    search:
+      no_results: "Aucun résultat trouvé, modifiez les critères"
+      incomplete_criteria: "Critères incomplets, veuillez les corriger"
+      results: "%{nbCars} voitures trouvées au depart de %{airPort} du %{startDate}
+                          au %{endDate}"
+      rent: "Louer"
+
 
 
   helpers:
@@ -289,7 +349,10 @@ fr:
         city: "Ville"
         zip_code: "Code postal"
         country: "Pays"
-
+      rent:
+        startDate: "Début"
+        endDate: "Fin"
+        airPort: "Aéroport"
 
 
 
