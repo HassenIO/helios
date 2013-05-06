@@ -59,11 +59,16 @@ fr:
 
   time:
       formats:
-        default: "%d %m %Y %H:%M"
+        default: "%d/%m/%Y %H:%M"
         short: "%d %b %H:%M"
         long: "%A %d %B %Y %H:%M"
+
       am: 'am'
       pm: 'pm'
+
+
+  picker:
+    format: "dd/MM/yyyy HH:mm"
 
   datetime:
       distance_in_words:

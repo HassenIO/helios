@@ -24,7 +24,7 @@
           <div class="control-group">
             <%= f.label :departure, :class => "control-label" %>
             <div class="controls input-append date" id="travel_departure_datetimepicker">
-              <%= f.text_field :departure, 'data-format' => "yyyy-MM-dd HH:mm:ss" %>
+              <%= f.text_field :departure, :value => localize(f.object.departure), 'data-format' => t('picker.format') %>
               <span class="add-on">
             <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
           </span>
@@ -36,7 +36,7 @@
           <div id="travel_arrival" class="control-group">
             <%= f.label :arrival, :class => "control-label" %>
             <div class="controls input-append date" id="travel_arrival_datetimepicker">
-              <%= f.text_field :arrival, 'data-format' => "yyyy-MM-dd HH:mm:ss" %>
+              <%= f.text_field :arrival, :value => localize(f.object.arrival), 'data-format' => t('picker.format') %>
               <span class="add-on">
             <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
           </span>
