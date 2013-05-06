@@ -317,8 +317,8 @@ fr:
     label:
       travel:
         airPort: "Aéroport"
-        departure: "Date d'arrivée"
-        arrival: "Date de départ"
+        departure: "Date de départ"
+        arrival: "Date de retour"
       car:
         equipments: "Au niveau equipement, votre voiture dispose t elle de :"
         brand: "Marque"
