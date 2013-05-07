@@ -1,12 +1,11 @@
 class AnonymousTravelsController < ApplicationController
 
-  # GET /travels/new
-  # GET /travels/new.json
-  def new
+
+  def index
     @travel = Travel.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # index.html.erb
       format.json { render json: @travel }
     end
   end

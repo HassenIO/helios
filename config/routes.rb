@@ -25,7 +25,7 @@ TravelerCar::Application.routes.draw do
     end
 
     unauthenticated :user do
-      match '/travels' => 'anonymous_travels#new', :as => 'travels'
+      match '/travels(/:action)' => 'anonymous_travels', :as => 'travels'
     end
 
     match '/search(/:action)' => 'search' , :as => 'search'
