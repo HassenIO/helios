@@ -3,221 +3,209 @@
 
 en:
 
-  date:
-    formats:
-      default: "%d/%m/%Y"
-      short: "%e %b"
-      long: "%e %B %Y"
-    day_names:
-      - dimanche
-      - lundi
-      - mardi
-      - mercredi
-      - jeudi
-      - vendredi
-      - samedi
-    abbr_day_names:
-      - dim
-      - lun
-      - mar
-      - mer
-      - jeu
-      - ven
-      - sam
-    month_names:
-      - ~
-      - janvier
-      - février
-      - mars
-      - avril
-      - mai
-      - juin
-      - juillet
-      - août
-      - septembre
-      - octobre
-      - novembre
-      - décembre
-    abbr_month_names:
-      - ~
-      - jan.
-      - fév.
-      - mar.
-      - avr.
-      - mai
-      - juin
-      - juil.
-      - août
-      - sept.
-      - oct.
-      - nov.
-      - déc.
-    order:
-      - :day
-      - :month
-      - :year
-
-  time:
+   date:
+      abbr_day_names:
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
+      abbr_month_names:
+      -
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
+      day_names:
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
       formats:
-        default: "%d/%m/%Y %H:%M"
-        short: "%d %b %H:%M"
-        long: "%A %d %B %Y %H:%M"
+        default: ! '%Y-%m-%d'
+        long: ! '%B %d, %Y'
+        short: ! '%b %d'
+      month_names:
+      -
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
+      order:
+      - :year
+      - :month
+      - :day
+    datetime:
+      distance_in_words:
+        about_x_hours:
+          one: about 1 hour
+          other: about %{count} hours
+        about_x_months:
+          one: about 1 month
+          other: about %{count} months
+        about_x_years:
+          one: about 1 year
+          other: about %{count} years
+        almost_x_years:
+          one: almost 1 year
+          other: almost %{count} years
+        half_a_minute: half a minute
+        less_than_x_minutes:
+          one: less than a minute
+          other: less than %{count} minutes
+        less_than_x_seconds:
+          one: less than 1 second
+          other: less than %{count} seconds
+        over_x_years:
+          one: over 1 year
+          other: over %{count} years
+        x_days:
+          one: 1 day
+          other: ! '%{count} days'
+        x_minutes:
+          one: 1 minute
+          other: ! '%{count} minutes'
+        x_months:
+          one: 1 month
+          other: ! '%{count} months'
+        x_seconds:
+          one: 1 second
+          other: ! '%{count} seconds'
+      prompts:
+        day: Day
+        hour: Hour
+        minute: Minute
+        month: Month
+        second: Seconds
+        year: Year
+    errors: &errors
+      format: ! '%{attribute} %{message}'
+      messages:
+        accepted: must be accepted
+        blank: can't be blank
+        confirmation: doesn't match confirmation
+        empty: can't be empty
+        equal_to: must be equal to %{count}
+        even: must be even
+        exclusion: is reserved
+        greater_than: must be greater than %{count}
+        greater_than_or_equal_to: must be greater than or equal to %{count}
+        inclusion: is not included in the list
+        invalid: is invalid
+        less_than: must be less than %{count}
+        less_than_or_equal_to: must be less than or equal to %{count}
+        not_a_number: is not a number
+        not_an_integer: must be an integer
+        odd: must be odd
+        record_invalid: ! 'Validation failed: %{errors}'
+        taken: has already been taken
+        too_long:
+          one: is too long (maximum is 1 character)
+          other: is too long (maximum is %{count} characters)
+        too_short:
+          one: is too short (minimum is 1 character)
+          other: is too short (minimum is %{count} characters)
+        wrong_length:
+          one: is the wrong length (should be 1 character)
+          other: is the wrong length (should be %{count} characters)
+      template:
+        body: ! 'There were problems with the following fields:'
+        header:
+          one: 1 error prohibited this %{model} from being saved
+          other: ! '%{count} errors prohibited this %{model} from being saved'
+    helpers:
+      select:
+        prompt: Please select
+      submit:
+        create: Create %{model}
+        submit: Save %{model}
+        update: Update %{model}
+    number:
+      currency:
+        format:
+          delimiter: ! ','
+          format: ! '%u%n'
+          precision: 2
+          separator: .
+          significant: false
+          strip_insignificant_zeros: false
+          unit: $
+      format:
+        delimiter: ! ','
+        precision: 3
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+      human:
+        decimal_units:
+          format: ! '%n %u'
+          units:
+            billion: Billion
+            million: Million
+            quadrillion: Quadrillion
+            thousand: Thousand
+            trillion: Trillion
+            unit: ''
+        format:
+          delimiter: ''
+          precision: 3
+          significant: true
+          strip_insignificant_zeros: true
+        storage_units:
+          format: ! '%n %u'
+          units:
+            byte:
+              one: Byte
+              other: Bytes
+            gb: GB
+            kb: KB
+            mb: MB
+            tb: TB
+      percentage:
+        format:
+          delimiter: ''
+      precision:
+        format:
+          delimiter: ''
+    support:
+      array:
+        last_word_connector: ! ', and '
+        two_words_connector: ! ' and '
+        words_connector: ! ', '
+    time:
+      am: am
+      formats:
+        default: ! '%a, %d %b %Y %H:%M:%S %z'
+        long: ! '%B %d, %Y %H:%M'
+        short: ! '%d %b %H:%M'
+      pm: pm
 
-      am: 'am'
-      pm: 'pm'
+
 
 
   picker:
-    format: "dd/MM/yyyy HH:mm"
-
-  datetime:
-      distance_in_words:
-        half_a_minute: "une demi-minute"
-        less_than_x_seconds:
-          zero:  "moins d'une seconde"
-          one:   "moins d'une seconde"
-          other: "moins de %{count} secondes"
-        x_seconds:
-          one:   "1 seconde"
-          other: "%{count} secondes"
-        less_than_x_minutes:
-          zero:  "moins d'une minute"
-          one:   "moins d'une minute"
-          other: "moins de %{count} minutes"
-        x_minutes:
-          one:   "1 minute"
-          other: "%{count} minutes"
-        about_x_hours:
-          one:   "environ une heure"
-          other: "environ %{count} heures"
-        x_days:
-          one:   "1 jour"
-          other: "%{count} jours"
-        about_x_months:
-          one:   "environ un mois"
-          other: "environ %{count} mois"
-        x_months:
-          one:   "1 mois"
-          other: "%{count} mois"
-        about_x_years:
-          one:   "environ un an"
-          other: "environ %{count} ans"
-        over_x_years:
-          one:   "plus d'un an"
-          other: "plus de %{count} ans"
-        almost_x_years:
-          one:   "presqu'un an"
-          other: "presque %{count} ans"
-      prompts:
-        year:   "Année"
-        month:  "Mois"
-        day:    "Jour"
-        hour:   "Heure"
-        minute: "Minute"
-        second: "Seconde"
-
-
-  number:
-    format:
-      separator: ","
-      delimiter: " "
-      precision: 3
-      significant: false
-      strip_insignificant_zeros: false
-    currency:
-      format:
-        format: "%n %u"
-        unit: "€"
-        separator: ","
-        delimiter: " "
-        precision: 2
-        significant: false
-        strip_insignificant_zeros: false
-    percentage:
-      format:
-        delimiter: ""
-    precision:
-      format:
-        delimiter: ""
-    human:
-      format:
-        delimiter: ""
-        precision: 2
-        significant: true
-        strip_insignificant_zeros: true
-      storage_units:
-        format: "%n %u"
-        units:
-          byte:
-            one:   "octet"
-            other: "octets"
-          kb: "ko"
-          mb: "Mo"
-          gb: "Go"
-          tb: "To"
-      decimal_units:
-        format: "%n %u"
-        units:
-          unit: ""
-          thousand: "millier"
-          million: "million"
-          billion: "milliard"
-          trillion: "billion"
-          quadrillion: "million de milliards"
-
-  support:
-    array:
-      words_connector: ", "
-      two_words_connector: " et "
-      last_word_connector: " et "
-
-
-  errors: &errors
-    format: "%{attribute} %{message}"
-    messages: &errors_messages
-      inclusion: "n'est pas inclus(e) dans la liste"
-      exclusion: "n'est pas disponible"
-      invalid: "n'est pas valide"
-      confirmation: "ne concorde pas avec la confirmation"
-      accepted: "doit être accepté(e)"
-      empty: "doit être rempli(e)"
-      blank: "doit être rempli(e)"
-      too_long:
-        one: "est trop long (pas plus d'un caractère)"
-        other: "est trop long (pas plus de %{count} caractères)"
-      too_short:
-        one: "est trop court (au moins un caractère)"
-        other: "est trop court (au moins %{count} caractères)"
-      wrong_length:
-        one: "ne fait pas la bonne longueur (doit comporter un seul caractère)"
-        other: "ne fait pas la bonne longueur (doit comporter %{count} caractères)"
-      not_a_number: "n'est pas un nombre"
-      not_an_integer: "doit être un nombre entier"
-      greater_than: "doit être supérieur à %{count}"
-      greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
-      equal_to: "doit être égal à %{count}"
-      less_than: "doit être inférieur à %{count}"
-      less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
-      odd: "doit être impair"
-      even: "doit être pair"
-      taken: "n'est pas disponible"
-      record_invalid: "La validation a échoué : %{errors}"
-      cannot_be_past: "ne doit pas être passée"
-      cannot_be_before_departure: "ne peut être avant la date de départ"
-      cannot_be_before_start: "ne peut être avant la date de début"
-
-    template: &errors_template
-      header:
-        one:   "Impossible d'enregistrer ce(tte) %{model} : 1 erreur"
-        other: "Impossible d'enregistrer ce(tte) %{model} : %{count} erreurs"
-      body: "Veuillez vérifier les champs suivants : "
-
-  activemodel:
-    errors:
-      <<: *errors
-  activerecord:
-    errors:
-      <<: *errors
+      format: "dd-MM-yyyy HH:mm"
 
 #  Commun
 
@@ -240,7 +228,7 @@ en:
   rent_car:  "Rent a car"
   how_its_work: "How its works"
   help: "Need help ?"
-  account: "Mon compte"
+  account: "My account"
   administration: "Administration"
   my_informations: "My account"
   my_travels: "My parkings"
@@ -258,9 +246,9 @@ en:
     index:
       register_travel: "Register my car"
       register_travel_msg: "Parking aeroport gratuit, Service de voiture gratuit, 100% assuré, etc."
-      rent_car: "Je loue une voiture"
+      rent_car: "Rent a car"
       rent_car_msg: "Economiser jusqu'a XX% sur la location, 100% assuré, etc"
-      how_its_work: "Comment ca marche"
+      how_its_work: "How its works"
       how_its_work_msg: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
                          magna aliqua.
                          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -269,95 +257,95 @@ en:
 
   rents:
     index:
-      title: "Gérer mes locations de voitures"
-      cancel_rent: "Annuler cette location"
-      edit_rent: "Modifier cette location"
-      new_rent: "Nouvelle location"
+      title: "Manage my rents"
+      cancel_rent: "Cancel a rent"
+      edit_rent: "Edit this rent"
+      new_rent: "Find a rent"
     new:
-      title: "Enregistrer ma location"
+      title: "Register my rent"
     show:
-      title: "Location à %{airPort} du %{startDate} au %{endDate}"
+      title: "Rent at %{airPort} from %{startDate} to %{endDate}"
       details: "Details"
-      rent_informations: "Informations location"
+      rent_informations: "Rent's informations"
     edit:
-      title: "Modification d'une location"
+      title: "Rent edition"
     form:
       conditions: "Important : afin de protéger les propriétaires des voitures nous effectuons des vérifications diverses pour
               confirmer votre identité et votre historique de conduite"
 
   travels:
     new:
-      title: "Je m'inscris pour avoir un parking gratuit"
+      title: "Register my car for free parking"
     form:
-      car_legend: "J'enregistre ma voiture"
-      car_options_legend: "Informations complémentaires"
-      car_photos_legend: "J'ajoute des photos"
+      car_legend: "Register my car"
+      car_options_legend: "Car's informations"
+      car_photos_legend: "Car's photos"
     edit:
-      title: "Je modifie ma demande de parking"
+      title: "Edit"
     show:
       details: "Details"
     index:
-      title: "Gérer mes parkings"
+      title: "Manage my parkings"
 
   search:
     form:
-      find: "Trouver"
+      find: "Find"
     search:
-      no_results: "Aucun résultat trouvé, modifiez les critères"
-      incomplete_criteria: "Critères incomplets, veuillez les corriger"
-      results: "%{nbCars} voitures trouvées au depart de %{airPort} du %{startDate}
-                          au %{endDate}"
-      rent: "Louer"
+      no_results: "no result, try with others criterias"
+      incomplete_criteria: "Incorrect criterias, please fix and try again"
+      results: "%{nbCars} cars found at %{airPort} from %{startDate}
+                          to %{endDate}"
+      rent: "Rent"
 
 
 
   helpers:
     submit:
       travel:
-        create: "Soumettre ces informations et obtenir un parking gratuit"
-        update: "Modifier mon parking"
+        create: "Send this informations and get a free parking"
+        update: "Edit my parking"
       rent:
-        create: "Louer le véhicule"
-        update: "Modifier ma location"
+        create: "Rent this car"
+        update: "Edit my rent"
     label:
       travel:
-        airPort: "Aéroport"
-        departure: "Date de départ"
-        arrival: "Date de retour"
+        airPort: "Airport"
+        departure: "Departure date"
+        arrival: "Arrival date"
       car:
         equipments: "Au niveau equipement, votre voiture dispose t elle de :"
-        brand: "Marque"
-        model: "Modèle"
-        year: "Année"
-        nbSeats: "Nombre de places"
-        km: "Kilométrage"
-        fuel: "Carburant"
-        license: "Immatriculation"
-        desc: "Commentaires"
+        brand: "Brand"
+        model: "Model"
+        year: "Year"
+        nbSeats: "Number of seats"
+        km: "km"
+        fuel: "Fuel"
+        license: "license"
+        desc: "Comments"
         isSmoker: "Vous êtes fumeur ? Vous devez cliquer oui, si vous avez l'habitude de fumer dans votre voiture"
         acceptedPets: "Vous transportez des animaux ? Vous devez cliquer oui, si vous transportez regulièrement vos animaux de compagnie"
         hasGps: "GPS ?"
-        hasCarRadio: "Autoradio ?"
-        hasAirConditioning: "Climatisation ?"
-        hasChildSeat: "Siège enfant ?"
-        filepicker1_url: "Ajouter une photo"
-        filepicker2_url: "Ajouter une deuxième photo"
-        filepicker3_url: "Ajouter une troisième photo"
-        driver: "Conducteur"
+        hasCarRadio: "Car radio ?"
+        hasAirConditioning: "Air conditioning ?"
+        hasChildSeat: "Child seat ?"
+        filepicker1_url: "Add a photo"
+        filepicker2_url: "Add a second photo"
+        filepicker3_url: "Add a third photo"
+        driver: "Driver"
       driver:
-        license: "Permis de conduire"
-        first_name: "Prénom"
-        last_name: "Nom de famille"
-        phone: "Telephone"
-        birth_date: "Date de naissance"
-        address: "Adresse"
-        city: "Ville"
-        zip_code: "Code postal"
-        country: "Pays"
+        license: "License number"
+        first_name: "Fistname"
+        last_name: "Lastname"
+        phone: "Phone"
+        birth_date: "Birth date"
+        address: "Address"
+        city: "City"
+        zip_code: "zip code"
+        country: "Country"
       rent:
-        startDate: "Début"
-        endDate: "Fin"
-        airPort: "Aéroport"
+        startDate: "From"
+        endDate: "to"
+        airPort: "Airport"
 
 
 
