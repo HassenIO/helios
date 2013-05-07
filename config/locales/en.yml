@@ -5,5 +5,5 @@ en:
   hello: "Hello world"
   yes: "yes"
 
-picker:
+  picker:
     format: "dd/MM/yyyy HH:mm"

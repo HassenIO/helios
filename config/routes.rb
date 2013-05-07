@@ -21,14 +21,15 @@ TravelerCar::Application.routes.draw do
     end
 
     authenticated :user do
-      get "/travels", to: redirect { |p, req| "/#{p[:locale]}/users/#{req.env["warden"].user(:user).id}/travels/new" }
+      match "/travels", to: redirect { |p, req| "/#{p[:locale]}/users/#{req.env["warden"].user(:user).id}/travels/new" }  , :as => 'travels'
     end
 
     unauthenticated :user do
-      get '/travels', to: 'anonymous_travels#new'
+      match '/travels' => 'anonymous_travels#new', :as => 'travels'
     end
 
-    match ':controller(/:action(/:id))'
+    match '/search(/:action)' => 'search' , :as => 'search'
+
   end
 
 
