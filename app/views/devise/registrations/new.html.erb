@@ -4,7 +4,7 @@
       <h2>Connectez-vous avec vos réseaux sociaux</h2>
 
       <p>Vous possédez un compte Facebook ? Gagnez du temps en vous connectant avec ! </p>
-      <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+      <%= link_to t(:sign_in_with, :provider => :facebook), user_omniauth_authorize_path(:facebook) %>
     </div>
   </div>
 </div>

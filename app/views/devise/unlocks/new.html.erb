@@ -1,12 +1,27 @@
-<h2>Resend unlock instructions</h2>
+<div class="row-fluid">
 
-<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <div class="span12">
+    <h2><%= t(".title") %></h2>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+    <%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => {:method => :post, :class => "form-horizontal well"}) do |f| %>
 
-  <div><%= f.submit "Resend unlock instructions" %></div>
-<% end %>
+        <div class="control-group">
+          <%= f.label :email, :class => "control-label" %>
+          <div class="controls">
+            <div class="input-prepend">
+              <span class="add-on"><i class="icon-envelope"></i></span>
+              <%= f.email_field :email, :autofocus => true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <%= f.submit t(".resend_unlock"), :class => "btn btn-primary" %>
+        </div>
+
+    <% end %>
+
+  </div>
+</div>
 
 <%= render "devise/shared/links" %>

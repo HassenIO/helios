@@ -252,6 +252,13 @@ fr:
   login: "Se connecter"
   register: "S'inscrire"
 
+  sign_in_with: "Se connecter avec %{provider}"
+  forgot_password: "Mot de passe oublié ?"
+  no_receive_unlock_instructions: "Vous n'avez pas recu l'email de déblocage ?"
+  no_receive_confirmation: "Vous n'avez pas recu l'email de confirmation ?"
+
+
+
 
 
   home:
@@ -316,10 +323,30 @@ fr:
         address: "Adresse"
         informations: "Informations"
         current_password_msg: (nous avons besoin de votre mot de passe actuel pour confirmer les changements)
+        delete_account: "Supprimer mon compte"
       new:
         title: "Créer mon compte"
         address: "Adresse"
         informations: "Informations"
+    sessions:
+      new:
+        title: "Connexion"
+    passwords:
+      edit:
+        title: "Modifier ton mot de passe"
+        change_password: "Enregistrer mon nouveau mot de passe"
+      new:
+        title: "Mot de passe oublié ?"
+        send_new_password: "Envoyez moi un nouveau mot de passe"
+    confirmations:
+      new:
+        title: "Renvoyez moi le mail de confirmation"
+        resend_confirmation: "Renvoyez moi le mail de confirmation"
+    unlocks:
+      new:
+        title: "Renvoyez moi le mail de deblocage"
+        resend_unlock: "Renvoyez moi le mail de deblocage"
+
 
   helpers:
     submit:
@@ -382,6 +409,7 @@ fr:
         country: "Pays"
         zip_code: "Code postal"
         email: "E-mail"
+        remember_me: "Se rappeler de moi"
 
 
 
