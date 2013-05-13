@@ -1,10 +1,6 @@
-class UsersController < ApplicationController
+class Admin::UsersController < Admin::BaseController
 
-  load_and_authorize_resource
-
-  before_filter :authenticate_user!
-
-  def index
+   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
     @users = User.all
   end

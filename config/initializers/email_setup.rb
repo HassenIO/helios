@@ -8,5 +8,4 @@ ActionMailer::Base.smtp_settings = {
 }
 
 
-
-ActionMailer::Base.default_url_options[:host] = ENV['HOST'] # Your app URL. E.g: myapp.herokuapp.com
+ActionMailer::Base.default_url_options = {:host => ENV['HOST'], :locale => I18n.locale} # Your app URL. E.g: myapp.herokuapp.com

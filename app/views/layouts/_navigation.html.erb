@@ -27,12 +27,12 @@
                 <ul class="dropdown-menu">
                   <li><%= link_to t(:admin_travels), admin_travels_path %></li>
                   <!--<li><%= link_to t(:admin_parkings), admin_travels_path %></li>-->
-                  <li><%= link_to t(:admin_users), users_path %></li>
+                  <li><%= link_to t(:admin_users), admin_users_path %></li>
                 </ul>
               </li>
           <% end %>
           <li>
-            <%= link_to t(:my_informations), user_path(current_user) %>
+            <%= link_to t(:my_informations), edit_user_registration_path %>
           </li>
           <li>
             <%= link_to t(:my_travels), user_travels_path(current_user) %>
