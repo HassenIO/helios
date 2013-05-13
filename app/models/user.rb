@@ -21,6 +21,17 @@ class User < ActiveRecord::Base
   has_many :travels
   has_many :rents
 
+
+  validates :first_name, :presence => true
+  validates :last_name, :presence => true
+  validates :email, :presence => true
+  validates :password, :presence => true
+  validates :address, :presence => true
+  validates :city, :presence => true
+  validates :country, :presence => true
+  validates :zip_code, :presence => true
+
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
