@@ -19,10 +19,18 @@
         <fieldset class="well">
           <legend><%= t(".informations") %></legend>
 
+
           <div class="control-group">
-            <%= f.label :name, :class => "control-label" %>
+            <%= f.label :first_name, :class => "control-label" %>
             <div class="controls">
-              <%= f.text_field :name %>
+              <%= f.text_field :first_name %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :last_name, :class => "control-label" %>
+            <div class="controls">
+              <%= f.text_field :last_name %>
             </div>
           </div>
 
@@ -52,6 +60,38 @@
       <div class="span6">
         <fieldset class="well">
           <legend><%= t(".address") %></legend>
+
+
+          <div class="control-group">
+            <%= f.label :address, :class => "control-label" %>
+            <div class="controls">
+              <%= f.text_field :address %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :city, :class => "control-label" %>
+            <div class="controls">
+              <%= f.text_field :city %>
+            </div>
+          </div>
+
+
+          <div class="control-group">
+            <%= f.label :zip_code, :class => "control-label" %>
+            <div class="controls">
+              <%= f.text_field :zip_code %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :country, :class => "control-label" %>
+            <div class="controls">
+              <%= f.text_field :country %>
+            </div>
+          </div>
+
+
         </fieldset>
       </div>
 
@@ -59,7 +99,9 @@
 
     <div class="row-fluid">
       <div class="span12">
-        <%= f.submit "Sign up" %>
+        <div class="form-actions">
+          <%= f.submit :class => "btn btn-primary" %>
+        </div>
       </div>
     </div>
 

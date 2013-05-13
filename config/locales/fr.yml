@@ -309,7 +309,16 @@ fr:
                           au %{endDate}"
       rent: "Louer"
 
-
+  devise:
+    registrations:
+      edit:
+        title: "Modifier mon compte"
+        address: "Adresse"
+        informations: "Informations"
+      new:
+        title: "Créer mon compte"
+        address: "Adresse"
+        informations: "Informations"
 
   helpers:
     submit:
@@ -319,6 +328,9 @@ fr:
       rent:
         create: "Louer le véhicule"
         update: "Modifier ma location"
+      user:
+        create: "Créer"
+        update: "Modifier"
     label:
       travel:
         airPort: "Aéroport"
@@ -358,6 +370,17 @@ fr:
         startDate: "Début"
         endDate: "Fin"
         airPort: "Aéroport"
+      user:
+        first_name: "Prénom"
+        last_name: "Nom de famille"
+        password: "Mot de passe"
+        password_confirmation: "Confirmation du mot de passe"
+        address: "Adresse"
+        city: "Ville"
+        country: "Pays"
+        zip_code: "Code postal"
+        email: "E-mail"
+
 
 
 
