@@ -315,6 +315,7 @@ fr:
         title: "Modifier mon compte"
         address: "Adresse"
         informations: "Informations"
+        current_password_msg: (nous avons besoin de votre mot de passe actuel pour confirmer les changements)
       new:
         title: "Créer mon compte"
         address: "Adresse"
@@ -375,6 +376,7 @@ fr:
         last_name: "Nom de famille"
         password: "Mot de passe"
         password_confirmation: "Confirmation du mot de passe"
+        current_password: "Mot de passe actuel"
         address: "Adresse"
         city: "Ville"
         country: "Pays"

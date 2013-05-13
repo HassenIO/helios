@@ -33,7 +33,10 @@
           <div class="control-group">
             <%= f.label :email, :class => "control-label" %>
             <div class="controls">
-              <%= f.text_field :email %>
+              <div class="input-prepend">
+                <span class="add-on"><i class="icon-envelope"></i></span>
+                <%= f.text_field :email %>
+              </div>
             </div>
           </div>
 
@@ -53,10 +56,10 @@
 
           <div class="control-group">
             <%= f.label :current_password, :class => "control-label" %>
-            <i>(we need your current password to confirm your changes)</i>
-
             <div class="controls">
-              <%= f.password_field :current_password %></div>
+              <%= f.password_field :current_password %>
+              <span class="help-block"><%= t(".current_password_msg") %></span>
+            </div>
           </div>
 
         </fieldset>
@@ -70,7 +73,7 @@
           <div class="control-group">
             <%= f.label :address, :class => "control-label" %>
             <div class="controls">
-              <%= f.text_field :address %>
+              <%= f.text_field :address, :class => "span8" %>
             </div>
           </div>
 
