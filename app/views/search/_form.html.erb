@@ -2,7 +2,7 @@
 <%= stylesheet_link_tag 'bootstrap-datetimepicker.min' %>
 
 
- <%=   form_for @rent, :url => {:action => 'search'}, :method => 'get'   do |f| %>
+<%= form_for @rent, :url => {:action => 'search'}, :method => 'get' do |f| %>
 
     <div class="well">
       <div class="row-fluid">
@@ -21,28 +21,49 @@
 
           <div class="control-group">
             <%= f.label :startDate, :class => "control-label" %>
-            <div class="controls input-append date" id="rent_startDate_datetimepicker">
-              <%= f.text_field :startDate, 'data-format' => t('picker.format') %>
-              <span class="add-on">
-            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-          </span>
+            <div class="controls">
+              <div class="input-append date" id="rent_startDate_datepicker">
+                <%= f.text_field :startDate_date, 'data-format' => "yyyy-MM-dd", :class => "input-small" %>
+                <span class="add-on">
+                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+              </div>
+              <div class="input-append date" id="rent_startDate_timepicker">
+                <%= f.text_field :startDate_time, 'data-format' => "HH:mm", :class => "input-small" %>
+                <span class="add-on">
+                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+              </div>
             </div>
           </div>
+
         </div>
 
+
         <div class="span4">
-          <div id="travel_arrival" class="control-group">
+
+          <div class="control-group">
             <%= f.label :endDate, :class => "control-label" %>
-            <div class="controls input-append date" id="rent_endDate_datetimepicker">
-              <%= f.text_field :endDate, 'data-format' => t('picker.format') %>
-              <span class="add-on">
-                   <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+            <div class="controls">
+              <div class="input-append date" id="rent_endDate_datepicker">
+                <%= f.text_field :endDate_date, 'data-format' => "yyyy-MM-dd", :class => "input-small" %>
+                <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                 </span>
+              </div>
+              <div class="input-append date" id="rent_endDate_timepicker">
+                <%= f.text_field :endDate_time, 'data-format' => "HH:mm", :class => "input-small" %>
+                <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+              </div>
             </div>
           </div>
+
         </div>
 
       </div>
+
       <div class="row-fluid">
         <div class="span12">
           <div class="form-actions">
@@ -58,13 +79,32 @@
 <script type="text/javascript">
     $(function () {
 
-        $('#rent_startDate_datetimepicker').datetimepicker({
-            language: 'pt-BR'
+        $('#rent_startDate_timepicker').datetimepicker({
+            language: 'pt-BR',
+            pickDate: false,
+            pickSeconds: false
+
         });
 
-        $('#rent_endDate_datetimepicker').datetimepicker({
-            language: 'pt-BR'
+        $('#rent_startDate_datepicker').datetimepicker({
+            language: 'pt-BR',
+            pickTime: false
+
         });
+
+        $('#rent_endDate_timepicker').datetimepicker({
+            language: 'pt-BR',
+            pickDate: false,
+            pickSeconds: false
+
+        });
+
+        $('#rent_endDate_datepicker').datetimepicker({
+            language: 'pt-BR',
+            pickTime: false
+
+        });
+
     });
 
 </script>

@@ -68,7 +68,7 @@ fr:
 
 
   picker:
-    format: "dd/MM/yyyy HH:mm"
+    format: "dd/MM/yyyy"
 
   datetime:
       distance_in_words:
