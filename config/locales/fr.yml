@@ -349,6 +349,11 @@ fr:
         title: "Renvoyez moi le mail de deblocage"
         resend_unlock: "Renvoyez moi le mail de deblocage"
 
+  admin:
+    travels:
+      message:
+        travel_pending: "Attention : Ce parking n'est pas activé, modifiez le statut pour le publier"
+        travel_has_no_category: "Attention : Le véhicule n'a pas de catégorie"
 
   helpers:
     submit:

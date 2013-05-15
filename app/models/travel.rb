@@ -1,24 +1,25 @@
 class TravelPeriodValidator < ActiveModel::Validator
   def validate(record)
 
-    unless record.departure.blank?
-      unless record.departure > Date.today
-        record.errors.add(:departure, :cannot_be_past)
-      end
-    end
 
-    unless record.arrival.blank?
-      unless  record.arrival > Date.today
-        record.errors.add(:arrival, :cannot_be_past)
+      unless record.departure.blank?
+        unless record.departure > Date.today
+          record.errors.add(:departure, :cannot_be_past)
+        end
       end
-    end
 
-    unless record.arrival.blank? || record.departure.blank?
-      unless record.departure < record.arrival
-        record.errors.add(:arrival, :cannot_be_before_departure)
+      unless record.arrival.blank?
+        unless  record.arrival > Date.today
+          record.errors.add(:arrival, :cannot_be_past)
+        end
+      end
+
+      unless record.arrival.blank? || record.departure.blank?
+        unless record.departure < record.arrival
+          record.errors.add(:arrival, :cannot_be_before_departure)
+        end
       end
     end
-  end
 end
 
 

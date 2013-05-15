@@ -63,3 +63,15 @@ body {
 }
 
 
+
+.alert.pending {
+  @extend .alert-error;
+}
+
+.alert.active {
+  @extend .alert-info;
+}
+
+.alert.rent {
+  @extend .alert-success;
+}

@@ -74,7 +74,8 @@ class Admin::TravelsController < Admin::BaseController
     #TODO : invalid status:active or rent if no category
 
     respond_to do |format|
-      if @travel.update_attributes(params[:travel])
+      @travel.attributes = params[:travel]
+      if @travel.save(:validate => false)
         format.html { redirect_to admin_travel_path(@travel), notice: 'Travel was successfully updated.' }
         format.json { head :no_content }
       else
