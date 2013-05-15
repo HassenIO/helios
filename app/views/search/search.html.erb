@@ -10,7 +10,7 @@
     <% if @travels.empty? %>
         <h3><%= t(".no_results")%></h3>
     <% else %>
-        <h3><%= t(".results", :airPort => @rent.airPort.name, :startDate => @rent.startDate, :endDate => @rent.endDate) %></h3>
+        <h3><%= t(".results",:nbCars => @travels.size, :airPort => @rent.airPort.name, :startDate => @rent.startDate, :endDate => @rent.endDate) %></h3>
     <% end %>
   </div>
 </div>
@@ -34,7 +34,7 @@
           <% if travel.car %>
               <p> <%= travel.car.try { |car| car.year.to_s + ' -  '+ car.brand+ ' ' + car.model } %> </p>
 
-              <p> <%= travel.car.category ? travel.car.category.name + ' , ' : '' %> <%= travel.car.nbSeats %> <%= t(:helpers.label.car.nbSeats) %></p>
+              <p> <%= travel.car.category ? travel.car.category.name + ' , ' : '' %> <%= travel.car.nbSeats %> <%= t("helpers.label.car.nbSeats") %></p>
 
               <p> <%= travel.car.desc %></p>
           <% end %>
