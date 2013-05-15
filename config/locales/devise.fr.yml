@@ -25,7 +25,7 @@ fr:
         subject: "Déblocage de votre compte"
     omniauth_callbacks:
       failure: "Impossible de vous identifier depuis %{kind} car \"%{reason}\"."
-      success: "Identification réussie depuis le compte %{kind}."
+      success: "Identification réussie depuis %{kind}."
     passwords:
       no_token: "Vous ne pouvez accéder à cette page sans venir depuis l'email de changement de mot de passe. Si vous venez depuis ce mail, merci de vérifier que vous utilisez l'adresse complète"
       send_instructions: "Vous allez recevoir un email pour changer votre mot de passe dans quelques minutes."

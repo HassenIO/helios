@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
-  attr_accessible :name, :first_name, :last_name , :email, :password, :password_confirmation, :remember_me, :provider, :uid
+  attr_accessible :name, :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :provider, :uid
   attr_accessible :address, :city, :country, :zip_code
 
 
@@ -22,24 +22,37 @@ class User < ActiveRecord::Base
   has_many :rents
 
 
-  validates :first_name, :presence => true
-  validates :last_name, :presence => true
-  validates :email, :presence => true
-  validates :password, :presence => true
-  validates :address, :presence => true
-  validates :city, :presence => true
-  validates :country, :presence => true
-  validates :zip_code, :presence => true
+  #validates :address, :presence => true, :on => :update
+  #validates :city, :presence => true, :on => :update
+  #validates :country, :presence => true, :on => :update
+  #validates :zip_code, :presence => true, :on => :update
+  #validates :first_name, :presence => true, :on => :update
+  #validates :last_name, :presence => true, :on => :update
+  #
+  #
+  #with_options :unless => :is_omniauth? do
+  #  validates :address, :presence => true, :on => :create
+  #  validates :city, :presence => true, :on => :create
+  #  validates :country, :presence => true, :on => :create
+  #  validates :zip_code, :presence => true, :on => :create
+  #  validates :first_name, :presence => true, :on => :create
+  #  validates :last_name, :presence => true, :on => :create
+  #end
 
+
+  def is_omniauth
+    true
+  end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
-      user = User.create(name:auth.extra.raw_info.name,
-                         provider:auth.provider,
-                         uid:auth.uid,
-                         email:auth.info.email,
-                         password:Devise.friendly_token[0,20]
+      user = User.create(first_name: auth.info.first_name,
+                         last_name: auth.info.last_name,
+                         provider: auth.provider,
+                         uid: auth.uid,
+                         email: auth.info.email,
+                         password: Devise.friendly_token[0, 20]
       )
     end
     user
@@ -49,6 +62,9 @@ class User < ActiveRecord::Base
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
+        user.first_name = data["first_name"] if user.first_name.blank?
+        user.last_name = data["last_name"] if user.last_name.blank?
+
       end
     end
   end

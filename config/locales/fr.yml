@@ -258,7 +258,9 @@ fr:
   no_receive_confirmation: "Vous n'avez pas recu l'email de confirmation ?"
 
 
-
+  devise:
+    omniauth_callbacks:
+      success_complete_profil: "Identification réussie depuis %{kind}, merci de compléter votre profil"
 
 
   home:
