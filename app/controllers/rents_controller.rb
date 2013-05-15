@@ -60,7 +60,7 @@ class RentsController < ApplicationController
 
     respond_to do |format|
       if @rent.save
-        format.html { redirect_to [@user,@rent], notice: 'Rent was successfully created.' }
+        format.html { redirect_to cgv_user_rent_path(@user,@rent), notice: 'Rent was successfully created.' }
         format.json { render json: @rent, status: :created, location: @rent }
       else
         format.html { render action: "new" }
@@ -95,6 +95,10 @@ class RentsController < ApplicationController
       format.html { redirect_to user_rents_url(@user) }
       format.json { head :no_content }
     end
+  end
+
+  def cgv
+
   end
 
   def load_current_user

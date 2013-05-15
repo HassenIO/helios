@@ -25,7 +25,7 @@ end
 class Rent < ActiveRecord::Base
   include ActiveModel::Validations
 
-  attr_accessible :endDate, :startDate, :travel_id, :driver_attributes, :user_id, :airPort_id
+  attr_accessible :endDate, :startDate, :travel_id, :driver_attributes, :user_id, :airPort_id, :has_accepted_cgv
 
 
   belongs_to :user

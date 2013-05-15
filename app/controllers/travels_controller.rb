@@ -65,7 +65,7 @@ class TravelsController < ApplicationController
 
     respond_to do |format|
       if @travel.save
-        format.html { redirect_to [@user, @travel], notice: 'Travel was successfully created.' }
+        format.html { redirect_to cgv_user_travel_url(@user, @travel), notice: 'Travel was successfully created.' }
         format.json { render json: @travel, status: :created, location: @travel }
       else
         format.html { render action: "new" }
@@ -100,6 +100,10 @@ class TravelsController < ApplicationController
     end
   end
 
+
+  def cgv
+
+  end
 
   private
 

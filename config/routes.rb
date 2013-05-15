@@ -9,9 +9,13 @@ TravelerCar::Application.routes.draw do
     devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
     resources :users do
-      resources :travels
+      resources :travels do
+        get 'cgv', :on => :member
+      end
       resources :cars
-      resources :rents
+      resources :rents do
+        get 'cgv', :on => :member
+      end
     end
     resources :rents, only: [:new]
     resources :travels, only: [:new]

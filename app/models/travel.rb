@@ -32,7 +32,7 @@ class Travel < ActiveRecord::Base
   belongs_to :user
   belongs_to :airPort
 
-  attr_accessible :arrival, :departure, :car_attributes, :airPort_id, :status
+  attr_accessible :arrival, :departure, :car_attributes, :airPort_id, :status, :has_accepted_cgv
 
   accepts_nested_attributes_for :car
 

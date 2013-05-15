@@ -293,6 +293,11 @@ fr:
     form:
       conditions: "Important : afin de protéger les propriétaires des voitures nous effectuons des vérifications diverses pour
               confirmer votre identité et votre historique de conduite"
+    cgv:
+          title: "Conditions générales de vente"
+          submit: "J'accepte et je valide ma location"
+          cancel: "Je refuse et j'annule ma location"
+          accept_cgv: "Vous devez accepter les conditions générales de vente pour continuer ou bien annuler votre location"
 
   travels:
     new:
@@ -307,6 +312,11 @@ fr:
       details: "Details"
     index:
       title: "Gérer mes parkings"
+    cgv:
+      title: "Conditions générales de vente"
+      submit: "J'accepte et je valide mon parking"
+      cancel: "Je refuse et j'annule mon parking"
+      accept_cgv: "Vous devez accepter les conditions générales de vente pour continuer ou bien annuler votre  parking"
 
   search:
     form:
@@ -371,6 +381,7 @@ fr:
         airPort: "Aéroport"
         departure: "Date de départ"
         arrival: "Date de retour"
+        has_accepted_cgv: "J'ai lu les conditions générales de vente et je les accepte"
       car:
         equipments: "Au niveau equipement, votre voiture dispose t elle de :"
         brand: "Marque"

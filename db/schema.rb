@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513110959) do
+ActiveRecord::Schema.define(:version => 20130515134121) do
 
   create_table "air_ports", :force => true do |t|
     t.string "name"
@@ -70,9 +70,10 @@ ActiveRecord::Schema.define(:version => 20130513110959) do
     t.datetime "endDate"
     t.integer  "user_id"
     t.integer  "travel_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "airPort_id"
+    t.boolean  "has_accepted_cgv"
   end
 
   create_table "roles", :force => true do |t|
@@ -89,11 +90,12 @@ ActiveRecord::Schema.define(:version => 20130513110959) do
   create_table "travels", :force => true do |t|
     t.datetime "departure"
     t.datetime "arrival"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "user_id"
     t.integer  "airPort_id"
     t.integer  "status"
+    t.boolean  "has_accepted_cgv"
   end
 
   create_table "users", :force => true do |t|
