@@ -6,63 +6,65 @@
 <%= form_for [:admin, @travel] do |f| %>
 
     <div class="well">
-    <div class="row-fluid">
+      <div class="row-fluid">
 
 
-      <div class="span4">
-        <div class="control-group">
-          <%= f.label :airPort, :class => "control-label" %>
-          <div class="controls">
-            <%= f.collection_select(:airPort_id, AirPort.all, :id, :name) %>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="span4">
-
-        <div class="control-group">
-          <%= f.label :departure, :class => "control-label" %>
-          <div class="controls">
-            <div class="input-append date" id="travel_departure_datepicker">
-              <%= f.text_field :departure_date, 'data-format' => "yyyy-MM-dd", :class => "input-small" %>
-              <span class="add-on">
-                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                </span>
-            </div>
-            <div class="input-append" id="travel_departure_timepicker">
-              <%= f.text_field :departure_time, 'data-format' => "HH:mm", :class => "input-small" %>
-              <span class="add-on">
-                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                </span>
+        <div class="span4">
+          <div class="control-group">
+            <%= f.label :airPort, :class => "control-label" %>
+            <div class="controls">
+              <%= f.collection_select(:airPort_id, AirPort.all, :id, :name) %>
             </div>
           </div>
         </div>
 
-      </div>
 
-      <div class="span4">
+        <div class="span4">
 
-        <div class="control-group">
-          <%= f.label :arrival, :class => "control-label" %>
-          <div class="controls">
-            <div class="input-append date" id="travel_arrival_datepicker">
-              <%= f.text_field :arrival_date, 'data-format' => "yyyy-MM-dd", :class => "input-small" %>
-              <span class="add-on">
+          <div class="control-group">
+            <%= f.label :departure, :class => "control-label" %>
+            <div class="controls">
+              <div class="input-append date" id="travel_departure_datepicker">
+                <%= f.text_field :departure_date, 'data-format' => "yyyy-MM-dd", :class => "input-small" %>
+                <span class="add-on">
                      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                 </span>
-            </div>
-            <div class="input-append" id="travel_arrival_timepicker">
-              <%= f.text_field :arrival_time, 'data-format' => "HH:mm", :class => "input-small" %>
-              <span class="add-on">
+              </div>
+              <div class="input-append" id="travel_departure_timepicker">
+                <%= f.text_field :departure_time, 'data-format' => "HH:mm", :class => "input-small" %>
+                <span class="add-on">
                      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                 </span>
+              </div>
             </div>
           </div>
+
         </div>
 
+        <div class="span4">
+
+          <div class="control-group">
+            <%= f.label :arrival, :class => "control-label" %>
+            <div class="controls">
+              <div class="input-append date" id="travel_arrival_datepicker">
+                <%= f.text_field :arrival_date, 'data-format' => "yyyy-MM-dd", :class => "input-small" %>
+                <span class="add-on">
+                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+              </div>
+              <div class="input-append" id="travel_arrival_timepicker">
+                <%= f.text_field :arrival_time, 'data-format' => "HH:mm", :class => "input-small" %>
+                <span class="add-on">
+                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
+
 
     <%= f.fields_for :car do |car_fields| %>
         <div class="row-fluid">
