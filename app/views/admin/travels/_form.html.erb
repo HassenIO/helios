@@ -302,12 +302,30 @@
 <script type="text/javascript">
     $(function () {
 
-        $('#travel_departure_datetimepicker').datetimepicker({
-            language: 'pt-BR'
+        $('#travel_departure_timepicker').datetimepicker({
+            language: 'pt-BR',
+            pickDate: false,
+            pickSeconds: false
+
         });
 
-        $('#travel_arrival_datetimepicker').datetimepicker({
-            language: 'pt-BR'
+        $('#travel_departure_datepicker').datetimepicker({
+            language: 'pt-BR',
+            pickTime: false
+
+        });
+
+        $('#travel_arrival_timepicker').datetimepicker({
+            language: 'pt-BR',
+            pickDate: false,
+            pickSeconds: false
+
+        });
+
+        $('#travel_arrival_datepicker').datetimepicker({
+            language: 'pt-BR',
+            pickTime: false
+
         });
 
 
