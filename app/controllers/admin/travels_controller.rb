@@ -45,7 +45,7 @@ class Admin::TravelsController < Admin::BaseController
   # GET /travels/1/edit
   def edit
     @travel = Travel.find(params[:id])
-    @travel.car.category = Category.new
+    @travel.car.category ||= Category.new
 
   end
 

@@ -382,6 +382,7 @@ fr:
         departure: "Date de départ"
         arrival: "Date de retour"
         has_accepted_cgv: "J'ai lu les conditions générales de vente et je les accepte"
+        status: "Etat"
       car:
         equipments: "Au niveau equipement, votre voiture dispose t elle de :"
         brand: "Marque"
@@ -402,6 +403,7 @@ fr:
         filepicker2_url: "Ajouter une deuxième photo"
         filepicker3_url: "Ajouter une troisième photo"
         driver: "Conducteur"
+        category: "Catégorie"
       driver:
         license: "Permis de conduire"
         first_name: "Prénom"

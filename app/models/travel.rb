@@ -56,6 +56,7 @@ class Travel < ActiveRecord::Base
   # add some callbacks
   after_initialize :get_datetimes # convert db format to accessors
   before_validation :set_datetimes # convert accessors back to db format
+  before_save :set_datetimes # convert accessors back to db format
 
   def status
     STATUS.key(read_attribute(:status))
