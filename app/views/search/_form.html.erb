@@ -28,7 +28,7 @@
                      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                 </span>
               </div>
-              <div class="input-append date" id="rent_startDate_timepicker">
+              <div class="input-append" id="rent_startDate_timepicker">
                 <%= f.text_field :startDate_time, 'data-format' => "HH:mm", :class => "input-small" %>
                 <span class="add-on">
                      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
@@ -44,19 +44,20 @@
 
           <div class="control-group">
             <%= f.label :endDate, :class => "control-label" %>
-            <div class="controls">
+            <div class=" controls">
               <div class="input-append date" id="rent_endDate_datepicker">
                 <%= f.text_field :endDate_date, 'data-format' => "yyyy-MM-dd", :class => "input-small" %>
                 <span class="add-on">
                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                 </span>
               </div>
-              <div class="input-append date" id="rent_endDate_timepicker">
+              <div class="input-append" id="rent_endDate_timepicker">
                 <%= f.text_field :endDate_time, 'data-format' => "HH:mm", :class => "input-small" %>
                 <span class="add-on">
                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                 </span>
               </div>
+
             </div>
           </div>
 

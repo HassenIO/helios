@@ -5,18 +5,24 @@ class RentPeriodValidator < ActiveModel::Validator
     unless record.startDate.blank?
       unless record.startDate > Date.today
         record.errors.add(:startDate, :cannot_be_past)
+        record.errors.add(:startDate_time, :cannot_be_past)
+        record.errors.add(:startDate_date, :cannot_be_past)
       end
     end
 
     unless record.endDate.blank?
       unless record.endDate > Date.today
         record.errors.add(:endDate, :cannot_be_past)
+        record.errors.add(:endDate_date, :cannot_be_past)
+        record.errors.add(:endDate_time, :cannot_be_past)
       end
     end
 
     unless record.startDate.blank? or record.endDate.blank?
       unless record.startDate < record.endDate
         record.errors.add(:endDate, :cannot_be_before_start)
+        record.errors.add(:endDate_date, :cannot_be_before_start)
+        record.errors.add(:endDate_time, :cannot_be_before_start)
       end
     end
   end
