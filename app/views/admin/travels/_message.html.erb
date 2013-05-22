@@ -1,12 +1,17 @@
-<% if @travel.status == :pending %>
-    <div class="alert pending">
-      <%= t(".travel_pending") %>
-    </div>
-<% end %>
+<div class="row-fluid">
+  <div class="span12">
+    <% if @travel.status == :pending %>
+        <div class="alert pending">
+          <%= t(".travel_pending") %>
+        </div>
+    <% end %>
 
 
-<% if @travel.car.category_id.nil? %>
-    <div class="alert pending">
-      <%= t(".travel_has_no_category") %>
-    </div>
-<% end %>
+    <% if @travel.car.category_id.nil? %>
+        <div class="alert pending">
+          <%= t(".travel_has_no_category") %>
+        </div>
+    <% end %>
+  </div>
+
+</div>

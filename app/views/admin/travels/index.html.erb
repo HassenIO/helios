@@ -1,45 +1,38 @@
-<h1>Gérer les réservations de parking</h1>
+<div class="row-fluid">
+  <div class="span8">
+    <h1>Gérer les réservations de parking</h1>
+  </div>
+  <div class="span4">
+    <%= link_to 'Nouveau parking', new_admin_travel_path %>
+  </div>
+</div>
 
-<% @travels.each do |travel| %>
 
-    <div class="alert <%= travel.status %>">
-      <div class="row-fluid">
+<h3><%= t(:pending) %></h3>
 
-        <div class="span6">
-          <p>  <%= link_to travel.airPort.name + ' - ' + travel.departure.to_s + ' -> ' + travel.arrival.to_s,  admin_travel_path(travel) %></p>
+<% @travelsPending.each do |travel| %>
 
-
-              <%= link_to 'Annuler cette réservation',  admin_travel_url(travel), method: :delete, data: {confirm: 'Are you sure?'} %>
-              |
-              <%= link_to 'Modifier cette réservation', edit_admin_travel_path(travel) %>
-
-        </div>
-
-        <div class="span6">
-          <div class="row-fluid">
-            <% if travel.car %>
-                <div class="span4">
-                  <% if travel.car.filepicker1_url %>
-                      <%= filepicker_image_tag travel.car.filepicker1_url, width: 100, height: 100, fit: 'clip', class: 'pull-left' %>
-                  <% end %>
-                </div>
-
-                <div class="span8">
-                  <p> <%= travel.car.try { |car| car.brand + ' ' + car.model } %> </p>
-                </div>
-
-            <% end %>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
+    <%= render 'item', :travel => travel %>
 
 <% end %>
 
 <br/>
 
+<h3><%= t(:active) %></h3>
 
-    <%= link_to 'New Travel', new_admin_travel_path %>
+<% @travelsActive.each do |travel| %>
+
+    <%= render 'item', :travel => travel %>
+
+<% end %>
+
+<h3><%= t(:rent) %></h3>
+
+<% @travelsRent.each do |travel| %>
+
+    <%= render 'item', :travel => travel %>
+
+<% end %>
+
+
 

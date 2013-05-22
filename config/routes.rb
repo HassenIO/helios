@@ -23,6 +23,7 @@ TravelerCar::Application.routes.draw do
     namespace :admin do
       resources :travels
       resources :users
+      resources :categories
     end
 
     authenticated :user do

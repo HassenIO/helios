@@ -1,0 +1,110 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+*/
+
+//@import "style";
+//@import "responsive";
+
+
+@import "twitter/bootstrap/bootstrap";
+@import 'font-awesome';
+@import "twitter/bootstrap/responsive";
+
+@blue: #186388;
+@orange: #e74f1e;
+
+@navbarBackgroundHighlight: @blue;
+@navbarText: #fff;
+@navbarLinkColor: #fff;
+@navbarLinkColorHover: @orange;
+
+@btnPrimaryBackground: @blue;
+@btnPrimaryBackgroundHighlight: @blue;
+
+body {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+a {
+  color: @blue;
+  cursor: pointer;
+
+  &:hover {
+    color: @orange;
+    text-decoration: none;
+  }
+
+  &[data-filepicker] {
+    overflow: hidden;
+    display: block;
+  }
+
+}
+
+.navbar .brand:hover, .navbar .brand:focus {
+  background-color: @orange !important;
+}
+
+.btn-primary:hover {
+  color: @orange;
+}
+
+//navbar bottom
+.navbar.navbar-fixed-bottom {
+  .navbar-inner {
+    border: none;
+    background-color: @orange;
+    background-image: none;
+  }
+
+}
+
+//fix carousel center img
+.carousel .item > img {
+  margin: 0px auto;
+  display: block;
+  line-height: 1;
+}
+
+.field_with_errors {
+  .control-group.error
+;
+  display: inline;
+}
+
+//fix error label with datetimepicker
+.date > .field_with_errors {
+  display: inline-block;
+  overflow: visible;
+  position: relative;
+
+  .help-inline {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 14px;
+  }
+}
+
+.alert.pending {
+  .alert-error;
+}
+
+.alert.active {
+  .alert-info;
+}
+
+.alert.rent {
+  .alert-success;
+}
+
+

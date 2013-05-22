@@ -1,12 +1,14 @@
-<h2><%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %></h2>
+<div class="row-fluid">
+  <div class="span8">
+    <h2><%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %></h2>
+  </div>
 
+  <div class="span4">
+    <%= link_to t(:edit), edit_admin_travel_path(@travel) %> |
+    <%= link_to t(:back), admin_travels_path %>
+  </div>
 
-
-    <%= link_to 'Edit', edit_admin_travel_path(@travel) %> |
-    <%= link_to 'Back', admin_travels_path %>
-
-
-
+</div>
 
 <div class="row-fluid">
 
@@ -59,26 +61,32 @@
   <div class="span4">
 
     <div class="well">
-      <h3>Louer cette voiture</h3>
+      <h3><%= t(:rent_this_car) %></h3>
 
       <p>
         <%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %>
       </p>
       <% if @rent %>
           <p>
-            Entre le <%= @rent.startDate %> et le <%= @rent.endDate %>
+            <%= t :interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate) %>
           </p>
 
-          <p>
-            <%= ((@rent.endDate - @rent.startDate)/1.day).round %> jours à {prix}
-          </p>
+          <% if @travel.car.category %>
+              <% nbjours = ((@rent.endDate - @rent.startDate)/1.day).round %>
+              <p>
+                <%= distance_of_time_in_words(@rent.endDate, @rent.startDate) %>,
+                <%= number_to_currency(@travel.car.category.price) %> <%= t(:byDay) %>
+                <br/>
+                <%= t(:total) %>: <%= number_to_currency(@travel.car.category.price*nbjours) %>
+              </p>
 
-          <p>
-            <%= link_to 'Louer cette voiture', new_rent_path(:rent => params[:rent].merge(:travel_id => @travel.id)), :class => "btn btn-primary" %>
-          </p>
+              <p>
+                <%= link_to t(:rent_this_car), new_rent_path(:rent => params[:rent].merge(:travel_id => @travel.id)), :class => "btn btn-primary" %>
+              </p>
+          <% end %>
       <% else %>
           <p>
-            Entre le <%= @travel.departure %> et le <%= @travel.arrival %>
+            <%= t :interval_datetime, :startDate => l(@travel.departure), :endDate => l(@travel.arrival) %>
           </p>
       <% end %>
 
@@ -97,22 +105,22 @@
     <div class="span4">
 
       <p>
-        <b>Aeroport :</b>
+        <b><%= t(:airPort, :scope => [:helpers, :label, :travel]) %>:</b>
         <%= @travel.airPort.name %>
       </p>
 
       <p>
-        <b>Nombre de places assises :</b>
+        <b><%= t(:nbSeats, :scope => [:helpers, :label, :car]) %>:</b>
         <%= @travel.car.nbSeats %>
       </p>
 
       <p>
-        <b>Kilométrage :</b>
+        <b><%= t(:km, :scope => [:helpers, :label, :car]) %>: :</b>
         <%= @travel.car.km %>
       </p>
 
       <p>
-        <b>Fuel :</b>
+        <b><%= t(:fuel, :scope => [:helpers, :label, :car]) %>:</b>
         <%= @travel.car.fuel %>
       </p>
 
@@ -120,33 +128,33 @@
 
     <div class="span4">
       <p>
-        <b>Fumeur autorisé ? </b>
-        <%= @travel.car.isSmoker %>
+        <b><%= t(:isSmoker, :scope => [:helpers, :label, :car]) %></b>
+        <%= t(@travel.car.isSmoker.to_s) %>
       </p>
 
       <p>
-        <b>Animaux acceptés ? </b>
-        <%= @travel.car.acceptedPets %>
+        <b><%= t(:acceptedPets, :scope => [:helpers, :label, :car]) %></b>
+        <%= t(@travel.car.acceptedPets.to_s) %>
       </p>
 
       <p>
-        <b>GPS ? </b>
-        <%= @travel.car.hasGps %>
+        <b><%= t(:hasGps, :scope => [:helpers, :label, :car]) %></b>
+        <%= t(@travel.car.hasGps.to_s) %>
       </p>
 
       <p>
-        <b>Climatisation ? </b>
-        <%= @travel.car.hasAirConditioning %>
+        <b><%= t(:hasAirConditioning, :scope => [:helpers, :label, :car]) %></b>
+        <%= t(@travel.car.hasAirConditioning.to_s) %>
       </p>
 
       <p>
-        <b>Musique ? </b>
-        <%= @travel.car.hasCarRadio %>
+        <b><%= t(:hasCarRadio, :scope => [:helpers, :label, :car]) %></b>
+        <%= t(@travel.car.hasCarRadio.to_s) %>
       </p>
 
       <p>
-        <b>Siège(s) enfant(s) ? </b>
-        <%= @travel.car.hasChildSeat %>
+        <b><%= t(:hasChildSeat, :scope => [:helpers, :label, :car]) %></b>
+        <%= t(@travel.car.hasChildSeat.to_s) %>
       </p>
 
     </div>

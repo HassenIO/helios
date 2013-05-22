@@ -1,0 +1,28 @@
+<%= form_for [:admin, @category] do |f| %>
+
+
+    <div class="well">
+      <div class="row-fluid">
+
+        <div class="span12">
+          <div class="control-group">
+            <%= f.label :name, :class => "control-label" %>
+            <div class="controls">
+              <%= f.text_field(:name) %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :price, :class => "control-label" %>
+            <div class="controls">
+              <%= f.text_field(:price) %>
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <%= f.submit :class => "btn btn-primary"  %>
+        </div>
+      </div>
+    </div>
+
+<% end %>

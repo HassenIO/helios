@@ -6,12 +6,16 @@ gem 'pg'
 gem 'nokogiri'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem "less-rails", "~> 2.3.3"
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+
 gem 'jquery-rails'
-gem "bootstrap-sass", ">= 2.3.0.0"
+gem "less-rails-bootstrap", "~> 2.3.2"
+gem "less-rails-fontawesome", "~> 0.4.3"
+gem 'therubyracer' # Ruby
+
 gem "devise", ">= 2.2.3"
 gem "cancan", ">= 1.6.9"
 gem "rolify", ">= 3.2.0"
@@ -23,4 +27,3 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'filepicker-rails'
-gem 'font-awesome-sass-rails'

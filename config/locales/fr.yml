@@ -247,6 +247,7 @@ fr:
   my_rents: "Mes locations"
   admin_users: "Utilisateurs"
   admin_rents: "Locations"
+  admin_categories: "Catégories"
   admin_travels: "Parkings"
   logout: "Déconnecter"
   login: "Se connecter"
@@ -362,7 +363,7 @@ fr:
   admin:
     travels:
       message:
-        travel_pending: "Attention : Ce parking n'est pas activé, modifiez le statut pour le publier"
+        travel_pending: "Attention : Ce parking n'est pas activé, modifiez l'état pour le publier"
         travel_has_no_category: "Attention : Le véhicule n'a pas de catégorie"
 
   helpers:
@@ -383,6 +384,9 @@ fr:
         arrival: "Date de retour"
         has_accepted_cgv: "J'ai lu les conditions générales de vente et je les accepte"
         status: "Etat"
+      category:
+        name: "Nom"
+        price: "Prix par jour en euros"
       car:
         equipments: "Au niveau equipement, votre voiture dispose t elle de :"
         brand: "Marque"

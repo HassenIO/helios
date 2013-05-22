@@ -7,11 +7,13 @@ class Admin::TravelsController < Admin::BaseController
   # GET /travels
   # GET /travels.json
   def index
-    @travels = Travel.all
+    @travelsPending = Travel.find_all_by_status(Travel::STATUS[:pending])
+    @travelsActive = Travel.find_all_by_status(Travel::STATUS[:active])
+    @travelsRent = Travel.find_all_by_status(Travel::STATUS[:rent])
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @travels }
+      format.json { render json: @travelsPending }
     end
   end
 

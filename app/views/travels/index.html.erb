@@ -2,7 +2,7 @@
 
 <% @travels.each do |travel| %>
 
-    <div class="well">
+    <div class="alert <%= travel.status %>">
       <div class="row-fluid">
 
         <div class="span6">
@@ -19,7 +19,7 @@
           <div class="row-fluid">
             <% if travel.car %>
                 <div class="span4">
-                  <% if travel.car.filepicker1_url %>
+                  <% unless travel.car.filepicker1_url.blank? %>
                       <%= filepicker_image_tag travel.car.filepicker1_url, width: 100, height: 100, fit: 'clip', class: 'pull-left' %>
                   <% end %>
                 </div>

@@ -201,7 +201,7 @@
             <fieldset class="well">
               <legend><%= t(".car_photos_legend") %></legend>
               <div class="well">
-                <a data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker1_url">
+                <a href="#" class="toto" data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker1_url">
                   <% if @travel.car.filepicker1_url? %>
                       <%= filepicker_image_tag @travel.car.filepicker1_url, weight: 50, height: 50, fit: 'clip' %>
                   <% else %>
@@ -212,7 +212,7 @@
               </div>
 
               <div class="well">
-                <a data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker2_url">
+                <a href="#" data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker2_url">
                   <% if @travel.car.filepicker2_url? %>
                       <%= filepicker_image_tag @travel.car.filepicker2_url, weight: 50, height: 50, fit: 'crop' %>
                   <% else %>
@@ -223,7 +223,7 @@
               </div>
 
               <div class="well">
-                <a data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker3_url" data-target-img>
+                <a href="#" data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker3_url" data-target-img>
                   <% if @travel.car.filepicker3_url? %>
                       <%= filepicker_image_tag @travel.car.filepicker3_url, weight: 50, height: 50, fit: 'clip' %>
                   <% else %>
