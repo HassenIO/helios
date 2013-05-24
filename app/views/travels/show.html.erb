@@ -64,7 +64,9 @@
       <p>
         <%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %>
       </p>
-      <% if @rent %>
+
+
+      <% unless @rent.nil? %>
           <p>
             <%= t :interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate) %>
           </p>

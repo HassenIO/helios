@@ -24,6 +24,7 @@ class TravelsController < ApplicationController
 
     if params[:rent]
       @rent = Rent.new(params[:rent])
+      @rent.set_datetimes
     end
 
     respond_to do |format|
