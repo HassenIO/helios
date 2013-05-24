@@ -29,6 +29,60 @@ a {
 
 }
 
+.navbar .nav > li > a {
+
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+
+}
+
+.navbar .nav li.dropdown.open,
+.navbar .nav li.dropdown.active,
+.navbar .nav li.dropdown.open.active {
+  .dropdown-toggle {
+    background-color: @brickColorOdd;
+
+  }
+
+  .dropdown-menu {
+    border-radius: 0px;
+    &:after {
+      border-bottom-color: @brickColorOdd;
+    }
+    li > a {
+      &:hover, &:focus {
+        background-color: @brickColor;
+        background-image: none;
+      }
+    }
+    background-color: @brickColorOdd;
+    background-image: none;
+  }
+
+  .dropdown-submenu {
+    a:after {
+      border-left-color: #000000;
+    }
+    &:hover, &:focus {
+      a, a:after {
+        background-color: @brickColor;
+        border-left-color: #ffffff;
+        background-image: none;
+      }
+
+      li > a {
+        background-color: @brickColorOdd;
+        &:hover, &:focus {
+          background-color: @brickColor;
+          background-image: none;
+        }
+      }
+    }
+  }
+}
+
 //fix carousel center img
 .carousel .item > img {
   margin: 0px auto;
