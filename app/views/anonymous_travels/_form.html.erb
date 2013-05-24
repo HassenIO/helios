@@ -20,27 +20,44 @@
 
           <div class="control-group">
             <%= f.label :departure, :class => "control-label" %>
-            <div class="controls input-append date" id="travel_departure_datetimepicker">
-              <%= f.text_field :departure, 'data-format' => "yyyy-MM-dd HH:mm:ss PP" %>
-              <span class="add-on">
-            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-          </span>
-              <span class="help-block">Date et heure de départ</span>
+            <div class="controls">
+              <div class="input-append date" id="travel_departure_datepicker">
+                <%= f.text_field :departure_date, 'data-format' => "yyyy-MM-dd", :class => "input-small" %>
+                <span class="add-on">
+                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+              </div>
+              <div class="input-append" id="travel_departure_timepicker">
+                <%= f.text_field :departure_time, 'data-format' => "HH:mm", :class => "input-small" %>
+                <span class="add-on">
+                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+              </div>
             </div>
           </div>
+
         </div>
 
         <div class="span4">
-          <div id="travel_arrival" class="control-group">
+
+          <div class="control-group">
             <%= f.label :arrival, :class => "control-label" %>
-            <div class="controls input-append date" id="travel_arrival_datetimepicker">
-              <%= f.text_field :arrival, 'data-format' => "yyyy-MM-dd HH:mm:ss PP" %>
-              <span class="add-on">
-            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-          </span>
-              <span class="help-block">Date et heure d'arrivée</span>
+            <div class="controls">
+              <div class="input-append date" id="travel_arrival_datepicker">
+                <%= f.text_field :arrival_date, 'data-format' => "yyyy-MM-dd", :class => "input-small" %>
+                <span class="add-on">
+                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+              </div>
+              <div class="input-append" id="travel_arrival_timepicker">
+                <%= f.text_field :arrival_time, 'data-format' => "HH:mm", :class => "input-small" %>
+                <span class="add-on">
+                     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+              </div>
             </div>
           </div>
+
         </div>
 
       </div>
@@ -58,13 +75,30 @@
 <script type="text/javascript">
     $(function () {
 
-        console.log($('#travel_departure_datetimepicker'));
-        $('#travel_departure_datetimepicker').datetimepicker({
-            language: 'pt-BR'
+        $('#travel_departure_timepicker').datetimepicker({
+            language: 'pt-BR',
+            pickDate: false,
+            pickSeconds: false
+
         });
 
-        $('#travel_arrival_datetimepicker').datetimepicker({
-            language: 'pt-BR'
+        $('#travel_departure_datepicker').datetimepicker({
+            language: 'pt-BR',
+            pickTime: false
+
+        });
+
+        $('#travel_arrival_timepicker').datetimepicker({
+            language: 'pt-BR',
+            pickDate: false,
+            pickSeconds: false
+
+        });
+
+        $('#travel_arrival_datepicker').datetimepicker({
+            language: 'pt-BR',
+            pickTime: false
+
         });
     });
 </script>

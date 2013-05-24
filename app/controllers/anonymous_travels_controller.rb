@@ -14,7 +14,6 @@ class AnonymousTravelsController < ApplicationController
   # POST /travels.json
   def create
 
-    #@travel = Travel.new(params[:travel])
     session[:travel] = params[:travel]
 
     redirect_to new_travel_path

@@ -1,17 +1,19 @@
-<%= link_to "Travelercar", root_path, :class => 'brand' %>
+<a href="<%= root_path %>" class="external brand image">
+  <%= image_tag "travelercar-logo_small_image.png", :alt => "Logo" %>
+</a>
 <div class="nav-collapse collapse">
-  <ul class="nav">
+  <ul id="menu-primary-navigation" class="nav">
     <li>
-      <%= link_to t(:register_travel), travels_url %>
+      <%= link_to t(:register_travel), travels_path %>
     </li>
     <li>
       <%= link_to t(:rent_car), search_path %>
     </li>
     <li>
-      <%= link_to t(:how_its_work) %>
+      <%= link_to t(:how_its_work),"#pourquoi-travelercar",  :class => "section" %>
     </li>
     <li>
-      <%= link_to t(:help) %>
+      <%= link_to t(:help), "#besoin-daide" , :class => "section" %>
     </li>
     <% if user_signed_in? %>
         <li class="dropdown">

@@ -46,6 +46,8 @@ class Rent < ActiveRecord::Base
 
   accepts_nested_attributes_for :driver
 
+  accepts_nested_attributes_for :travel
+
 
   validates :endDate, :presence => true
   validates :startDate, :presence => true

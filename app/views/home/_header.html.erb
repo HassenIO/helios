@@ -1,0 +1,121 @@
+<header id="header">
+  <div class="header-holder">
+    <div class="container hidden-phone">
+      <div class="brow">
+        <div class="brick1 logo_container">
+          <a href="#" class="nav-item clearfix">
+            <!--div class="nav-hover"></div-->
+            <h1 class="logo image">
+              <%= image_tag "travelercar-logo_big_image.png", :alt => "Logo" %>
+            </h1>
+          </a>
+        </div>
+      </div>
+      <div class="brick3 default boffset1 slogan transparent text-right">
+        <div class="inner">
+          <h1>Voyagez Intelligemment !</h1>
+
+          <p>TravelerCar est la première plateforme Européenne de partage de véhicules entre les voyageurs aux
+            aéroports. D’un coté, elle permet aux propriétaires souhaitant se rendre à l’aéroport avec leur voiture non
+            seulement de la garer gratuitement, mais aussi de gagner de l’argent pendant qu’ils voyagent.</p></div>
+      </div>
+      <div class="brick2 default ">
+        <a href="http://localhost/travelercar/#comment-ca-marche" class="nav-item ">
+          <div class="nav-hover"></div>
+          <i class="li_settings"></i>
+          <span>Comment ca marche ?</span>
+        </a>
+      </div>
+      <div class="brick3 odd ">
+        <%= link_to travels_url, :class => "nav-item" do %>
+            <div class="nav-hover"></div>
+            <i class="li_key"></i>
+            <span><%= t(:register_travel) %></span>
+        <% end %>
+      </div>
+      <div class="brick3 orange ">
+        <%= link_to search_path, :class => "nav-item" do %>
+
+            <div class="nav-hover"></div>
+            <i class="li_truck"></i>
+            <span><%= t(:rent_car) %></span>
+        <% end %>
+      </div>
+      <div class="brick2 default ">
+        <a href="http://localhost/travelercar/#pourquoi-travelercar" class="nav-item ">
+          <div class="nav-hover"></div>
+          <i class="li_bulb"></i>
+          <span>Pourquoi TravelerCar ?</span>
+        </a>
+      </div>
+      <div class="brick2 default ">
+        <a href="http://localhost/travelercar/#besoin-daide" class="nav-item ">
+          <div class="nav-hover"></div>
+          <i class="li_like"></i>
+          <span>Besoin d'aide ?</span>
+        </a>
+      </div>
+      <div class="brick2 default ">
+        <a href="http://localhost/travelercar/#contact" class="nav-item ">
+          <div class="nav-hover"></div>
+          <i class="li_paperplane"></i>
+          <span>Contact</span>
+        </a>
+      </div>
+    </div>
+    <!-- end hidden-phone -->
+    <div class="container visible-phone">
+      <div class="brick1 logo_container">
+        <a href="#" class="nav-item clearfix">
+          <div class="nav-hover"></div>
+          <h1 class="logo image">
+            <%= image_tag "travelercar-logo_big_image.png", :alt => "Logo" %>
+          </h1>
+        </a>
+      </div>
+      <div class="brick1 odd">
+        <a href="http://localhost/travelercar/#comment-ca-marche" class="nav-item ">
+          <div class="nav-hover"></div>
+          <i class="li_settings"></i>
+          <span>Comment ca marche ?</span>
+        </a>
+      </div>
+      <div class="brick1 odd ">
+        <%= link_to travels_url, :class => "nav-item" do %>
+            <div class="nav-hover"></div>
+            <i class="li_key"></i>
+            <span><%= t(:register_travel) %></span>
+        <% end %>
+      </div>
+      <div class="brick1">
+        <%= link_to search_path, :class => "nav-item" do %>
+
+            <div class="nav-hover"></div>
+            <i class="li_truck"></i>
+            <span><%= t(:rent_car) %></span>
+        <% end %>
+      </div>
+      <div class="brick1 ">
+        <a href="http://localhost/travelercar/#pourquoi-travelercar" class="nav-item ">
+          <div class="nav-hover"></div>
+          <i class="li_bulb"></i>
+          <span>Pourquoi TravelerCar ?</span>
+        </a>
+      </div>
+      <div class="brick1 odd">
+        <a href="http://localhost/travelercar/#besoin-daide" class="nav-item ">
+          <div class="nav-hover"></div>
+          <i class="li_like"></i>
+          <span>Besoin d'aide ?</span>
+        </a>
+      </div>
+      <div class="brick1 odd">
+        <a href="http://localhost/travelercar/#contact" class="nav-item ">
+          <div class="nav-hover"></div>
+          <i class="li_paperplane"></i>
+          <span>Contact</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

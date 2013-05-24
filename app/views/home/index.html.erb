@@ -1,35 +1,259 @@
-<div class="row">
-  <div class="span6">
-    <div class="well">
-      <h2><%= t('.register_travel') %></h2>
+<% content_for :header do %>
+    <%= render "header" %>
+<% end %>
 
-      <p><%= t('.register_travel_msg') %></p>
+<% content_for :no_container do %>
+    <div class="section" id="comment-ca-marche">
+      <div class="container">
 
-      <p>
-        <%= link_to t(".register_travel"), {:controller => :travels}, :class => "btn btn-primary btn-large" %>
-      </p>
+        <div class="hero">
+          <h1>Comment ça marche ? </h1>
+
+          <p></p>
+        </div>
+        <div class="entry-content">
+          <p>En quelques clics, vous rajouter votre véhicule sur le site : modèle, caractéristiques et disponibilités et
+            le
+            tour est joué. Vous économiserez non seulement les frais de parking pendant que vous voyagez mais vous
+            gagnerez
+            aussi de l’argent lorsque votre voiture sera louée par un autre voyageur.</p>
+
+          <p>Vous êtes en voyage et vous souhaitez louer une voiture à l’aéroport ? Rien de plus simple. Consultez les
+            annonces de nos résidents et faites votre réservation directement en ligne.</p>
+
+          <p>Et soyez rassurés : que vous soyez résident ou voyageur, propriétaire ou locataire, aucune démarche
+            particulière n’est nécessaire, TravelerCar couvre le tout avec une assurance tous risques.</p>
+
+          <p>Il est important de noter également que TravelerCar agit comme un vrai tiers de confiance, elle ne fait pas
+            seulement la simple mise en relation entre voyageurs. TravelerCar fait l’état des lieux des véhicules,
+            effectue
+            les vérifications de sécurité nécessaires et gère toute la transaction jusqu’à la remise du véhicule au
+            propriétaire à son retour de vacances. Nous proposons un service différent, de confiance et intelligent.</p>
+        </div>
+        <!-- .entry-content -->
+
+      </div>
     </div>
-  </div>
-  <div class="span6">
-    <div class="well">
-      <h2><%= t(".rent_car") %></h2>
+    <div class="section" id="jinscris-ma-voiture">
+      <div class="container">
 
-      <p><%= t(".rent_car_msg") %></p>
+        <div class="hero">
+          <h1>Je propose ma voiture gratuitement</h1>
 
-      <p>
-        <%= link_to t(".rent_car"), {:controller => :search}, :class => "btn btn-primary btn-large" %>
-      </p>
+          <p>et j'obtiens un Parking gratuit à l’aéroport + Service de voiturier + couverture automatique avec une
+            assurance
+            tous risques + lavage offert</p>
+        </div>
+        <div class="entry-content">
+          <p>Vous êtes résident et propriétaire de votre véhicule, vous souhaitez mutualiser son usage pendant que vous
+            voyagez, non seulement économiser les frais de parking mais aussi gagner de l’argent en ayant un
+            comportement
+            solidaire et éco-responsable ?</p>
+
+          <p>Commencez par renseigner votre aéroport ainsi que vos dates de départ et de retour. Suivez les quelques
+            étapes
+            afin d’enregistrer votre véhicule. A vous de jouer !</p>
+        </div>
+        <!-- .entry-content -->
+
+      </div>
     </div>
-  </div>
-</div>
+    <div class="divider section">
+      <div class="bg-holder">
+        <div class="container">
+          <div class="hero">
+            <p>
 
-<div class="row">
-  <div class="span12">
-    <h2><%= t(".how_its_work") %></h2>
+            <h1>Je propose ma voiture gratuitement</h1>
 
-    <p><%= t(".how_its_work_msg") %>
-    </p>
-  </div>
-</div>
+            <p>
+              <button class="btn btn-large" style="width:auto;" type="button">
+                <div class="nav-hover"></div>
+                <p>Super, j’ai un voyage prévu et je veux inscrire ma voiture</p>
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="section" id="je-loue-une-voiture">
+      <div class="container">
 
+        <div class="hero">
+          <h1>Je souhaite louer une voiture </h1>
+
+          <p>Jusqu’à 50% moins cher qu’un loueur classique, Assurance tous risques sans supplément, options gratuites
+            (siège
+            bébé, GPS, etc.)</p>
+        </div>
+        <div class="entry-content">
+          <p>Vous êtes un voyageur et vous souhaitez louer une voiture ? Rien de plus simple : Renseignez votre aéroport
+            ainsi que vos dates d’arrivée et de départ. Choisissez ensuite la voiture qui vous convient et valider votre
+            réservation en ligne. A vous de jouer !</p>
+        </div>
+        <!-- .entry-content -->
+
+      </div>
+    </div>
+    <div class="divider section">
+      <div class="bg-holder">
+        <div class="container">
+          <div class="hero">
+            <p>
+
+            <h1>Je souhaite louer une voiture </h1>
+
+            <p>
+              <button class="btn btn-large" style="width:auto;" type="button">
+                <div class="nav-hover"></div>
+                <p>Top ! Je réserve une voiture tout de suite !
+                </p>
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="pourquoi-travelercar">
+      <div class="container">
+
+        <div class="hero">
+          <h1>TravelerCar, KESAKO ?</h1>
+
+          <p>TravelerCar est la première plateforme Européenne de partage de véhicules entre les voyageurs aux
+            aéroports.</p>
+        </div>
+        <div class="entry-content">
+          <p>TravelerCar est la <b>première plateforme Européenne </b>de <b>partage </b>de véhicules entre les
+            <b>voyageurs </b>aux <b>aéroports.</b>D’un coté, elle permet aux propriétaires souhaitant se rendre à
+            l’aéroport
+            avec leur voiture non seulement de la <b>garer gratuitement, </b>mais aussi de <b>gagner de l’argent </b>pendant
+            qu’ils voyagent.</p>
+
+          <p>Comment ? En louant ce véhicule aux autres voyageurs du même aéroport.</p>
+
+          <p>De l’autre coté, ces visiteurs quant à eux, pourront <b>économiser </b>jusqu&rsquo;à 50% sur le prix
+            habituellement proposé par les agences de location classique.</p>
+
+          <p>TravelerCar <b>assure </b>le tout automatiquement avec une couverture <b>tous risques </b>et une assistance
+            24h/24.</p>
+
+          <p>Avec TravelerCar <span style="text-decoration: underline;">voyageons intelligemment</span> en
+            <span style="text-decoration: underline;">mutualisant</span> l’usage de nos véhicules.</p>
+
+          <p>TravelerCar offre non seulement <span style="text-decoration: underline;">une alternative</span> au parking
+            cher de l&rsquo;aéroport et une solution économique de location de véhicules, mais permet aussi aux
+            voyageurs de
+            <span style="text-decoration: underline;">gagner</span> de l’argent pendant qu’ils voyagent avec un
+            comportement
+            <span style="text-decoration: underline;">solidaire</span> tout en aidant
+            <span style="text-decoration: underline;">la planète</span>.</p>
+
+          <p>Faisons en sorte qu’il y ait
+            <span style="text-decoration: underline;">moins de nouvelles voitures fabriquées </span>et
+            <span style="text-decoration: underline;">plus de places de parking</span> disponibles.</p>
+
+          <p>Adhérer à TravelerCar c’est adhérer à une démarche
+            <span style="text-decoration: underline;">responsable</span>,
+            <span style="text-decoration: underline;">économique</span> et
+            <span style="text-decoration: underline;">écologique</span> !</p>
+
+          <p>23 400 particuliers font confiance aujourd’hui et partagent l’usage de leur véhicule en France, à quand le
+            v^Otre ?</p>
+        </div>
+        <!-- .entry-content -->
+
+      </div>
+    </div>
+    <div class="section" id="besoin-daide">
+      <div class="container">
+
+        <div class="hero">
+          <h1>Besoin d’aide ?</h1>
+
+          <p>Description</p>
+        </div>
+        <div class="entry-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis mi nisl. Quisque sed enim ut nulla
+            condimentum placerat. Integer nec diam dolor, et sollicitudin justo. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit. Integer nibh nisl, tempor nec gravida eu, ornare vel leo. Pellentesque habitant morbi
+            tristique
+            senectus et netus et malesuada fames ac turpis egestas. Etiam pretium lacus non justo malesuada sit amet
+            ornare
+            est feugiat. Ut sapien turpis, posuere eget viverra eu, consequat sit amet magna. Fusce eget nulla ac metus
+            aliquam cursus eu sed lectus. Nulla bibendum, nisl vel dictum cursus, nisi turpis vestibulum odio, ac auctor
+            tortor tortor ut dui. Nulla facilisis, mauris vitae viverra sollicitudin, ipsum dolor ornare erat,
+            condimentum
+            egestas turpis tellus eleifend sapien. Nam vulputate luctus consectetur. Phasellus convallis varius ante,
+            vel
+            lobortis orci sollicitudin at. Praesent ornare leo id mi dignissim eget rhoncus mauris euismod<br/>
+            <!--p style="text-align:center"><br />
+            <button class="btn btn-large" style="width:auto;" type="button">
+            <div class="nav-hover"></div>
+            <p>Contactez-nous</button>
+            </p-->
+        </div>
+        <!-- .entry-content -->
+
+      </div>
+    </div>
+    <div class="section" id="contact">
+      <div class="container">
+
+        <div class="hero">
+          <h1>Contactez-Nous</h1>
+
+          <p>Pour toute question ou renseignement n’hésitez pas à nous contacter !</p>
+        </div>
+        <div class="entry-content">
+          <div class="row-fluid">
+            <div class="span6">
+              <div>
+                <h3>contact info</h3>
+                <ul>
+                  <li>Address: CT3A Building street 195, New Something 1234, Country Australia</li>
+                  <li>Telephone: +132.13213212 &#8211; +23.312312546</li>
+                  <li>Fax: 322323</li>
+                  <li>Email: joe@argo.com</li>
+                </ul>
+                <p>
+                  <a class="social facebook" href="#"><i class="icon-facebook"></i></a><a class="social twitter" href="#"><i class="icon-twitter"></i></a><a class="social gplus" href="#"><i class="icon-google-plus"></i></a><a class="social linkedin" href="#"><i class="icon-linkedin"></i></a>
+                </p>
+
+                <div></div>
+              </div>
+            </div>
+            <div class="span6">
+              <h3>leave a reply</h3>
+
+              <p>
+
+              <form class="comment_form" id="commentform" method="post" action="http://localhost/travelercar/wp-admin/admin-ajax.php?action=contact">
+                <div class="row-fluid">
+                  <div class="span6">
+                    <input type="email" placeholder="Email" required name="email" id="email"/>
+                  </div>
+                  <div class="span6">
+                    <input type="text" placeholder="Name" required name="name" id="name"/>
+                  </div>
+                </div>
+                <div class="row-fluid">
+                  <div class="span8">
+                    <textarea rows="10" cols="30" placeholder="Message" name="message"></textarea>
+                  </div>
+                  <div class="span4">
+                    <button type="submit" class="btn "><i class="li_paperplane"></i>Send message</button>
+                  </div>
+                </div>
+              </form>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- .entry-content -->
+
+      </div>
+    </div>
+<% end %>

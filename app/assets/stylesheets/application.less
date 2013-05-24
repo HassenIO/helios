@@ -10,60 +10,21 @@
  *
 */
 
-//@import "style";
-//@import "responsive";
-
-
-@import "twitter/bootstrap/bootstrap";
-@import 'font-awesome';
-@import "twitter/bootstrap/responsive";
-
-@blue: #186388;
-@orange: #e74f1e;
-
-@navbarBackgroundHighlight: @blue;
-@navbarText: #fff;
-@navbarLinkColor: #fff;
-@navbarLinkColorHover: @orange;
-
-@btnPrimaryBackground: @blue;
-@btnPrimaryBackgroundHighlight: @blue;
-
-body {
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
+@import "style";
+@import "responsive";
 
 a {
-  color: @blue;
   cursor: pointer;
 
-  &:hover {
-    color: @orange;
-    text-decoration: none;
-  }
-
   &[data-filepicker] {
+    color: @brickColorOdd;
+
+    &:hover {
+      text-decoration: none;
+      color: @brickColor;
+    }
     overflow: hidden;
     display: block;
-  }
-
-}
-
-.navbar .brand:hover, .navbar .brand:focus {
-  background-color: @orange !important;
-}
-
-.btn-primary:hover {
-  color: @orange;
-}
-
-//navbar bottom
-.navbar.navbar-fixed-bottom {
-  .navbar-inner {
-    border: none;
-    background-color: @orange;
-    background-image: none;
   }
 
 }

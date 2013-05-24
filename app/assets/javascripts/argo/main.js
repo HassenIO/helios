@@ -94,7 +94,7 @@ jQuery(function ($) {
     // Nav button click
     // -------------------------------------------------------
 
-    $('#navbar .nav a , #header a.nav-item , #navbar .brand,#btn_up').click(function (e) {
+    $('#navbar .nav a.section, #header a.nav-item.section, #btn_up').click(function (e) {
         e.preventDefault();
         var des = $(this).attr('href');
         if ($('.navbar .nav-collapse').hasClass('in')) {

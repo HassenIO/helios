@@ -57,10 +57,9 @@ class RentsController < ApplicationController
 
     @rent.user = current_user
 
-
     respond_to do |format|
       if @rent.save
-        format.html { redirect_to cgv_user_rent_path(@user,@rent), notice: 'Rent was successfully created.' }
+        format.html { redirect_to cgv_user_rent_path(@user, @rent), notice: 'Rent was successfully created.' }
         format.json { render json: @rent, status: :created, location: @rent }
       else
         format.html { render action: "new" }
@@ -72,7 +71,7 @@ class RentsController < ApplicationController
   # PUT /rents/1
   # PUT /rents/1.json
   def update
-    #@rent = Rent.find(params[:id])
+
 
     respond_to do |format|
       if @rent.update_attributes(params[:rent])
@@ -88,8 +87,9 @@ class RentsController < ApplicationController
   # DELETE /rents/1
   # DELETE /rents/1.json
   def destroy
-    #@rent = Rent.find(params[:id])
+    @rent.travel.status = :active
     @rent.destroy
+
 
     respond_to do |format|
       format.html { redirect_to user_rents_url(@user) }

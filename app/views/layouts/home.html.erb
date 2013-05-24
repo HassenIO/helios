@@ -12,6 +12,7 @@
 
 <body class="home blog logged-in" data-spy="scroll" data-target=".navbar">
 
+<%= yield(:header) %>
 
 <!-- End header -->
 <div id="navbar" class="navbar">
@@ -24,21 +25,15 @@
 <!-- end navbar -->
 
 
-<div class="container">
-  <div class="content">
-    <div class="row-fluid">
-      <div class="span12">
-        <%= render 'layouts/flash_messages' %>
-        <%= yield %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= yield(:no_container) %>
 
 
 <%= render 'layouts/footer' %>
 
+
 <%= javascript_include_tag "footer" %>
+<%= javascript_include_tag "argo/index" %>
+
 
 </body>
 </html>
