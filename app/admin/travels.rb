@@ -22,7 +22,7 @@ ActiveAdmin.register Travel do
     column(:arrival_time)
     column(:status) { |travel| status_tag(travel.status.to_s) }
     column(:car_id) { |travel| travel.car.try { |car| "#{car.brand} #{car.model} #{car.year}" } }
-    column(:car_category) { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} - #{category.price}euros/day" } }
+    column(:car_category) { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} - #{category.price}euros /day" } }
   end
 
 
