@@ -11,7 +11,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem "jquery-rails", "2.3.0"
 gem "less-rails-bootstrap", "~> 2.3.2"
 gem "less-rails-fontawesome", "~> 0.4.3"
 gem 'therubyracer' # Ruby
