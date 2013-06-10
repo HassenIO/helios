@@ -5,7 +5,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
 
-
       if @user.sign_in_count == 0
         set_flash_message(:notice, :success_complete_profil, :kind => "Facebook") if is_navigational_format?
         sign_in @user

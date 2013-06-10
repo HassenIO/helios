@@ -253,6 +253,10 @@ fr:
   login: "Se connecter"
   register: "S'inscrire"
 
+  success:
+   created: "Votre %{model} a bien été créé"
+   updated: "Votre %{model} a bien été modifié"
+
   sign_in_with: "Se connecter avec %{provider}"
   forgot_password: "Mot de passe oublié ?"
   no_receive_unlock_instructions: "Vous n'avez pas recu l'email de déblocage ?"

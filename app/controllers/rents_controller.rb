@@ -56,10 +56,12 @@ class RentsController < ApplicationController
     @rent = Rent.new(params[:rent])
 
     @rent.user = current_user
+    @travel = @rent.travel
+    @travel.status = :rent
 
     respond_to do |format|
-      if @rent.save
-        format.html { redirect_to cgv_user_rent_path(@user, @rent), notice: 'Rent was successfully created.' }
+      if @travel.save(:validate => false) && @rent.save
+        format.html { redirect_to cgv_user_rent_path(@user, @rent), notice: t("success.created", :model => @rent.class.model_name.human) }
         format.json { render json: @rent, status: :created, location: @rent }
       else
         format.html { render action: "new" }
@@ -75,7 +77,7 @@ class RentsController < ApplicationController
 
     respond_to do |format|
       if @rent.update_attributes(params[:rent])
-        format.html { redirect_to [@user, @rent], notice: 'Rent was successfully updated.' }
+        format.html { redirect_to [@user, @rent], notice: t("success.updated", :model => @rent.class.model_name.human) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

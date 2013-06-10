@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  helper PricingHelper
+
   protect_from_forgery
 
   before_filter :set_locale
@@ -14,6 +16,10 @@ class ApplicationController < ActionController::Base
 
   def url_options
     {:locale => I18n.locale}.merge(super)
+  end
+
+  def authenticate_admin_user!
+    redirect_to new_user_session_path unless current_user.has_role? :admin
   end
 
 end

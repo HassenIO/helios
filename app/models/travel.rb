@@ -39,7 +39,7 @@ class Travel < ActiveRecord::Base
   belongs_to :airPort
 
   attr_accessible :arrival, :arrival_time, :arrival_date, :departure, :departure_date, :departure_time,
-                  :car_attributes, :airPort_id, :status, :has_accepted_cgv
+                  :car_attributes, :airPort_id, :status, :has_accepted_cgv, :user_id
 
   # add the accessors for the two fields
   attr_accessor :departure_date, :departure_time, :arrival_time, :arrival_date
@@ -79,8 +79,11 @@ class Travel < ActiveRecord::Base
   end
 
   def set_datetimes
-    self.departure = "#{self.departure_date} #{self.departure_time}:00" # convert the two fields back to db
-    self.arrival = "#{self.arrival_date} #{self.arrival_time}:00" # convert the two fields back to db
+    #do not change departure and arrival if already changed
+    unless self.departure_changed? || self.arrival_changed?
+      self.departure = "#{self.departure_date} #{self.departure_time}:00" # convert the two fields back to db
+      self.arrival = "#{self.arrival_date} #{self.arrival_time}:00" # convert the two fields back to db
+    end
   end
 
 

@@ -1,5 +1,7 @@
 TravelerCar::Application.routes.draw do
 
+
+
   root :controller => "home", :action => "index"
 
   scope "/:locale", :constraints => {:locale=> /[a-z]{2}(-[A-Z]{2})?/ } do
@@ -20,11 +22,11 @@ TravelerCar::Application.routes.draw do
     resources :rents, only: [:new]
     resources :travels, only: [:new]
 
-    namespace :admin do
-      resources :travels
-      resources :users
-      resources :categories
-    end
+    #namespace :admin do
+    #  resources :travels
+    #  resources :users
+    #  resources :categories
+    #end
 
     authenticated :user do
       match "/travels", to: redirect { |p, req| "/#{p[:locale]}/users/#{req.env["warden"].user(:user).id}/travels/new" }  , :as => 'travels'
@@ -38,7 +40,6 @@ TravelerCar::Application.routes.draw do
 
   end
 
-
-
+  ActiveAdmin.routes(self)
 
 end

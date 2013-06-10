@@ -1,4 +1,4 @@
-<h2><%= t(".title", :airPort => @rent.airPort.name, :startDate => @rent.startDate, :endDate => @rent.endDate ) %></h2>
+<h2><%= t(".title", :airPort => @rent.airPort.name, :startDate => @rent.startDate, :endDate => @rent.endDate) %></h2>
 
 
 <% if can? :update, @rent %>
@@ -61,11 +61,11 @@
       <h3><%= t ".rent_informations" %></h3>
 
       <p>
-        <%= @rent.travel.car.year.to_s + ' - ' + @rent.travel.car.brand + " " + @rent.travel.car.model %>
+        <%= [@rent.travel.car.year,@rent.travel.car.brand, @rent.travel.car.model].join(', ') %>
       </p>
 
       <p>
-        <%= t(:interval_datetime, :startDate =>@rent.startDate, :endDate => @rent.endDate) %>
+        <%= t(:interval_datetime, :startDate => @rent.startDate, :endDate => @rent.endDate) %>
       </p>
 
       <p>
@@ -74,15 +74,14 @@
       </p>
 
       <p>
-        <% nbjours = ((@rent.endDate - @rent.startDate)/1.day).round %>
-        <%= t(:total) %> <%= number_to_currency(@rent.travel.car.category.price*nbjours) %>
+        <%= t(:total) %> <%= compute_price_for_rent(@rent.endDate, @rent.startDate, @rent.travel.car.category.price) %>
       </p>
 
 
     </div>
 
     <div class="well">
-      <h3><%= t :driver, :scope  => [:helpers, :label, :car] %></h3>
+      <h3><%= t :driver, :scope => [:helpers, :label, :car] %></h3>
 
       <address>
         <strong><%= @rent.driver.first_name %> <%= @rent.driver.last_name %></strong><br>
@@ -92,14 +91,14 @@
         <br>
         <%= @rent.driver.country %>
         <br>
-        <abbr title="Phone"><%= t :phone, :scope  => [:helpers, :label, :driver] %></abbr> <%= @rent.driver.phone %>
+        <abbr title="Phone"><%= t :phone, :scope => [:helpers, :label, :driver] %></abbr> <%= @rent.driver.phone %>
       </address>
 
 
       <p>
-        <%= t :license, :scope  => [:helpers, :label, :driver] %>
+        <%= t :license, :scope => [:helpers, :label, :driver] %>
         <%- @rent.driver.license %> </br>
-        <%= t :birth_date, :scope  => [:helpers, :label, :driver] %>
+        <%= t :birth_date, :scope => [:helpers, :label, :driver] %>
         <%- @rent.driver.birth_date %> </br>
       </p>
 
@@ -118,22 +117,22 @@
     <div class="span4">
 
       <p>
-        <b><%= t :airPort, :scope  => [:helpers, :label, :travel] %>:</b>
+        <b><%= t :airPort, :scope => [:helpers, :label, :travel] %>:</b>
         <%= @rent.travel.airPort.name %>
       </p>
 
       <p>
-        <b><%= t :nbSeats, :scope  => [:helpers, :label, :car] %>:</b>
+        <b><%= t :nbSeats, :scope => [:helpers, :label, :car] %>:</b>
         <%= @rent.travel.car.nbSeats %>
       </p>
 
       <p>
-        <b><%= t :km, :scope  => [:helpers, :label, :car] %>:</b>
+        <b><%= t :km, :scope => [:helpers, :label, :car] %>:</b>
         <%= @rent.travel.car.km %>
       </p>
 
       <p>
-        <b><%= t :fuel, :scope  => [:helpers, :label, :car] %>:</b>
+        <b><%= t :fuel, :scope => [:helpers, :label, :car] %>:</b>
         <%= @rent.travel.car.fuel %>
       </p>
 
@@ -141,32 +140,32 @@
 
     <div class="span4">
       <p>
-        <b><%= t :isSmoker, :scope  => [:helpers, :label, :car] %></b>
+        <b><%= t :isSmoker, :scope => [:helpers, :label, :car] %></b>
         <%= @rent.travel.car.isSmoker %>
       </p>
 
       <p>
-        <b><%= t :acceptedPets, :scope  => [:helpers, :label, :car] %></b>
+        <b><%= t :acceptedPets, :scope => [:helpers, :label, :car] %></b>
         <%= @rent.travel.car.acceptedPets %>
       </p>
 
       <p>
-        <b><%= t :hasGps, :scope  => [:helpers, :label, :car] %></b>
+        <b><%= t :hasGps, :scope => [:helpers, :label, :car] %></b>
         <%= @rent.travel.car.hasGps %>
       </p>
 
       <p>
-        <b><%= t :hasAirConditioning, :scope  => [:helpers, :label, :car] %></b>
+        <b><%= t :hasAirConditioning, :scope => [:helpers, :label, :car] %></b>
         <%= @rent.travel.car.hasAirConditioning %>
       </p>
 
       <p>
-        <b><%= t :hasCarRadio, :scope  => [:helpers, :label, :car] %></b>
+        <b><%= t :hasCarRadio, :scope => [:helpers, :label, :car] %></b>
         <%= @rent.travel.car.hasCarRadio %>
       </p>
 
       <p>
-        <b><%= t :hasChildSeat, :scope  => [:helpers, :label, :car] %>:</b>
+        <b><%= t :hasChildSeat, :scope => [:helpers, :label, :car] %>:</b>
         <%= @rent.travel.car.hasChildSeat %>
       </p>
 
