@@ -18,6 +18,7 @@ ActiveAdmin.register_page "Dashboard" do
             column(:arrival_date)
             column(:arrival_time)
             column(:status) {|travel| status_tag(travel.status.to_s) }
+            column(:created_at, :sortable => :created_at)
           end
         end
 
@@ -30,6 +31,7 @@ ActiveAdmin.register_page "Dashboard" do
             column(:arrival_date)
             column(:arrival_time)
             column(:status) {|travel| status_tag(travel.status.to_s) }
+            column(:created_at, :sortable => :created_at)
           end
         end
 
@@ -42,6 +44,7 @@ ActiveAdmin.register_page "Dashboard" do
             column(:arrival_date)
             column(:arrival_time)
             column(:status) {|travel| status_tag(travel.status.to_s) }
+            column(:created_at, :sortable => :created_at)
           end
         end
       end
@@ -52,6 +55,7 @@ ActiveAdmin.register_page "Dashboard" do
             column(:email)    {|user| link_to(user.email, admin_user_path(user)) }
             column(:first_name)
             column(:last_name)
+            column(:created_at, :sortable => :created_at)
           end
         end
       end

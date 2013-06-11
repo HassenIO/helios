@@ -17,12 +17,13 @@ ActiveAdmin.register Travel do
     column(:id) { |travel| link_to(travel.id, admin_travel_path(travel)) }
     column(:airPort)
     column(:departure_date, :sortable => :departure)
-    column(:departure_time)
-    column(:arrival_date)
-    column(:arrival_time)
+    column(:departure_time, :sortable => :departure)
+    column(:arrival_date, :sortable => :arrival)
+    column(:arrival_time, :sortable => :arrival)
     column(:status) { |travel| status_tag(travel.status.to_s) }
     column(:car_id) { |travel| travel.car.try { |car| "#{car.brand} #{car.model} #{car.year}" } }
     column(:car_category) { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} - #{category.price}euros /day" } }
+    column(:created_at, :sortable => :created_at)
   end
 
 
