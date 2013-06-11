@@ -36,7 +36,7 @@
 
                         <%= filepicker_image_tag item, height: 525, fit: 'max' %>
                         <div class="carousel-caption">
-                          <h4><%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %></h4>
+                          <h4><%= [@travel.car.year, @travel.car.brand, @travel.car.model].join(' - ') %></h4>
                         </div>
                       </div>
                   <% end %>
@@ -60,7 +60,7 @@
       <h3><%= t(:rent_this_car) %></h3>
 
       <p>
-        <%= @travel.car.year.to_s + ' - ' + @travel.car.brand + " " + @travel.car.model %>
+        <%= [@travel.car.year, @travel.car.brand, @travel.car.model].join(' - ') %>
       </p>
 
 
@@ -70,12 +70,13 @@
           </p>
 
           <% if @travel.car.category %>
-              <% nbjours = ((@rent.endDate - @rent.startDate)/1.day).round %>
+
               <p>
                 <%= distance_of_time_in_words(@rent.endDate, @rent.startDate) %>,
                 <%= number_to_currency(@travel.car.category.price) %> <%= t(:byDay) %>
                 <br/>
-                <%= t(:total) %>: <%= number_to_currency(@travel.car.category.price*nbjours) %>
+                <%= t(:total) %>
+                : <%= compute_price_for_rent(@rent.startDate, @rent.endDate, @travel.car.category.price) %>
               </p>
 
               <p>
