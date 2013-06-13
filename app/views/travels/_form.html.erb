@@ -88,31 +88,41 @@
               <div class="control-group">
                 <%= car_fields.label :year, :class => "control-label" %>
                 <div class="controls">
-                  <%= car_fields.select(:year, options_for_select(Time.now.year - 30..Time.now.year, :selected => car_fields.object.year)) %>
+                  <%= car_fields.select(:year, options_for_select(Time.now.year - 30..Time.now.year, :selected => car_fields.object.year || Time.now.year - 3)) %>
                 </div>
               </div>
 
               <div class="control-group">
                 <%= car_fields.label :nbSeats, :class => "control-label" %>
                 <div class="controls">
-                  <%= car_fields.select(:nbSeats, options_for_select(2..9, :selected => car_fields.object.nbSeats)) %>
+                  <%= car_fields.select(:nbSeats, options_for_select(2..9, :selected => car_fields.object.nbSeats || 5)) %>
                 </div>
               </div>
 
               <div class="control-group">
                 <%= car_fields.label :km, :class => "control-label" %>
                 <div class="controls">
-                  <%= car_fields.select(:km, options_for_select([['0-50000 km', 0], ['50000-100000 km', 50000], ['100000-150000 km', 100000], ['150000 km et plus', 150000]], car_fields.object.km)) %>
+                  <%= car_fields.select(:km, options_for_select([['0-50000 km', 0], ['50000-100000 km', 50000], ['100000-150000 km', 100000], ['150000 km et plus', 150000]], car_fields.object.km || 50000)) %>
                 </div>
               </div>
 
               <div class="control-group">
                 <%= car_fields.label :fuel, :class => "control-label" %>
                 <div class="controls">
-                  <%= car_fields.radio_button(:fuel, 'Essence') %>
-                  <%= label_tag(:fuel_essence, "Essence") %>
-                  <%= car_fields.radio_button(:fuel, 'Diesel') %>
-                  <%= label_tag(:fuel_diesel, "Diesel") %>
+                  <%= car_fields.radio_button(:fuel, :essence) %>
+                  <%= label_tag(:essence,t('helpers.label.car.essence')) %>
+                  <%= car_fields.radio_button(:fuel, :diesel) %>
+                  <%= label_tag(:diesel, t('helpers.label.car.diesel')) %>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <%= car_fields.label :transmission, :class => "control-label" %>
+                <div class="controls">
+                  <%= car_fields.radio_button(:transmission, :automatic) %>
+                  <%= label_tag(:automatic, t('helpers.label.car.automatic'))  %>
+                  <%= car_fields.radio_button(:transmission, :manual) %>
+                  <%= label_tag(:manual, t('helpers.label.car.manual')) %>
                 </div>
               </div>
 

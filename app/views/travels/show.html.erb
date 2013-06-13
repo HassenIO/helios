@@ -120,7 +120,12 @@
 
       <p>
         <b><%= t(:fuel, :scope => [:helpers, :label, :car]) %>:</b>
-        <%= @travel.car.fuel %>
+        <%= t(@travel.car.fuel, :scope => [:helpers, :label, :car])  %>
+      </p>
+
+      <p>
+        <b><%= t(:transmission, :scope => [:helpers, :label, :car]) %>:</b>
+        <%= t(@travel.car.transmission || :manual , :scope => [:helpers, :label, :car])  %>
       </p>
 
     </div>
