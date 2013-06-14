@@ -8,6 +8,8 @@ class Car < ActiveRecord::Base
   validates :model,  :presence => true
   validates :year,  :presence => true
   validates :nbSeats,  :presence => true
+  validates :transmission,  :presence => true
+  validates :fuel,  :presence => true
 
   belongs_to :travels
 

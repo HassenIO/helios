@@ -26,22 +26,47 @@ ActiveAdmin.register Travel do
     column(:created_at, :sortable => :created_at)
   end
 
+  action_item do
+    link_to "Voir sur le site publique", user_travel_url(travel.user, travel), :target => "blank"
+  end
+
 
   form do |f|
 
     f.inputs :arrival, :departure, :airPort, :has_accepted_cgv, :user
 
 
-    #f.inputs :status,  :as => :select,      :collection =>
     f.inputs do
       f.input :status, :as => :select, :collection => Travel::STATUS.keys
     end
 
 
     f.inputs "Car", for: [:car, f.object.car || Car.new] do |car_f|
-      car_f.inputs :brand, :model, :fuel, :nbSeats, :km, :year, :license, :desc, :hasChildSeat, :hasGps,
-                   :hasCarRadio, :isSmoker, :acceptedPets, :hasAirConditioning,
-                   :filepicker1_url, :filepicker2_url, :filepicker3_url, :category
+
+      car_f.inputs do
+        car_f.input :brand
+        car_f.input :model
+        car_f.input :year
+        car_f.input :license
+
+        car_f.input :transmission, :as => :select, :collection => [:automatic, :manual]
+        car_f.input :fuel, :as => :select, :collection => [:essence, :diesel]
+        car_f.input :km, :as => :select, :collection => [['0-50000 km', 0], ['50000-100000 km', 50000], ['100000-150000 km', 100000], ['150000 km et plus', 150000]]
+        car_f.input :nbSeats, :as => :select, :collection => 2..9
+
+        car_f.input :desc
+        car_f.input :hasChildSeat
+        car_f.input :hasGps
+        car_f.input :hasCarRadio
+        car_f.input :isSmoker
+        car_f.input :acceptedPets
+        car_f.input :hasAirConditioning
+        car_f.input :filepicker1_url
+        car_f.input :filepicker2_url
+        car_f.input :filepicker3_url
+        car_f.input :category
+      end
+
     end
 
     f.buttons
@@ -53,15 +78,16 @@ ActiveAdmin.register Travel do
     def update
       @travel = Travel.find(params[:id])
 
-      #TODO : invalid status:active or rent if no category
-
-
       @travel.attributes = params[:travel]
-      if @travel.save(:validate => false)
+      if @travel.status == :active && @travel.car.category.nil?
+        #TODO : invalid status:active or rent if no category
+        render action: "edit", :notice => "If 'active' you should select a category"
+      elsif @travel.save(:validate => false)
         redirect_to :action => :show, :notice => "Travel was successfully updated."
       else
         render action: "edit"
       end
+
     end
   end
 
