@@ -32,7 +32,7 @@ class Rent < ActiveRecord::Base
   include ActiveModel::Validations
 
   attr_accessible :endDate, :endDate_time, :endDate_date, :startDate, :startDate_time, :startDate_date, :travel_id,
-                  :driver_attributes, :user_id, :airPort_id, :has_accepted_cgv
+                  :driver_attributes, :user_id, :airPort_id, :has_accepted_cgv, :comments
 
   # add the accessors for the two fields
   attr_accessor :startDate_time, :startDate_date, :endDate_time, :endDate_date

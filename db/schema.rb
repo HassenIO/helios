@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614075427) do
+ActiveRecord::Schema.define(:version => 20130614100028) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20130614075427) do
     t.datetime "updated_at",       :null => false
     t.integer  "airPort_id"
     t.boolean  "has_accepted_cgv"
+    t.text     "comments"
   end
 
   create_table "roles", :force => true do |t|

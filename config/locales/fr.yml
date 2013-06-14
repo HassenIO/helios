@@ -431,6 +431,7 @@ fr:
         startDate: "Début"
         endDate: "Fin"
         airPort: "Aéroport"
+        comments: "Commentaires"
       user:
         first_name: "Prénom"
         last_name: "Nom de famille"
