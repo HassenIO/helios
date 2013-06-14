@@ -12,4 +12,10 @@ ActiveAdmin.register Rent do
     column(:created_at, :sortable => :created_at)
   end
 
+
+  action_item do
+    link_to "Voir sur le site publique", user_rent_url(rent.user, rent), :target => "blank"
+  end
+
+
 end

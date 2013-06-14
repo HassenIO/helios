@@ -11,7 +11,7 @@
         <div class="span4">
           <%= distance_of_time_in_words(@rent.endDate, @rent.startDate) %>
           <%= number_to_currency(@rent.travel.car.category.price) %> <%= t(:byDay) %>
-          <%= t(:total) %> <%= compute_price_for_rent(@rent.startDate, @rent.endDate, @rent.travel.car.category.price) %>
+          <%= t(:total) %>: <%= compute_price_for_rent(@rent.startDate, @rent.endDate, @rent.travel.car.category.price) %>
         </div>
 
       </div>
@@ -76,6 +76,13 @@
             <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
           </span>
 
+              </div>
+            </div>
+
+            <div class="control-group">
+              <%= driver_fields.label :license_year, :class => "control-label" %>
+              <div class="controls">
+                <%= driver_fields.select(:license_year, options_for_select(Time.now.year - 40..Time.now.year, :selected => driver_fields.object.license_year || Time.now.year - 3)) %>
               </div>
             </div>
           </div>

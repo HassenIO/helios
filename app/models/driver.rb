@@ -1,5 +1,5 @@
 class Driver < ActiveRecord::Base
-  attr_accessible :address, :birth_date, :city, :country, :first_name, :last_name, :phone, :zip_code, :license
+  attr_accessible :address, :birth_date, :city, :country, :first_name, :last_name, :phone, :zip_code, :license, :license_year
 
   validates :address, :presence => true
   validates :birth_date, :presence => true
@@ -9,6 +9,7 @@ class Driver < ActiveRecord::Base
   validates :last_name, :presence => true
   validates :zip_code, :presence => true
   validates :license, :presence => true
+  validates :license_year, :presence => true
 
   belongs_to :rent
 end

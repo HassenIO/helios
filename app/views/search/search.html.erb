@@ -36,7 +36,7 @@
 
               <p> <%= travel.car.category.try { |category| category.name } %>,  <%= t("helpers.label.car.nbSeats") %>: <%= travel.car.nbSeats %></p>
 
-              <p> <%= [travel.car.km , t(travel.car.fuel, :scope => [:helpers, :label, :car]), t(travel.car.transmission || :manual, :scope => [:helpers, :label, :car])].join(', ') %></p>
+              <p> <%= [travel.car.km, t(travel.car.fuel, :scope => [:helpers, :label, :car]), t(travel.car.transmission, :scope => [:helpers, :label, :car])].join(', ') %></p>
           <% end %>
 
         </div>

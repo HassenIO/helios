@@ -419,6 +419,7 @@ fr:
         category: "Catégorie"
       driver:
         license: "Permis de conduire"
+        license_year: "Année du permis de conduire"
         first_name: "Prénom"
         last_name: "Nom de famille"
         phone: "Telephone"

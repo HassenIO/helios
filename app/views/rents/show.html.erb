@@ -54,10 +54,12 @@
 
 
       <p>
-        <%= t :license, :scope => [:helpers, :label, :driver] %>
-        <%- @rent.driver.license %> </br>
-        <%= t :birth_date, :scope => [:helpers, :label, :driver] %>
-        <%- @rent.driver.birth_date %> </br>
+        <%= t :license, :scope => [:helpers, :label, :driver] %>:
+        <%= @rent.driver.license %> </br>
+        <%= t :license_year, :scope => [:helpers, :label, :driver] %>:
+        <%= @rent.driver.license_year %> </br>
+        <%= t :birth_date, :scope => [:helpers, :label, :driver] %>:
+        <%= @rent.driver.birth_date %> </br>
       </p>
 
 
