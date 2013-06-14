@@ -1,0 +1,40 @@
+<% unless car.nil? %>
+    <% images_url = [car.filepicker1_url, car.filepicker2_url, car.filepicker3_url].select { |url| !url.nil? && !url.empty? } %>
+    <div class="well" style="text-align: center">
+      <% if !images_url.empty? %>
+          <div id="myCarousel" class="carousel slide">
+            <ol class="carousel-indicators">
+
+              <% images_url.each_with_index do |item, index| %>
+                  <li data-target="#myCarousel" data-slide-to="<%= index.to_s %>"
+                      class="<%= if index == 0 then
+                                   "active"
+                                 end %>">
+
+                  </li>
+              <% end %>
+
+            </ol>
+            <div class="carousel-inner">
+              <% images_url.each_with_index do |item, index| %>
+                  <div class="item <%= if index == 0 then
+                                         "active"
+                                       end %>">
+
+                    <%= filepicker_image_tag item, height: 525, fit: 'max' %>
+                    <div class="carousel-caption">
+                      <h4><%= [car.year, car.brand, car.model].join(' - ') %></h4>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+          </div>
+      <% else %>
+          <i class="icon-camera-retro" style="line-height: 300px; font-size: 120px; color: graytext"></i>
+      <% end %>
+    </div>
+
+<% end %>

@@ -10,49 +10,7 @@
 <div class="row-fluid">
 
   <div class="span8">
-    <% if @rent.travel.car %>
-        <% images_url = [@rent.travel.car.filepicker1_url, @rent.travel.car.filepicker2_url, @rent.travel.car.filepicker3_url].select { |url| !url.nil? && !url.empty? } %>
-        <div class="well" style="text-align: center">
-          <% if !images_url.empty? %>
-              <div id="myCarousel" class="carousel slide">
-                <ol class="carousel-indicators">
-
-                  <% images_url.each_with_index do |item, index| %>
-                      <li data-target="#myCarousel" data-slide-to="<%= index.to_s %>"
-                          class="<%= if index == 0 then
-                                       "active"
-                                     end %>">
-
-                      </li>
-                  <% end %>
-
-                </ol>
-                <div class="carousel-inner">
-                  <% images_url.each_with_index do |item, index| %>
-                      <div class="item <%= if index == 0 then
-                                             "active"
-                                           end %>">
-
-                        <%= filepicker_image_tag item, height: 525, fit: 'max' %>
-                        <div class="carousel-caption">
-                          <h4><%= @rent.travel.car.year.to_s + ' - ' + @rent.travel.car.brand + " " + @rent.travel.car.model %></h4>
-
-                          <p><%= @rent.travel.car.desc %></p>
-                        </div>
-                      </div>
-                  <% end %>
-                </div>
-
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-              </div>
-          <% else %>
-              <i class="icon-camera-retro" style="line-height: 300px; font-size: 120px; color: graytext"></i>
-          <% end %>
-        </div>
-
-    <% end %>
-
+    <%= render "cars/carroussel", :car => @rent.travel.car %>
   </div>
 
   <div class="span4">
@@ -61,7 +19,7 @@
       <h3><%= t ".rent_informations" %></h3>
 
       <p>
-        <%= [@rent.travel.car.year,@rent.travel.car.brand, @rent.travel.car.model].join(', ') %>
+        <%= [@rent.travel.car.year, @rent.travel.car.brand, @rent.travel.car.model].join(', ') %>
       </p>
 
       <p>
@@ -74,7 +32,7 @@
       </p>
 
       <p>
-        <%= t(:total) %> <%= compute_price_for_rent(@rent.endDate, @rent.startDate, @rent.travel.car.category.price) %>
+        <%= t(:total) %> <%= compute_price_for_rent(@rent.startDate, @rent.endDate, @rent.travel.car.category.price) %>
       </p>
 
 
@@ -110,76 +68,10 @@
 
 </div>
 
-<h3><%= t ".details" %></h3>
 
-<div class="well">
-  <div class="row-fluid">
-    <div class="span4">
 
-      <p>
-        <b><%= t :airPort, :scope => [:helpers, :label, :travel] %>:</b>
-        <%= @rent.travel.airPort.name %>
-      </p>
 
-      <p>
-        <b><%= t :nbSeats, :scope => [:helpers, :label, :car] %>:</b>
-        <%= @rent.travel.car.nbSeats %>
-      </p>
+<%= render "cars/details", :car => @rent.travel.car %>
 
-      <p>
-        <b><%= t :km, :scope => [:helpers, :label, :car] %>:</b>
-        <%= @rent.travel.car.km %>
-      </p>
-
-      <p>
-        <b><%= t :fuel, :scope => [:helpers, :label, :car] %>:</b>
-        <%= @rent.travel.car.fuel %>
-      </p>
-
-    </div>
-
-    <div class="span4">
-      <p>
-        <b><%= t :isSmoker, :scope => [:helpers, :label, :car] %></b>
-        <%= @rent.travel.car.isSmoker %>
-      </p>
-
-      <p>
-        <b><%= t :acceptedPets, :scope => [:helpers, :label, :car] %></b>
-        <%= @rent.travel.car.acceptedPets %>
-      </p>
-
-      <p>
-        <b><%= t :hasGps, :scope => [:helpers, :label, :car] %></b>
-        <%= @rent.travel.car.hasGps %>
-      </p>
-
-      <p>
-        <b><%= t :hasAirConditioning, :scope => [:helpers, :label, :car] %></b>
-        <%= @rent.travel.car.hasAirConditioning %>
-      </p>
-
-      <p>
-        <b><%= t :hasCarRadio, :scope => [:helpers, :label, :car] %></b>
-        <%= @rent.travel.car.hasCarRadio %>
-      </p>
-
-      <p>
-        <b><%= t :hasChildSeat, :scope => [:helpers, :label, :car] %>:</b>
-        <%= @rent.travel.car.hasChildSeat %>
-      </p>
-
-    </div>
-
-    <div class="span4">
-      <p>
-        <%= @rent.travel.car.desc %>
-      </p>
-
-    </div>
-
-  </div>
-
-</div>
 
 

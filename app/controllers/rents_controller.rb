@@ -56,11 +56,12 @@ class RentsController < ApplicationController
     @rent = Rent.new(params[:rent])
 
     @rent.user = current_user
-    @travel = @rent.travel
-    @travel.status = :rent
 
     respond_to do |format|
-      if @travel.save(:validate => false) && @rent.save
+      if @rent.save
+        @travel = @rent.travel
+        @travel.status = :rent
+        @travel.save(:validate => false)
         format.html { redirect_to cgv_user_rent_path(@user, @rent), notice: t("success.created", :model => @rent.class.model_name.human) }
         format.json { render json: @rent, status: :created, location: @rent }
       else
