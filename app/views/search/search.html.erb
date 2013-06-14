@@ -8,9 +8,9 @@
 <div class="row-fluid">
   <div class="span12">
     <% if @travels.empty? %>
-        <h3><%= t(".no_results")%></h3>
+        <h3><%= t(".no_results") %></h3>
     <% else %>
-        <h3><%= t(".results",:nbCars => @travels.size, :airPort => @rent.airPort.name, :startDate => @rent.startDate, :endDate => @rent.endDate) %></h3>
+        <h3><%= t(".results", :nbCars => @travels.size, :airPort => @rent.airPort.name, :startDate => @rent.startDate, :endDate => @rent.endDate) %></h3>
     <% end %>
   </div>
 </div>
@@ -29,27 +29,27 @@
           <% end %>
         </div>
 
-        <div class="span6">
+        <div class="span5">
 
           <% if travel.car %>
-              <p> <%= travel.car.try { |car| car.year.to_s + ' -  '+ car.brand+ ' ' + car.model } %> </p>
+              <p> <%= travel.car.try { |car| [car.year,car.brand,car.model].join(' - ') } %> </p>
 
-              <p> <%= travel.car.category ? travel.car.category.name + ' , ' : '' %> <%= travel.car.nbSeats %> <%= t("helpers.label.car.nbSeats") %></p>
+              <p> <%= travel.car.category.try { |category| category.name } %>,  <%= t("helpers.label.car.nbSeats") %>: <%= travel.car.nbSeats %></p>
 
-              <p> <%= travel.car.desc %></p>
+              <p> <%= [travel.car.km , t(travel.car.fuel, :scope => [:helpers, :label, :car]), t(travel.car.transmission || :manual, :scope => [:helpers, :label, :car])].join(', ') %></p>
           <% end %>
 
         </div>
 
-        <div class="span3">
+        <div class="span4">
           <% if travel.car.category %>
 
-              <%= t(:interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate)) %>
-              <% nbjours = ((@rent.endDate - @rent.startDate)/1.day).round %>
+              <p><%= t(:interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate)) %></p>
 
-                <%= distance_of_time_in_words(@rent.endDate, @rent.startDate) %>
-                <%= number_to_currency(travel.car.category.price) %> <%= t(:byDay) %>
-                <%= t(:total) %> <%= number_to_currency(travel.car.category.price*nbjours) %>
+              <p><%= distance_of_time_in_words(@rent.endDate, @rent.startDate) %>,
+              <%= number_to_currency(travel.car.category.price) %> <%= t(:byDay) %> </p>
+
+              <p><%= t(:total) %>: <%= compute_price_for_rent(@rent.startDate, @rent.endDate, travel.car.category.price) %></p>
 
               <%= link_to t('.rent'), user_travel_url(travel.user, travel, :rent => params[:rent]), :class => "btn btn-primary" %>
           <% end %>
