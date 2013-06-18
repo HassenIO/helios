@@ -78,6 +78,7 @@ class RentsController < ApplicationController
 
     respond_to do |format|
       if @rent.update_attributes(params[:rent])
+        AdminMailer.rent_notification(@rent).deliver
         format.html { redirect_to [@user, @rent], notice: t("success.updated", :model => @rent.class.model_name.human) }
         format.json { head :no_content }
       else

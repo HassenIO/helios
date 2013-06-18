@@ -81,6 +81,7 @@ class TravelsController < ApplicationController
 
     respond_to do |format|
       if @travel.update_attributes(params[:travel])
+        AdminMailer.travel_notification(@travel).deliver
         format.html { redirect_to [@user, @travel], notice: 'Travel was successfully updated.' }
         format.json { head :no_content }
       else
