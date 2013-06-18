@@ -88,7 +88,7 @@
               <div class="control-group">
                 <%= car_fields.label :year, :class => "control-label" %>
                 <div class="controls">
-                  <%= car_fields.select(:year, options_for_select(Time.now.year - 30..Time.now.year, :selected => car_fields.object.year || Time.now.year - 3)) %>
+                  <%= car_fields.select(:year, options_for_select(Time.now.year - 30..Time.now.year, :selected => car_fields.object.year || 2010)) %>
                 </div>
               </div>
 
@@ -110,9 +110,9 @@
                 <%= car_fields.label :fuel, :class => "control-label" %>
                 <div class="controls">
                   <%= car_fields.radio_button(:fuel, :essence) %>
-                  <%= label_tag(:essence,t('helpers.label.car.essence')) %>
+                  <%= label_tag(:fuel_essence,t('helpers.label.car.fuel_essence')) %>
                   <%= car_fields.radio_button(:fuel, :diesel) %>
-                  <%= label_tag(:diesel, t('helpers.label.car.diesel')) %>
+                  <%= label_tag(:fuel_diesel, t('helpers.label.car.fuel_diesel')) %>
                 </div>
               </div>
 
