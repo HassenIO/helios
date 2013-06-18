@@ -32,9 +32,10 @@
         <div class="span5">
 
           <% if travel.car %>
-              <p> <%= travel.car.try { |car| [car.year,car.brand,car.model].join(' - ') } %> </p>
+              <p> <%= travel.car.try { |car| [car.year, car.brand, car.model].join(' - ') } %> </p>
 
-              <p> <%= travel.car.category.try { |category| category.name } %>,  <%= t("helpers.label.car.nbSeats") %>: <%= travel.car.nbSeats %></p>
+              <p> <%= travel.car.category.try { |category| category.name } %>,  <%= t("helpers.label.car.nbSeats") %>
+                : <%= travel.car.nbSeats %></p>
 
               <p> <%= [travel.car.km, t(travel.car.fuel, :scope => [:helpers, :label, :car]), t(travel.car.transmission, :scope => [:helpers, :label, :car])].join(', ') %></p>
           <% end %>
@@ -47,9 +48,10 @@
               <p><%= t(:interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate)) %></p>
 
               <p><%= distance_of_time_in_words(@rent.endDate, @rent.startDate) %>,
-              <%= number_to_currency(travel.car.category.price) %> <%= t(:byDay) %> </p>
+                <%= number_to_currency(travel.car.category.price) %> <%= t(:byDay) %> </p>
 
-              <p><%= t(:total) %>: <%= compute_price_for_rent(@rent.startDate, @rent.endDate, travel.car.category.price) %></p>
+              <p><%= t(:total) %>
+                : <%= compute_price_for_rent(@rent.startDate, @rent.endDate, travel.car.category.price) %></p>
 
               <%= link_to t('.rent'), user_travel_url(travel.user, travel, :rent => params[:rent]), :class => "btn btn-primary" %>
           <% end %>
@@ -60,6 +62,13 @@
 
 
 <% end %>
+
+
+<div class="row-fluid">
+  <div class="span12">
+    <%= link_to t('.contact_us'), root_path(:anchor => 'contact') %>
+  </div>
+</div>
 
 
 

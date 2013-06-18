@@ -332,6 +332,7 @@ fr:
       results: "%{nbCars} voitures trouvées au depart de %{airPort} du %{startDate}
                           au %{endDate}"
       rent: "Louer"
+      contact_us: "Vous ne trouvez pas ce qu'il vous faut ? Vous avez une demande spéciale ? Ecrivez nous directement pour recevoir un devis gratuit"
 
   devise:
     registrations:
