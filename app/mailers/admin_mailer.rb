@@ -1,7 +1,6 @@
 class AdminMailer < ActionMailer::Base
 
-  #default :from => "notifications@travelercar.com", :to => "admin@travelercar.com"
-  default :from => "notifications@travelercar.com", :to => "jin@novacodex.net"
+  default :from => "notifications@travelercar.com", :to => "admin@travelercar.com"
 
   def rent_notification(rent)
     @user = rent.user
