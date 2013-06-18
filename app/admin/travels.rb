@@ -26,7 +26,7 @@ ActiveAdmin.register Travel do
     column(:created_at, :sortable => :created_at)
   end
 
-  action_item do
+  action_item  :except => :index do
     link_to "Voir sur le site publique", user_travel_url(travel.user, travel), :target => "blank"
   end
 

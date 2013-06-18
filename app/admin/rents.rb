@@ -13,7 +13,7 @@ ActiveAdmin.register Rent do
   end
 
 
-  action_item do
+  action_item  :except => :index do
     link_to "Voir sur le site publique", user_rent_url(rent.user, rent), :target => "blank"
   end
 
