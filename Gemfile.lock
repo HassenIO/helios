@@ -102,6 +102,9 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    leetchi-wallet-services (1.1.1)
+      json (~> 1.8.0)
+      multipart-post (~> 1.2.0)
     less (2.3.2)
       commonjs (~> 0.2.6)
     less-rails (2.3.3)
@@ -216,6 +219,7 @@ DEPENDENCIES
   figaro (>= 0.6.3)
   filepicker-rails
   jquery-rails (= 2.3.0)
+  leetchi-wallet-services
   less-rails (~> 2.3.3)
   less-rails-bootstrap (~> 2.3.2)
   less-rails-fontawesome (~> 0.4.3)

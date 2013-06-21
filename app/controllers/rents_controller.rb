@@ -105,6 +105,10 @@ class RentsController < ApplicationController
 
   end
 
+  def payment
+
+  end
+
   def load_current_user
     @user = current_user
   end
