@@ -376,6 +376,8 @@ fr:
       travel:
         create: "Soumettre ces informations et obtenir un parking gratuit"
         update: "Modifier mon parking"
+      payment:
+        create: "Payer"
       rent:
         create: "Louer le véhicule"
         update: "Modifier ma location"
@@ -446,6 +448,7 @@ fr:
         zip_code: "Code postal"
         email: "E-mail"
         remember_me: "Se rappeler de moi"
+
 
 
 

@@ -32,7 +32,7 @@ class PaymentsController < ApplicationController
 
     nbDays = (@rent.endDate-@rent.startDate)/1.day.ceil
 
-    @payment.amount = @rent.travel.car.category.price*100*nbDays
+    @payment.amount = @rent.travel.car.category.price/100*nbDays
 
     respond_to do |format|
       format.html # new.html.erb
@@ -52,13 +52,15 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(params[:payment])
     @payment.rent = @rent
 
+    nbDays = (@rent.endDate-@rent.startDate)/1.day.ceil
+
     respond_to do |format|
       if @payment.save
         #Fix how to store / config userId Leetchi
         #Fix url return
         contribution = Leetchi::Contribution.create({"UserID" => 334140,
                                                      "WalletID" => 0,
-                                                     "Amount" => @payment.amount,
+                                                     "Amount" => @rent.travel.car.category.price*nbDays,
                                                      "ClientFeeAmount" => 0,
                                                      "RegisterMeanOfPayment" => false,
                                                      "ReturnURL" => user_rent_payment_url(current_user, @rent),

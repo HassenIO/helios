@@ -79,7 +79,7 @@ class RentsController < ApplicationController
     respond_to do |format|
       if @rent.update_attributes(params[:rent])
         AdminMailer.rent_notification(@rent).deliver
-        format.html { redirect_to [@user, @rent], notice: t("success.updated", :model => @rent.class.model_name.human) }
+        format.html { redirect_to new_user_rent_payment_url(@user, @rent) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
