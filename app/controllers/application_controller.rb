@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   helper PricingHelper
 
+  http_basic_authenticate_with :name => "tctc", :password => "tctc"
+
   protect_from_forgery
 
   before_filter :set_locale
