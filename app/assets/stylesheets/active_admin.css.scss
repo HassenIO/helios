@@ -44,10 +44,13 @@
 
 body.active_admin {
   .status_tag {
-    &.pending {
+    &.pending, &.failed {
       background: red;
     }
-    &.active {
+    &.unpaid {
+      background: orange;
+    }
+    &.active, &.paid {
       background: green;
     }
     &.rent {
@@ -55,3 +58,4 @@ body.active_admin {
     }
   }
 }
+

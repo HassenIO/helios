@@ -25,6 +25,10 @@ class Payment < ActiveRecord::Base
     end
   end
 
+  def amount_in_euros
+    self.amount/100
+  end
+
   private
   def default_values
     self.status ||= :unpaid

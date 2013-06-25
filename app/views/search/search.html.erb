@@ -47,11 +47,11 @@
 
               <p><%= t(:interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate)) %></p>
 
-              <p><%= distance_of_time_in_words(@rent.endDate, @rent.startDate) %>,
-                <%= number_to_currency(travel.car.category.price) %> <%= t(:byDay) %> </p>
+              <p><%= t(:x_days, :count => number_of_days(@rent)) %>
+              <%= t(:byDay, :price => number_to_currency(travel.car.category.price_in_euros)) %></p>
 
-              <p><%= t(:total) %>
-                : <%= compute_price_for_rent(@rent.startDate, @rent.endDate, travel.car.category.price) %></p>
+              <p><%= t(:total, :total => number_to_currency(price_for_rent(@rent, :price => travel.car.category.price ))) %></p>
+
 
               <%= link_to t('.rent'), user_travel_url(travel.user, travel, :rent => params[:rent]), :class => "btn btn-primary" %>
           <% end %>

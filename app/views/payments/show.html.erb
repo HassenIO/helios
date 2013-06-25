@@ -1,21 +1,18 @@
-<p id="notice"><%= notice %></p>
+<h1><%= t(".title") %></h1>
 
-<p>
-  <b>Amount:</b>
-  <%= @payment.amount %>
-</p>
+<div class="row-fluid">
 
-<p>
-  <b>Status:</b>
-  <%= @payment.status %>
-</p>
+  <div class="span8">
+    <p>
+    <%= t(".summary", :brand => @rent.travel.car.brand, :model => @rent.travel.car.model, :year => @rent.travel.car.year, :from => @rent.startDate, :to => @rent.endDate, :airPort => @rent.airPort.name ) %>
+    </p>
 
-<p>
-  <b>Contribution_details:</b>
-  <%= @payment.contribution_details %>
-</p>
+    <p>
+      <%= t(".payment_info", :amount => number_to_currency(@payment.amount_in_euros)) %>
+    </p>
 
-
-
-
-
+    <p>
+      <%= t(".thank_you") %>
+    </p>
+  </div>
+</div>

@@ -1,6 +1,3 @@
-<h3><%= t(".details") %></h3>
-
-
 
 <div class="well">
   <div class="row-fluid">
@@ -12,7 +9,7 @@
       </p>
 
       <p>
-        <b><%= t(:km, :scope => [:helpers, :label, :car]) %>: :</b>
+        <b><%= t(:km, :scope => [:helpers, :label, :car]) %>:</b>
         <%= car.km %>
       </p>
 
@@ -30,32 +27,32 @@
 
     <div class="span4">
       <p>
-        <b><%= t(:isSmoker, :scope => [:helpers, :label, :car]) %></b>
+        <b><%= t(".isSmoker") %></b>
         <%= t(car.isSmoker.to_s) %>
       </p>
 
       <p>
-        <b><%= t(:acceptedPets, :scope => [:helpers, :label, :car]) %></b>
+        <b><%= t(".acceptedPets") %></b>
         <%= t(car.acceptedPets.to_s) %>
       </p>
 
       <p>
-        <b><%= t(:hasGps, :scope => [:helpers, :label, :car]) %></b>
+        <b><%= t(".hasGps") %></b>
         <%= t(car.hasGps.to_s) %>
       </p>
 
       <p>
-        <b><%= t(:hasAirConditioning, :scope => [:helpers, :label, :car]) %></b>
+        <b><%= t(".hasAirConditioning") %></b>
         <%= t(car.hasAirConditioning.to_s) %>
       </p>
 
       <p>
-        <b><%= t(:hasCarRadio, :scope => [:helpers, :label, :car]) %></b>
+        <b><%= t(".hasCarRadio") %></b>
         <%= t(car.hasCarRadio.to_s) %>
       </p>
 
       <p>
-        <b><%= t(:hasChildSeat, :scope => [:helpers, :label, :car]) %></b>
+        <b><%= t(".hasChildSeat") %></b>
         <%= t(car.hasChildSeat.to_s) %>
       </p>
 

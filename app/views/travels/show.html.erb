@@ -36,12 +36,9 @@
 
           <% if @travel.car.category %>
 
-              <p>
-                <%= distance_of_time_in_words(@rent.endDate, @rent.startDate) %>,
-                <%= number_to_currency(@travel.car.category.price) %> <%= t(:byDay) %>
-                <br/>
-                <%= t(:total) %>
-                : <%= compute_price_for_rent(@rent.startDate, @rent.endDate, @travel.car.category.price) %>
+              <p><%= [t(:x_days, :count => number_of_days(@rent)), t(:byDay, :price => number_to_currency(@travel.car.category.price_in_euros))].join(", ") %>
+
+              <br/><%= t(:total, :total => number_to_currency(price_for_rent(@rent, :price => @travel.car.category.price ))) %>
               </p>
 
               <p>
@@ -61,6 +58,9 @@
 
 
 </div>
+
+
+<h3><%= t(".details") %></h3>
 
 <%= render 'cars/details', :car => @travel.car %>
 

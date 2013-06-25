@@ -1,4 +1,5 @@
 class PaymentsController < ApplicationController
+  include PricingHelper
 
   before_filter :load_rent
 
@@ -17,6 +18,7 @@ class PaymentsController < ApplicationController
   # GET /payments/1.json
   def show
     @payment = @rent.payment
+
     @payment.check_payment
 
     respond_to do |format|
@@ -30,9 +32,7 @@ class PaymentsController < ApplicationController
   def new
     @payment = Payment.new
 
-    nbDays = (@rent.endDate-@rent.startDate)/1.day.ceil
-
-    @payment.amount = @rent.travel.car.category.price/100*nbDays
+    @payment.amount = price_for_rent(@rent)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,10 +49,9 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
     #TODO : compute price in back or verify ?
-    @payment = Payment.new(params[:payment])
+    @payment = Payment.new
     @payment.rent = @rent
-
-    nbDays = (@rent.endDate-@rent.startDate)/1.day.ceil
+    @payment.amount = price_for_rent_in_cents(@rent)
 
     respond_to do |format|
       if @payment.save
@@ -60,13 +59,13 @@ class PaymentsController < ApplicationController
         #Fix url return
         contribution = Leetchi::Contribution.create({"UserID" => 334140,
                                                      "WalletID" => 0,
-                                                     "Amount" => @rent.travel.car.category.price*nbDays,
+                                                     "Amount" => @payment.amount,
                                                      "ClientFeeAmount" => 0,
                                                      "RegisterMeanOfPayment" => false,
                                                      "ReturnURL" => user_rent_payment_url(current_user, @rent),
                                                      "PaymentMethodType" => "cb_visa_mastercard"})
 
-        print contribution
+
 
         #save contribution id
         @payment.contribution_id = contribution["ID"]

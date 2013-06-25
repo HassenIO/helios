@@ -72,15 +72,21 @@ class Rent < ActiveRecord::Base
   end
 
   def get_datetimes
-    self.startDate ||= Time.now + 2.days # if the startDate time is not set, set it to now
 
-    self.startDate_date ||= self.startDate.to_date.to_s(:db) # extract the date is yyyy-mm-dd format
-    self.startDate_time ||= "#{'%02d' % self.startDate.hour}:#{'%02d' % self.startDate.min}" # extract the time
+    if startDate_date.nil? && startDate_time.nil?
+      self.startDate ||= Time.now + 2.days # if the startDate time is not set, set it to now
 
-    self.endDate ||= Time.now + 9.days # if the endDate time is not set, set it to now
+      self.startDate_date ||= self.startDate.to_date.to_s(:db) # extract the date is yyyy-mm-dd format
+      self.startDate_time ||= "#{'%02d' % self.startDate.hour}:#{'%02d' % self.startDate.min}" # extract the time
 
-    self.endDate_date ||= self.endDate.to_date.to_s(:db) # extract the date is yyyy-mm-dd format
-    self.endDate_time ||= "#{'%02d' % self.endDate.hour}:#{'%02d' % self.endDate.min}" # extract the time
+      self.endDate ||= Time.now + 9.days # if the endDate time is not set, set it to now
+
+      self.endDate_date ||= self.endDate.to_date.to_s(:db) # extract the date is yyyy-mm-dd format
+      self.endDate_time ||= "#{'%02d' % self.endDate.hour}:#{'%02d' % self.endDate.min}" # extract the time
+    else
+      self.set_datetimes
+    end
+
   end
 
   def set_datetimes

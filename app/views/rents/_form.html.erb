@@ -9,9 +9,9 @@
         <div class="span4"> <%= t(:interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate)) %></div>
 
         <div class="span4">
-          <%= distance_of_time_in_words(@rent.endDate, @rent.startDate) %>
-          <%= number_to_currency(@rent.travel.car.category.price) %> <%= t(:byDay) %>
-          <%= t(:total) %>: <%= compute_price_for_rent(@rent.startDate, @rent.endDate, @rent.travel.car.category.price) %>
+          <%= t(:x_days, :count => number_of_days(@rent)) %>
+          <%= t(:byDay, :price => number_to_currency(@rent.travel.car.category.price_in_euros)) %>
+          <%= t(:total, :total => number_to_currency(price_for_rent(@rent))) %>
         </div>
 
       </div>

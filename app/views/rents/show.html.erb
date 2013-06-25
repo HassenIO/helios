@@ -32,7 +32,7 @@
       </p>
 
       <p>
-        <%= t(:total) %> <%= compute_price_for_rent(@rent.startDate, @rent.endDate, @rent.travel.car.category.price) %>
+        <%= t(:total) %> <%= number_to_currency(price_for_rent(@rent)) %>
       </p>
 
 
@@ -70,7 +70,7 @@
 
 </div>
 
-
+<h3><%= t(".details") %></h3>
 
 
 <%= render "cars/details", :car => @rent.travel.car %>

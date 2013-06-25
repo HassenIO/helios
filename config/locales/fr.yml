@@ -232,8 +232,11 @@ fr:
 
   rent_this_car: "Louer cette voiture"
   interval_datetime: "Entre le %{startDate} et le %{endDate}"
-  byDay: "par jour"
-  total: "Total"
+  x_days:
+    one:   "1 jour"
+    other: "%{count} jours"
+  byDay: "%{price} par jour"
+  total: "Total: %{total}"
 
   #Menu
   register_travel: "J'inscris ma voiture"
@@ -322,6 +325,28 @@ fr:
       submit: "J'accepte et je valide mon parking"
       cancel: "Je refuse et j'annule mon parking"
       accept_cgv: "Vous devez accepter les conditions générales de vente pour continuer ou bien annuler votre  parking"
+
+  payments:
+    new:
+      title: "Récapitulatif et paiement"
+    form:
+      payment: "Paiement"
+      submit: "Payer"
+    show:
+      title: "Confirmation"
+      summary: "Vous avez reservé la voiture %{brand} %{model} %{year} du %{from} au %{to} à l'aeroport %{airPort}"
+      payment_info: "Votre paiement de %{amount} a été enregistré, vous recevrez la confirmation par mail dès sa validation"
+      thank_you: "L'équipe de TravelerCar vous remercie"
+
+  cars:
+    details:
+      isSmoker: "Fumeurs ?"
+      acceptedPets: "Animaux autorisés ?"
+      hasGps: "GPS ?"
+      hasCarRadio: "Autoradio ?"
+      hasAirConditioning: "Climatisation ?"
+      hasChildSeat: "Siège enfant ?"
+
 
   search:
     form:

@@ -1,22 +1,55 @@
-<%= form_for [current_user, @rent,@payment], url: user_rent_payment_path  do |f| %>
-  <% if @payment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+<div class="row-fluid">
 
-      <ul>
-      <% @payment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+  <div class="span6">
+    <%= render "cars/carroussel", :car => @rent.travel.car %>
+  </div>
+
+
+  <div class="span6">
+
+    <div class="well">
+
+      <h3><%= t(".payment") %></h3>
+
+      <p>
+        <%= [@rent.travel.car.year, @rent.travel.car.brand, @rent.travel.car.model].join(' - ') %>
+      </p>
+
+      <p>
+        <%= t(:airPort, :scope => [:helpers, :label, :travel]) %>:
+        <%= @rent.travel.airPort.name %>
+      </p>
+
+
+      <% unless @rent.nil? %>
+          <p>
+            <%= t :interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate) %>
+          </p>
+
+
+          <p><%= [t(:x_days, :count => number_of_days(@rent)), t(:byDay, :price => number_to_currency(@rent.travel.car.category.price_in_euros))].join(", ") %>
+
+
+          </p>
+
+          <p><b><%= t(:total, :total => number_to_currency(price_for_rent(@rent, :price => @rent.travel.car.category.price))) %></b></p>
+
       <% end %>
-      </ul>
+
+      <%= form_for [current_user, @rent, @payment], url: user_rent_payment_path do |f| %>
+          <%= f.submit :class => "btn btn-primary" %>
+      <% end %>
+
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :amount %><br />
-    <%= f.number_field :amount %>
   </div>
 
-  <div class="actions">
-    <%= f.submit  %>
+
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    <%= render "cars/details", :car => @rent.travel.car %>
   </div>
-<% end %>
+</div>
+
