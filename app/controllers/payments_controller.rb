@@ -30,13 +30,18 @@ class PaymentsController < ApplicationController
   # GET /payments/new
   # GET /payments/new.json
   def new
-    @payment = Payment.new
+    if @rent.payment.nil?
 
-    @payment.amount = price_for_rent(@rent)
+      @payment = Payment.new
+      @payment.amount = price_for_rent(@rent)
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @payment }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @payment }
+      end
+    else
+      flash[:error] = t("payments.show.payment_existing")
+      redirect_to :action => 'show'
     end
   end
 
@@ -49,36 +54,41 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
     #TODO : compute price in back or verify ?
-    @payment = Payment.new
-    @payment.rent = @rent
-    @payment.amount = price_for_rent_in_cents(@rent)
+    if @rent.payment.nil?
 
-    respond_to do |format|
-      if @payment.save
-        #Fix how to store / config userId Leetchi
-        #Fix url return
-        contribution = Leetchi::Contribution.create({"UserID" => 334140,
-                                                     "WalletID" => 0,
-                                                     "Amount" => @payment.amount,
-                                                     "ClientFeeAmount" => 0,
-                                                     "RegisterMeanOfPayment" => false,
-                                                     "ReturnURL" => user_rent_payment_url(current_user, @rent),
-                                                     "PaymentMethodType" => "cb_visa_mastercard"})
+      @payment = Payment.new
+      @payment.rent = @rent
+      @payment.amount = price_for_rent_in_cents(@rent)
+
+      respond_to do |format|
+        if @payment.save
+          #Fix how to store / config userId Leetchi
+          #Fix url return
+          contribution = Leetchi::Contribution.create({"UserID" => 334140,
+                                                       "WalletID" => 0,
+                                                       "Amount" => @payment.amount,
+                                                       "ClientFeeAmount" => 0,
+                                                       "RegisterMeanOfPayment" => false,
+                                                       "ReturnURL" => user_rent_payment_url(current_user, @rent),
+                                                       "PaymentMethodType" => "cb_visa_mastercard"})
 
 
+          #save contribution id
+          @payment.contribution_id = contribution["ID"]
+          @payment.contribution_details = contribution
+          @payment.status = :pending
+          @payment.save!
 
-        #save contribution id
-        @payment.contribution_id = contribution["ID"]
-        @payment.contribution_details = contribution
-        @payment.status = :pending
-        @payment.save!
-
-        format.html { redirect_to contribution["PaymentURL"] }
-        #format.json { render json: @booking, status: :created, location: @booking }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
+          format.html { redirect_to contribution["PaymentURL"] }
+          #format.json { render json: @booking, status: :created, location: @booking }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @payment.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      flash[:error] = t("payments.show.payment_existing")
+      redirect_to :action => 'show'
     end
 
   end

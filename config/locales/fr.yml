@@ -337,6 +337,7 @@ fr:
       summary: "Vous avez reservé la voiture %{brand} %{model} %{year} du %{from} au %{to} à l'aeroport %{airPort}"
       payment_info: "Votre paiement de %{amount} a été enregistré, vous recevrez la confirmation par mail dès sa validation"
       thank_you: "L'équipe de TravelerCar vous remercie"
+      payment_existing: "Le paiement a déjà été fait"
 
   cars:
     details:
