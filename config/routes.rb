@@ -2,9 +2,7 @@ TravelerCar::Application.routes.draw do
 
   root :controller => "home", :action => "index"
 
-
-  scope "/a" do
-    match "notifications" => "notifications#index"
+  match "notifications" => "notifications#index"
 
     scope "/:locale", :constraints => {:locale => /[a-z]{2}(-[A-Z]{2})?/} do
 
@@ -38,6 +36,5 @@ TravelerCar::Application.routes.draw do
     end
 
     ActiveAdmin.routes(self)
-  end
 
 end
