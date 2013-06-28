@@ -1,6 +1,6 @@
 class AdminMailer < ActionMailer::Base
 
-  default :from => "notifications@travelercar.com", :to => "admin@travelercar.com"
+  default :from => "contact@travelercar.com", :to => "support@travelercar.com "
 
   def rent_notification(rent)
     @user = rent.user
@@ -15,6 +15,5 @@ class AdminMailer < ActionMailer::Base
     @admin_url  = admin_travel_url(travel)
     mail( :subject => "New parking on TravelerCar.com")
   end
-
 
 end
