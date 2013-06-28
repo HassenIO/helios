@@ -8,7 +8,7 @@
     </p>
 
     <p>
-      <%= t(".payment_info", :amount => number_to_currency(@payment.amount_in_euros)) %>
+      <%= t(".payment_info_#{@payment.status}", :amount => number_to_currency(@payment.amount_in_euros)) %>
     </p>
 
     <p>

@@ -80,7 +80,7 @@ class PaymentsController < ApplicationController
           @payment.save!
 
           format.html { redirect_to contribution["PaymentURL"] }
-          #format.json { render json: @booking, status: :created, location: @booking }
+          format.json { render json: @payment, status: :created, location: @payment }
         else
           format.html { render action: "new" }
           format.json { render json: @payment.errors, status: :unprocessable_entity }

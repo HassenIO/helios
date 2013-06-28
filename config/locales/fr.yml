@@ -335,9 +335,12 @@ fr:
     show:
       title: "Confirmation"
       summary: "Vous avez reservé la voiture %{brand} %{model} %{year} du %{from} au %{to} à l'aeroport %{airPort}"
-      payment_info: "Votre paiement de %{amount} a été enregistré, vous recevrez la confirmation par mail dès sa validation"
+      payment_info_pending: "Votre paiement de %{amount} a été enregistré, vous recevrez la confirmation par mail dès sa validation"
+      payment_info_paid: "Votre paiement de %{amount} a été validé"
+      payment_info_unpaid: "Votre paiement de %{amount} n'a pas été enregistré"
+      payment_info_failed: "Votre paiement de %{amount} a échoué, vous pouvez nous contacter pour plus d'informations"
       thank_you: "L'équipe de TravelerCar vous remercie"
-      payment_existing: "Le paiement a déjà été fait"
+      payment_existing: "Un paiement a déjà été enregistré"
 
   cars:
     details:
