@@ -5,7 +5,7 @@
 
 <%= form_for([@user, @travel]) do |f| %>
 
-    <div class="well">
+    <div class="well well-blue">
       <div class="row-fluid">
 
 
@@ -66,217 +66,314 @@
       </div>
     </div>
 
-    <%= f.fields_for :car do |car_fields| %>
-        <div class="row-fluid">
-          <div class="span4">
-            <fieldset name="Car Information" class="well">
-              <legend><%= t(".car_legend") %></legend>
+    <div class="row-fluid">
+      <h2><%= t(".car_legend") %></h2>
+    </div>
+
+    <fieldset name="Car Information" class="well comment_form">
+      <%= f.fields_for :car do |car_fields| %>
+          <div class="row-fluid">
+
+
+            <div class="span4"><!--span4-->
               <div class="control-group">
-                <%= car_fields.label :brand, :class => "control-label" %>
                 <div class="controls">
-                  <%= car_fields.text_field :brand %>
+                  <%= car_fields.text_field :brand, :placeholder => t("helpers.label.car.brand") %>
+                </div>
+              </div>
+            </div>
+            <!--/span4-->
+
+            <div class="span4"><!--span4-->
+              <div class="control-group">
+                <div class="controls">
+                  <%= car_fields.text_field :model, :placeholder => t("helpers.label.car.model") %>
+                </div>
+              </div>
+            </div>
+            <!--/span4-->
+
+
+            <div class="span4"><!--span4-->
+              <div class="control-group">
+                <div class="controls">
+                  <%= car_fields.text_field :license, :placeholder => t("helpers.label.car.license") %>
                 </div>
               </div>
 
-              <div class="control-group">
-                <%= car_fields.label :model, :class => "control-label" %>
-                <div class="controls">
-                  <%= car_fields.text_field :model %>
-                </div>
-              </div>
+            </div>
+            <!--/span4-->
 
+          </div>
+          <!--/row-fluid-->
+
+          <div class="row-fluid"><!--row-fluid-->
+
+            <div class="span4"><!--span4-->
               <div class="control-group">
                 <%= car_fields.label :year, :class => "control-label" %>
                 <div class="controls">
                   <%= car_fields.select(:year, options_for_select(Time.now.year - 30..Time.now.year, :selected => car_fields.object.year || 2010)) %>
                 </div>
               </div>
+            </div>
+            <!--/span4-->
 
+            <div class="span4"><!--span4-->
               <div class="control-group">
                 <%= car_fields.label :nbSeats, :class => "control-label" %>
                 <div class="controls">
                   <%= car_fields.select(:nbSeats, options_for_select(2..9, :selected => car_fields.object.nbSeats || 5)) %>
                 </div>
               </div>
+            </div>
+            <!--/span4-->
 
+            <div class="span4"><!--span4-->
               <div class="control-group">
                 <%= car_fields.label :km, :class => "control-label" %>
                 <div class="controls">
-                  <%= car_fields.select(:km, options_for_select([['0-50000 km', 0], ['50000-100000 km', 50000], ['100000-150000 km', 100000], ['150000 km et plus', 150000]], car_fields.object.km || 50000)) %>
+                  <%= car_fields.select(:km, options_for_select([['0-50000 km', 0], ['50000-100000 km', 50000], ['100000-150000 km', 100000], ['150000 km et plus', 150000]], car_fields.object.km || 5000), :placeholder => "toto") %>
                 </div>
               </div>
+            </div>
+            <!--/span4-->
 
-              <div class="control-group">
+          </div>
+          <!--/row-fluid-->
+
+          <div class="row-fluid"><!--row-fluid-->
+
+
+            <div class="span6"><!--span6-->
+              <div class="control-group  controls-wrapper">
                 <%= car_fields.label :fuel, :class => "control-label" %>
                 <div class="controls">
                   <%= car_fields.radio_button(:fuel, :essence) %>
-                  <%= label_tag(:fuel_essence,t('helpers.label.car.fuel_essence')) %>
+                  <%= label_tag(:fuel_essence, t('helpers.label.car.essence')) %>
                   <%= car_fields.radio_button(:fuel, :diesel) %>
-                  <%= label_tag(:fuel_diesel, t('helpers.label.car.fuel_diesel')) %>
+                  <%= label_tag(:fuel_diesel, t('helpers.label.car.diesel')) %>
                 </div>
               </div>
+            </div>
+            <!--/span6-->
 
-              <div class="control-group">
+
+            <div class="span6"><!--span6-->
+              <div class="control-group  controls-wrapper">
                 <%= car_fields.label :transmission, :class => "control-label" %>
                 <div class="controls">
                   <%= car_fields.radio_button(:transmission, :automatic) %>
-                  <%= label_tag(:automatic, t('helpers.label.car.automatic'))  %>
+                  <%= label_tag(:automatic, t('helpers.label.car.automatic')) %>
                   <%= car_fields.radio_button(:transmission, :manual) %>
                   <%= label_tag(:manual, t('helpers.label.car.manual')) %>
                 </div>
               </div>
-
-              <div class="control-group">
-                <%= car_fields.label :license, :class => "control-label" %>
-                <div class="controls">
-                  <%= car_fields.text_field :license %>
-                </div>
-              </div>
-
-
-            </fieldset>
-          </div>
-
-          <div class="span4">
-
-            <fieldset class="well">
-              <legend><%= t(".car_options_legend") %></legend>
-              <div class="control-group">
-                <%= car_fields.label :isSmoker, :class => "control-label" %>
-                <div class="controls">
-                  <label class="checkbox">
-                    <%= car_fields.check_box(:isSmoker) %><%= t :_yes %>
-                  </label>
-                </div>
-              </div>
-
-              <div class="control-group">
-                <%= car_fields.label :acceptedPets, :class => "control-label" %>
-                <div class="controls">
-                  <label class="checkbox">
-                    <%= car_fields.check_box(:acceptedPets) %><%= t :_yes %>
-                  </label>
-                </div>
-              </div>
-
-              <%= label_tag t :equipments, :scope => [:helpers, :label, :car] %>
-
-              <div class="control-group">
-                <%= car_fields.label :hasGps, :class => "control-label" %>
-
-                <div class="controls">
-                  <label class="checkbox">
-                    <%= car_fields.check_box(:hasGps) %><%= t :_yes %>
-                  </label>
-                </div>
-              </div>
-
-
-              <div class="control-group">
-                <%= car_fields.label :hasCarRadio, :class => "control-label" %>
-
-                <div class="controls">
-                  <label class="checkbox">
-                    <%= car_fields.check_box(:hasCarRadio) %><%= t :_yes %>
-                  </label>
-                </div>
-              </div>
-
-              <div class="control-group">
-                <%= car_fields.label :hasAirConditioning, :class => "control-label" %>
-
-                <div class="controls">
-                  <label class="checkbox">
-                    <%= car_fields.check_box(:hasAirConditioning) %><%= t :_yes %>
-                  </label>
-                </div>
-              </div>
-
-              <div class="control-group">
-                <%= car_fields.label :hasChildSeat, :class => "control-label" %>
-
-                <div class="controls">
-                  <label class="checkbox">
-                    <%= car_fields.check_box(:hasChildSeat) %><%= t :_yes %>
-                  </label>
-                </div>
-              </div>
-
-            </fieldset>
+            </div>
+            <!--/span6-->
 
           </div>
+          <!--/row-fluid-->
 
-          <div class="span4">
-            <!--Photos-->
-            <fieldset class="well">
-              <legend><%= t(".car_photos_legend") %></legend>
-              <div class="well">
-                <a href="#" class="toto" data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker1_url">
-                  <% if @travel.car.filepicker1_url? %>
-                      <%= filepicker_image_tag @travel.car.filepicker1_url, weight: 50, height: 50, fit: 'clip' %>
-                  <% else %>
-                      <i class="icon-camera-retro icon-3x   icon-border"></i><%= car_fields.label :filepicker1_url, :style => "display: inline" %>
-                  <% end %>
-                </a>
-                <%= car_fields.text_field :filepicker1_url, :style => "display: none" %>
-              </div>
-
-              <div class="well">
-                <a href="#" data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker2_url">
-                  <% if @travel.car.filepicker2_url? %>
-                      <%= filepicker_image_tag @travel.car.filepicker2_url, weight: 50, height: 50, fit: 'crop' %>
-                  <% else %>
-                      <i class="icon-camera-retro icon-3x   icon-border"></i><%= car_fields.label :filepicker2_url, :style => "display: inline" %>
-                  <% end %>
-                </a>
-                <%= car_fields.text_field :filepicker2_url, :style => "display: none" %>
-              </div>
-
-              <div class="well">
-                <a href="#" data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker3_url" data-target-img>
-                  <% if @travel.car.filepicker3_url? %>
-                      <%= filepicker_image_tag @travel.car.filepicker3_url, weight: 50, height: 50, fit: 'clip' %>
-                  <% else %>
-                      <i class="icon-camera-retro icon-3x   icon-border"></i><%= car_fields.label :filepicker3_url, :style => "display: inline" %>
-                  <% end %>
-                </a>
-
-                <%= car_fields.text_field :filepicker3_url, :style => "display: none" %>
-              </div>
+          </fieldset>
 
 
-            </fieldset>
-
-
+          <!--Photos-->
+          <div class="row-fluid">
+            <h3><%= t(".car_photos_legend") %></h3>
           </div>
 
-        </div>
+          <fieldset class="well">
 
-        <div class="well">
+            <div class="row-fluid"><!--row-fluid-->
+
+              <div class="span4"><!--span4-->
+                <div class="well well-addPhoto">
+                  <a href="#" class="addPhoto" data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker1_url">
+                    <% if @travel.car.filepicker1_url? %>
+                        <%= filepicker_image_tag @travel.car.filepicker1_url, weight: 50, height: 50, fit: 'clip' %>
+                    <% else %>
+                        <i class="icon-camera-retro icon-3x"></i><%= car_fields.label :filepicker1_url, :style => "display: inline" %>
+                    <% end %>
+                  </a>
+                  <%= car_fields.text_field :filepicker1_url, :style => "display: none" %>
+                </div>
+              </div>
+              <!--/span4-->
+
+              <div class="span4"><!--span4-->
+                <div class="well well-addPhoto">
+                  <a href="#" class="addPhoto" data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker2_url">
+                    <% if @travel.car.filepicker2_url? %>
+                        <%= filepicker_image_tag @travel.car.filepicker2_url, weight: 50, height: 50, fit: 'crop' %>
+                    <% else %>
+                        <i class="icon-camera-retro icon-3x"></i><%= car_fields.label :filepicker2_url, :style => "display: inline" %>
+                    <% end %>
+                  </a>
+                  <%= car_fields.text_field :filepicker2_url, :style => "display: none" %>
+                </div>
+
+              </div>
+              <!--/span4-->
+
+              <div class="span4"><!--span4-->
+                <div class="well well-addPhoto">
+                  <a href="#" class="addPhoto" data-filepicker="addPhoto" data-target-input="travel_car_attributes_filepicker3_url" data-target-img>
+                    <% if @travel.car.filepicker3_url? %>
+                        <%= filepicker_image_tag @travel.car.filepicker3_url, weight: 50, height: 50, fit: 'clip' %>
+                    <% else %>
+                        <i class="icon-camera-retro icon-3x"></i><%= car_fields.label :filepicker3_url, :style => "display: inline" %>
+                    <% end %>
+                  </a>
+
+                  <%= car_fields.text_field :filepicker3_url, :style => "display: none" %>
+                </div>
+              </div>
+              <!--/span4-->
+
+            </div>
+            <!--/row-->
+          </fieldset>
+          <!--/Photos-->
+
+
+          <!--Commentaire-->
+          <div class="row-fluid"><!--row-fluid-->
+            <h3>Un commentaire ou description ?</h3>
+          </div>
+          <!--/row-fluid-->
+
+
           <div class="row-fluid">
             <div class="span12">
-              <div class="control-group">
-                <%= car_fields.label :desc, :for => "control-label" %>
-                <div class="controls">
-                  <%= car_fields.text_area :desc, :class => "span12", :rows => 5 %>
-                  <span class="help-block"></span>
+              <%= car_fields.text_area :desc, :class => "full-width", :rows => 5, :placeholder => t("helpers.label.car.desc") %>
+              <span class="help-block"></span>
+            </div>
+            <!--/span12-->
+          </div>
+          <!--/row-fluid-->
+          <!--/Commentaire-->
+
+
+          <!--Informations complémentaires-->
+          <fieldset class="well">
+            <div class="row-fluid"><!--row-fluid-->
+              <h3><%= t(".car_options_legend") %></h3>
+            </div>
+            <!--/row-fluid-->
+
+
+            <div class="row-fluid"><!--row-fluid-->
+
+
+              <div class="span6"><!--span6-->
+                <div class="control-group controls-wrapper">
+                  <%= car_fields.label :isSmoker, :class => "control-label" %>
+                  <div class="controls">
+                    <label class="checkbox">
+                      <%= car_fields.check_box(:isSmoker) %><%= t :_yes %>
+                    </label>
+                  </div>
                 </div>
               </div>
+              <!--span6-->
+
+              <div class="span6"><!--span6-->
+                <div class="control-group controls-wrapper">
+                  <%= car_fields.label :acceptedPets, :class => "control-label" %>
+                  <div class="controls">
+                    <label class="checkbox">
+                      <%= car_fields.check_box(:acceptedPets) %><%= t :_yes %>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!--span6-->
             </div>
-          </div>
-        </div>
+            <!--/row-fluid-->
 
 
+            <!--equipement-->
 
-    <% end %>
+            <%= label_tag t :equipments, :scope => [:helpers, :label, :car] %>
 
-    <div class="row-fluid">
-      <div class="span12">
-        <div class="form-actions">
-          <%= f.submit :class => "btn btn-primary" %>
-        </div>
+
+            <div class="row-fluid"><!--row-fluid-->
+
+              <div class="span3"><!--span3-->
+                <div class="control-group controls-wrapper">
+                  <%= car_fields.label :hasGps, :class => "control-label" %>
+
+                  <div class="controls">
+                    <label class="checkbox">
+                      <%= car_fields.check_box(:hasGps) %><%= t :_yes %>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!--span3-->
+              <div class="span3"><!--span3-->
+
+
+                <div class="control-group controls-wrapper">
+                  <%= car_fields.label :hasCarRadio, :class => "control-label" %>
+
+                  <div class="controls">
+                    <label class="checkbox">
+                      <%= car_fields.check_box(:hasCarRadio) %><%= t :_yes %>
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+              <!--span3-->
+
+              <div class="span3"><!--span3-->
+
+                <div class="control-group controls-wrapper">
+                  <%= car_fields.label :hasAirConditioning, :class => "control-label" %>
+
+                  <div class="controls">
+                    <label class="checkbox">
+                      <%= car_fields.check_box(:hasAirConditioning) %><%= t :_yes %>
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+              <!--span3-->
+
+              <div class="span3"><!--span3-->
+
+                <div class="control-group controls-wrapper">
+
+                  <%= car_fields.label :hasChildSeat, :class => "control-label" %>
+
+                  <div class="controls">
+                    <label class="checkbox">
+                      <%= car_fields.check_box(:hasChildSeat) %><%= t :_yes %>
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+              <!--span3-->
+
+
+            </div>
+            <!--row-fluid-->
+
+            <!--equipement-->
+
+          </fieldset>
+          <!--Informations complémentaires-->
+
+      <% end %>
+
+      <div class="row-fluid text-center" style="margin-bottom: 80px;">
+        <%= f.submit :class => "btn on-hover btn-large" %>
       </div>
-    </div>
+
 
 <% end %>
 
