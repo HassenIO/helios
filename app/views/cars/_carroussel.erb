@@ -1,6 +1,6 @@
 <% unless car.nil? %>
     <% images_url = [car.filepicker1_url, car.filepicker2_url, car.filepicker3_url].select { |url| !url.nil? && !url.empty? } %>
-    <div class="well" style="text-align: center">
+    <div class="img-polaroid" style="text-align: center">
       <% if !images_url.empty? %>
           <div id="myCarousel" class="carousel slide">
             <ol class="carousel-indicators">
@@ -28,9 +28,10 @@
                   </div>
               <% end %>
             </div>
-
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+            <% if images_url.length > 1  %>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+            <% end %>
           </div>
       <% else %>
           <i class="icon-camera-retro" style="line-height: 300px; font-size: 120px; color: graytext"></i>

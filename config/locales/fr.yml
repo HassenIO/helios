@@ -318,6 +318,11 @@ fr:
       title: "Je modifie ma demande de parking"
     show:
       details: "Details"
+      we_summarize: "On récapitule..."
+      where: "Où ?"
+      when: "quand ?"
+      yes_i_do : "Oui je loue cette voiture !"
+      how_many: "Combien ça coûte ?"
     index:
       title: "Gérer mes parkings"
     cgv:

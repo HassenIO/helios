@@ -1,48 +1,55 @@
-<h2><%= [@travel.car.year, @travel.car.brand, @travel.car.model].join(' - ') %></h2>
-
-
-<% if can? :update, @travel %>
-    <%= link_to t(:edit), edit_user_travel_path(@user, @travel) %> |
-    <%= link_to t(:back), user_travels_path(@user) %>
-<% end %>
-
+<a type="button" class="btn btn-primary btn-back" href="#" onclick="history.go(-1);return true;">
+  <i class="icon-arrow-left"></i><%= t(:back) %>
+</a>
 
 
 <div class="row-fluid">
 
   <div class="span8">
+    <h1><%= [@travel.car.year, @travel.car.brand, @travel.car.model].join(' - ') %>
+
+      <% if can? :update, @travel %>
+          <%= link_to t(:edit), edit_user_travel_path(@user, @travel), :class => "btn btn-edit on-hover" %>
+      <% end %>
+    </h1>
+
     <%= render "cars/carroussel", :car => @travel.car %>
   </div>
 
   <div class="span4">
 
-    <div class="well">
-      <h3><%= t(:rent_this_car) %></h3>
+    <div>
+      <h2><%= t(:rent_this_car) %></h2>
 
       <p>
-        <%= [@travel.car.year, @travel.car.brand, @travel.car.model].join(' - ') %>
+        <%= t(".we_summarize") %>
       </p>
 
+      <h3><%= t(".where") %></h3>
+
       <p>
-        <b><%= t(:airPort, :scope => [:helpers, :label, :travel]) %>:</b>
         <%= @travel.airPort.name %>
       </p>
 
 
       <% unless @rent.nil? %>
+
+          <h3><%= t(".when") %></h3>
           <p>
             <%= t :interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate) %>
           </p>
 
           <% if @travel.car.category %>
+              <h3><%= t(".how_many") %></h3>
 
               <p><%= [t(:x_days, :count => number_of_days(@rent)), t(:byDay, :price => number_to_currency(@travel.car.category.price_in_euros))].join(", ") %>
-
-              <br/><%= t(:total, :total => number_to_currency(price_for_rent(@rent, :price => @travel.car.category.price ))) %>
               </p>
 
+
+              <h2><%= t(:total, :total => number_to_currency(price_for_rent(@rent, :price => @travel.car.category.price))) %> </h2>
+
               <p>
-                <%= link_to t(:rent_this_car), new_rent_path(:rent => params[:rent].merge(:travel_id => @travel.id)), :class => "btn btn-primary" %>
+                <%= link_to t(".yes_i_do"), new_rent_path(:rent => params[:rent].merge(:travel_id => @travel.id)), :class => "btn btn-large on-hover btn-block" %>
               </p>
           <% end %>
       <% else %>
@@ -60,7 +67,7 @@
 </div>
 
 
-<h3><%= t(".details") %></h3>
+<h2><%= t(".details") %></h2>
 
 <%= render 'cars/details', :car => @travel.car %>
 
