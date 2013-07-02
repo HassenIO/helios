@@ -239,10 +239,11 @@ fr:
   total: "Total: %{total}"
 
   #Menu
-  register_travel: "J'inscris ma voiture"
+  register_travel: "Je propose ma voiture"
   rent_car:  "Je loue une voiture"
-  how_its_work: "Comment ca marche ?"
-  help: "Besoin d'aide ?"
+  how_its_work: "Comment ça marche?"
+  why: "C'est quoi TravelerCar?"
+  contact: "Contact"
   account: "Mon compte"
   administration: "Administration"
   my_informations: "Mes informations"

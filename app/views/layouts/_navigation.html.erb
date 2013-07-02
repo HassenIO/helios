@@ -4,16 +4,16 @@
 <div class="nav-collapse collapse">
   <ul id="menu-primary-navigation" class="nav">
     <li>
+      <%= link_to t(:why), root_path(anchor: "pourquoi-travelercar") %>
+    </li>
+    <li>
+      <%= link_to t(:how_its_work), root_path(anchor: "comment-ca-marche") %>
+    </li>
+    <li>
       <%= link_to t(:register_travel), travels_path %>
     </li>
     <li>
       <%= link_to t(:rent_car), search_path %>
-    </li>
-    <li>
-      <%= link_to t(:how_its_work), "#pourquoi-travelercar", :class => "section" %>
-    </li>
-    <li>
-      <%= link_to t(:help), "#besoin-daide", :class => "section" %>
     </li>
     <% if user_signed_in? %>
         <li class="dropdown">
@@ -53,6 +53,9 @@
           <%= link_to t(:register), new_user_registration_path %>
         </li>
     <% end %>
+    <li>
+      <%= link_to t(:contact), root_path(anchor: "contact") %>
+    </li>
   </ul>
 
 </div>
