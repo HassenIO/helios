@@ -1,78 +1,389 @@
-/*!
- * Theme Name: Argo
- * Theme URI: http://themestrong.com
- * Version: 1.0
- * Description: 
- * Author: WPStrong & Dzoan
- * Author URI: http://themestrong.com
- * 
- * Powered by Bootstrap v2.3.1
- * Copyright 2012 Twitter, Inc
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- */
+a {
+  cursor: pointer;
 
-// Core variables and mixins
-@import "twitter/bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
-@import "twitter/bootstrap/mixins";
+  &[data-filepicker] {
+    &:hover {
+      text-decoration: none;
+    }
+    overflow: hidden;
+    display: block;
+  }
+
+}
+
+.navbar .nav > li > a {
+
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+
+}
+
+.navbar .nav li.dropdown.open,
+.navbar .nav li.dropdown.active,
+.navbar .nav li.dropdown.open.active {
+  .dropdown-toggle {
+    background-color: @brickColorOdd;
+	color: @white;
+
+  }
+
+  .dropdown-menu {
+    border-radius: 0px;
+	color: @white;
+    &:after {
+      border-bottom-color: @brickColorOdd;
+    }
+    li > a {
+		color: @white;
+      &:hover, &:focus {
+		-webkit-transition: 0.1s ease-in-out all;
+		-moz-transition: 0.1s ease-in-out all;
+		-o-transition: 0.1s ease-in-out all;
+		transition: 0.1s ease-in-out all;
+        background-color: @brickColor;
+        background-image: none;
+      }
+    }
+    background-color: @brickColorOdd;
+    background-image: none;
+  }
+
+  .dropdown-submenu {
+    a:after {
+      border-left-color: @black;
+    }
+    &:hover, &:focus {
+      a, a:after {
+        background-color: @brickColor;
+        border-left-color: #ffffff;
+        background-image: none;
+		
+      }
+      li > a {
+        background-color: @brickColorOdd;
+        &:hover, &:focus { 
+			background-color: @brickColor;
+			background-image: none;
+		  
+       }
+      }
+    }
+  }
+}
+
+//fix carousel center img
+.carousel .item > img {
+  margin: 0px auto;
+  display: block;
+  line-height: 1;
+}
+
+.field_with_errors {
+  .control-group.error;
+  display: inline;
+}
+
+//fix error label with datetimepicker
+.date > .field_with_errors {
+  display: inline-block;
+  overflow: visible;
+  position: relative;
+
+  .help-inline {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 14px;
+  }
+}
+
+.alert.pending {
+  .alert-error;
+}
+
+.alert.active {
+  .alert-info;
+}
+
+.alert.rent {
+  .alert-success;
+}
+
+input[type="radio"] + label{
+  display: inline;
+}
+
+textarea.comments{
+  width: 100%;
+  height: 100px;
+  padding: 0;
+}
 
 
-// CSS Reset
-@import "twitter/bootstrap/reset";
 
-// Grid system and page structure
-@import "twitter/bootstrap/scaffolding";
-@import "twitter/bootstrap/grid";
-@import "twitter/bootstrap/layouts";
+// --------------- layout for application's pages ---------
 
-// Base CSS
-@import "twitter/bootstrap/type";
-@import "twitter/bootstrap/code";
-@import "twitter/bootstrap/forms";
-@import "twitter/bootstrap/tables";
+.navbar + .container .content {
+	padding-top: 50px;
+}
 
-// Components: common
-@import 'font-awesome';
-@import "twitter/bootstrap/dropdowns";
-@import "twitter/bootstrap/wells";
-@import "twitter/bootstrap/component-animations";
-@import "twitter/bootstrap/close";
+.navbar-fixed-top + .container {
+	padding-top: 50px;
+}
 
-// Components: Buttons & Alerts
-//@import "bootstrap/buttons";
-@import "twitter/bootstrap/button-groups";
-@import "twitter/bootstrap/alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons
+// --------------- forms ---------------
 
-// Components: Nav
-@import "twitter/bootstrap/navs";
-@import "twitter/bootstrap/navbar";
-@import "twitter/bootstrap/breadcrumbs";
-@import "twitter/bootstrap/pagination";
-@import "twitter/bootstrap/pager";
+.placeholder {
+	color: #999;
+}
 
-// Components: Popovers
-@import "twitter/bootstrap/modals";
-@import "twitter/bootstrap/tooltip";
-@import "twitter/bootstrap/popovers";
+// ---------------to forms already in place
+fieldset.well {
+	padding: 0;
+	border: 0;
+	background: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border: none;
+}
 
-// Components: Misc
-@import "twitter/bootstrap/thumbnails";
-@import "twitter/bootstrap/media";
-@import "twitter/bootstrap/labels-badges";
-@import "twitter/bootstrap/progress-bars";
-@import "twitter/bootstrap/accordion";
-@import "twitter/bootstrap/carousel";
-@import "twitter/bootstrap/hero-unit";
+fieldset.well .controls select, textarea.full-width, .login-wrapper .controls input {
+	width: 100%;
+	height: 50px;
+	background: #DDD;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border: none;
+}
 
-// Utility classes
-@import "twitter/bootstrap/utilities"; // Has to be last to override when necessary
+fieldset.well .controls select {
+	height: 50px;
+}
 
-//Argo variables & Custom style
-@import "argo/custom-scrollbar";
-@import "argo/variables";
-@import "argo/argo";
-@import "argo/button";
+textarea.full-width {
+	height: 80px;
+}
+
+fieldset.well div.well {
+	padding: 0;
+	border: 0;
+	background: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	background: #DDD;
+	//padding: 10px;
+}
+
+div.well-addPhoto {
+	padding: 0;
+}
+
+.addPhoto {
+	display: block;
+	color: @white;
+	background-color: @brickColor;
+	text-align: center;
+	padding: 10px;
+	&:hover {
+		background-color: @brickColorOdd;
+	}
+}
+
+.addPhoto i {
+	display: block;
+}
+
+.addPhoto label {
+	margin-left: 10px;
+}
+
+.controls input[type="radio"], .controls input[type="checkbox"] {
+	width: auto;
+	height: auto;
+}
+
+.controls-wrapper {
+	background: #DDD;
+	padding: 10px;
+}
+
+.on-hover {
+	&:hover {
+		-webkit-transition: background-position 0.3s linear;
+		-moz-transition: background-position 0.3s linear;
+		-o-transition: background-position 0.3s linear;
+		transition: background-position 0.3s linear;
+		background-color:@brickColorOdd;
+	}
+}
+
+.well-blue {
+	-webkit-transition: background-color 0.2s linear;
+	-moz-transition: background-color 0.2s linear;
+	-o-transition: background-color 0.2s linear;
+	transition: background-color 0.2s linear;
+	background-color: @brickColorOdd;
+	color: @white;
+}
+
+
+.well-blue i {
+	color: @brickColorOdd;
+	&:hover {
+		color: @brickColor;
+	}
+}
+
+.well-list {
+	padding: 20px 0;
+	background-color: none;
+	border: none;
+	border-top: 1px solid #E3E3E3;
+}
+
+
+.block-mktn {
+	background-color:@brickColorOdd;
+	color: @white;
+	font-family: @headingsFontFamily;
+	padding: 10px;
+	margin-bottom: 20px;
+	p {
+		font-size: 20px;
+	}
+}
+
+.nav-hover {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: -8px;
+	left: -8px;
+	border: 8px solid rgba(255, 255, 255, 0.2);
+	opacity: 0;
+	z-index: 1;
+	-webkit-transition: 0.2s ease-in-out all;
+	-moz-transition: 0.2s ease-in-out all;
+	-o-transition: 0.2s ease-in-out all;
+	transition: 0.2s ease-in-out all;
+	-webkit-transform: scale(0.95);
+	-moz-transform: scale(0.95);
+	-ms-transform: scale(0.95);
+	-o-transform: scale(0.95);
+	transform: scale(0.95);
+}
+
+.btn:hover .nav-hover {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
+}
+
+h1 a {
+	margin-left: 20px;
+}
+
+.btn-back {
+	font-size: 20px;
+	margin-bottom: 20px;
+	&:hover {
+		background-color:@brickColor;
+	}
+}
+
+.btn-back i {
+	margin-right: 10px;
+}
+
+
+.btn-edit {
+	font-size: 20px;
+}
+
+// --------------- /forms ---------------
 
 
 
+//---------login-----------------------
+
+.row-fluid.login {
+	text-align: center;
+}
+
+.login-wrapper p.hero {
+	font-size: 18px;
+	margin: 20px 0;
+}
+
+.login-form {
+	width: 360px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.separator {
+	margin: 20px 0 30px 0;
+}
+
+.separator h2 {
+	display: inline-block;
+	background-color: #FFF;
+	padding: 0 10px;
+}
+
+.separator hr {
+	margin: -33px auto 20px auto;
+	width: 50%;
+}
+
+
+.accordion-group {
+	margin-bottom: 2px;
+	border: 1px solid @white;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+
+.accordion-heading .accordion-toggle {
+	color: @brickColor;
+	text-decoration: underline;
+	padding: 10px;
+	display: inline;
+	&:hover {
+		background-color: @brickColorOdd;
+		text-decoration: none;
+		color: @white;
+	}
+}
+
+
+.accordion-body {
+	margin-top: 30px;
+}
+
+.accordion-inner {
+	border-top: 1px solid @white;
+}
+
+//---------
+
+a.base {
+	color: @brickColor;
+	text-decoration: underline;
+	&:hover {
+		color: @brickColorOdd;
+		text-decoration: none;
+	}
+}

@@ -19,6 +19,8 @@
   color:@white;
   font-family: @headingsFontFamily;
   text-transform: uppercase;
+  // added because un truc de fou!!
+  text-shadow: none;
 
   // Hover/focus state
   &:hover,
@@ -28,6 +30,10 @@
        // transition is only when going to hover/focus, otherwise the background
     // behind the gradient (there for IE<=9 fallback) gets mismatched
     .transition(background-color .2s linear);
+	// added because un truc de fou!!
+	color:@white;
+	background:@brickColor;
+	
   }
 
   // Focus state for keyboard and accessibility
