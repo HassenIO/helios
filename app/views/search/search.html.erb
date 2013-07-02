@@ -25,7 +25,7 @@
           <% if travel.car %>
               <% img = travel.car.filepicker1_url || travel.car.filepicker2_url ||travel.car.filepicker3_url %>
 
-              <% if img  %>
+              <% unless img.blank?  %>
                   <%= filepicker_image_tag img, width: 100, height: 100, fit: 'clip', :class => 'img-polaroid' %>
               <% end %>
           <% end %>
