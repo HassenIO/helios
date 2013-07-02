@@ -65,9 +65,9 @@
             <label class="checkbox">
               <%= f.check_box :has_accepted_cgv %> <%= t("helpers.label.travel.has_accepted_cgv") %>
             </label>
-            <%= f.submit t(".submit"), :class => "btn btn-primary" %>
+            <%= f.submit t(".submit"), :class => "btn btn-primary" %> |
             <%= link_to t(".cancel"), user_travel_path(@user, @travel),
-                        :data => {:confirm => "Are you sure?"}, :method => :delete %>
+                        :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "base" %>
           </div>
         </div>
 

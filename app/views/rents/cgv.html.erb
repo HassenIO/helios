@@ -67,7 +67,7 @@
             </label>
             <%= f.submit t(".submit"), :class => "btn btn-primary" %>
             <%= link_to t(".cancel"), user_rent_path(@user, @rent),
-                        :data => {:confirm => "Are you sure?"}, :method => :delete %>
+                        :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "base" %>
           </div>
         </div>
 
