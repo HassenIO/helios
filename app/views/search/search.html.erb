@@ -25,9 +25,15 @@
           <% if travel.car %>
               <% img = travel.car.filepicker1_url || travel.car.filepicker2_url ||travel.car.filepicker3_url %>
 
-              <% unless img.blank?  %>
-                  <%= filepicker_image_tag img, width: 100, height: 100, fit: 'clip', :class => 'img-polaroid' %>
+              <div class="img-polaroid" style="height: 200px; text-align: center;">
+              <% if img.blank? %>
+
+                  <i class="icon-camera-retro" style="line-height: 200px; font-size: 100px; color: graytext"></i>
+
+              <% else  %>
+                  <%= filepicker_image_tag img, h: 250, fit: 'clip', :class => 'img-polaroid' %>
               <% end %>
+              </div>
           <% end %>
         </div>
 
