@@ -24,7 +24,7 @@ TravelerCar::Application.routes.draw do
       resources :travels, only: [:new]
 
       authenticated :user do
-        match "/travels", to: redirect { |p, req| "/a/#{p[:locale]}/users/#{req.env["warden"].user(:user).id}/travels/new" }, :as => 'travels'
+        match "/travels", to: redirect { |p, req| "/#{p[:locale]}/users/#{req.env["warden"].user(:user).id}/travels/new" }, :as => 'travels'
       end
 
       unauthenticated :user do

@@ -424,7 +424,7 @@ fr:
         name: "Nom"
         price: "Prix par jour en euros"
       car:
-        equipments: "Au niveau equipement, votre voiture dispose t elle de :"
+        equipments: "Au niveau équipement, votre voiture dispose-t-elle de :"
         brand: "Marque"
         model: "Modèle"
         year: "Année"
@@ -445,8 +445,8 @@ fr:
         hasAirConditioning: "Climatisation ?"
         hasChildSeat: "Siège enfant ?"
         filepicker1_url: "Ajouter une photo"
-        filepicker2_url: "Ajouter une deuxième photo"
-        filepicker3_url: "Ajouter une troisième photo"
+        filepicker2_url: "une seconde ?"
+        filepicker3_url: "encore une ?"
         driver: "Conducteur"
         category: "Catégorie"
       driver:
