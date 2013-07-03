@@ -1,0 +1,73 @@
+<div class="row-fluid login">
+
+  <div class="span12">
+    <h1><%= t(".title") %></h1>
+
+
+    <div class="login-wrapper"><!--login-->
+
+      <p class="hero">Partagez les meilleurs plans TravelerCar et trouvez ceux recommandés par vos amis. En savoir
+        plus</p>
+      <a href="<%= omniauth_authorize_path(resource_name, "facebook") %>" class="btn btn-facebook btn-large"><i class="icon-facebook"></i> | Se Connecter avec Facebook</a>
+
+
+      <div class="separator">
+        <h2>ou</h2>
+        <hr/>
+      </div>
+
+
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "login-form"}) do |f| %>
+          <div class="control-group">
+            <div class="controls">
+              <%= f.email_field :email, :autofocus => true, :placeholder => t("helpers.label.user.email") %>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <%= f.password_field :password, :placeholder => t("helpers.label.user.password") %>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <!--label class="checkbox">
+                <input type="checkbox"> Se souvenir de moi
+              </label-->
+              <%= f.submit t(:login), :class => "btn on-hover btn-large btn-block" %>
+            </div>
+          </div>
+      <% end %>
+
+      <hr/>
+
+
+      <p class="hero">Pas encore enregistré ? Créez un compte gratuitement et en 1 minute !</p>
+
+
+      <div class="accordion" id="accordion2"><!--accordion sign-up-->
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+              Oui, je crée mon compte !
+            </a>
+          </div>
+          <div id="collapseOne" class="accordion-body collapse">
+            <div class="accordion-inner">
+
+                <%= render "devise/registrations/sign_in" %>
+
+
+            </div>
+          </div>
+        </div>
+      </div><!--/accordion sign-up-->
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
