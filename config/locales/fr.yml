@@ -373,10 +373,13 @@ fr:
     registrations:
       edit:
         title: "Modifier mon compte"
-        address: "Adresse"
+        address: "Mon adresse"
         informations: "Informations"
+        title_driver_informations: "Pour conduire, je donne..."
+        title_user_informations: "Je suis..."
+        title_password_informations: "le mot de passe..."
         current_password_msg: (nous avons besoin de votre mot de passe actuel pour confirmer les changements)
-        delete_account: "Supprimer mon compte"
+        delete_account: "Je ne veux plus être inscrit sur TravelerCar!"
       new:
         title: "Créer mon compte"
         address: "Adresse"
