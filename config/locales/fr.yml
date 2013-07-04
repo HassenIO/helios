@@ -384,6 +384,11 @@ fr:
     sessions:
       new:
         title: "Connexion"
+      login:
+        title: "Se connecter"
+        title_facebook: "Partagez les meilleurs plans TravelerCar et trouvez ceux recommandés par vos amis. En savoir plus"
+        title_create_account: "Pas encore enregistré ? Créez un compte gratuitement et en 1 minute !"
+        link_create_account: "Oui, je crée un compte !"
     passwords:
       edit:
         title: "Modifier ton mot de passe"

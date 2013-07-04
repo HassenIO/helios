@@ -6,8 +6,7 @@
 
     <div class="login-wrapper"><!--login-->
 
-      <p class="hero">Partagez les meilleurs plans TravelerCar et trouvez ceux recommandés par vos amis. En savoir
-        plus</p>
+      <p class="hero"><%= t(".title_facebook") %></p>
       <a href="<%= omniauth_authorize_path(resource_name, "facebook") %>" class="btn btn-facebook btn-large"><i class="icon-facebook"></i> | Se Connecter avec Facebook</a>
 
 
@@ -41,14 +40,14 @@
       <hr/>
 
 
-      <p class="hero">Pas encore enregistré ? Créez un compte gratuitement et en 1 minute !</p>
+      <p class="hero"><%= t(".title_create_account") %></p>
 
 
       <div class="accordion" id="accordion2"><!--accordion sign-up-->
         <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-              Oui, je crée mon compte !
+              <%= t(".link_create_account") %>
             </a>
           </div>
           <div id="collapseOne" class="accordion-body collapse">
