@@ -300,6 +300,10 @@ fr:
     edit:
       title: "Modification d'une location"
     form:
+      car: "Le véhicule..."
+      driver_identity: "Le conducteur sera..."
+      driver_contact: "Ses coordonnées sont..."
+      driver_license: "et concernant son permis..."
       conditions: "Important : afin de protéger les propriétaires des voitures nous effectuons des vérifications diverses pour
               confirmer votre identité et votre historique de conduite"
     cgv:
@@ -467,7 +471,7 @@ fr:
         license: "Permis de conduire"
         license_year: "Année du permis de conduire"
         first_name: "Prénom"
-        last_name: "Nom de famille"
+        last_name: "Nom"
         phone: "Telephone"
         birth_date: "Date de naissance"
         address: "Adresse"

@@ -56,26 +56,36 @@
       be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of
       selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse
       pains."</p>
+  </div>
 
+</div>
 
-    <%= form_for([@user, @rent]) do |f| %>
-
+<%= form_for([@user, @rent]) do |f| %>
+    <div class="row-fluid">
+      <div class="span12">
         <div class="control-group">
           <div class="controls">
             <label class="checkbox">
               <%= f.check_box :has_accepted_cgv %> <%= t("helpers.label.travel.has_accepted_cgv") %>
             </label>
-            <%= f.submit t(".submit"), :class => "btn btn-primary" %>
-            <%= link_to t(".cancel"), user_rent_path(@user, @rent),
-                        :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "base" %>
+
           </div>
         </div>
+      </div>
+    </div>
 
-    <% end %>
+    <div class="row-fluid text-center" style="margin-bottom: 80px;">
+      <div class="span12">
+        <%= f.submit t(".submit"), :class => "btn on-hover btn-large" %> |
 
-  </div>
+        <%= link_to t(".cancel"), user_rent_path(@user, @rent),
+                    :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "base" %>
+      </div>
+    </div>
 
-</div>
+<% end %>
+
+
 
 <script type="text/javascript">
     $(function () {
