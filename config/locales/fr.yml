@@ -340,8 +340,14 @@ fr:
     new:
       title: "Récapitulatif et paiement"
     form:
+      pay_this_car: "Payer pour cette voiture"
       payment: "Paiement"
       submit: "Payer"
+      details: "Details"
+      we_summarize: "On récapitule..."
+      where: "Où ?"
+      when: "quand ?"
+      how_many: "Combien je paie ?"
     show:
       title: "Confirmation"
       summary: "Vous avez reservé la voiture %{brand} %{model} %{year} du %{from} au %{to} à l'aeroport %{airPort}"
