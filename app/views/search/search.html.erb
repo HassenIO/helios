@@ -16,61 +16,7 @@
 </div>
 
 <% @travels.each do |travel| %>
-
-    <div class="well-list">
-      <div class="row-fluid">
-
-
-        <div class="span3">
-          <% if travel.car %>
-              <% img = travel.car.filepicker1_url || travel.car.filepicker2_url ||travel.car.filepicker3_url %>
-
-              <div class="img-polaroid" style="height: 200px; text-align: center;">
-              <% if img.blank? %>
-
-                  <i class="icon-camera-retro" style="line-height: 200px; font-size: 100px; color: graytext"></i>
-
-              <% else  %>
-                  <%= filepicker_image_tag img, h: 250, fit: 'clip', :class => 'img-polaroid' %>
-              <% end %>
-              </div>
-          <% end %>
-        </div>
-
-        <div class="span5">
-
-          <% if travel.car %>
-              <h3> <%= travel.car.try { |car| [car.year, car.brand, car.model].join(' - ') } %> </h3>
-
-              <p> <%= travel.car.category.try { |category| category.name } %>,  <%= t("helpers.label.car.nbSeats") %>
-                : <%= travel.car.nbSeats %></p>
-
-              <h4> <%= [travel.car.km, t(travel.car.fuel, :scope => [:helpers, :label, :car]), t(travel.car.transmission, :scope => [:helpers, :label, :car])].join(', ') %></h4>
-          <% end %>
-
-        </div>
-
-        <div class="span4">
-          <% if travel.car.category %>
-
-              <p><%= t(:interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate)) %>
-
-              <h4><%= t(:x_days, :count => number_of_days(@rent)) %>
-                <%= t(:byDay, :price => number_to_currency(travel.car.category.price_in_euros)) %></h4>
-
-              <h3><%= t(:total, :total => number_to_currency(price_for_rent(@rent, :price => travel.car.category.price))) %></h3>
-
-              </p>
-
-
-              <%= link_to t('.rent'), user_travel_url(travel.user, travel, :rent => params[:rent]), :class => "btn on-hover btn-large btn-block" %>
-          <% end %>
-        </div>
-
-      </div>
-    </div>
-
-
+    <%= render "travels/item", :travel => travel %>
 <% end %>
 
 

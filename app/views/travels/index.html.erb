@@ -1,41 +1,7 @@
 <h2><%= t(".title") %> </h2>
 
 <% @travels.each do |travel| %>
-
-    <div class="alert <%= travel.status %>">
-      <div class="row-fluid">
-
-        <div class="span6">
-          <p>  <%= link_to travel.airPort.name + ' - ' + travel.departure.to_s + ' -> ' + travel.arrival.to_s, [@user, travel] %></p>
-
-          <% if @user == current_user %>
-              <%= link_to 'Annuler cette réservation', [@user, travel], method: :delete, data: {confirm: 'Are you sure?'} %>
-              |
-              <%= link_to 'Modifier cette réservation', edit_user_travel_path(@user, travel) %>
-          <% end %>
-        </div>
-
-        <div class="span6">
-          <div class="row-fluid">
-            <% if travel.car %>
-                <div class="span4">
-                  <% unless travel.car.filepicker1_url.blank? %>
-                      <%= filepicker_image_tag travel.car.filepicker1_url, width: 100, height: 100, fit: 'clip', class: 'pull-left' %>
-                  <% end %>
-                </div>
-
-                <div class="span8">
-                  <p> <%= travel.car.try { |car| car.brand + ' ' + car.model } %> </p>
-                </div>
-
-            <% end %>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-
+      <%= render "travels/item", :travel => travel %>
 <% end %>
 
 <br/>
@@ -43,3 +9,5 @@
 <% if @user == current_user %>
     <%= link_to t(:register_travel), new_user_travel_path(@user) %>
 <% end %>
+
+
