@@ -291,6 +291,7 @@ fr:
       cancel_rent: "Annuler cette location"
       edit_rent: "Modifier cette location"
       new_rent: "Nouvelle location"
+      no_rents: "Vous n'avez fait aucune demande de location"
     new:
       title: "Enregistrer ma location"
     show:
@@ -494,6 +495,12 @@ fr:
         endDate: "Fin"
         airPort: "Aéroport"
         comments: "Commentaires"
+        payment:
+          status:
+            unpaid: "Non payé"
+            pending: "Paiement en cours"
+            paid: "Payé"
+            failed: "Paiement refusé"
       user:
         first_name: "Prénom"
         last_name: "Nom de famille"

@@ -43,6 +43,11 @@
 
           </p>
 
+          <% if @user == current_user %>
+
+              <span class="label <%= rent.try(:payment).try(:status) || :unpaid %>"><%= t( "helpers.label.rent.payment.status."+ (rent.try(:payment).try(:status) || :unpaid).to_s )  %></span>
+          <% end %>
+
 
           <!--<%= link_to t('.rent'), user_travel_url(rent.travel.user, rent.travel, :rent => params[:rent]), :class => "btn on-hover btn-large btn-block" %>-->
       <% end %>
