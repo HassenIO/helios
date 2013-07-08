@@ -320,6 +320,9 @@ fr:
       title: "Je m'inscris pour avoir un parking gratuit"
     item:
       rent: "Louer"
+      cancel: "Annuler ce parking"
+      update: "Modifier ce parking"
+      contact_support: "Pour modifier ou annuler ce parking, merci de contacter le support"
     form:
       car_legend: "J'enregistre ma voiture"
       car_options_legend: "Informations complémentaires"

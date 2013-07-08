@@ -24,7 +24,7 @@
 
       <p><%= t(:interval_datetime, :startDate => l(travel.departure), :endDate => l(travel.arrival)) %>
 
-      <p> <%= [travel.car.category.try { |category| category.name }, t("helpers.label.car.nbSeats") + ':'  +travel.car.nbSeats.to_s].join(',') %></p>
+      <p> <%= [travel.car.category.try { |category| category.name }, t("helpers.label.car.nbSeats") + ':' +travel.car.nbSeats.to_s].join(',') %></p>
 
       <h4> <%= [travel.car.km, t(travel.car.fuel, :scope => [:helpers, :label, :car]), t(travel.car.transmission, :scope => [:helpers, :label, :car])].join(', ') %></h4>
 
@@ -34,11 +34,15 @@
 
       <% if @user == current_user %>
 
-          <h4><%= travel.car.category.try{ |category| t(:byDay, :price => number_to_currency(category.price_in_euros)) } %></h4>
+          <h4><%= travel.car.category.try { |category| t(:byDay, :price => number_to_currency(category.price_in_euros)) } %></h4>
 
-          <%= link_to 'Annuler cette réservation', [@user, travel], method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-primary btn-large btn-block" %>
+          <% if travel.status == :pending %>
+              <%= link_to t(".cancel"), [@user, travel], method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-primary btn-large btn-block" %>
 
-          <%= link_to 'Modifier cette réservation', edit_user_travel_path(@user, travel), :class => "btn on-hover btn-large btn-block" %>
+              <%= link_to t(".update"), edit_user_travel_path(@user, travel), :class => "btn on-hover btn-large btn-block" %>
+          <% else %>
+              <p><%= link_to t(".contact_support"), root_path(anchor: "contact"), :class => "base" %></p>
+          <% end %>
 
       <% elsif !@rent.nil? %>
           <p><%= t(:interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate)) %>
