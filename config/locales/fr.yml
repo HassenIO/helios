@@ -330,6 +330,7 @@ fr:
       how_many: "Combien ça coûte ?"
     index:
       title: "Gérer mes parkings"
+      no_travels: "Vous n'avez pas encore proposé de voiture"
     cgv:
       title: "Conditions générales de vente"
       submit: "J'accepte et je valide mon parking"
@@ -444,6 +445,10 @@ fr:
         arrival: "Date de retour"
         has_accepted_cgv: "J'ai lu les conditions générales de vente et je les accepte"
         status: "Etat"
+        status:
+          pending: "Validation en cours"
+          active: "Activé"
+          rent: "Loué"
       category:
         name: "Nom"
         price: "Prix par jour en euros"

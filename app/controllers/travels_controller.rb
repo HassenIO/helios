@@ -10,7 +10,7 @@ class TravelsController < ApplicationController
   # GET /travels.json
   def index
 
-    @travels = @user.travels.all
+    @travels = @user.travels.all.sort_by!{ |t| t.departure}
 
     respond_to do |format|
       format.html # index.html.erb

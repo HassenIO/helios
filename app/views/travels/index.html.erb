@@ -1,13 +1,27 @@
-<h2><%= t(".title") %> </h2>
-
-<% @travels.each do |travel| %>
-      <%= render "travels/item", :travel => travel %>
-<% end %>
-
-<br/>
+<h1><%= t(".title") %> </h1>
 
 <% if @user == current_user %>
-    <%= link_to t(:register_travel), new_user_travel_path(@user) %>
+    <%= link_to t(:register_travel), new_user_travel_path(@user), :class => "base pull-right" %>
 <% end %>
+
+<% if @travels.empty? %>
+    <h3><%= t(".no_travels") %></h3>
+
+<% else %>
+
+    <h3><%= t("helpers.label.travel.status.pending") %></h3>
+    <% @travels.select { |travel| travel.status == :pending }.each do |travel| %>
+        <%= render "travels/item", :travel => travel %>
+    <% end %>
+
+    <h3><%= t("helpers.label.travel.status.active") %></h3>
+    <% @travels.select { |travel| travel.status == :active || travel.status == :rent }.each do |travel| %>
+        <%= render "travels/item", :travel => travel %>
+    <% end %>
+
+    <br/>
+
+<% end %>
+
 
 
