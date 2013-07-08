@@ -1,4 +1,4 @@
-<a type="button" class="btn btn-primary btn-back" href="#" onclick="history.go(-1);return true;">
+<a type="button" class="btn btn-primary btn-back" href="#" onclick="javascript:window.history.back(-1);return false;">
   <i class="icon-arrow-left"></i><%= t(:back) %>
 </a>
 
@@ -8,7 +8,7 @@
   <div class="span8">
     <h1><%= [@travel.car.year, @travel.car.brand, @travel.car.model].join(' - ') %>
 
-      <% if can? :update, @travel %>
+      <% if @user == current_user %>
           <%= link_to t(:edit), edit_user_travel_path(@user, @travel), :class => "btn btn-edit on-hover" %>
       <% end %>
     </h1>

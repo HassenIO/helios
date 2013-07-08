@@ -21,7 +21,7 @@
     <div class="span5">
 
       <% if rent.travel.car %>
-          <h3> <%= rent.travel.car.try { |car| [car.year, car.brand, car.model].join(' - ') } %> </h3>
+          <h3><%= link_to rent.travel.car.try { |car| [car.year, car.brand, car.model].join(' - ') }, user_travel_url(rent.travel.user, rent.travel, :rent => params[:rent]), :class => "base" %>  </h3>
 
           <p> <%= rent.travel.car.category.try { |category| category.name } %>,  <%= t("helpers.label.car.nbSeats") %>
             : <%= rent.travel.car.nbSeats %></p>
@@ -39,17 +39,15 @@
           <h4><%= t(:x_days, :count => number_of_days(rent)) %>
             <%= t(:byDay, :price => number_to_currency(rent.travel.car.category.price_in_euros)) %></h4>
 
+          <% if @user == current_user %>
+              <span class="label <%= rent.try(:payment).try(:status) || :unpaid %> pull-right"><%= t( "helpers.label.rent.payment.status."+ (rent.try(:payment).try(:status) || :unpaid).to_s )  %></span>
+          <% end %>
+
           <h3><%= t(:total, :total => number_to_currency(price_for_rent(rent, :price => rent.travel.car.category.price))) %></h3>
 
           </p>
 
-          <% if @user == current_user %>
-
-              <span class="label <%= rent.try(:payment).try(:status) || :unpaid %>"><%= t( "helpers.label.rent.payment.status."+ (rent.try(:payment).try(:status) || :unpaid).to_s )  %></span>
-          <% end %>
-
-
-          <!--<%= link_to t('.rent'), user_travel_url(rent.travel.user, rent.travel, :rent => params[:rent]), :class => "btn on-hover btn-large btn-block" %>-->
+          <%= link_to t('.go_rent'), user_travel_url(rent.travel.user, rent.travel, :rent => params[:rent]), :class => "btn on-hover btn-large btn-block" %>
       <% end %>
     </div>
 

@@ -292,6 +292,8 @@ fr:
       edit_rent: "Modifier cette location"
       new_rent: "Nouvelle location"
       no_rents: "Vous n'avez fait aucune demande de location"
+    item:
+      go_rent: "Voir"
     new:
       title: "Enregistrer ma location"
     show:
@@ -316,6 +318,8 @@ fr:
   travels:
     new:
       title: "Je m'inscris pour avoir un parking gratuit"
+    item:
+      rent: "Louer"
     form:
       car_legend: "J'enregistre ma voiture"
       car_options_legend: "Informations complémentaires"
