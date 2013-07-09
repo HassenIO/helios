@@ -1,27 +1,33 @@
-<div class="row-fluid">
+<div class="row-fluid login">
 
   <div class="span12">
-    <h2><%= t(".title") %></h2>
+    <h1><%= t(".title") %></h1>
 
-    <%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => {:method => :post, :class => "form-horizontal well"}) do |f| %>
 
-        <div class="control-group">
-          <%= f.label :email, :class => "control-label" %>
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on"><i class="icon-envelope"></i></span>
-              <%= f.email_field :email, :autofocus => true %>
+    <div class="login-wrapper"><!--login-->
+
+      <%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => {:method => :post, :class => "login-form"}) do |f| %>
+          <div class="control-group">
+            <div class="controls">
+              <%= f.email_field :email, :autofocus => true, :placeholder => t("helpers.label.user.email") %>
             </div>
           </div>
-        </div>
 
-        <div class="form-actions">
-          <%= f.submit t(".resend_unlock"), :class => "btn btn-primary" %>
-        </div>
+          <div class="control-group">
+            <div class="controls">
 
-    <% end %>
-
+              <%= f.submit t(".resend_unlock"), :class => "btn on-hover btn-large btn-block" %>
+            </div>
+          </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
+
 <%= render "devise/shared/links" %>
+
+
+
+
+

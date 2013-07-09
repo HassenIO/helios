@@ -416,14 +416,14 @@ fr:
     passwords:
       edit:
         title: "Modifier ton mot de passe"
-        change_password: "Enregistrer mon nouveau mot de passe"
+        change_password: "Enregistrer"
       new:
         title: "Mot de passe oublié ?"
-        send_new_password: "Envoyez moi un nouveau mot de passe"
+        send_new_password: "Envoyez"
     confirmations:
       new:
         title: "Renvoyez moi le mail de confirmation"
-        resend_confirmation: "Renvoyez moi le mail de confirmation"
+        resend_confirmation: "Renvoyez"
     unlocks:
       new:
         title: "Renvoyez moi le mail de deblocage"
