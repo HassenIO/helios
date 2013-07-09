@@ -40,52 +40,6 @@
 
     </fieldset>
 
-
-    <% if resource.provider.nil? %>
-
-        <div class="row-fluid">
-          <div class="span12">
-            <h2><%= t(".title_password_informations") %> </h2>
-          </div>
-        </div>
-
-
-        <fieldset name="User Information" class="well comment_form">
-          <!--<legend><%= t(".informations") %></legend>-->
-
-          <div class="row-fluid">
-            <div class="span4">
-              <div class="control-group">
-                <div class="controls">
-                  <%= f.password_field :password, :placeholder => t("helpers.label.user.password") %>
-                </div>
-              </div>
-            </div>
-
-            <div class="span4">
-              <div class="control-group">
-                <div class="controls">
-                  <%= f.password_field :password_confirmation, :placeholder => t("helpers.label.user.password_confirmation") %>
-                </div>
-              </div>
-            </div>
-
-            <div class="span4">
-              <div class="control-group">
-                <div class="controls">
-                  <%= f.password_field :current_password, :placeholder => t("helpers.label.user.current_password") %>
-                  <span class="help-block"><%= t(".current_password_msg") %></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </fieldset>
-
-    <% end %>
-
-
-
     <div class="row-fluid">
       <div class="span12">
         <h2><%= t(".title_driver_informations") %></h2>
@@ -134,6 +88,64 @@
       </div>
 
     </fieldset>
+
+
+    <% if resource.provider.nil? %>
+
+        <div class="row-fluid">
+          <div class="span12">
+            <h2><%= t(".title_password_informations") %> </h2>
+          </div>
+        </div>
+
+
+        <fieldset name="User Information" class="well comment_form">
+          <!--<legend><%= t(".informations") %></legend>-->
+
+          <div class="row-fluid">
+            <div class="span6">
+              <div class="control-group">
+                <div class="controls">
+                  <%= f.password_field :password, :placeholder => t("helpers.label.user.password") %>
+                  <span class="help-block"><%= t(".do_not_fill") %></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="span6">
+              <div class="control-group">
+                <div class="controls">
+                  <%= f.password_field :password_confirmation, :placeholder => t("helpers.label.user.password_confirmation") %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+
+        <div class="row-fluid">
+          <div class="span12">
+            <h2><%= t(".title_password_current") %> </h2>
+          </div>
+        </div>
+
+
+        <fieldset name="User Information" class="well comment_form">
+
+          <div class="row-fluid">
+
+            <div class="span6">
+              <div class="control-group">
+                <div class="controls">
+                  <%= f.password_field :current_password, :placeholder => t("helpers.label.user.current_password") %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+
+    <% end %>
 
 
     <div class="row-fluid text-center" style="margin-bottom: 80px;">

@@ -396,8 +396,10 @@ fr:
         informations: "Informations"
         title_driver_informations: "Pour conduire, je donne..."
         title_user_informations: "Je suis..."
-        title_password_informations: "le mot de passe..."
+        title_password_informations: "Si je veux changer le mot de passe..."
+        title_password_current: "Je confirme avec le mot de passe actuel..."
         current_password_msg: (nous avons besoin de votre mot de passe actuel pour confirmer les changements)
+        do_not_fill: "Laissez vide si vous ne souhaitez pas changer"
         delete_account: "Je ne veux plus être inscrit sur TravelerCar!"
       new:
         title: "Créer mon compte"
@@ -511,8 +513,8 @@ fr:
       user:
         first_name: "Prénom"
         last_name: "Nom de famille"
-        password: "Mot de passe"
-        password_confirmation: "Confirmation du mot de passe"
+        password: "Nouveau mot de passe"
+        password_confirmation: "Confirmation du nouveau mot de passe"
         current_password: "Mot de passe actuel"
         address: "Adresse"
         city: "Ville"
