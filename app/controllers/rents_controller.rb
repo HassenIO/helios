@@ -5,6 +5,8 @@ class RentsController < ApplicationController
   before_filter :load_current_user
   before_filter :authenticate_user!
 
+  COMMON_DRIVER_USER_FIELDS = ["first_name", "last_name", "address", "city", "country", "zip_code"];
+
   # GET /rents
   # GET /rents.json
   def index
@@ -33,7 +35,10 @@ class RentsController < ApplicationController
       @rent = Rent.new(params[:rent])
 
       @rent.travel = Travel.find(params[:rent][:travel_id])
-      @rent.driver = Driver.new
+
+      #Fill driver info with user ones
+      @rent.driver = Driver.new(@user.attributes.select{ |key, _| COMMON_DRIVER_USER_FIELDS.include?(key) })
+
 
       respond_to do |format|
         format.html # register.html.erb
