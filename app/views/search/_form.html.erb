@@ -1,7 +1,3 @@
-<%= javascript_include_tag 'bootstrap-datetimepicker' %>
-
-
-
 <%= form_for @rent, :url => {:action => 'search'}, :method => 'get' do |f| %>
 
     <div class="well well-blue">
@@ -67,7 +63,7 @@
 
       <div class="row-fluid">
         <div class="span12 text-center">
-          <a class="btn btn-large btn-block"  name="commit" onclick="$('#new_rent').submit(); return false;">
+          <a class="btn btn-large btn-block" name="commit" onclick="$('#new_rent').submit(); return false;">
             <div class="nav-hover"></div>
             <p style="margin-bottom: 0"><%= t('.find') %></p>
           </a>
@@ -78,35 +74,38 @@
 
 <% end %>
 
-<script type="text/javascript">
-    $(function () {
+<% content_for :footer do %>
+    <%= javascript_include_tag 'bootstrap-datetimepicker' %>
+    <script type="text/javascript">
+        $(function () {
 
-        $('#rent_startDate_timepicker').datetimepicker({
-            language: 'pt-BR',
-            pickDate: false,
-            pickSeconds: false
+            $('#rent_startDate_timepicker').datetimepicker({
+                language: 'pt-BR',
+                pickDate: false,
+                pickSeconds: false
+
+            });
+
+            $('#rent_startDate_datepicker').datetimepicker({
+                language: 'pt-BR',
+                pickTime: false
+
+            });
+
+            $('#rent_endDate_timepicker').datetimepicker({
+                language: 'pt-BR',
+                pickDate: false,
+                pickSeconds: false
+
+            });
+
+            $('#rent_endDate_datepicker').datetimepicker({
+                language: 'pt-BR',
+                pickTime: false
+
+            });
 
         });
 
-        $('#rent_startDate_datepicker').datetimepicker({
-            language: 'pt-BR',
-            pickTime: false
-
-        });
-
-        $('#rent_endDate_timepicker').datetimepicker({
-            language: 'pt-BR',
-            pickDate: false,
-            pickSeconds: false
-
-        });
-
-        $('#rent_endDate_datepicker').datetimepicker({
-            language: 'pt-BR',
-            pickTime: false
-
-        });
-
-    });
-
-</script>
+    </script>
+<% end %>

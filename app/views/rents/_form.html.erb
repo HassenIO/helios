@@ -182,16 +182,17 @@
 
 <% end %>
 
+<% content_for :footer do %>
+    <script type="text/javascript">
+        $(function () {
 
-<script type="text/javascript">
-    $(function () {
+            $('#driver_birthdate_datetimepicker').datetimepicker({
+                language: 'pt-BR',
+                pickTime: false,
+                startDate: new Date(1980, 1, 1, 0, 0, 0)
+            });
 
-        $('#driver_birthdate_datetimepicker').datetimepicker({
-            language: 'pt-BR',
-            pickTime: false,
-            startDate: new Date(1980, 1, 1, 0, 0, 0)
         });
 
-    });
-
-</script>
+    </script>
+<% end %>

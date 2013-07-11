@@ -77,17 +77,20 @@
 
 </div>
 
-<script type="text/javascript">
-    $(function () {
 
-        $("form").submit(function () {
-            if ($('#travel_has_accepted_cgv').is(':checked'))
-                return true;
-            else {
-                alert("<%= t(".accept_cgv") %>");
-                return false;
-            }
+<% content_for :footer do %>
+    <script type="text/javascript">
+        $(function () {
+
+            $("form").submit(function () {
+                if ($('#travel_has_accepted_cgv').is(':checked'))
+                    return true;
+                else {
+                    alert("<%= t(".accept_cgv") %>");
+                    return false;
+                }
+            });
+
         });
-
-    });
-</script>
+    </script>
+<% end %>
