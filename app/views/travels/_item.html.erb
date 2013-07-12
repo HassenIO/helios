@@ -32,7 +32,7 @@
 
     <div class="span4">
 
-      <% if @user == current_user %>
+      <% if travel.user == current_user %>
 
           <h4><%= travel.car.category.try { |category| t(:byDay, :price => number_to_currency(category.price_in_euros)) } %></h4>
 

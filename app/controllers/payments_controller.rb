@@ -1,7 +1,12 @@
 class PaymentsController < ApplicationController
   include PricingHelper
 
-  before_filter :load_rent
+  before_filter :authenticate_user!
+
+  load_and_authorize_resource
+
+  load_and_authorize_resource :payment, :through => :rent
+
 
   ## GET /payments
   ## GET /payments.json
@@ -63,8 +68,7 @@ class PaymentsController < ApplicationController
       respond_to do |format|
         if @payment.save
           #Fix how to store / config userId Leetchi
-          #Fix url return
-          contribution = Leetchi::Contribution.create({"UserID" => 334140,
+          contribution = Leetchi::Contribution.create({"UserID" => ENV["LEETCHI_TARGET_USER_ID"],
                                                        "WalletID" => 0,
                                                        "Amount" => @payment.amount,
                                                        "ClientFeeAmount" => 0,
@@ -121,7 +125,4 @@ class PaymentsController < ApplicationController
     end
   end
 
-  def load_rent
-    @rent = Rent.find(params[:rent_id])
-  end
 end

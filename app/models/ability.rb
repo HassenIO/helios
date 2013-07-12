@@ -3,16 +3,19 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
+
     if user.has_role? :admin
       can :manage, :all
     else
       #Owner
       can :manage, Travel, :user_id => user.id
+
       can :manage, Rent, :user_id => user.id
 
-      can :create, [Travel, Rent, User]
+      can :read, Travel, :status => :active
 
-      can :read, Travel
+      can :create, [Travel, Rent, User, Payment, Car]
+
     end
 
 

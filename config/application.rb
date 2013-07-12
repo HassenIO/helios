@@ -70,11 +70,7 @@ module TravelerCar
 
     config.action_mailer.default_url_options = {:host => 'localhost'}
 
-    config.filepicker_rails.api_key = "A68xA26uYSfO6TDJM0Qp3z"
-
-    if Rails.env.development?
-      ENV['HOST'] ||= "localhost:3000"
-    end
+    config.filepicker_rails.api_key = ENV["FILEPICKER_KEY"]
 
   end
 end

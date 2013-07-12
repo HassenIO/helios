@@ -1,9 +1,10 @@
 class RentsController < ApplicationController
 
+  before_filter :authenticate_user!
+
   load_and_authorize_resource
 
-  before_filter :load_current_user
-  before_filter :authenticate_user!
+  load_and_authorize_resource :rent, :through => :user
 
   COMMON_DRIVER_USER_FIELDS = ["first_name", "last_name", "address", "city", "country", "zip_code"];
 
@@ -22,7 +23,6 @@ class RentsController < ApplicationController
   # GET /rents/1
   # GET /rents/1.json
   def show
-    #@rent = Rent.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -51,7 +51,7 @@ class RentsController < ApplicationController
 
   # GET /rents/1/edit
   def edit
-    #@rent = Rent.find(params[:id])
+
   end
 
   # POST /rents
@@ -114,7 +114,4 @@ class RentsController < ApplicationController
 
   end
 
-  def load_current_user
-    @user = current_user
-  end
 end
