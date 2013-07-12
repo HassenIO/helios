@@ -26,7 +26,7 @@ ActiveAdmin.register Travel do
     column(:created_at, :sortable => :created_at)
   end
 
-  action_item  :except => :index do
+  action_item :except => :index do
     link_to "Voir sur le site publique", user_travel_url(travel.user, travel), :target => "blank"
   end
 
@@ -69,7 +69,9 @@ ActiveAdmin.register Travel do
 
     end
 
-    f.inputs :commercial_text
+    f.inputs do
+      f.input :commercial_text, :as => :ckeditor
+    end
 
     f.buttons
   end

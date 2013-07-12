@@ -52,7 +52,7 @@
 
                     <!--h3> titre (h3) de la promo !!!</h3-->
 
-                    <p><%= @travel.commercial_text %></p>
+                    <%= @travel.commercial_text.html_safe %>
 
 
                     <!--a class="btn btn-large btn-block" href="#"><div class="nav-hover"></div>un CTA dans la promo</a-->

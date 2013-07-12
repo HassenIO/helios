@@ -36,3 +36,5 @@ gem 'country-select'
 
 #MangoPay
 gem "leetchi-wallet-services"
+
+gem "ckeditor"
