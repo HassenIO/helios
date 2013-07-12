@@ -36,6 +36,7 @@
       <% unless @rent.nil? %>
 
           <h3><%= t(".when") %></h3>
+
           <p>
             <%= t :interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate) %>
           </p>
@@ -45,6 +46,18 @@
 
               <p><%= [t(:x_days, :count => number_of_days(@rent)), t(:byDay, :price => number_to_currency(@travel.car.category.price_in_euros))].join(", ") %>
               </p>
+
+              <% unless @travel.commercial_text.blank? %>
+                  <div class="block-mktn">
+
+                    <!--h3> titre (h3) de la promo !!!</h3-->
+
+                    <p><%= @travel.commercial_text %></p>
+
+
+                    <!--a class="btn btn-large btn-block" href="#"><div class="nav-hover"></div>un CTA dans la promo</a-->
+                  </div>
+              <% end %>
 
 
               <h2><%= t(:total, :total => number_to_currency(price_for_rent(@rent, :price => @travel.car.category.price))) %> </h2>

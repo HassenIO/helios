@@ -33,7 +33,7 @@ ActiveAdmin.register Travel do
 
   form do |f|
 
-    f.inputs :arrival, :departure, :airPort, :has_accepted_cgv, :user
+    f.inputs :departure, :arrival, :airPort, :has_accepted_cgv, :user
 
 
     f.inputs do
@@ -68,6 +68,8 @@ ActiveAdmin.register Travel do
       end
 
     end
+
+    f.inputs :commercial_text
 
     f.buttons
   end
