@@ -6,7 +6,7 @@ class RentsController < ApplicationController
 
   load_and_authorize_resource :rent, :through => :user
 
-  COMMON_DRIVER_USER_FIELDS = ["first_name", "last_name", "address", "city", "country", "zip_code"];
+  COMMON_DRIVER_USER_FIELDS = ["first_name", "last_name", "address", "city", "country", "zip_code", "license", "license_year", "birth_date"]
 
   # GET /rents
   # GET /rents.json

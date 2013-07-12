@@ -513,6 +513,9 @@ fr:
       user:
         first_name: "Prénom"
         last_name: "Nom de famille"
+        license: "Numéro de permis de conduire"
+        license_year: "Année du permis de conduire"
+        birth_date: "Date de naissance"
         password: "Nouveau mot de passe"
         password_confirmation: "Confirmation du nouveau mot de passe"
         current_password: "Mot de passe actuel"

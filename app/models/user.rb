@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :provider, :uid
-  attr_accessible :address, :city, :country, :zip_code
+  attr_accessible :address, :city, :country, :zip_code, :license, :license_year, :birth_date
 
 
   has_many :cars
@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
   #validates :zip_code, :presence => true, :on => :update
   #validates :first_name, :presence => true, :on => :update
   #validates :last_name, :presence => true, :on => :update
+  #validates :license, :presence => true
+  #validates :license_year, :presence => true
   #
   #
   #with_options :unless => :is_omniauth? do
@@ -51,6 +53,7 @@ class User < ActiveRecord::Base
                          last_name: auth.info.last_name,
                          provider: auth.provider,
                          uid: auth.uid,
+                         birth_date: auth.info.user_birthday,
                          email: auth.info.email,
                          password: Devise.friendly_token[0, 20]
       )
