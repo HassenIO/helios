@@ -405,6 +405,9 @@
 
             });
 
+            filepicker.setKey("<%= ENV["FILEPICKER_KEY"] %>");
+
+
             $('a[data-filepicker]').click(function (e) {
                 var $current = $(this);
                 e.preventDefault(); // This keeps the normal link
