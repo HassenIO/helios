@@ -3,9 +3,9 @@ class PaymentsController < ApplicationController
 
   before_filter :authenticate_user!
 
-  load_and_authorize_resource
+  load_and_authorize_resource :rent
 
-  load_and_authorize_resource :payment, :through => :rent
+  load_and_authorize_resource :payment, :through => :rent, :singleton => true
 
 
   ## GET /payments

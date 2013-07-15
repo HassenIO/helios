@@ -2,7 +2,7 @@ class RentsController < ApplicationController
 
   before_filter :authenticate_user!
 
-  load_and_authorize_resource
+  load_and_authorize_resource :user
 
   load_and_authorize_resource :rent, :through => :user
 
@@ -31,6 +31,8 @@ class RentsController < ApplicationController
   end
 
   def new
+    @user = current_user
+
     if params[:rent]
       @rent = Rent.new(params[:rent])
 
