@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
                          last_name: auth.info.last_name,
                          provider: auth.provider,
                          uid: auth.uid,
-                         birth_date: auth.info.user_birthday,
+                         birth_date: auth.extra.raw_info.birthday,
                          email: auth.info.email,
                          password: Devise.friendly_token[0, 20]
       )
