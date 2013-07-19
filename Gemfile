@@ -18,7 +18,7 @@ gem 'therubyracer' # Ruby
 
 gem "devise", ">= 2.2.3"
 gem 'omniauth'
-gem 'omniauth-facebook', "1.4.0"
+gem 'omniauth-facebook'
 gem "cancan", ">= 1.6.9"
 gem "rolify", ">= 3.2.0"
 gem "quiet_assets", ">= 1.0.2", :group => :development

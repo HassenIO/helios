@@ -2,16 +2,15 @@ class RentsController < ApplicationController
 
   before_filter :authenticate_user!
 
-  load_and_authorize_resource :user
+  load_and_authorize_resource :user, :except => :new
 
-  load_and_authorize_resource :rent, :through => :user
+  load_and_authorize_resource :through => :user, :except => :new
 
   COMMON_DRIVER_USER_FIELDS = ["first_name", "last_name", "address", "city", "country", "zip_code", "license", "license_year", "birth_date"]
 
   # GET /rents
   # GET /rents.json
   def index
-    @rents = @user.rents.all
 
     respond_to do |format|
       format.html # index.html.erb
