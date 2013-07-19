@@ -8,13 +8,13 @@ class Ability
       can :manage, :all
     else
       #Owner
-      can :manage, Travel, :user_id => user.id
+      #can :manage, Travel, :user_id => user.id
 
-      can :manage, Rent, :user_id => user.id
+      #can :manage, Rent, :user_id => user.id
 
-      can :read, Travel, :status => :active
+      #can :read, Travel, :status => :active
 
-      can :create, [Travel, Rent, User, Payment, Car]
+      #can :create, [Travel, Rent, User, Payment, Car]
 
     end
 
