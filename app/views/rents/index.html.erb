@@ -21,46 +21,6 @@
 <% end %>
 
 
-<!--<% @rents.each do |rent| %>-->
-
-    <!--<div class="well">-->
-      <!--<div class="row-fluid">-->
-
-        <!--<div class="span6">-->
-          <!--<p>  <%= link_to rent.airPort.name + ' - ' + t(:interval_datetime, :startDate => rent.startDate, :endDate => rent.endDate), [@user, rent] %></p>-->
-
-          <!--<% if @user == current_user %>-->
-              <!--<%= link_to t('.cancel_rent'), [@user, rent], method: :delete, data: {confirm: 'Are you sure?'} %>-->
-              <!--|-->
-              <!--<%= link_to t('.edit_rent'), edit_user_rent_path(@user, rent) %>-->
-          <!--<% end %>-->
-        <!--</div>-->
-
-        <!--<div class="span6">-->
-          <!--<div class="row-fluid">-->
-            <!--<% if rent.travel.car %>-->
-                <!--<div class="span4">-->
-                  <!--<% if rent.travel.car.filepicker1_url %>-->
-                      <!--<%= filepicker_image_tag rent.travel.car.filepicker1_url, width: 100, height: 100, fit: 'clip', class: 'pull-left' %>-->
-                  <!--<% end %>-->
-                <!--</div>-->
-
-                <!--<div class="span8">-->
-                  <!--<p> <%= rent.travel.car.try { |car| car.brand + ' ' + car.model } %> </p>-->
-                <!--</div>-->
-
-            <!--<% end %>-->
-          <!--</div>-->
-        <!--</div>-->
-
-      <!--</div>-->
-    <!--</div>-->
-
-
-<!--<% end %>-->
-
-<!--<br/>-->
-
 
 
 

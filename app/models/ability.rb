@@ -14,9 +14,10 @@ class Ability
 
       can :manage, Rent, :user_id => user.id
 
-      can :read, Travel, :status => :active
-
       can :create, Payment, :rent => {:user_id => user.id}
+
+
+      can :read, Travel, :status => :active
 
       can :create, [Travel, Rent, User, Payment, Car]
 
