@@ -1,5 +1,5 @@
 <% if @user == current_user %>
-    <%= link_to t('.new_rent'), new_user_rent_path(@user),  :class => "base pull-right" %>
+    <%= link_to t('.new_rent'), search_path,  :class => "base pull-right" %>
 <% end %>
 
 <h1><%= t('.title') %></h1>
