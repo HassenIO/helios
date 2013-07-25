@@ -254,7 +254,7 @@ fr:
   admin_categories: "Catégories"
   admin_travels: "Parkings"
   logout: "Déconnecter"
-  login: "Se connecter"
+  login: "S'identifier"
   register: "S'inscrire"
 
   success:

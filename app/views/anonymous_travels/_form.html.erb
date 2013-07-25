@@ -58,11 +58,18 @@
         </div>
 
       </div>
+
+      <div class="row-fluid">
+        <div class="span12 text-center">
+          <a class="btn btn-large btn-block" name="commit" onclick="$('#new_travel').submit(); return false;">
+            <div class="nav-hover"></div>
+            <p style="margin-bottom: 0"><%= t('helpers.submit.travel.create') %></p>
+          </a>
+        </div>
+      </div>
     </div>
 
-    <div class="row-fluid text-center" style="margin-bottom: 80px;">
-      <%= f.submit :class => "btn on-hover btn-large" %>
-    </div>
+
 
 
 <% end %>
