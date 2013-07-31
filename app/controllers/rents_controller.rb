@@ -97,9 +97,11 @@ class RentsController < ApplicationController
   # DELETE /rents/1
   # DELETE /rents/1.json
   def destroy
-    @rent.travel.status = :active
-    @rent.destroy
+    @travel = @rent.travel
+    @travel.status = :active
+    @travel.save(:validate => false)
 
+    @rent.destroy
 
     respond_to do |format|
       format.html { redirect_to user_rents_url(@user) }
