@@ -11,7 +11,7 @@
 
                 <i class="icon-camera-retro" style="line-height: 200px; font-size: 100px; color: graytext"></i>
 
-            <% else  %>
+            <% else %>
                 <%= filepicker_image_tag img, h: 250, fit: 'clip', :class => 'img-polaroid' %>
             <% end %>
           </div>
@@ -40,14 +40,15 @@
             <%= t(:byDay, :price => number_to_currency(rent.travel.car.category.price_in_euros)) %></h4>
 
           <% if @user == current_user %>
-              <span class="label <%= rent.try(:payment).try(:status) || :unpaid %> pull-right"><%= t( "helpers.label.rent.payment.status."+ (rent.try(:payment).try(:status) || :unpaid).to_s )  %></span>
+              <span class="label <%= rent.try(:payment).try(:status) || :unpaid %> pull-right"><%= t("helpers.label.rent.payment.status."+ (rent.try(:payment).try(:status) || :unpaid).to_s) %></span>
           <% end %>
 
           <h3><%= t(:total, :total => number_to_currency(price_for_rent(rent, :price => rent.travel.car.category.price))) %></h3>
 
           </p>
-
-          <%= link_to t('.go_rent'), user_travel_url(rent.travel.user, rent.travel, :rent => params[:rent]), :class => "btn on-hover btn-large btn-block" %>
+          <% if rent.persisted? %>
+              <%= link_to t('.go_rent'), user_rent_url(rent.travel.user, rent), :class => "btn on-hover btn-large btn-block" %>
+          <% end %>
       <% end %>
     </div>
 

@@ -1,15 +1,18 @@
-<h2><%= t(".title", :airPort => @rent.airPort.name, :startDate => @rent.startDate, :endDate => @rent.endDate) %></h2>
+<a type="button" class="btn btn-primary btn-back" href="#" onclick="javascript:window.history.back(-1);return false;">
+  <i class="icon-arrow-left"></i><%= t(:back) %>
+</a>
 
-
-<% if can? :update, @rent %>
-    <%= link_to t("edit"), edit_user_rent_path(@user, @rent) %> |
-    <%= link_to t("back"), user_rents_path(@user) %>
-<% end %>
 
 
 <div class="row-fluid">
 
   <div class="span8">
+    <h1><%= t(".title", :airPort => @rent.airPort.name, :startDate => @rent.startDate, :endDate => @rent.endDate) %>
+      <% if @user == current_user %>
+          <%= link_to t("edit"), edit_user_rent_path(@user, @rent), :class => "btn btn-edit on-hover" %>
+      <% end %>
+    </h1>
+
     <%= render "cars/carroussel", :car => @rent.travel.car %>
   </div>
 
@@ -18,22 +21,22 @@
     <div class="well">
       <h3><%= t ".rent_informations" %></h3>
 
-      <p>
-        <%= [@rent.travel.car.year, @rent.travel.car.brand, @rent.travel.car.model].join(', ') %>
-      </p>
+      <% if @rent.travel.car.category %>
 
-      <p>
-        <%= t(:interval_datetime, :startDate => @rent.startDate, :endDate => @rent.endDate) %>
-      </p>
+          <p><%= t(:interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate)) %>
 
-      <p>
-        <%= distance_of_time_in_words(@rent.endDate, @rent.startDate) %>
-        <%= number_to_currency(@rent.travel.car.category.price) %> <%= t(:byDay) %>
-      </p>
+          <h4><%= t(:x_days, :count => number_of_days(@rent)) %>
+            <%= t(:byDay, :price => number_to_currency(@rent.travel.car.category.price_in_euros)) %></h4>
 
-      <p>
-        <%= t(:total) %> <%= number_to_currency(price_for_rent(@rent)) %>
-      </p>
+          <% if @user == current_user %>
+              <span class="label <%= @rent.try(:payment).try(:status) || :unpaid %> pull-right"><%= t( "helpers.label.rent.payment.status."+ (@rent.try(:payment).try(:status) || :unpaid).to_s )  %></span>
+          <% end %>
+
+          <h3><%= t(:total, :total => number_to_currency(price_for_rent(@rent, :price => @rent.travel.car.category.price))) %></h3>
+
+          </p>
+
+      <% end %>
 
 
     </div>
