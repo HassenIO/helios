@@ -70,6 +70,8 @@ class User < ActiveRecord::Base
                            email: auth.info.email,
                            password: Devise.friendly_token[0, 20]
         )
+        #user.skip_confirmation!
+        #user.save
       end
 
 
