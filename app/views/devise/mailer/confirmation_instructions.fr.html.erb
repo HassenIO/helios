@@ -1,0 +1,7 @@
+
+<p>Bienvenue sur TravelerCar !</p>
+
+<p>Vous pouvez confirmer votre email <%= @email %> en utilisant le lien ci-dessous:</p>
+
+<p><%= link_to 'Confirmer mon compte', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token,  :locale => I18n.locale) %></p>
+
