@@ -128,7 +128,7 @@
               <div class="control-group">
                 <%= car_fields.label :km, :class => "control-label" %>
                 <div class="controls">
-                  <%= car_fields.select(:km, options_for_select([['0-50000 km', 0], ['50000-100000 km', 50000], ['100000-150000 km', 100000], ['150000 km et plus', 150000]], car_fields.object.km || 5000), :placeholder => "toto") %>
+                  <%= car_fields.select(:km, options_for_select(km_to_list, car_fields.object.km || 5000), :placeholder => "km") %>
                 </div>
               </div>
             </div>

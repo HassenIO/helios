@@ -10,7 +10,7 @@
 
       <p>
         <b><%= t(:km, :scope => [:helpers, :label, :car]) %>:</b>
-        <%= car.km %>
+        <%= km_to_human(car.km) %>
       </p>
 
       <p>

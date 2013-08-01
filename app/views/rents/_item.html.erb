@@ -26,7 +26,7 @@
           <p> <%= rent.travel.car.category.try { |category| category.name } %>,  <%= t("helpers.label.car.nbSeats") %>
             : <%= rent.travel.car.nbSeats %></p>
 
-          <h4> <%= [rent.travel.car.km, t(rent.travel.car.fuel, :scope => [:helpers, :label, :car]), t(rent.travel.car.transmission, :scope => [:helpers, :label, :car])].join(', ') %></h4>
+          <h4> <%= [km_to_human(rent.travel.car.km), t(rent.travel.car.fuel, :scope => [:helpers, :label, :car]), t(rent.travel.car.transmission, :scope => [:helpers, :label, :car])].join(', ') %></h4>
       <% end %>
 
     </div>
