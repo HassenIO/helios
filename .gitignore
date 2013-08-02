@@ -30,6 +30,7 @@ db/*.sqlite3
 .sass-cache
 /config/config.yml
 /config/database.yml
+/config/environments/production.rb
 /coverage.data
 /coverage/
 /db/*.javadb/
@@ -41,6 +42,7 @@ db/*.sqlite3
 /public/cache
 /public/stylesheets/compiled
 /public/system/*
+/public/assets
 /spec/tmp/*
 /cache
 /capybara*
