@@ -18,7 +18,7 @@ end
 if Rails.env.development?
   class OverrideMailRecipient
     def self.delivering_email(mail)
-      mail.to = "jin@novacodex.net"
+      mail.to = "htaidirt+tc_admin@gmail.com"
     end
   end
   AdminMailer.register_interceptor(OverrideMailRecipient)

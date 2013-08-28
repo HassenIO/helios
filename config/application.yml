@@ -1,0 +1,33 @@
+# Add account credentials and API keys here.
+# See http://railsapps.github.com/rails-environment-variables.html
+# This file should be listed in .gitignore to keep your settings secret!
+# Each entry sets a local environment variable and overrides ENV variables in the Unix shell.
+# For example, setting:
+# GMAIL_USERNAME: Your_Gmail_Username
+# makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
+# Add application configuration variables here, as shown below.
+#
+ADMIN_NAME: Admin
+ADMIN_EMAIL: htaidirt+tc_admin@gmail.com
+ADMIN_PASSWORD: admin
+ROLES: [admin, user, VIP]
+
+FILEPICKER_KEY: "A68xA26uYSfO6TDJM0Qp3z"
+
+development:
+  LEETCHI_TARGET_USER_ID: "334140"
+  FACEBOOK_ID: "293967994067315"
+  FACEBOOK_SECRET: "5ae5a36faca7df95ab3c3f41ffe9a3c0"
+  HOST: "localhost:3000"
+
+
+integration:
+    FACEBOOK_ID: "370298486423058"
+    FACEBOOK_SECRET: "0a5ede29b2d6f31165b5f3be0f119e52"
+    LEETCHI_TARGET_USER_ID: "334140"
+
+production:
+    FACEBOOK_ID:  "491888870887545" # TO CHANGE
+    FACEBOOK_SECRET:  "05ae32ad87cd14abcb7b85677021dc1f"
+
+
