@@ -11,6 +11,10 @@ ADMIN_NAME: Admin
 ADMIN_EMAIL: htaidirt+tc_admin@gmail.com
 ADMIN_PASSWORD: admin
 ROLES: [admin, user, VIP]
+AIRPORTS:
+  - name: "Charles de Gaulle"
+    city: "Paris"
+    country: "France"
 
 FILEPICKER_KEY: "A68xA26uYSfO6TDJM0Qp3z"
 
