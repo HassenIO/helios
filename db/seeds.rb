@@ -24,3 +24,4 @@ puts 'AIRPORTS >>'
 eval(ENV['AIRPORTS']).each do |airport|
   AirPort.find_or_create_by_name airport
   puts 'create airport: ' << airport["name"]
+end
