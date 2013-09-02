@@ -3,7 +3,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # Signup page
   # Change from default to add the invitation code gate.
   def new
-    redirect_to new_user_session_path, alert: "Code invitation invalide." if params[:code] != "Salam"
+    invitation = Invitation.get_invitation params[:code]
+
+    if invitation.nil?
+      redirect_to new_user_session_path, alert: "Le code invitation #{params[:code]} est invalide."
+    else
+      flash.now[:notice] = "Bienvenue #{invitation.desc}. Nous sommes impatient de vous compter parmis nos membres."
+    end
   end
 
   # PUT /resource

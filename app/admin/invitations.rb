@@ -8,7 +8,7 @@ ActiveAdmin.register Invitation do
 		column "Statut", :status do |invitation|
 			status_tag(invitation.status.downcase)
 		end
-		column "Combien en ont bénéficiés ?", :count
+		column "Combien en ont bénéficié ?", :count
 		default_actions
 	end
 

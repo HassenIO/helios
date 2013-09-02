@@ -5,4 +5,11 @@ class Invitation < ActiveRecord::Base
 	validates :status, inclusion: { in: ['ON', 'OFF'] }
 
 	scope :active_invitation, where( status: "ON" )
+
+
+
+	# Check if an invitation code is valid and active.
+	def self.get_invitation code
+		return code ? Invitation.where(code: code, status: 'ON').first : nil
+	end
 end
