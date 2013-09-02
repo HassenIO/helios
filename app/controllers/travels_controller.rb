@@ -2,11 +2,9 @@ class TravelsController < ApplicationController
 
   load_and_authorize_resource
 
-  before_filter :load_user, :only => [:index, :show]
-
-  before_filter :load_current_user, :except => [:index, :show]
-
   before_filter :authenticate_user!, :except => :show
+  before_filter :load_user, :only => [:index, :show]
+  before_filter :load_current_user, :except => [:index, :show]
 
   # GET /travels
   # GET /travels.json

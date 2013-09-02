@@ -1,5 +1,6 @@
 class AnonymousTravelsController < ApplicationController
 
+  before_filter :authenticate_user!
 
   def index
     @travel = Travel.new
