@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712105626) do
+ActiveRecord::Schema.define(:version => 20130902154809) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -81,6 +81,17 @@ ActiveRecord::Schema.define(:version => 20130712105626) do
     t.integer  "rent_id"
     t.integer  "license_year"
   end
+
+  create_table "invitations", :force => true do |t|
+    t.string   "code"
+    t.string   "desc"
+    t.integer  "count",      :default => 0
+    t.string   "status",     :default => "ON"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  add_index "invitations", ["code"], :name => "index_invitations_on_code", :unique => true
 
   create_table "payments", :force => true do |t|
     t.integer "amount"

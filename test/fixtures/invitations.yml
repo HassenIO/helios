@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  code: MyString
+  desc: MyString
+  count: 1
+  status: MyString
+
+two:
+  code: MyString
+  desc: MyString
+  count: 1
+  status: MyString
