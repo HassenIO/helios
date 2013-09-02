@@ -411,7 +411,7 @@ fr:
       login:
         title: "Se connecter"
         title_facebook: "Partagez les meilleurs plans TravelerCar et trouvez ceux recommandés par vos amis. En savoir plus"
-        title_create_account: "Pas encore enregistré ? Créez un compte gratuitement et en 1 minute !"
+        title_create_account: "Pas encore incrit ? Veuillez introduire votre code invitation."
         link_create_account: "Oui, je crée un compte !"
     passwords:
       edit:

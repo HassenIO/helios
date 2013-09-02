@@ -39,31 +39,12 @@
 
       <hr/>
 
-
       <p class="hero"><%= t(".title_create_account") %></p>
 
-
-      <div class="accordion" id="accordion2"><!--accordion sign-up-->
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-              <%= t(".link_create_account") %>
-            </a>
-          </div>
-          <div id="collapseOne" class="accordion-body collapse">
-            <div class="accordion-inner">
-
-                <%= render "devise/registrations/sign_in" %>
-
-
-            </div>
-          </div>
-        </div>
-      </div><!--/accordion sign-up-->
-
-
-
-
+      <form action="<%= new_user_registration_path %>" method="GET" class="login-form">
+        <%= text_field_tag :code, nil, placeholder: "Code invitation" %>
+        <%= submit_tag "M'inscrire", class: "btn on-hover btn-large btn-block" %>
+      </form>
 
     </div>
   </div>
