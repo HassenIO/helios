@@ -9,6 +9,7 @@ TravelerCar::Application.routes.draw do
     root :controller => "home", :action => "index"
 
     devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
+    resources :invitation_requests
 
     resources :users do
       resources :travels do

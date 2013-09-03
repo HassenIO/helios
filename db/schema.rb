@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902154809) do
+ActiveRecord::Schema.define(:version => 20130903133254) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -81,6 +81,15 @@ ActiveRecord::Schema.define(:version => 20130902154809) do
     t.integer  "rent_id"
     t.integer  "license_year"
   end
+
+  create_table "invitation_requests", :force => true do |t|
+    t.string   "email"
+    t.string   "status",     :default => "PENDING"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  add_index "invitation_requests", ["email"], :name => "index_invitation_requests_on_email", :unique => true
 
   create_table "invitations", :force => true do |t|
     t.string   "code"
