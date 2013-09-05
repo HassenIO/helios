@@ -10,8 +10,8 @@
 
 puts 'ROLES >>'
 YAML.load(ENV['ROLES']).each do |role|
-  Role.find_or_create_by_name({ :name => role }, :without_protection => true)
-  puts 'create role: ' << role
+	Role.find_or_create_by_name({ :name => role }, :without_protection => true)
+	puts 'create role: ' << role
 end
 
 puts 'DEFAULT USERS >>'
@@ -22,6 +22,6 @@ user.add_role :admin
 
 puts 'AIRPORTS >>'
 eval(ENV['AIRPORTS']).each do |airport|
-  AirPort.find_or_create_by_name airport
-  puts 'create airport: ' << airport["name"]
+	AirPort.find_or_create_by_name airport
+	puts 'create airport: ' << airport["name"]
 end

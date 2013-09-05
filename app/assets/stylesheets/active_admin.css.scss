@@ -43,28 +43,28 @@
 // .other_namespace    applies to a custom namespace named other (eg: /other)
 
 body.active_admin {
-  .status_tag {
-    &.pending, &.failed {
-      background: red;
-    }
-    &.unpaid {
-      background: orange;
-    }
-    &.active, &.paid, &.on {
-      background: green;
-    }
-    &.rent {
-      background: dodgerblue;
-    }
-    &.off {
-      background: #bbb;
-    }
-  }
+	.status_tag {
+		&.pending, &.failed {
+			background: red;
+		}
+		&.unpaid {
+			background: orange;
+		}
+		&.active, &.paid, &.on {
+			background: green;
+		}
+		&.rent {
+			background: dodgerblue;
+		}
+		&.off {
+			background: #bbb;
+		}
+	}
 }
 
 .cke_chrome {
-  width: 76% !important;
-  overflow: hidden;
+	width: 76% !important;
+	overflow: hidden;
 }
 
 

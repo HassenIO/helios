@@ -1,340 +1,340 @@
 html, body {
-  height: 100%;
-  min-height: 100%;
+	height: 100%;
+	min-height: 100%;
 }
 
 .main-content {
-  min-height: -webkit-calc(~"100% - 112px");
-  min-height: -moz-calc(~"100% - 112px");
-  min-height: -ms-calc(~"100% - 112px");
-  min-height: -o-calc(~"100% - 112px");
-  min-height: calc(~"100% - 112px");
+	min-height: -webkit-calc(~"100% - 112px");
+	min-height: -moz-calc(~"100% - 112px");
+	min-height: -ms-calc(~"100% - 112px");
+	min-height: -o-calc(~"100% - 112px");
+	min-height: calc(~"100% - 112px");
 }
 
 a {
-  cursor: pointer;
+	cursor: pointer;
 
-  &[data-filepicker] {
-    &:hover {
-      text-decoration: none;
-    }
-    overflow: hidden;
-    display: block;
-  }
+	&[data-filepicker] {
+		&:hover {
+			text-decoration: none;
+		}
+		overflow: hidden;
+		display: block;
+	}
 
 }
 
 .navbar .nav > li > a {
 
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;
-  transition: none;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
 
 }
 
 .navbar .nav li.dropdown.open,
 .navbar .nav li.dropdown.active,
 .navbar .nav li.dropdown.open.active {
-  .dropdown-toggle {
-    background-color: @brickColorOdd;
-    color: @white;
+	.dropdown-toggle {
+		background-color: @brickColorOdd;
+		color: @white;
 
-  }
+	}
 
-  .dropdown-menu {
-    border-radius: 0px;
-    color: @white;
-    &:after {
-      border-bottom-color: @brickColorOdd;
-    }
-    li > a {
-      color: @white;
-      &:hover, &:focus {
-        -webkit-transition: 0.1s ease-in-out all;
-        -moz-transition: 0.1s ease-in-out all;
-        -o-transition: 0.1s ease-in-out all;
-        transition: 0.1s ease-in-out all;
-        background-color: @brickColor;
-        background-image: none;
-      }
-    }
-    background-color: @brickColorOdd;
-    background-image: none;
-  }
+	.dropdown-menu {
+		border-radius: 0px;
+		color: @white;
+		&:after {
+			border-bottom-color: @brickColorOdd;
+		}
+		li > a {
+			color: @white;
+			&:hover, &:focus {
+				-webkit-transition: 0.1s ease-in-out all;
+				-moz-transition: 0.1s ease-in-out all;
+				-o-transition: 0.1s ease-in-out all;
+				transition: 0.1s ease-in-out all;
+				background-color: @brickColor;
+				background-image: none;
+			}
+		}
+		background-color: @brickColorOdd;
+		background-image: none;
+	}
 
-  .dropdown-submenu {
-    a:after {
-      border-left-color: @black;
-    }
-    &:hover, &:focus {
-      a, a:after {
-        background-color: @brickColor;
-        border-left-color: #ffffff;
-        background-image: none;
+	.dropdown-submenu {
+		a:after {
+			border-left-color: @black;
+		}
+		&:hover, &:focus {
+			a, a:after {
+				background-color: @brickColor;
+				border-left-color: #ffffff;
+				background-image: none;
 
-      }
-      li > a {
-        background-color: @brickColorOdd;
-        &:hover, &:focus {
-          background-color: @brickColor;
-          background-image: none;
+			}
+			li > a {
+				background-color: @brickColorOdd;
+				&:hover, &:focus {
+					background-color: @brickColor;
+					background-image: none;
 
-        }
-      }
-    }
-  }
+				}
+			}
+		}
+	}
 }
 
 //fix carousel center img
 .carousel .item > img {
-  margin: 0px auto;
-  display: block;
-  line-height: 1;
+	margin: 0px auto;
+	display: block;
+	line-height: 1;
 }
 
 .field_with_errors {
-  .control-group.error
+	.control-group.error
 ;
-  display: inline;
+	display: inline;
 }
 
 //fix error label with datetimepicker
 .date > .field_with_errors {
-  display: inline-block;
-  overflow: visible;
-  position: relative;
+	display: inline-block;
+	overflow: visible;
+	position: relative;
 
-  .help-inline {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    font-size: 14px;
-  }
+	.help-inline {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		font-size: 14px;
+	}
 }
 
 .alert.pending {
-  .alert-error;
+	.alert-error;
 }
 
 .alert.active {
-  .alert-info;
+	.alert-info;
 }
 
 .alert.rent {
-  .alert-success;
+	.alert-success;
 }
 
 .label.paid{
-  background-color: @successText;
+	background-color: @successText;
 }
 
 .label.failed{
-  background-color: @errorText;
+	background-color: @errorText;
 }
 
 .label.unpaid, .label.pending{
-  background-color: @orange;
+	background-color: @orange;
 }
 
 input[type="radio"] + label {
-  display: inline;
+	display: inline;
 }
 
 textarea.comments {
-  width: 100%;
-  height: 100px;
-  padding: 0;
+	width: 100%;
+	height: 100px;
+	padding: 0;
 }
 
 // --------------- layout for application's pages ---------
 
 .navbar + .container .content {
-  padding-top: 50px;
+	padding-top: 50px;
 }
 
 .navbar-fixed-top + .container {
-  padding-top: 50px;
+	padding-top: 50px;
 }
 
 // --------------- forms ---------------
 
 .placeholder {
-  color: #999;
+	color: #999;
 }
 
 // ---------------to forms already in place
 fieldset.well {
-  padding: 0;
-  border: 0;
-  background: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  border: none;
+	padding: 0;
+	border: 0;
+	background: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border: none;
 }
 
 fieldset.well .controls select, textarea.full-width, .login-wrapper input {
-  width: 100%;
-  height: 50px;
-  background: #DDD;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  border: none;
+	width: 100%;
+	height: 50px;
+	background: #DDD;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border: none;
 
 }
 
 .login-wrapper input[type="submit"] {
-  background-color: @brickColor;
-  &:hover {
-    background-color: @brickColorOdd;
-  }
+	background-color: @brickColor;
+	&:hover {
+		background-color: @brickColorOdd;
+	}
 }
 
 fieldset.well .controls select {
-  height: 50px;
+	height: 50px;
 }
 
 textarea.full-width {
-  height: 80px;
+	height: 80px;
 }
 
 fieldset.well div.well {
-  padding: 0;
-  border: 0;
-  background: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  background: #DDD;
-  //padding: 10px;
+	padding: 0;
+	border: 0;
+	background: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	background: #DDD;
+	//padding: 10px;
 }
 
 div.well-addPhoto {
-  padding: 0;
+	padding: 0;
 }
 
 .addPhoto {
-  display: block;
-  color: @white;
-  background-color: @brickColor;
-  text-align: center;
-  padding: 10px;
-  &:hover {
-    background-color: @brickColorOdd;
-  }
-  i {
-    display: block;
-  }
-  label {
-    margin-left: 10px;
-  }
+	display: block;
+	color: @white;
+	background-color: @brickColor;
+	text-align: center;
+	padding: 10px;
+	&:hover {
+		background-color: @brickColorOdd;
+	}
+	i {
+		display: block;
+	}
+	label {
+		margin-left: 10px;
+	}
 }
 
 .controls input[type="radio"], .controls input[type="checkbox"] {
-  width: auto;
-  height: auto;
+	width: auto;
+	height: auto;
 }
 
 .controls-wrapper {
-  background: #DDD;
-  padding: 10px;
+	background: #DDD;
+	padding: 10px;
 }
 
 .on-hover {
-  &:hover {
-    -webkit-transition: background-position 0.3s linear;
-    -moz-transition: background-position 0.3s linear;
-    -o-transition: background-position 0.3s linear;
-    transition: background-position 0.3s linear;
-    background-color: @brickColorOdd;
-  }
+	&:hover {
+		-webkit-transition: background-position 0.3s linear;
+		-moz-transition: background-position 0.3s linear;
+		-o-transition: background-position 0.3s linear;
+		transition: background-position 0.3s linear;
+		background-color: @brickColorOdd;
+	}
 }
 
 .well-blue {
-  -webkit-transition: background-color 0.2s linear;
-  -moz-transition: background-color 0.2s linear;
-  -o-transition: background-color 0.2s linear;
-  transition: background-color 0.2s linear;
-  background-color: @brickColorOdd;
-  color: @white;
+	-webkit-transition: background-color 0.2s linear;
+	-moz-transition: background-color 0.2s linear;
+	-o-transition: background-color 0.2s linear;
+	transition: background-color 0.2s linear;
+	background-color: @brickColorOdd;
+	color: @white;
 
-  i {
-    color: @brickColorOdd;
-    &:hover {
-      color: @brickColor;
-    }
-  }
+	i {
+		color: @brickColorOdd;
+		&:hover {
+			color: @brickColor;
+		}
+	}
 }
 
 .well-list {
-  padding: 20px 0;
-  background-color: none;
-  border: none;
-  border-top: 1px solid #E3E3E3;
+	padding: 20px 0;
+	background-color: none;
+	border: none;
+	border-top: 1px solid #E3E3E3;
 }
 
 .block-mktn {
-  background-color: @brickColorOdd;
-  color: @white;
-  font-family: @headingsFontFamily;
-  padding: 10px;
-  margin-bottom: 20px;
-  p {
-    font-size: 20px;
-  }
+	background-color: @brickColorOdd;
+	color: @white;
+	font-family: @headingsFontFamily;
+	padding: 10px;
+	margin-bottom: 20px;
+	p {
+		font-size: 20px;
+	}
 }
 
 .nav-hover {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: -8px;
-  left: -8px;
-  border: 8px solid rgba(255, 255, 255, 0.2);
-  opacity: 0;
-  z-index: 1;
-  -webkit-transition: 0.2s ease-in-out all;
-  -moz-transition: 0.2s ease-in-out all;
-  -o-transition: 0.2s ease-in-out all;
-  transition: 0.2s ease-in-out all;
-  -webkit-transform: scale(0.95);
-  -moz-transform: scale(0.95);
-  -ms-transform: scale(0.95);
-  -o-transform: scale(0.95);
-  transform: scale(0.95);
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: -8px;
+	left: -8px;
+	border: 8px solid rgba(255, 255, 255, 0.2);
+	opacity: 0;
+	z-index: 1;
+	-webkit-transition: 0.2s ease-in-out all;
+	-moz-transition: 0.2s ease-in-out all;
+	-o-transition: 0.2s ease-in-out all;
+	transition: 0.2s ease-in-out all;
+	-webkit-transform: scale(0.95);
+	-moz-transform: scale(0.95);
+	-ms-transform: scale(0.95);
+	-o-transform: scale(0.95);
+	transform: scale(0.95);
 }
 
 .btn:hover .nav-hover {
-  opacity: 1;
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transform: scale(1);
+	opacity: 1;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
 }
 
 h1 a {
-  margin-left: 20px;
+	margin-left: 20px;
 }
 
 .btn-back {
-  font-size: 20px;
-  margin-bottom: 20px;
-  &:hover {
-    background-color: @brickColor;
-  }
+	font-size: 20px;
+	margin-bottom: 20px;
+	&:hover {
+		background-color: @brickColor;
+	}
 }
 
 .btn-back i {
-  margin-right: 10px;
+	margin-right: 10px;
 }
 
 .btn-edit {
-  font-size: 20px;
+	font-size: 20px;
 }
 
 // --------------- /forms ---------------
@@ -342,83 +342,83 @@ h1 a {
 //---------login-----------------------
 
 .row-fluid.login {
-  text-align: center;
+	text-align: center;
 }
 
 .login-wrapper p.hero {
-  font-size: 18px;
-  margin: 20px 0;
+	font-size: 18px;
+	margin: 20px 0;
 }
 
 .login-form {
-  width: 360px;
-  margin: 0 auto;
-  overflow: hidden;
+	width: 360px;
+	margin: 0 auto;
+	overflow: hidden;
 }
 
 .separator {
-  margin: 20px 0 30px 0;
+	margin: 20px 0 30px 0;
 }
 
 .separator h2 {
-  display: inline-block;
-  background-color: #FFF;
-  padding: 0 10px;
+	display: inline-block;
+	background-color: #FFF;
+	padding: 0 10px;
 }
 
 .separator hr {
-  margin: -33px auto 20px auto;
-  width: 50%;
+	margin: -33px auto 20px auto;
+	width: 50%;
 }
 
 .accordion-group {
-  margin-bottom: 2px;
-  border: 1px solid @white;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
+	margin-bottom: 2px;
+	border: 1px solid @white;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
 }
 
 .accordion-heading .accordion-toggle {
-  color: @brickColor;
-  text-decoration: underline;
-  padding: 10px;
-  display: inline;
-  &:hover {
-    background-color: @brickColorOdd;
-    text-decoration: none;
-    color: @white;
-  }
+	color: @brickColor;
+	text-decoration: underline;
+	padding: 10px;
+	display: inline;
+	&:hover {
+		background-color: @brickColorOdd;
+		text-decoration: none;
+		color: @white;
+	}
 }
 
 .accordion-body {
-  margin-top: 30px;
+	margin-top: 30px;
 }
 
 .accordion-inner {
-  border-top: 1px solid @white;
+	border-top: 1px solid @white;
 }
 
 //---------
 
 a.base {
-  color: @brickColor;
-  text-decoration: underline;
-  &:hover {
-    color: @brickColorOdd;
-    text-decoration: none;
-  }
+	color: @brickColor;
+	text-decoration: underline;
+	&:hover {
+		color: @brickColorOdd;
+		text-decoration: none;
+	}
 }
 
 //bootstrap-datetimepicker
 
 .comment_form .input-append.date .add-on, .comment_form .input-prepend.date .add-on {
-  height: 40px;
-  background-color: @brickColorOdd;
-  font-size: 20px;
-  i {
-    color: #ffffff;
-    line-height: 40px;
-    width: 50px;
-  }
+	height: 40px;
+	background-color: @brickColorOdd;
+	font-size: 20px;
+	i {
+		color: #ffffff;
+		line-height: 40px;
+		width: 50px;
+	}
 }
