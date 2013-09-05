@@ -50,6 +50,8 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
+        panel "You have #{InvitationRequest.where( status: 'PENDING' ).count} pending invitation requests."
+        
         panel "Last users" do
           table_for User.order('id desc').limit(10).each do |user|
             column(:email)    {|user| link_to(user.email, admin_user_path(user)) }

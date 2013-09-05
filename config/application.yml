@@ -11,6 +11,9 @@ ADMIN_NAME: Admin
 ADMIN_EMAIL: htaidirt+tc_admin@gmail.com
 ADMIN_PASSWORD: admin
 ROLES: [admin, user, VIP]
+
+MAILER_FROM: "htaidirt+tc_admin@gmail.com"
+
 AIRPORTS:
   - name: "Charles de Gaulle"
     city: "Paris"
@@ -35,5 +38,3 @@ production:
     HOST: "travelercar.com"
     FACEBOOK_ID:  "491888870887545" # TO CHANGE
     FACEBOOK_SECRET:  "05ae32ad87cd14abcb7b85677021dc1f"
-
-

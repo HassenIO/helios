@@ -37,5 +37,6 @@ TravelerCar::Application.configure do
 
   # Define ActionMailer URL host
   config.action_mailer.default_url_options = { :host => 'localhost' }
+  config.action_mailer.raise_delivery_errors = true
 
 end

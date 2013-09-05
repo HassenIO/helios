@@ -24,14 +24,10 @@ class InvitationRequestsController < ApplicationController
 		# Add the current email to the invitation request list
 		if ( invitation = InvitationRequest.create params[:invitation_request] )
 			# Send an email to the visitor that requested the invitation
-
-			# Send an email to the admin to notice the new invitation request
+			InvitationRequestMailer.new_request( email ).deliver
 
 			# Display the view
 			redirect_to invitation_request_path(invitation.id), notice: "Merci #{email} et à bientôt sur TravelerCar."
-			return
-		else
-			redirect_to invitation_request_path(0), alert: "Une erreur interne vient de se produire. Veuillez réessayer dans quelques instants."
 			return
 		end
 	end
