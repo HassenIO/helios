@@ -22,13 +22,16 @@ class InvitationRequestsController < ApplicationController
 		end
 
 		# Add the current email to the invitation request list
-		if ( invitation = InvitationRequest.create params[:invitation_request] )
+		invitation = InvitationRequest.create params[:invitation_request]
+		if invitation && !invitation.id.nil?
 			# Send an email to the visitor that requested the invitation
 			InvitationRequestMailer.new_request( email ).deliver
 
 			# Display the view
 			redirect_to invitation_request_path(invitation.id), notice: "Merci #{email} et à bientôt sur TravelerCar."
 			return
+		else
+			redirect_to invitation_requests_path, alert: "L'adresse email ne doit pas être vide."
 		end
 	end
 

@@ -10,7 +10,8 @@
         <%= submit_tag "M'inscrire", class: "btn on-hover btn-large btn-block" %>
       </form>
 
-      <%= render 'invitation_requests/form' %>
+      <hr/>
+      <p>Pas de code d'invitation ? <%= link_to "Vous pouvez en demander un ici", invitation_requests_path %>.</p>
   </div>
   <div class="span6">
     <h1><%= t(".title") %></h1>
