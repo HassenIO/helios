@@ -14,6 +14,16 @@ ROLES: [admin, user, VIP]
 
 MAILER_FROM: "htaidirt+tc_admin@gmail.com"
 
+CATEGORIES:
+  - name: "Citadine"
+    price: 2000
+  - name: "Berline"
+    price: 3000
+  - name: "Monospace"
+    price: 4500
+  - name: "Haut de gamme"
+    price: 6000
+
 AIRPORTS:
   - name: "Charles de Gaulle"
     city: "Paris"

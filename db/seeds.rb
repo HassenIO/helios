@@ -8,7 +8,7 @@
 # Environment variables (ENV['...']) are set in the file config/application.yml.
 # See http://railsapps.github.com/rails-environment-variables.html
 
-puts 'ROLES >>'
+puts 'DEFAULT ROLES >>'
 YAML.load(ENV['ROLES']).each do |role|
 	Role.find_or_create_by_name({ :name => role }, :without_protection => true)
 	puts 'create role: ' << role
@@ -20,8 +20,14 @@ puts 'create user: ' << user.name
 user.confirm!
 user.add_role :admin
 
-puts 'AIRPORTS >>'
+puts 'DEFAULT AIRPORTS >>'
 eval(ENV['AIRPORTS']).each do |airport|
 	AirPort.find_or_create_by_name airport
 	puts 'create airport: ' << airport["name"]
+end
+
+puts 'DEFAULT CATEGORIES >>'
+eval(ENV['CATEGORIES']).each do |cat|
+	db_cat = Category.find_or_create_by_name cat
+	'create category: ' << db_cat.name
 end
