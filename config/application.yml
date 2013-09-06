@@ -18,6 +18,18 @@ AIRPORTS:
   - name: "Charles de Gaulle"
     city: "Paris"
     country: "France"
+  - name: "Paris Orly"
+    city: "Paris"
+    country: "France"
+  - name: "Beauvais Tille"
+    city: "Beauvais"
+    country: "France"
+  - name: "Nice Côte d'Azur"
+    city: "Nice"
+    country: "France"
+  - name: "Lyon-Saint Exupéry"
+    city: "Lyon"
+    country: "France"
 
 FILEPICKER_KEY: "A68xA26uYSfO6TDJM0Qp3z"
 

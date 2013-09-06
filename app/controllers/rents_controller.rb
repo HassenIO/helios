@@ -26,7 +26,7 @@ class RentsController < ApplicationController
 		respond_to do |format|
 			format.html # show.html.erb
 			format.json { render json: @rent }
-		en
+		end
 	end
 
 	def new
@@ -80,7 +80,6 @@ class RentsController < ApplicationController
 	# PUT /rents/1
 	# PUT /rents/1.json
 	def update
-
 
 		respond_to do |format|
 			if @rent.update_attributes(params[:rent])

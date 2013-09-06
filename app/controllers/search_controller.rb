@@ -4,7 +4,7 @@ class SearchController < ApplicationController
 
 	def index
 		@rent = Rent.new
-		@rent.airPort = AirPort.find(1)
+		# @rent.airPort = AirPort.find(1) # DON'T UNDERSTAND WHAT IS THIS ???
 
 		respond_to do |format|
 			format.html # index.html.erb

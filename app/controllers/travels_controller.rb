@@ -46,7 +46,7 @@ class TravelsController < ApplicationController
 		end
 
 		@travel.car ||= Car.new
-		@travel.airPort ||= AirPort.find(1)
+		# @travel.airPort ||= AirPort.find(1) # WHY THIS ???
 		respond_to do |format|
 			format.html # new.html.erb
 			format.json { render json: @travel }
