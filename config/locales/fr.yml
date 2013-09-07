@@ -526,6 +526,12 @@ fr:
         email: "E-mail"
         remember_me: "Se rappeler de moi"
 
+  invitation_requests:
+    form:
+      title_get_invite: "Votre code invitation"
+      visitor_email: "Votre adresse email"
+      request_btn: "Demander mon code invitation"
+
 
 
 

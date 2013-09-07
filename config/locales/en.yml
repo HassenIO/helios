@@ -350,3 +350,10 @@ en:
         startDate: "From"
         endDate: "to"
         airPort: "Airport"
+
+
+  invitation_requests:
+    form:
+      title_get_invite: "Your invitation code"
+      visitor_email: "Your email address"
+      request_btn: "Request my invitation code"
