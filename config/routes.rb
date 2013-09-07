@@ -1,12 +1,16 @@
 TravelerCar::Application.routes.draw do
 
-	root to: "home#index"
+	authenticated :user do
+		root to: "dashboards#index"
+	end
+
+	unauthenticated :user do
+		root to: "home#index"
+	end
 
 	match "notifications" => "notifications#index"
 
 	scope "/:locale", :constraints => {:locale => /[a-z]{2}(-[A-Z]{2})?/} do
-
-		root to: "dashboards#index"
 
 		devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
 
