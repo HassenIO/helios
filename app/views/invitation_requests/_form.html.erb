@@ -1,0 +1,17 @@
+<div class="row-fluid login">
+
+	<div class="span4 offset4">
+		<h1><%= t ".title_get_invite" %></h1>
+		<div class="login-wrapper"><!--login-->
+			<%= form_for InvitationRequest.new, class: "login-form" do |f| %>
+				<div class="control-group">
+					<div class="controls"><%= f.email_field :email, placeholder: t(".visitor_email") %></div>
+				</div>
+				<div class="control-group">
+					<div class="controls"><%= f.submit t(".request_btn"), class: "btn on-hover btn-large btn-block" %></div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+</div>

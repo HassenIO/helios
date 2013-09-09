@@ -1,0 +1,102 @@
+<h1>Heureux de vous revoir, <%= @user.first_name %></h1>
+<hr/>
+<h2>Vos informations personnelles</h2>
+<% if @user.address.blank? ||
+	@user.city.blank? ||
+	@user.zip_code.blank? ||
+	@user.country.blank? ||
+	@user.license.blank? ||
+	@user.birth_date.blank? ||
+	@user.license_year.blank? %>
+	<div class="alert">
+		<p>N'oubliez pas de compléter toutes vos informations personnelles avant de déposer votre véhicule ou de faire une demande de location.</p>
+	</div>
+<% end %>
+<div class="row">
+	<div class="span9">
+		<table class="user_info">
+			<tr>
+				<td class="info_label">Nom d'utilisateur</td>
+				<td><%= "#{@user.first_name} #{@user.last_name}" %></td>
+			</tr>
+			<tr>
+				<td class="info_label">Votre email</td>
+				<td><%= @user.email %></td>
+			</tr>
+			<tr>
+				<td class="info_label">Votre adresse</td>
+				<td>
+					<% if !@user.address.blank? %>
+						<%= @user.address %>
+					<% else %>
+						<em>Vous n'avez pas spécifié d'adresse</em>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td class="info_label">Ville</td>
+				<td>
+					<% if !@user.city.blank? %>
+						<%= @user.city %>
+					<% else %>
+						<em>Vous n'avez pas spécifié de ville</em>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td class="info_label">Code postal</td>
+				<td>
+					<% if !@user.zip_code.blank? %>
+						<%= @user.zip_code %>
+					<% else %>
+						<em>Vous n'avez pas spécifié de code postal</em>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td class="info_label">Pays</td>
+				<td>
+					<% if !@user.country.blank? %>
+						<%= @user.country %>
+					<% else %>
+						<em>Vous n'avez pas spécifié de pays</em>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td class="info_label">Numéro de permis de conduire</td>
+				<td>
+					<% if !@user.license.blank? %>
+						<%= @user.license %>
+					<% else %>
+						<em>Vous n'avez pas spécifié de numéro de permis de conduire</em>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td class="info_label">Date de naissance</td>
+				<td>
+					<% if !@user.birth_date.blank? %>
+						<%= @user.birth_date %>
+					<% else %>
+						<em>Vous n'avez pas spécifié de date de naissance</em>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td class="info_label">Année d'obtention du permis</td>
+				<td>
+					<% if !@user.license_year.blank? %>
+						<%= @user.license_year %>
+					<% else %>
+						<em>Vous n'avez pas spécifié d'année d'obtention du permis</em>
+					<% end %>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="span3">
+		<%= link_to "Modifier mes informations", edit_user_registration_path, class: "base pull-right" %>
+	</div>
+</div>
+

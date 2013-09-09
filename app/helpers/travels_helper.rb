@@ -1,3 +1,3 @@
 module TravelsHelper
-  include PricingHelper
+	include PricingHelper
 end

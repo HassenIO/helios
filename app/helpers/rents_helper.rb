@@ -1,5 +1,3 @@
 module RentsHelper
-  include ::PricingHelper
-
-
+	include ::PricingHelper
 end

@@ -1,32 +1,27 @@
 <div class="row-fluid">
-  <%= render 'form' %>
+	<%= render 'form' %>
 </div>
 
 <div class="row-fluid">
-  <div class="span12">
-    <% if @travels.empty? %>
-        <h3><%= t(".no_results") %></h3>
-    <% else %>
-        <h3><%= t(".results", :nbCars => @travels.size, :airPort => @rent.airPort.name, :startDate => @rent.startDate, :endDate => @rent.endDate) %></h3>
-    <% end %>
-  </div>
+	<div class="span12">
+		<% if @travels.empty? %>
+				<h3><%= t(".no_results") %></h3>
+		<% else %>
+				<h3><%= t(".results", :nbCars => @travels.size, :airPort => @rent.airPort.name, :startDate => @rent.startDate, :endDate => @rent.endDate) %></h3>
+		<% end %>
+	</div>
 </div>
 
 <% @travels.each do |travel| %>
-    <%= render "travels/item", :travel => travel %>
+	<%= render "travels/item", :travel => travel %>
 <% end %>
-
 
 <div class="row-fluid">
-  <div class="span12">
-    <%= link_to t('.contact_us'), root_path(:anchor => 'contact') %>
-  </div>
+	<div class="span12">
+		<%= link_to t('.contact_us'), root_path(:anchor => 'contact') %>
+	</div>
 </div>
 
-
 <% content_for :footer do %>
-    <%= filepicker_js_include_tag %>
+	<%= filepicker_js_include_tag %>
 <% end %>
-
-
-
