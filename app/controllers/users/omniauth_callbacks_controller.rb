@@ -13,16 +13,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
 	end
 
-	def facebook_signup_tc
-		
-		if @user.blank?
-		else
-			redirect_to new_user_session_path, alert: "Vous êtes déjà inscrit sur TravelerCar."
-		end
-
-	end
-
-
 
 	private
 
