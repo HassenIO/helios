@@ -30,7 +30,7 @@ end
 if Rails.env.development?
 	class OverrideMailRecipient
 		def self.delivering_email(mail)
-			mail.to = "htaidirt+tc_Override_Mail_Recipient@gmail.com"
+			mail.to = "admin@travelercar.com"
 		end
 	end
 	AdminMailer.register_interceptor(OverrideMailRecipient)

@@ -8,11 +8,11 @@
 # Add application configuration variables here, as shown below.
 #
 ADMIN_NAME: Admin
-ADMIN_EMAIL: htaidirt+tc_admin@gmail.com
-ADMIN_PASSWORD: admin
+ADMIN_EMAIL: admin@travelercar.com
+ADMIN_PASSWORD: jokercar2013
 ROLES: [admin, user, VIP]
 
-MAILER_FROM: "htaidirt+tc_admin@gmail.com"
+MAILER_FROM: "admin@travelercar.com"
 1N1_USERNAME: "admin@travelercar.com"
 1N1_PASSWORD: "jokercar2013"
 
