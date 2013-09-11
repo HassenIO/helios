@@ -1,6 +1,54 @@
-<h1>Heureux de vous revoir, <%= @user.first_name %></h1>
+<h1>Bienvenue, <%= @user.first_name %></h1>
 <hr/>
-<h2>Vos informations personnelles</h2>
+<div class="row">
+	<div class="span6">
+		<div class="dashboard-card">
+			<h4>Mes réservations de parking</h4>
+			<p>Vous avez demandé <%= pluralize @travels.count, "place" %> de parking</p>
+			<% if @next_travel.blank? %>
+				<p>Vous n'avez aucune demande de place de parking à venir</p>
+			<% else %>
+				<p>Votre prochain stationnement est prévu le <%= l @next_travel.departure, format: :long %> (pour une durée de <%= distance_of_time_in_words(@next_travel.departure, @next_travel.arrival) %>)</p>
+			<% end %>
+			<p><%= link_to "Réserver une place de parking", travels_path, class: "base" %></p>
+		</div>
+		<div class="dashboard-card">
+			<h4>Nous contacter</h4>
+			<p>Numéro de téléphone : 06.12.34.56.78</p>
+			<p>Nous écrire : contact@travelercar.com</p>
+		</div>
+	</div>
+	<div class="span6">
+		<div class="dashboard-card">
+			<h4>Mes locations de véhicule</h4>
+			<p>Vous avez effectué <%= pluralize @rents.count, "location" %> de véhicule</p>
+			<% if @next_rent.blank? %>
+				<p>Vous n'avez pas prévu de location prochainement</p>
+			<% else %>
+				<p>Votre prochaine location est prévu le <%= l @next_rent.startDate, format: :long %> (pour une durée de <%= distance_of_time_in_words(@next_rent.startDate, @next_rent.endDate) %>)</p>
+			<% end %>
+			<p><%= link_to "Louer une voiture", search_path, class: "base" %></p>
+		</div>
+		<div class="dashboard-card">
+			<h4>Actualités</h4>
+			<p>
+				<a class="social facebook" href="#">
+					<i class="icon-facebook"></i>
+				</a>
+				<a class="social twitter" href="#">
+					<i class="icon-twitter"></i>
+				</a>
+				<a class="social gplus" href="#">
+					<i class="icon-google-plus"></i>
+				</a>
+				<a class="social linkedin" href="#">
+					<i class="icon-linkedin"></i>
+				</a>
+			</p>
+		</div>
+	</div>
+</div>
+
 <% if @user.address.blank? ||
 	@user.city.blank? ||
 	@user.zip_code.blank? ||
@@ -8,95 +56,8 @@
 	@user.license.blank? ||
 	@user.birth_date.blank? ||
 	@user.license_year.blank? %>
+	<hr/>
 	<div class="alert">
-		<p>N'oubliez pas de compléter toutes vos informations personnelles avant de déposer votre véhicule ou de faire une demande de location.</p>
+		<p>Votre profil est incomplet. <%= link_to "N'oubliez pas de le compléter", edit_user_registration_path, class: "base" %>.</p>
 	</div>
 <% end %>
-<div class="row">
-	<div class="span9">
-		<table class="user_info">
-			<tr>
-				<td class="info_label">Nom d'utilisateur</td>
-				<td><%= "#{@user.first_name} #{@user.last_name}" %></td>
-			</tr>
-			<tr>
-				<td class="info_label">Votre email</td>
-				<td><%= @user.email %></td>
-			</tr>
-			<tr>
-				<td class="info_label">Votre adresse</td>
-				<td>
-					<% if !@user.address.blank? %>
-						<%= @user.address %>
-					<% else %>
-						<em>Vous n'avez pas spécifié d'adresse</em>
-					<% end %>
-				</td>
-			</tr>
-			<tr>
-				<td class="info_label">Ville</td>
-				<td>
-					<% if !@user.city.blank? %>
-						<%= @user.city %>
-					<% else %>
-						<em>Vous n'avez pas spécifié de ville</em>
-					<% end %>
-				</td>
-			</tr>
-			<tr>
-				<td class="info_label">Code postal</td>
-				<td>
-					<% if !@user.zip_code.blank? %>
-						<%= @user.zip_code %>
-					<% else %>
-						<em>Vous n'avez pas spécifié de code postal</em>
-					<% end %>
-				</td>
-			</tr>
-			<tr>
-				<td class="info_label">Pays</td>
-				<td>
-					<% if !@user.country.blank? %>
-						<%= @user.country %>
-					<% else %>
-						<em>Vous n'avez pas spécifié de pays</em>
-					<% end %>
-				</td>
-			</tr>
-			<tr>
-				<td class="info_label">Numéro de permis de conduire</td>
-				<td>
-					<% if !@user.license.blank? %>
-						<%= @user.license %>
-					<% else %>
-						<em>Vous n'avez pas spécifié de numéro de permis de conduire</em>
-					<% end %>
-				</td>
-			</tr>
-			<tr>
-				<td class="info_label">Date de naissance</td>
-				<td>
-					<% if !@user.birth_date.blank? %>
-						<%= @user.birth_date %>
-					<% else %>
-						<em>Vous n'avez pas spécifié de date de naissance</em>
-					<% end %>
-				</td>
-			</tr>
-			<tr>
-				<td class="info_label">Année d'obtention du permis</td>
-				<td>
-					<% if !@user.license_year.blank? %>
-						<%= @user.license_year %>
-					<% else %>
-						<em>Vous n'avez pas spécifié d'année d'obtention du permis</em>
-					<% end %>
-				</td>
-			</tr>
-		</table>
-	</div>
-	<div class="span3">
-		<%= link_to "Modifier mes informations", edit_user_registration_path, class: "base pull-right" %>
-	</div>
-</div>
-
