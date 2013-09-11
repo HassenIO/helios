@@ -1,3 +1,12 @@
+<p class="hero"><%= t(".title_facebook") %></p>
+<a href="<%= omniauth_authorize_path(resource_name, "facebook_signup_tc") %>" class="btn btn-facebook btn-large"><i class="icon-facebook"></i> | Se Connecter avec Facebook</a>
+
+
+<div class="separator">
+  <h2>ou</h2>
+  <hr/>
+</div>
+
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "login-form"}) do |f| %>
     <!--sign-up-->
     <div class="control-group">
