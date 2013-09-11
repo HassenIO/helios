@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable, :confirmable,
 				 :recoverable, :rememberable, :trackable, :validatable
 
-	devise :omniauthable, :omniauth_providers => [:facebook]
+	devise :omniauthable, :omniauth_providers => [:facebook, :facebook_signup_tc]
 
 	# Setup accessible (or protected) attributes for your model
 	attr_accessible :role_ids, :as => :admin
