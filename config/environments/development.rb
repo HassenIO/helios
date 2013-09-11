@@ -44,4 +44,5 @@ TravelerCar::Application.configure do
 	config.assets.debug = true
 	config.sass.debug_info = true
 	config.sass.line_comments = false # source maps don't get output if this is true
+	
 end
