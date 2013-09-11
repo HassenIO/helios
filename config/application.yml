@@ -13,6 +13,8 @@ ADMIN_PASSWORD: admin
 ROLES: [admin, user, VIP]
 
 MAILER_FROM: "htaidirt+tc_admin@gmail.com"
+1N1_USERNAME: "admin@travelercar.com"
+1N1_PASSWORD: "jokercar2013"
 
 CATEGORIES:
   - name: "Citadine"
