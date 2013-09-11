@@ -1,6 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-	before_filter :check_email_from_fb, only: [:facebook, :facebook_signup_tc]
+	before_filter :check_email_from_fb, only: [:facebook]
 
 	def facebook
 
