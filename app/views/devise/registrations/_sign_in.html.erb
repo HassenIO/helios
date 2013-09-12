@@ -36,8 +36,13 @@
     </div>
     <div class="control-group">
       <div class="controls">
+        <%= check_box_tag 'signup-accept-cgu' %> En cochant cette case, j'accepte les <%= link_to "Conditions Générales d'Utilisation", "#", class: "base" %>.
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
         <!--<button type="submit" class="btn on-hover btn-large btn-block">Je valide et crée mon compte !</button>-->
-        <%= f.submit :class => "btn on-hover btn-large btn-block" %>
+        <%= f.submit id: "signup-button", :class => "btn on-hover btn-large btn-block", disabled: "disabled" %>
       </div>
     </div>
 <% end %>
