@@ -79,30 +79,44 @@
     <script type="text/javascript">
         $(function () {
 
-            $('#rent_startDate_timepicker').datetimepicker({
-                language: 'pt-BR',
-                pickDate: false,
-                pickSeconds: false
-
-            });
-
             $('#rent_startDate_datepicker').datetimepicker({
-                language: 'pt-BR',
-                pickTime: false
-
+                pickTime: false,
+                startDate: "2014-02-14 10:00"
+            }).on('changeDate', function(ev) {
+              $(this).removeAttr('data-datetimepicker-visible');
+              $(this).datetimepicker('hide');
             });
 
-            $('#rent_endDate_timepicker').datetimepicker({
-                language: 'pt-BR',
+            $('#rent_startDate_timepicker').datetimepicker({
                 pickDate: false,
                 pickSeconds: false
-
             });
 
             $('#rent_endDate_datepicker').datetimepicker({
-                language: 'pt-BR',
                 pickTime: false
+            }).on('changeDate', function(ev){
+              $(this).removeAttr('data-datetimepicker-visible');
+              $(this).datetimepicker('hide');
+            });
 
+            $('#rent_endDate_timepicker').datetimepicker({
+                pickDate: false,
+                pickSeconds: false
+            });
+
+            $('.add-on').click(function(e){
+
+
+                var $parent = $(this).parent();
+                var id = '#' + $parent.attr('id');
+                var visible = $parent.attr('data-datetimepicker-visible');
+
+                if (typeof visible !== 'undefined' && visible !== false) {
+                    $parent.removeAttr('data-datetimepicker-visible');
+                    $(id).datetimepicker('hide');
+                } else {
+                    $parent.attr('data-datetimepicker-visible', 'true');
+                }
             });
 
         });
