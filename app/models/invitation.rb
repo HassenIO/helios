@@ -10,6 +10,7 @@ class Invitation < ActiveRecord::Base
 
 	# Check if an invitation code is valid and active.
 	def self.get_invitation code
-		return code ? Invitation.where(code: code, status: 'ON').first : nil
+		return Invitation.where(code: code, status: 'ON').first
+		# return code ? Invitation.where(code: code, status: 'ON').first : nil
 	end
 end
