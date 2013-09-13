@@ -14,12 +14,16 @@ class ApplicationController < ActionController::Base
 		I18n.locale = params[:locale] || I18n.default_locale
 	end
 
+	# Always add :locale parameter to URL
 	def url_options
-		{:locale => I18n.locale}.merge(super)
+		{ :locale => I18n.locale }.merge super
 	end
 
 	def authenticate_admin_user!
-		redirect_to new_user_session_path unless current_user.has_role? :admin
+		# If user not logged in or doesn't have admin role, make him back to login page
+		if current_user.nil? || !current_user.has_role?(:admin)
+			redirect_to new_user_session_path
+		end
 	end
 
 end

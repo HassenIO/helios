@@ -8,9 +8,9 @@ TravelerCar::Application.routes.draw do
 		root to: "home#index"
 	end
 
-	match "notifications" => "notifications#index"
+	ActiveAdmin.routes(self)
 
-	resources :home
+	resources :home # Used only for dev (Equivalent of WordPress on prod)
 
 	scope "/:locale", :constraints => {:locale => /[a-z]{2}(-[A-Z]{2})?/} do
 
@@ -44,6 +44,7 @@ TravelerCar::Application.routes.draw do
 
 	end
 
-	ActiveAdmin.routes(self)
+	match "notifications" => "notifications#index"
+	match "nav" => "navigations#index"
 
 end
