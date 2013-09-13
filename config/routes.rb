@@ -45,5 +45,6 @@ TravelerCar::Application.routes.draw do
 	end
 
 	match "notifications" => "notifications#index"
+	match "nav" => "navigations#index"
 
 end
