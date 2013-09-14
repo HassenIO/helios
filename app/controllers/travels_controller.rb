@@ -41,7 +41,7 @@ class TravelsController < ApplicationController
 			session.delete(:travel)
 		else
 			@travel= @user.travels.new
-			@travel.arrival = Time.now + 6.days
+			@travel.arrival = Time.now + 10.days
 			@travel.departure = Time.now + 1.days
 		end
 
