@@ -54,17 +54,10 @@
 
 
 <% content_for :footer do %>
+
     <script type="text/javascript">
 
-        $(function () {
-
-            $(".form_datetime").datetimepicker({
-                format: "dd/mm/yyyy - hh:ii",
-                minuteStep: 15,
-                autoclose: true,
-                pickerPosition: "bottom-left",
-                startDate: "2013-11-01"
-            });
+        jQuery(function ($) {
 
             $("#datetime-picker-start-date").on("changeDate", function(ev) {
               $("#datetime-picker-end-date").datetimepicker('show');
