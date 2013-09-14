@@ -18,7 +18,7 @@
             <%= f.label :startDate, :class => "control-label" %>
             <div class="controls">
               <div class="input-append date form_datetime" id="datetime-picker-start-date">
-                <%= f.text_field :startDate_date, :class => "input-large", size: "16", placeholder: "Sélectionnez une date", value: @rent.startDate.strftime("%d/%m/%Y - %H:%M") %>
+                <%= f.text_field :startDate_date, :class => "input-large", size: "16", placeholder: "Sélectionnez une date", readonly: true, value: @rent.startDate.strftime("%d/%m/%Y - %H:%M") %>
                 <span class="add-on"><i class="icon-calendar"></i></span>
               </div>
             </div>
@@ -30,7 +30,7 @@
             <%= f.label :endDate, :class => "control-label" %>
             <div class=" controls">
               <div class="input-append date form_datetime" id="datetime-picker-end-date">
-                <%= f.text_field :endDate_date, :class => "input-large", size: "16", placeholder: "Sélectionnez une date", value: @rent.endDate.strftime("%d/%m/%Y - %H:%M") %>
+                <%= f.text_field :endDate_date, :class => "input-large", size: "16", placeholder: "Sélectionnez une date", readonly: true, value: @rent.endDate.strftime("%d/%m/%Y - %H:%M") %>
                 <span class="add-on"><i class="icon-calendar"></i></span>
               </div>
             </div>
