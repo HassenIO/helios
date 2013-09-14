@@ -1,7 +1,7 @@
 //= require twitter/bootstrap
 //= require argo/index
 
-$(function(){
+jQuery(function($){
 
 	/*
 	 *	Need to check the use conditions in order to signup.
@@ -14,6 +14,15 @@ $(function(){
 			$("#signup-button").attr("disabled", "disabled");
 			console.log("btn disabled");
 		}
+	});
+
+	// All DateTime Picker fields have the same settings.
+	$(".form_datetime").datetimepicker({
+	    format: "dd/mm/yyyy - hh:ii",
+	    minuteStep: 15,
+	    autoclose: true,
+	    pickerPosition: "bottom-left",
+	    startDate: "2013-11-01"
 	});
 	
 });
