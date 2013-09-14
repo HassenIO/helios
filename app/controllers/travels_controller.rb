@@ -61,7 +61,12 @@ class TravelsController < ApplicationController
 	# POST /travels
 	# POST /travels.json
 	def create
-		@travel = @user.travels.new(params[:travel])
+		# Change departure/arrival datetime format.
+		travel = params[:travel]
+		travel[:departure] = Time.strptime travel[:departure], "%d/%m/%Y - %H:%M"
+		travel[:arrival] = Time.strptime travel[:arrival], "%d/%m/%Y - %H:%M"
+
+		@travel = @user.travels.new(travel)
 		@travel.status = :pending
 
 		respond_to do |format|
