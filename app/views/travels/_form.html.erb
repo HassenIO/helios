@@ -360,14 +360,6 @@
     <script type="text/javascript">
         $(function () {
 
-            $(".form_datetime").datetimepicker({
-                format: "dd/mm/yyyy - hh:ii",
-                minuteStep: 15,
-                autoclose: true,
-                pickerPosition: "bottom-left",
-                startDate: "2013-11-01"
-            });
-
             $("#travel_departure_datepicker").on("changeDate", function(ev) {
                 $("#travel_arrival_datepicker").datetimepicker('show');
             });
