@@ -1,5 +1,5 @@
 ;
 jQuery(function($){
-	$('.menu-sidentifier').html('<a class="dropdown-toggle" data-toggle="dropdown" href="#"> <%= t(:account) %> <b class="caret"></b> </a> <ul class="dropdown-menu"> <li> <%= link_to t(:my_informations), edit_user_registration_url %> </li> <li> <%= link_to t(:my_travels), user_travels_url(current_user) %> </li> <li> <%= link_to t(:my_rents), user_rents_url(current_user) %> </li> <li> <%= link_to t(:logout), destroy_user_session_url, :method => "delete" %> </li> </ul>');
+	$('.menu-sidentifier').html('<a class="dropdown-toggle" data-toggle="dropdown" href="#"> <%= t(:account) %> <b class="caret"></b> </a> <ul class="dropdown-menu"> <li> <%= link_to t(:dashboard), dashboards_url %> </li> <li> <%= link_to t(:my_informations), edit_user_registration_url %> </li> <li> <%= link_to t(:my_travels), user_travels_url(current_user) %> </li> <li> <%= link_to t(:my_rents), user_rents_url(current_user) %> </li> <li> <%= link_to t(:logout), destroy_user_session_url, :method => "delete" %> </li> </ul>');
 	$('.connect-button').attr('href', '<%= dashboards_url %>').html('<i class="li_lock"></i><span>Mon compte</span>');
 });
