@@ -23,6 +23,7 @@ ActiveAdmin.register Travel do
 		column(:car_id) { |travel| travel.car.try { |car| "#{car.brand} #{car.model} #{car.year}" } }
 		column(:car_category) { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} - #{category.price}euros /day" } }
 		column(:created_at, :sortable => :created_at)
+		default_actions
 	end
 
 	action_item :except => :index do

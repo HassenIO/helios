@@ -11,6 +11,7 @@ ActiveAdmin.register Rent do
 		column(:price) { |rent| rent.try(:payment).try{ |payment| number_to_currency(payment.amount/100, :precision => 2) }}
 		column(:status) { |rent| rent.try(:payment).try{ |payment| status_tag(payment.status.to_s) }}
 		column(:created_at, :sortable => :created_at)
+		default_actions
 	end
 
 
