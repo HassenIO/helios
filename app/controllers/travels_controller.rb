@@ -63,8 +63,8 @@ class TravelsController < ApplicationController
 	def create
 		# Change departure/arrival datetime format.
 		travel = params[:travel]
-		travel[:departure] = Time.strptime travel[:departure], "%d/%m/%Y - %H:%M"
-		travel[:arrival] = Time.strptime travel[:arrival], "%d/%m/%Y - %H:%M"
+		travel[:departure] = human_to_system_datetime(travel[:departure])
+		travel[:arrival] = human_to_system_datetime(travel[:arrival])
 
 		@travel = @user.travels.new(travel)
 		@travel.status = :pending

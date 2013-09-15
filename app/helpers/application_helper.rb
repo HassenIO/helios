@@ -8,5 +8,10 @@ module ApplicationHelper
 			when :alert then "alert alert-error"
 		end
 	end
+
+	# Convert System datetime (YYYY-mm-dd HH:MM:SS) to human format (dd/mm/YYYY - HH:MM)
+	def system_to_homan_datetime datetime
+		datetime.strftime "%d/%m/%Y - %H:%M"
+	end
 	
 end
