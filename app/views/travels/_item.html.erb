@@ -44,7 +44,7 @@
               <p><%= link_to t(".contact_support"), root_path(anchor: "contact"), :class => "base" %></p>
           <% end %>
 
-      <% elsif !@rent.nil? %>
+      <% elsif (!@rent.nil? and !@rent.id.nil?) %>
           <p><%= t(:interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate)) %>
 
           <h4><%= t(:x_days, :count => number_of_days(@rent)) %>

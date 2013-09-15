@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
 
 
 	def set_locale
-		I18n.locale = params[:locale] || I18n.default_locale
+		I18n.locale = I18n.default_locale
+		# I18n.locale = params[:locale] || I18n.default_locale
 	end
 
 	# Always add :locale parameter to URL
@@ -28,7 +29,7 @@ class ApplicationController < ActionController::Base
 
 	# Convert Human datetime (dd/mm/YYYY - HH:MM) to system datetime format (YYYY-mm-dd HH:MM:SS)
 	def human_to_system_datetime datetime
-		return Time.strptime(datetime, "%d/%m/%Y - %H:%M")
+		return Time.strptime(datetime, "%d/%m/%Y %H:%M")
 	end
 
 end

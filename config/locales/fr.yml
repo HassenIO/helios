@@ -416,7 +416,7 @@ fr:
         link_create_account: "Oui, je crée un compte !"
     passwords:
       edit:
-        title: "Modifier ton mot de passe"
+        title: "Veuillez renseigner votre nouveau mot de passe"
         change_password: "Enregistrer"
       new:
         title: "Mot de passe oublié ?"
@@ -514,7 +514,7 @@ fr:
       user:
         first_name: "Prénom"
         last_name: "Nom de famille"
-        license: "Numéro de permis de conduire"
+        phone: "Numéro de téléphone"
         license_year: "Année du permis de conduire"
         birth_date: "Date de naissance"
         password: "Nouveau mot de passe"
@@ -532,6 +532,8 @@ fr:
       title_get_invite: "Votre code invitation"
       visitor_email: "Votre adresse email"
       request_btn: "Demander mon code invitation"
+
+  
 
 
 

@@ -93,7 +93,7 @@
 
           <div class="control-group">
             <div class="controls">
-              <%= f.text_field :license, :placeholder => t("helpers.label.user.license") %>
+              <%= f.text_field :license, :placeholder => t("helpers.label.user.phone") %>
             </div>
           </div>
 
@@ -200,7 +200,7 @@
 <div class="row-fluid">
   <div class="span12">
     <%= link_to t(".delete_account"), registration_path(resource_name),
-                :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "base" %>
+                :data => {:confirm => "En êtes-vous sûre ?"}, :method => :delete, :class => "base" %>
   </div>
 </div>
 
@@ -213,7 +213,7 @@
             $('#user_birthdate_datetimepicker').datetimepicker({
                 language: 'pt-BR',
                 pickTime: false,
-                startDate: new Date(1980, 1, 1, 0, 0, 0)
+                startDate: new Date(1984, 1, 1, 0, 0, 0)
             });
 
         });

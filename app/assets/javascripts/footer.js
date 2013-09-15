@@ -18,7 +18,7 @@ jQuery(function($){
 
 	// All DateTime Picker fields have the same settings.
 	$(".form_datetime").datetimepicker({
-	    format: "dd/mm/yyyy - hh:ii",
+	    format: "dd/mm/yyyy hh:ii",
 	    minuteStep: 15,
 	    autoclose: true,
 	    pickerPosition: "bottom-left",

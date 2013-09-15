@@ -1,4 +1,4 @@
-<p class="hero"><%= t(".title_facebook") %></p>
+<br/>
 <a href="<%= omniauth_authorize_path(:user, :facebook, tc_action: "signup", invitation_code: params["code"]) %>" class="btn btn-facebook btn-large"><i class="icon-facebook"></i> | S'inscrire avec Facebook</a>
 
 
@@ -36,13 +36,13 @@
     </div>
     <div class="control-group">
       <div class="controls">
-        <%= check_box_tag 'signup-accept-cgu' %> En cochant cette case, j'accepte les <%= link_to "Conditions Générales d'Utilisation", "#", class: "base" %>.
+        <%= check_box_tag 'signup-accept-cgu' %> En cochant cette case, j'accepte les <%= link_to "Conditions Générales d'Utilisation", "http://travelercar.novacodex.net/wp/conditions-generales-dutilisation-cgu/", class: "base" %>.
       </div>
     </div>
     <div class="control-group">
       <div class="controls">
         <!--<button type="submit" class="btn on-hover btn-large btn-block">Je valide et crée mon compte !</button>-->
-        <%= f.submit id: "signup-button", :class => "btn on-hover btn-large btn-block", disabled: "disabled" %>
+        <%= f.submit id: "signup-button", value: "M'inscrire", :class => "btn on-hover btn-large btn-block", disabled: "disabled" %>
       </div>
     </div>
 <% end %>
