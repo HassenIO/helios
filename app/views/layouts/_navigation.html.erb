@@ -12,7 +12,7 @@
       <%= link_to t(:dashboard), dashboards_path %>
     </li>
     <li>
-      <%= link_to t(:how_its_work), root_path(anchor: "comment-ca-marche") %>
+      <%= link_to t(:how_its_work), "#{ENV['WP_ROOT']}/#comment-ca-marche" %>
     </li>
     <li>
       <%= link_to t(:register_travel), travels_path %>
