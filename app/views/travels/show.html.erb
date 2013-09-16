@@ -4,7 +4,9 @@
     <h1><%= [@travel.car.year, @travel.car.brand, @travel.car.model].join(' - ') %>
 
       <% if @user == current_user %>
-          <%= link_to t(:edit), edit_user_travel_path(@user, @travel), :class => "btn btn-edit on-hover pull-right" %>
+          <%= link_to edit_user_travel_path(@user, @travel), :class => "btn btn-edit on-hover pull-right" do %>
+            <%= t(:edit) %> <i class="icon-arrow-down"></i>
+          <% end %>
           <%= link_to user_travels_path(@user), class: "btn btn-primary btn-back pull-right" do %>
             <i class="icon-arrow-left"></i><%= t ".back_to_list" %>
           <% end %>
