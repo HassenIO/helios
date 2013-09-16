@@ -292,7 +292,7 @@ fr:
       cancel_rent: "Annuler cette location"
       edit_rent: "Modifier cette location"
       new_rent: "Nouvelle location"
-      no_rents: "Vous n'avez fait aucune demande de location"
+      no_rents: "Vous n'avez aucune réservation confirmée"
     item:
       go_rent: "Voir"
     new:

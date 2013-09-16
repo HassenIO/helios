@@ -6,7 +6,7 @@
 			<h4>Mes réservations de parking</h4>
 			<p>Vous avez demandé <%= pluralize @travels.count, "place" %> de parking</p>
 			<% if @next_travel.blank? %>
-				<p>Vous n'avez aucune demande de place de parking à venir</p>
+				<p>Vous n'avez aucune réservation confirmée.</p>
 			<% else %>
 				<p>Votre prochain stationnement est prévu le <%= l @next_travel.departure, format: :long %> (pour une durée de <%= distance_of_time_in_words(@next_travel.departure, @next_travel.arrival) %>)</p>
 			<% end %>
@@ -23,7 +23,7 @@
 			<h4>Mes locations de véhicule</h4>
 			<p>Vous avez effectué <%= pluralize @rents.count, "location" %> de véhicule</p>
 			<% if @next_rent.blank? %>
-				<p>Vous n'avez pas prévu de location prochainement</p>
+				<p>Vous n'avez pas prévu de location prochainement.</p>
 			<% else %>
 				<p>Votre prochaine location est prévu le <%= l @next_rent.startDate, format: :long %> (pour une durée de <%= distance_of_time_in_words(@next_rent.startDate, @next_rent.endDate) %>)</p>
 			<% end %>
