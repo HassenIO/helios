@@ -414,7 +414,7 @@ fr:
       login:
         title: "Se connecter"
         title_facebook: "Partagez les meilleurs plans TravelerCar et trouvez ceux recommandés par vos amis. En savoir plus"
-        title_create_account: "Pas encore incrit ? Veuillez introduire votre code invitation."
+        title_create_account: "Vous avez besoin d'un code invitation pour vous inscrire."
         link_create_account: "Oui, je crée un compte !"
     passwords:
       edit:
@@ -531,7 +531,7 @@ fr:
 
   invitation_requests:
     form:
-      title_get_invite: "Votre code invitation"
+      title_get_invite: "Veuillez entrer votre adresse mail"
       visitor_email: "Votre adresse email"
       request_btn: "Demander mon code invitation"
 
