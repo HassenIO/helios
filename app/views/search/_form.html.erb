@@ -41,10 +41,10 @@
 
       <div class="row-fluid">
         <div class="span12 text-center">
-          <a class="btn btn-large btn-block" name="commit" onclick="$('#new_rent').submit(); return false;">
+          <button class="btn btn-large btn-block" name="commit" disabled>
             <div class="nav-hover"></div>
             <p style="margin-bottom: 0"><%= t('.find') %></p>
-          </a>
+          </button>
         </div>
       </div>
 
@@ -52,6 +52,13 @@
 
 <% end %>
 
+<div class="row-fluid">
+  <div class="span12">
+    <br/>
+    <p><strong>TravelerCar étant toujours en phase de lancement, la location de véhicule n'est pas encore disponible.</strong></p>
+    <p><strong>En tant que membre TravelerCar, vous serez averti par email de la disponibilité des locations dés qu'elle sera disponible.</strong></p>
+  </div>
+</div>
 
 <% content_for :footer do %>
 
