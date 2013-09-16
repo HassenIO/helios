@@ -337,6 +337,7 @@ fr:
       when: "quand ?"
       yes_i_do : "Oui je loue cette voiture !"
       how_many: "Combien ça coûte ?"
+      back_to_list: "Ma Liste"
     index:
       title: "Gérer mes parkings"
       no_travels: "Vous n'avez pas encore proposé de voiture"
