@@ -1,8 +1,24 @@
 <h1>Bienvenue, <%= @user.first_name %></h1>
 <hr/>
-<div class="row">
+
+<% if @user.address.blank? ||
+	@user.city.blank? ||
+	@user.zip_code.blank? ||
+	@user.country.blank? ||
+	@user.license.blank? ||
+	@user.birth_date.blank? ||
+	@user.license_year.blank? %>
+	
+	<div class="alert">
+		<p>Votre profil est incomplet. <%= link_to "N'oubliez pas de le compléter", edit_user_registration_path, class: "base" %>.</p>
+	</div>
+	<hr/>
+<% end %>
+
+<div id="dashboard" class="row">
 	<div class="span6">
-		<div class="dashboard-card">
+		<div class="hero-unit">
+			<p><%= link_to "Réserver une place", travels_path, class: "base pull-right" %></p>
 			<h4>Mes réservations de parking</h4>
 			<p>Vous avez demandé <%= pluralize @travels.count, "place" %> de parking</p>
 			<% if @next_travel.blank? %>
@@ -10,16 +26,16 @@
 			<% else %>
 				<p>Votre prochain stationnement est prévu le <%= l @next_travel.departure, format: :long %> (pour une durée de <%= distance_of_time_in_words(@next_travel.departure, @next_travel.arrival) %>)</p>
 			<% end %>
-			<p><%= link_to "Réserver une place de parking", travels_path, class: "base" %></p>
 		</div>
-		<div class="dashboard-card">
+		<div class="hero-unit">
 			<h4>Nous contacter</h4>
 			<p>Numéro de téléphone : 06.12.34.56.78</p>
 			<p>Nous écrire : contact@travelercar.com</p>
 		</div>
 	</div>
 	<div class="span6">
-		<div class="dashboard-card">
+		<div class="hero-unit">
+			<p><%= link_to "Louer une voiture", search_path, class: "base pull-right" %></p>
 			<h4>Mes locations de véhicule</h4>
 			<p>Vous avez effectué <%= pluralize @rents.count, "location" %> de véhicule</p>
 			<% if @next_rent.blank? %>
@@ -27,9 +43,8 @@
 			<% else %>
 				<p>Votre prochaine location est prévu le <%= l @next_rent.startDate, format: :long %> (pour une durée de <%= distance_of_time_in_words(@next_rent.startDate, @next_rent.endDate) %>)</p>
 			<% end %>
-			<p><%= link_to "Louer une voiture", search_path, class: "base" %></p>
 		</div>
-		<div class="dashboard-card">
+		<div class="hero-unit">
 			<h4>Actualités</h4>
 			<p>
 				<a class="social facebook" href="https://www.facebook.com/TravelerCar">
@@ -48,16 +63,3 @@
 		</div>
 	</div>
 </div>
-
-<% if @user.address.blank? ||
-	@user.city.blank? ||
-	@user.zip_code.blank? ||
-	@user.country.blank? ||
-	@user.license.blank? ||
-	@user.birth_date.blank? ||
-	@user.license_year.blank? %>
-	<hr/>
-	<div class="alert">
-		<p>Votre profil est incomplet. <%= link_to "N'oubliez pas de le compléter", edit_user_registration_path, class: "base" %>.</p>
-	</div>
-<% end %>

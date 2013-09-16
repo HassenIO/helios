@@ -1,11 +1,13 @@
-<h1><%= t(".title") %> </h1>
-
 <% if @user == current_user %>
     <%= link_to t(:register_travel), new_user_travel_path(@user), :class => "base pull-right" %>
 <% end %>
 
+<h1><%= t(".title") %> </h1>
+
 <% if @travels.empty? %>
-    <h3><%= t(".no_travels") %></h3>
+    <div class="hero-unit">
+        <p><%= t(".no_travels") %></p>
+    </div>
 <% else %>
 
     <h3><%= t("helpers.label.travel.status.pending") %></h3>

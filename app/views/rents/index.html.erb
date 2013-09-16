@@ -4,18 +4,17 @@
 
 <h1><%= t('.title') %></h1>
 
-
-
 <% if @rents.empty? %>
-    <h3><%= t(".no_rents") %></h3>
+
+    <div class="hero-unit">
+    	<p><%= t(".no_rents") %></p>
+    </div>
 
 <% else %>
 
     <% @rents.each do |rent| %>
         <%= render "rents/item", :rent => rent %>
     <% end %>
-
-
     <br/>
 
 <% end %>
