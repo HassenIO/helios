@@ -56,7 +56,7 @@
         </li>
     <% end %>
     <li>
-      <%= link_to t(:contact), root_path(anchor: "contact") %>
+      <%= link_to t(:contact), "#{ENV['WP_ROOT']}/#contact" %>
     </li>
   </ul>
 

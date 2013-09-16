@@ -12,7 +12,8 @@ ADMIN_EMAIL: admin@travelercar.com
 ADMIN_PASSWORD: jokercar2013
 ROLES: [admin, user, VIP]
 
-WP_ROOT: "http://travelercar.com/wp"
+WP_ROOT: "http://travelercar.novacodex.net/wp"
+# WP_ROOT: "http://travelercar.com/wp"
 MAILER_FROM: "admin@travelercar.com"
 1N1_USERNAME: "admin@travelercar.com"
 1N1_PASSWORD: "jokercar2013"
