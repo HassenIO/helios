@@ -318,7 +318,8 @@ fr:
 
   travels:
     new:
-      title: "Je m'inscris pour avoir un parking gratuit"
+      title: "Avec TravelerCar, ne Payez plus le parking à l'aéroport !"
+      sub_title: "Je précise les informations de mon vol"
     item:
       rent: "Louer"
       cancel: "Annuler ce parking"
