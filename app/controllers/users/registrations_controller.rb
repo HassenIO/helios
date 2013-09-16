@@ -39,8 +39,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 		end
 	end
 
-	def after_update_path_for(resource)
-		edit_user_registration_path
+	def after_update_path resource
+		redirect_to edit_user_registration_path
 	end
 
 end

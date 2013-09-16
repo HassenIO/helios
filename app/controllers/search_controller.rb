@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
 
+	before_filter :must_sign_in
 	before_filter :authenticate_user!
 
 	def index

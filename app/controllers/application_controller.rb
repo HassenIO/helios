@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
 		redirect_to root_path, :alert => exception.message
 	end
 
-
 	def set_locale
 		I18n.locale = I18n.default_locale
 		# I18n.locale = params[:locale] || I18n.default_locale
@@ -30,6 +29,11 @@ class ApplicationController < ActionController::Base
 	# Convert Human datetime (dd/mm/YYYY - HH:MM) to system datetime format (YYYY-mm-dd HH:MM:SS)
 	def human_to_system_datetime datetime
 		return Time.strptime(datetime, "%d/%m/%Y %H:%M")
+	end
+
+	# If this is used as before_filter, redirect to sign in page without any flash message.
+	def must_sign_in
+		redirect_to( user_session_path ) if current_user.nil?
 	end
 
 end
