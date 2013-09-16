@@ -12,9 +12,11 @@ ADMIN_EMAIL: admin@travelercar.com
 ADMIN_PASSWORD: jokercar2013
 ROLES: [admin, user, VIP]
 
-WP_ROOT: "http://travelercar.novacodex.net/wp"
 # WP_ROOT: "http://travelercar.com/wp"
+WP_ROOT: "http://travelercar.novacodex.net/wp"
 MAILER_FROM: "admin@travelercar.com"
+# FILEPICKER_KEY: "A68xA26uYSfO6TDJM0Qp3z"
+FILEPICKER_KEY: "AejWBw1JhTOa65sdi1uuQz"
 1N1_USERNAME: "admin@travelercar.com"
 1N1_PASSWORD: "jokercar2013"
 
@@ -39,7 +41,6 @@ AIRPORTS:
     city: "Beauvais"
     country: "France"
 
-FILEPICKER_KEY: "A68xA26uYSfO6TDJM0Qp3z"
 
 development:
   HOST: "localhost:3000"

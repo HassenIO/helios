@@ -55,7 +55,6 @@ class TravelsController < ApplicationController
 
 	# GET /travels/1/edit
 	def edit
-
 	end
 
 	# POST /travels
