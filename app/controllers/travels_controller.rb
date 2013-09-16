@@ -41,8 +41,8 @@ class TravelsController < ApplicationController
 			session.delete(:travel)
 		else
 			@travel= @user.travels.new
-			@travel.arrival = Time.now + 10.days
 			@travel.departure = Time.now + 1.days
+			@travel.arrival = Time.now + 10.days
 		end
 
 		@travel.car ||= Car.new
@@ -71,7 +71,7 @@ class TravelsController < ApplicationController
 
 		respond_to do |format|
 			if @travel.save
-				format.html { redirect_to cgv_user_travel_url(@user, @travel), notice: 'Travel was successfully created.' }
+				format.html { redirect_to [@user, @travel], notice: "Votre demande de parking a bien été prise en compte." }
 				format.json { render json: @travel, status: :created, location: @travel }
 			else
 				format.html { render action: "new" }
@@ -87,7 +87,7 @@ class TravelsController < ApplicationController
 		respond_to do |format|
 			if @travel.update_attributes(params[:travel])
 				AdminMailer.travel_notification(@travel).deliver
-				format.html { redirect_to [@user, @travel], notice: 'Travel was successfully updated.' }
+				format.html { redirect_to [@user, @travel], notice: 'Votre demande a bien été mise à jour.' }
 				format.json { head :no_content }
 			else
 				format.html { render action: "edit" }
@@ -107,9 +107,6 @@ class TravelsController < ApplicationController
 		end
 	end
 
-
-	def cgv
-	end
 
 
 

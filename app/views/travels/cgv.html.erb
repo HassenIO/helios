@@ -57,40 +57,7 @@
       selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse
       pains."</p>
 
-
-    <%= form_for([@user, @travel]) do |f| %>
-
-        <div class="control-group">
-          <div class="controls">
-            <label class="checkbox">
-              <%= f.check_box :has_accepted_cgv %> <%= t("helpers.label.travel.has_accepted_cgv") %>
-            </label>
-            <%= f.submit t(".submit"), :class => "btn btn-primary" %> |
-            <%= link_to t(".cancel"), user_travel_path(@user, @travel),
-                        :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "base" %>
-          </div>
-        </div>
-
-    <% end %>
-
   </div>
 
 </div>
 
-
-<% content_for :footer do %>
-    <script type="text/javascript">
-        $(function () {
-
-            $("form").submit(function () {
-                if ($('#travel_has_accepted_cgv').is(':checked'))
-                    return true;
-                else {
-                    alert("<%= t(".accept_cgv") %>");
-                    return false;
-                }
-            });
-
-        });
-    </script>
-<% end %>
