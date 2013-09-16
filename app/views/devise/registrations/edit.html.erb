@@ -131,7 +131,7 @@
 
         <div class="row-fluid">
           <div class="span12">
-            <h2><%= t(".title_password_informations") %> </h2>
+            <h2><%= t(".title_password_informations") %></h2>
           </div>
         </div>
 
@@ -160,17 +160,35 @@
 
         </fieldset>
 
-        <div class="row-fluid">
-          <div class="span12">
-            <h2><%= t(".title_password_current") %> </h2>
-          </div>
-        </div>
+    <% end %>
 
+
+    <div class="row-fluid text-center" style="margin-bottom: 80px;">
+      <div class="span12">
+        <% if resource.provider.nil? %>
+          <!-- Button to trigger modal -->
+          <a href="#myModal" role="button" class="btn on-hover btn-large" data-toggle="modal">Je confirme mes modifications</a>
+        <% else %>
+          <%= f.submit value: "Valider mes modifications", :class => "btn on-hover btn-large" %>
+        <% end %>
+      </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal" aria-hidden="true">×</a>
+        <h3 id="myModalLabel"><%= t(".title_password_current") %></h3>
+      </div>
+      <div class="modal-body">
+        <p>Chez TravelerCar, votre sécurité est notre priorité.</p>
+        <p>Pour valider vos modifications, veuillez introduire votre mot de passe.</p>
+        <br/>
 
         <fieldset name="User Information" class="well comment_form">
-
           <div class="row-fluid">
-
             <div class="span6">
               <div class="control-group">
                 <div class="controls">
@@ -179,20 +197,16 @@
               </div>
             </div>
           </div>
-
         </fieldset>
 
-    <% end %>
-
-
-    <div class="row-fluid text-center" style="margin-bottom: 80px;">
-      <div class="span12">
-        <%= f.submit :class => "btn on-hover btn-large" %>
+      </div>
+      <div class="modal-buttons pull-right">
+        <a class="base" data-dismiss="modal" aria-hidden="true" style="margin-right: 20px">Annuler</a>
+        <%= f.submit value: "Valider mes modifications", class: "btn on-hover btn-large", id: "user-info-confirm", disabled: true %>
       </div>
     </div>
 
 <% end %>
-
 
 
 
@@ -216,6 +230,14 @@
                 language: 'pt-BR',
                 pickTime: false,
                 startDate: new Date(1984, 1, 1, 0, 0, 0)
+            });
+
+            $('#user_current_password').keyup(function(e){
+              if($(this).val().length >= 8) {
+                $('#user-info-confirm').removeAttr('disabled');
+              } else {
+                $('#user-info-confirm').attr('disabled', 'disabled');
+              }
             });
 
         });
