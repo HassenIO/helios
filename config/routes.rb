@@ -5,7 +5,11 @@ TravelerCar::Application.routes.draw do
 	end
 
 	unauthenticated :user do
-		root to: "home#index"
+		if Rails.env == "development"
+			root to: "home#index"
+		else
+			root to: redirect( "http://travelercar.com" )
+		end
 	end
 
 	ActiveAdmin.routes(self)
