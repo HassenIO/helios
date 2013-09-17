@@ -175,36 +175,39 @@
     </div>
 
 
+    <% if resource.provider.nil? %>
+    
+      <!-- Modal -->
+      <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+          <a class="close" data-dismiss="modal" aria-hidden="true">×</a>
+          <h3 id="myModalLabel"><%= t(".title_password_current") %></h3>
+        </div>
+        <div class="modal-body">
+          <p>Chez TravelerCar, votre sécurité est notre priorité.</p>
+          <p>Pour valider vos modifications, veuillez introduire votre mot de passe.</p>
+          <br/>
 
-    <!-- Modal -->
-    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-header">
-        <a class="close" data-dismiss="modal" aria-hidden="true">×</a>
-        <h3 id="myModalLabel"><%= t(".title_password_current") %></h3>
-      </div>
-      <div class="modal-body">
-        <p>Chez TravelerCar, votre sécurité est notre priorité.</p>
-        <p>Pour valider vos modifications, veuillez introduire votre mot de passe.</p>
-        <br/>
-
-        <fieldset name="User Information" class="well comment_form">
-          <div class="row-fluid">
-            <div class="span6">
-              <div class="control-group">
-                <div class="controls">
-                  <%= f.password_field :current_password, :placeholder => t("helpers.label.user.current_password") %>
+          <fieldset name="User Information" class="well comment_form">
+            <div class="row-fluid">
+              <div class="span6">
+                <div class="control-group">
+                  <div class="controls">
+                    <%= f.password_field :current_password, :placeholder => t("helpers.label.user.current_password") %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </fieldset>
+          </fieldset>
 
+        </div>
+        <div class="modal-buttons pull-right">
+          <a class="base" data-dismiss="modal" aria-hidden="true" style="margin-right: 20px">Annuler</a>
+          <%= f.submit value: "Valider mes modifications", class: "btn on-hover btn-large", id: "user-info-confirm", disabled: true %>
+        </div>
       </div>
-      <div class="modal-buttons pull-right">
-        <a class="base" data-dismiss="modal" aria-hidden="true" style="margin-right: 20px">Annuler</a>
-        <%= f.submit value: "Valider mes modifications", class: "btn on-hover btn-large", id: "user-info-confirm", disabled: true %>
-      </div>
-    </div>
+      
+    <% end %>
 
 <% end %>
 
