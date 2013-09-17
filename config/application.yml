@@ -42,7 +42,7 @@ AIRPORTS:
 
 development:
   HOST: "http://localhost:3000"
-  WP_ROOT: "http://localhost:3000/home"
+  WP_ROOT: "http://localhost:8888/travelercar"
   FACEBOOK_ID: "654796907877180"
   FACEBOOK_SECRET: "c945c7a3479637346d04fff4a32b1916"
   # LEETCHI_TARGET_USER_ID: "334140"
