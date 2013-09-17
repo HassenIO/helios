@@ -19,7 +19,7 @@
 	<div class="span6">
 		<div class="hero-unit">
 			<p><%= link_to "Réserver une place", travels_path, class: "base pull-right" %></p>
-			<h4>Mes réservations de parking</h4>
+			<h3>Mes réservations de parking</h3>
 			<p>Vous avez demandé <%= pluralize @travels.count, "place" %> de parking</p>
 			<% if @next_travel.blank? %>
 				<p>Vous n'avez aucune réservation confirmée.</p>
@@ -28,7 +28,7 @@
 			<% end %>
 		</div>
 		<div class="hero-unit">
-			<h4>Nous contacter</h4>
+			<h3>Nous contacter</h3>
 			<p>Numéro de téléphone : 06.12.34.56.78</p>
 			<p>Nous écrire : contact@travelercar.com</p>
 		</div>
@@ -36,7 +36,7 @@
 	<div class="span6">
 		<div class="hero-unit">
 			<p><%= link_to "Louer une voiture", search_path, class: "base pull-right" %></p>
-			<h4>Mes locations de véhicule</h4>
+			<h3>Mes locations de véhicule</h3>
 			<p>Vous avez effectué <%= pluralize @rents.count, "location" %> de véhicule</p>
 			<% if @next_rent.blank? %>
 				<p>Vous n'avez pas prévu de location prochainement.</p>
@@ -45,7 +45,7 @@
 			<% end %>
 		</div>
 		<div class="hero-unit">
-			<h4>Actualités</h4>
+			<h3>Actualités</h3>
 			<p>
 				<a class="social facebook" href="https://www.facebook.com/TravelerCar">
 					<i class="icon-facebook"></i>
