@@ -242,6 +242,6 @@ Devise.setup do |config|
 
 	#require "omniauth-facebook"
 	#OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
-	config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET'], :scope => 'email,user_birthday,read_stream', :display => 'popup'
+	config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET'], :scope => 'email,user_birthday,user_location,read_stream', :display => 'popup'
 
 end
