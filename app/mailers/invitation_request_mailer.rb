@@ -1,6 +1,6 @@
 class InvitationRequestMailer < ActionMailer::Base
 
-	default from: ENV['MAILER_FROM']
+	default from: ENV['MAILER_SUPPORT']
 
 	def new_request email
 		@email = email

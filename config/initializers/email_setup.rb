@@ -1,5 +1,17 @@
 ActionMailer::Base.default_url_options = { :host => ENV['HOST'], :locale => I18n.locale }
 
+# Use 1and1 SMTP server
+ActionMailer::Base.smtp_settings = {
+	:address        => "auth.smtp.1and1.fr",
+	:port           => "587",
+	:authentication => :plain,
+	:user_name      => ENV['1N1_USERNAME'],
+	:password       => ENV['1N1_PASSWORD']
+}
+
+
+
+
 # if Rails.env.production?
 
 # 	# We are in production mode -> Use 1and1 SMTP server
@@ -24,15 +36,6 @@ ActionMailer::Base.default_url_options = { :host => ENV['HOST'], :locale => I18n
 # 	}
 
 # end
-
-# We are in production mode -> Use 1and1 SMTP server
-ActionMailer::Base.smtp_settings = {
-	:address        => "auth.smtp.1and1.fr",
-	:port           => "587",
-	:authentication => :plain,
-	:user_name      => ENV['1N1_USERNAME'],
-	:password       => ENV['1N1_PASSWORD']
-}
 
 # # In dev env, we create fake users for test
 # # So, we redirect all mails to these users, into a valid email address

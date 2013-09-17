@@ -11,7 +11,8 @@ ADMIN_EMAIL: admin@travelercar.com
 ADMIN_PASSWORD: jokercar2013
 ROLES: [admin, user, VIP]
 
-MAILER_FROM: "admin@travelercar.com"
+MAILER_ADMIN: "admin@travelercar.com"
+MAILER_SUPPORT: "support@travelercar.com"
 1N1_USERNAME: "admin@travelercar.com"
 1N1_PASSWORD: "jokercar2013"
 

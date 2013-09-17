@@ -1,6 +1,6 @@
 class AdminMailer < ActionMailer::Base
 
-	default from: ENV["MAILER_FROM"], to: ENV["MAILER_FROM"]
+	default from: ENV["MAILER_SUPPORT"], to: ENV["MAILER_ADMIN"]
 	# default :from => "contact@travelercar.com", :to => "support@travelercar.com"
 
 	def rent_notification(rent)
