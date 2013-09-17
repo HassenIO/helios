@@ -3,17 +3,16 @@
 # This file should be listed in .gitignore to keep your settings secret!
 # Each entry sets a local environment variable and overrides ENV variables in the Unix shell.
 # For example, setting:
-# GMAIL_USERNAME: Your_Gmail_Username
-# makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 # Add application configuration variables here, as shown below.
 #
+
 ADMIN_NAME: Admin
 ADMIN_EMAIL: admin@travelercar.com
 ADMIN_PASSWORD: jokercar2013
 ROLES: [admin, user, VIP]
 
 MAILER_FROM: "admin@travelercar.com"
-# FILEPICKER_KEY: "A68xA26uYSfO6TDJM0Qp3z"
+
 FILEPICKER_KEY: "AejWBw1JhTOa65sdi1uuQz"
 1N1_USERNAME: "admin@travelercar.com"
 1N1_PASSWORD: "jokercar2013"
@@ -64,3 +63,6 @@ production:
     FACEBOOK_SECRET: "8486758b62a184d57c249ae0bda71084"
     # FACEBOOK_ID:  "491888870887545" # TO CHANGE
     # FACEBOOK_SECRET:  "05ae32ad87cd14abcb7b85677021dc1f"
+
+
+# FILEPICKER_KEY: "A68xA26uYSfO6TDJM0Qp3z"
