@@ -1,10 +1,9 @@
 class InvitationRequestMailer < ActionMailer::Base
 
-	default from: ENV['MAILER_SUPPORT']
-
 	def new_request email
 		@email = email
-		mail( to: @email,
+		mail(	to: @email,
+				from: ENV['MAILER_SUPPORT'],
 				subject: "TravelerCar : Votre demande d'invitation",
 				template_path: 'invitation_request_mailer',
         		template_name: 'new_request'
