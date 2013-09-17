@@ -71,7 +71,7 @@ class TravelsController < ApplicationController
 
 		respond_to do |format|
 			if @travel.save
-				format.html { redirect_to [@user, @travel], notice: "Votre demande de parking a bien été prise en compte." }
+				format.html { redirect_to [@user, @travel], notice: "Votre demande a bien été prise en compte." }
 				format.json { render json: @travel, status: :created, location: @travel }
 			else
 				format.html { render action: "new" }
