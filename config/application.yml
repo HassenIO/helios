@@ -13,7 +13,7 @@ ADMIN_PASSWORD: jokercar2013
 ROLES: [admin, user, VIP]
 
 # WP_ROOT: "http://travelercar.com/wp"
-WP_ROOT: "http://travelercar.novacodex.net/wp"
+WP_ROOT: "http://travelercar.com/wp"
 MAILER_FROM: "admin@travelercar.com"
 # FILEPICKER_KEY: "A68xA26uYSfO6TDJM0Qp3z"
 FILEPICKER_KEY: "AejWBw1JhTOa65sdi1uuQz"
