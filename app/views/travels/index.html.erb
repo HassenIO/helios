@@ -12,8 +12,7 @@
 
     <h3><%= t("helpers.label.travel.status.pending") %></h3>
     <div class="hero-unit">
-        <p>Votre demande de réservation a bien été soumise à l'équipe de TravelerCar. Nous vous remercions pour votre confiance.</p>
-        <p>Vous recevrez un mail prochainement vous confirmant la réservation de votre place de parking et vous détaillant la suite de la procédure.</p>
+        <p>Votre demande de réservation a été soumise à l'équipe de TravelerCar. Vous recevrez prochainement un mail de confirmation vous détaillant la suite de la procédure. Nous vous remercions pour votre confiance.</p>
     </div>
     <% @travels.select { |travel| travel.status == :pending }.each do |travel| %>
         <%= render "travels/item", :travel => travel %>
