@@ -26,6 +26,11 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	# Redirect after sign in
+	def after_sign_in_path resource
+		dashboards_path
+	end
+
 	# Convert Human datetime (dd/mm/YYYY - HH:MM) to system datetime format (YYYY-mm-dd HH:MM:SS)
 	def human_to_system_datetime datetime
 		return Time.strptime(datetime, "%d/%m/%Y %H:%M")
