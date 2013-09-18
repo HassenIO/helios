@@ -28,7 +28,7 @@ class InvitationRequestsController < ApplicationController
 			InvitationRequestMailer.new_request( email ).deliver
 
 			# Display the view
-			redirect_to invitation_request_path(invitation.id), notice: "Merci #{email}, l'équipe TravelerCar vous enverra un code invitation très prochainement."
+			redirect_to invitation_request_path(invitation.id), notice: "Merci pour l'intérêt que vous portez à TravelerCar. Vous êtes bien inscrit dans notre liste d'attente."
 			return
 		else
 			redirect_to invitation_requests_path, alert: "L'adresse email ne doit pas être vide."
