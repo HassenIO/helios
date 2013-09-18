@@ -34,7 +34,9 @@
 
       <% if travel.user == current_user %>
 
-          <h4><%= travel.car.category.try { |category| t(:byDay, :price => number_to_currency(category.price_in_euros)) } %></h4>
+          <h4>
+            <% travel.car.category.try { |category| t(:byDay, :price => number_to_currency(category.price_in_euros)) } %>
+          </h4>
 
           <% if travel.status == :pending %>
               <%= link_to t(".cancel"), [@user, travel], method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-primary btn-large btn-block" %>
