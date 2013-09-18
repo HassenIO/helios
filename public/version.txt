@@ -1,1 +1,1 @@
-tentative redirect
+pointer le root sur dashboard

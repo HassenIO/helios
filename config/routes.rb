@@ -1,16 +1,19 @@
 TravelerCar::Application.routes.draw do
 
-	authenticated :user do
-		root to: "dashboards#index"
-	end
+	# authenticated :user do
+	# 	# root to: redirect('http://travelercar.com/dashboards')
+	# 	root to: "dashboards#index"
+	# end
 
-	unauthenticated :user do
-		if Rails.env == "development"
-			root to: "home#index"
-		else
-			root to: redirect( "http://travelercar.com" )
-		end
-	end
+	# unauthenticated :user do
+	# 	if Rails.env == "development"
+	# 		root to: "home#index"
+	# 	else
+	# 		root to: redirect( "http://travelercar.com" )
+	# 	end
+	# end
+
+	root to: "dashboards#index"
 
 	ActiveAdmin.routes(self)
 
@@ -18,8 +21,10 @@ TravelerCar::Application.routes.draw do
 
 	scope "/:locale", :constraints => {:locale => /[a-z]{2}(-[A-Z]{2})?/} do
 
-		devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
+		root to: "dashboards#index"
 
+		devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
+		
 		resources :dashboards
 		resources :invitation_requests
 

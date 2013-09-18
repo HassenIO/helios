@@ -26,17 +26,6 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	# Redirect after sign in
-	def after_sign_in_path_for resource
-		# dashboards_path
-		new_user_travel_path resource
-	end
-
-	# Redirect after sign up
-	def after_sign_up_path_for resource
-		dashboards_path
-	end
-
 	# Convert Human datetime (dd/mm/YYYY - HH:MM) to system datetime format (YYYY-mm-dd HH:MM:SS)
 	def human_to_system_datetime datetime
 		return Time.strptime(datetime, "%d/%m/%Y %H:%M")
@@ -45,6 +34,25 @@ class ApplicationController < ActionController::Base
 	# If this is used as before_filter, redirect to sign in page without any flash message.
 	def must_sign_in
 		redirect_to( user_session_path ) if current_user.nil?
+	end
+
+	#
+	# => Manage Devise redirections.
+	#
+	
+	# Redirect after sign in
+	def after_sign_in_path_for resource
+		dashboards_path
+	end
+
+	# Redirect after sign up
+	def after_sign_up_path_for resource
+		dashboards_path
+	end
+
+	# Redirect after sign out
+	def after_sign_out_path_for resource
+		new_user_session_path
 	end
 
 end
