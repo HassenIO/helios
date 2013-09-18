@@ -28,7 +28,8 @@ class ApplicationController < ActionController::Base
 
 	# Redirect after sign in
 	def after_sign_in_path_for resource
-		dashboards_path
+		# dashboards_path
+		new_user_travel_path resource
 	end
 
 	# Redirect after sign up
