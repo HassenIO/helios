@@ -116,7 +116,7 @@
           <div class="control-group">
             <%= f.label :license_year, :class => "control-label" %>
             <div class="controls">
-              <%= f.select(:license_year, options_for_select(Time.now.year - 40..Time.now.year, :selected => f.object.license_year || Time.now.year - 3)) %>
+              <%= f.select(:license_year, options_for_select(Time.now.year - 40..Time.now.year, :selected => f.object.license_year || Time.now.year - 10)) %>
             </div>
           </div>
         </div>
