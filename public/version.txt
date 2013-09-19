@@ -1,1 +1,1 @@
-pointer le root sur dashboard
+CSS du dashboard
