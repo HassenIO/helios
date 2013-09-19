@@ -413,7 +413,7 @@ fr:
         title: "Connexion"
       login:
         title: "Se connecter"
-        title_facebook: "Partagez les meilleurs plans TravelerCar et trouvez ceux recommandés par vos amis. En savoir plus"
+        title_facebook: ""
         title_create_account: "Vous avez besoin d'un code invitation pour vous inscrire."
         link_create_account: "Oui, je crée un compte !"
     passwords:

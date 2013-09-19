@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 		if invitation.nil?
 			redirect_to new_user_session_path, alert: "Le code invitation #{params[:code]} est invalide."
 		else
-			flash.now[:notice] = "Bienvenue #{invitation.desc}. Nous sommes impatient de vous compter parmis nos membres."
+			flash.now[:notice] = "Bienvenue #{invitation.desc}. Nous sommes impatients de vous compter parmi nos membres."
 		end
 	end
 
