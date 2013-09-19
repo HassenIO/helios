@@ -39,7 +39,7 @@ fr:
       signed_up_but_locked: "Vous êtes désormais inscrit. Cependant, vous ne pouvez vous connecter car votre compte est bloqué."
       signed_up_but_unconfirmed: "Un message avec un lien de confirmation  a été envoyé à votre adresse email. Ouvrez le lien pour activer votre compte."
       update_needs_confirmation: "Votre compte a été modifié avec succès, mais nous devons vérifier votre nouvelle adresse email, merci de vérifier vos mails et de cliquer sur le lien pour confirmer votre nouvelle adresse."
-      updated: "Vous avez modifié votre compte avec succès."
+      updated: "Vous avez mis à jour votre compte avec succès."
     sessions:
       signed_in: "Connecté avec succès."
       signed_out: "Déconnecté avec succès."
