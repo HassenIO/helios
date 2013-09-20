@@ -1,1 +1,1 @@
-Ajout code mailjet.
+Redirect to WP page when requesting an invitation code.
