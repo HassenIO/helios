@@ -28,7 +28,7 @@ class InvitationRequestsController < ApplicationController
 			InvitationRequestMailer.new_request( email ).deliver
 
 			# Display the view
-			redirect_to "#{ENV['WP_ROOT']}/wp/invitation-request-confirmation"
+			redirect_to "#{ENV['WP_ROOT']}/invitation-request-confirmation"
 			return
 		else
 			redirect_to invitation_requests_path, alert: "L'adresse email ne doit pas être vide."
