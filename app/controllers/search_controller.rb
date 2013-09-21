@@ -5,6 +5,11 @@ class SearchController < ApplicationController
 
 	def index
 		@rent = Rent.new
+		@rent.startDate = "01/11/2013 09:00"
+		@rent.endDate = "09/11/2013 18:00"
+		# Uncomment after the 01/11/2013 and remove the two lines above.
+		# @rent.startDate = Time.now + 1.days
+		# @rent.endDate = Time.now + 9.days
 		# @rent.airPort = AirPort.find(1) # DON'T UNDERSTAND WHAT/WHY IS THIS???
 
 		respond_to do |format|

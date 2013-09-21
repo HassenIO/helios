@@ -49,9 +49,9 @@
       <% elsif (!@rent.nil?) # elsif (!@rent.nil? and !@rent.id.nil?) %>
           <p><%= t(:interval_datetime, :startDate => l(@rent.startDate), :endDate => l(@rent.endDate)) %>
 
-          <h4><%= t(:x_days, :count => number_of_days(@rent)) %>
-
-            <%= t(:byDay, :price => number_to_currency(travel.car.category.price_in_euros)) %></h4>
+          <h4>
+            <%= t(:x_days, :count => number_of_days(@rent)) %> - <%= t(:byDay, :price => number_to_currency(travel.car.category.price_in_euros)) %>
+          </h4>
 
           <h3><%= t(:total, :total => number_to_currency(price_for_rent(@rent, :price => travel.car.category.price))) %></h3>
 
