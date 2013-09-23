@@ -293,6 +293,7 @@ fr:
       edit_rent: "Modifier cette location"
       new_rent: "Nouvelle location"
       no_rents: "Vous n'avez aucune réservation confirmée"
+      successfully_created: "Votre demande de location a bien été faite."
     item:
       go_rent: "Voir"
     new:
