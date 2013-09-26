@@ -1,9 +1,8 @@
 class RentsController < ApplicationController
+	include PricingHelper
 
 	before_filter :authenticate_user!
-
 	load_and_authorize_resource :user, :except => :new
-
 	load_and_authorize_resource :through => :user, :except => :new
 
 	COMMON_DRIVER_USER_FIELDS = ["first_name", "last_name", "address", "city", "country", "zip_code", "license", "license_year", "birth_date"]
@@ -62,15 +61,21 @@ class RentsController < ApplicationController
 		@rent = Rent.new(params[:rent])
 
 		@rent.user = current_user
+		@rent.amount = price_for_rent(@rent)
 
 		respond_to do |format|
 			if @rent.save
 				@travel = @rent.travel
-				@travel.status = :rent
+				@travel.status = :rent ## TODO: Need to change this...
 				@travel.save(:validate => false)
 				# format.html { redirect_to cgv_user_rent_path(@user, @rent), notice: t("success.created", :model => @rent.class.model_name.human) }
-				format.html { redirect_to user_rents_path(@user), notice: t("rents.index.successfully_created") }
-				format.json { render json: @rent, status: :created, location: @rent }
+				# format.html { redirect_to user_rents_path(@user), notice: t("rents.index.successfully_created") }
+				# format.json { render json: @rent, status: :created, location: @rent }
+
+				format.html { redirect_to @rent.paypal_url(user_rents_url( current_user ), ipn_user_rent_path( current_user, @rent ) ) }
+
+				### TODO: Put here redirection to paypal, with the callback to rents list and IPN URL to the ipn method below.
+
 			else
 				format.html { render action: "new" }
 				format.json { render json: @rent.errors, status: :unprocessable_entity }

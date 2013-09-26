@@ -15,17 +15,4 @@ module PricingHelper
 		((rent.endDate - rent.startDate)/1.day).ceil
 	end
 
-	def paypal_url price, item_name, redirect_url
-		values = {
-		    business: 'ibnbadis74-facilitator@yahoo.com',
-		    cmd: '_cart',
-		    upload: 1,
-		    return: redirect_url,
-		    item_name_1: item_name,
-		    amount_1: price,
-		    currency_code: 'EUR'
-		}
-		"https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
-	end
-
 end

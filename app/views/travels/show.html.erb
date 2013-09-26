@@ -58,8 +58,8 @@
               <h2><%= t(:total, :total => number_to_currency(price_for_rent(@rent, :price => @travel.car.category.price))) %> </h2>
 
               <p>
-                <% # link_to t(".yes_i_do"), new_rent_path(:rent => params[:rent].merge(:travel_id => @travel.id)), :class => "btn btn-large on-hover btn-block" %>
-                <%= link_to t(".yes_i_do"), paypal_url(price_for_rent(@rent, price: @travel.car.category.price), [@travel.car.brand, @travel.car.model].join(' - '), user_rents_url( current_user )), class: "btn btn-large on-hover btn-block" %>
+                <%= link_to t(".yes_i_do"), new_rent_path(:rent => params[:rent].merge(:travel_id => @travel.id)), :class => "btn btn-large on-hover btn-block" %>
+                <% # link_to t(".yes_i_do"), paypal_url(price_for_rent(@rent, price: @travel.car.category.price), [@travel.car.brand, @travel.car.model].join(' - '), user_rents_url( current_user )), class: "btn btn-large on-hover btn-block" %>
               </p>
           <% end %>
       <% else %>
