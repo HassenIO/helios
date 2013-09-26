@@ -21,7 +21,7 @@ class RentsController < ApplicationController
 	# GET /rents/1
 	# GET /rents/1.json
 	def show
-
+		
 		respond_to do |format|
 			format.html # show.html.erb
 			format.json { render json: @rent }

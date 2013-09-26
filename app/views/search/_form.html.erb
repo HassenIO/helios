@@ -41,10 +41,10 @@
 
       <div class="row-fluid">
         <div class="span12 text-center">
-          <button class="btn btn-large btn-block" name="commit"><!-- Change to btn -->
+          <<%= (current_user.has_role?(:admin))? 'button' : 'a' %> class="btn btn-large btn-block" name="commit">
             <div class="nav-hover"></div>
             <p style="margin-bottom: 0"><%= t('.find') %></p>
-          </button>
+          </<%= (current_user.has_role?(:admin))? 'button' : 'a' %>>
         </div>
       </div>
 
