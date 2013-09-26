@@ -510,10 +510,9 @@ fr:
         comments: "Commentaires"
         payment:
           status:
-            unpaid: "Non payé"
-            pending: "Paiement en cours"
-            paid: "Payé"
-            failed: "Paiement refusé"
+            unpaid: "Non payée"
+            validated: "Location payée"
+            canceled: "Location annulée"
       user:
         first_name: "Prénom"
         last_name: "Nom de famille"
