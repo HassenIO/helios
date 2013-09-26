@@ -10,7 +10,7 @@ class RentsController < ApplicationController
 	# GET /rents
 	# GET /rents.json
 	def index
-
+		@rents = Rent.where user_id: current_user, status: "validated"
 		respond_to do |format|
 			format.html # index.html.erb
 			format.json { render json: @rents }
