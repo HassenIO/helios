@@ -40,14 +40,14 @@
             <%= t(:byDay, :price => number_to_currency(rent.travel.car.category.price_in_euros)) %></h4>
 
           <% if @user == current_user %>
-              <span class="label <%= rent.try(:payment).try(:status) || :unpaid %> pull-right"><%= t("helpers.label.rent.payment.status." + (rent.status || :unpaid).to_s) %></span>
+              <span class="label <%= rent.status || :unpaid %> pull-right"><%= t("helpers.label.rent.payment.status." + (rent.status || :unpaid).to_s) %></span>
           <% end %>
 
           <h3><%= t(:total, :total => number_to_currency(price_for_rent(rent, :price => rent.travel.car.category.price))) %></h3>
 
           </p>
           <% if rent.persisted? %>
-              <%= link_to t('.go_rent'), user_rent_url(rent.travel.user, rent), :class => "btn on-hover btn-large btn-block" %>
+              <%= link_to t('.go_rent'), user_rent_url(rent.user, rent), :class => "btn on-hover btn-large btn-block" %>
           <% end %>
       <% end %>
     </div>
