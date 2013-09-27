@@ -2,9 +2,7 @@ class PaymentsController < ApplicationController
 	include PricingHelper
 
 	before_filter :authenticate_user!
-
 	load_and_authorize_resource :rent
-
 	load_and_authorize_resource :payment, :through => :rent, :singleton => true
 
 

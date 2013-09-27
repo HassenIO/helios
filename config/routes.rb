@@ -36,6 +36,7 @@ TravelerCar::Application.routes.draw do
 			resources :rents do
 				resource :payment
 				get 'cgv', :on => :member
+				# post :ipn, on: :member	# Used for IPN
 			end
 		end
 		resources :rents, only: [:new]
@@ -53,7 +54,10 @@ TravelerCar::Application.routes.draw do
 
 	end
 
-	match "notifications" => "notifications#index"
 	match "nav" => "navigations#index"
+
+	resources :notifications do
+		post :payment, on: :member
+	end
 
 end

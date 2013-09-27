@@ -44,6 +44,7 @@ class TravelsController < ApplicationController
 			@travel= @user.travels.new
 			@travel.departure = "01/11/2013 09:00"
 			@travel.arrival = "10/11/2013 18:00"
+			# Uncomment after the 01/11/2013 and remove the two lines above.
 			# @travel.departure = Time.now + 1.days
 			# @travel.arrival = Time.now + 10.days
 		end

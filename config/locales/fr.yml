@@ -293,6 +293,7 @@ fr:
       edit_rent: "Modifier cette location"
       new_rent: "Nouvelle location"
       no_rents: "Vous n'avez aucune réservation confirmée"
+      successfully_created: "Votre demande de location a bien été faite."
     item:
       go_rent: "Voir"
     new:
@@ -509,10 +510,9 @@ fr:
         comments: "Commentaires"
         payment:
           status:
-            unpaid: "Non payé"
-            pending: "Paiement en cours"
-            paid: "Payé"
-            failed: "Paiement refusé"
+            unpaid: "Non payée"
+            paid: "Location payée"
+            canceled: "Location annulée"
       user:
         first_name: "Prénom"
         last_name: "Nom de famille"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130919154611) do
+ActiveRecord::Schema.define(:version => 20130926072227) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -103,6 +103,15 @@ ActiveRecord::Schema.define(:version => 20130919154611) do
 
   add_index "invitations", ["code"], :name => "index_invitations_on_code", :unique => true
 
+  create_table "payment_notifications", :force => true do |t|
+    t.text     "params"
+    t.string   "status"
+    t.string   "transaction_id"
+    t.integer  "rent_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "payments", :force => true do |t|
     t.integer "amount"
     t.integer "rent_id"
@@ -116,11 +125,15 @@ ActiveRecord::Schema.define(:version => 20130919154611) do
     t.datetime "endDate"
     t.integer  "user_id"
     t.integer  "travel_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.integer  "airPort_id"
     t.boolean  "has_accepted_cgv"
     t.text     "comments"
+    t.string   "status",           :default => "unpaid"
+    t.string   "transaction_id"
+    t.string   "payment_params"
+    t.integer  "amount"
   end
 
   create_table "roles", :force => true do |t|

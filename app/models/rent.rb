@@ -32,8 +32,12 @@ class Rent < ActiveRecord::Base
 
 	include ActiveModel::Validations
 
+	# Define constants
+	STATUS = [:unpaid, :paid, :canceled]
+
 	attr_accessible :endDate, :endDate_time, :endDate_date, :startDate, :startDate_time, :startDate_date, :travel_id,
-					:driver_attributes, :user_id, :airPort_id, :has_accepted_cgv, :comments
+					:driver_attributes, :user_id, :airPort_id, :has_accepted_cgv, :comments,
+					:status, :amount, :transaction_id, :payment_params
 
 	# add the accessors for the two fields
 	attr_accessor :startDate_time, :startDate_date, :endDate_time, :endDate_date
@@ -55,6 +59,7 @@ class Rent < ActiveRecord::Base
 	validates :travel, :presence => true
 	validates :user, :presence => true
 	validates :airPort, :presence => true
+	validates :status, inclusion: { in: STATUS }
 
 	validates_with RentPeriodValidator
 
@@ -64,6 +69,7 @@ class Rent < ActiveRecord::Base
 	after_initialize :get_datetimes # convert db format to accessors
 	before_validation :set_datetimes # convert accessors back to db format
 
+
 	def self.valid_attribute?(attrib, value)
 		mock = self.new(attrib => value)
 		unless mock.valid?
@@ -72,10 +78,24 @@ class Rent < ActiveRecord::Base
 		true
 	end
 
+	def paypal_url redirect_url, notify_url
+		values = {
+		    business: 'ibnbadis74-facilitator@yahoo.com',
+		    cmd: '_cart',
+		    upload: 1,
+		    return: redirect_url,
+		    notify_url: notify_url,
+		    item_name_1: [self.travel.car.brand, self.travel.car.model].join(' - '),
+		    amount_1: amount,
+		    currency_code: 'EUR'
+		}
+		"https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+	end
+
 	def get_datetimes
 
 		if startDate_date.nil? && startDate_time.nil?
-			self.startDate ||= Time.now + 2.days # if the startDate time is not set, set it to now
+			self.startDate ||= Time.now + 2.days # if the startDate time is not set, set it to now + 2 days
 
 			self.startDate_date ||= self.startDate.to_date.to_s(:db) # extract the date is yyyy-mm-dd format
 			self.startDate_time ||= "#{'%02d' % self.startDate.hour}:#{'%02d' % self.startDate.min}" # extract the time

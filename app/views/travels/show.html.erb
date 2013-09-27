@@ -28,9 +28,6 @@
         <%= @travel.airPort.name %>
       </p>
 
-      <h3><%= t(".when") %></h3>
-
-
       <% unless @rent.nil? %>
 
           <h3><%= t(".when") %></h3>
@@ -62,6 +59,7 @@
 
               <p>
                 <%= link_to t(".yes_i_do"), new_rent_path(:rent => params[:rent].merge(:travel_id => @travel.id)), :class => "btn btn-large on-hover btn-block" %>
+                <% # link_to t(".yes_i_do"), paypal_url(price_for_rent(@rent, price: @travel.car.category.price), [@travel.car.brand, @travel.car.model].join(' - '), user_rents_url( current_user )), class: "btn btn-large on-hover btn-block" %>
               </p>
           <% end %>
       <% else %>
