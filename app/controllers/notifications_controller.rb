@@ -3,10 +3,16 @@ class NotificationsController < ApplicationController
 
 	def payment
 		rent = Rent.find params[:id]
+
+		travel = rent.travel
+		travel.status = :rent
+		travel.save( validate: false )
+
 		rent.status = "validated"
 		rent.transaction_id = params[:txn_id]
 		rent.payment_params = params
 		rent.save
+
 		render nothing: true
 	end
 

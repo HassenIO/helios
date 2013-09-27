@@ -65,9 +65,6 @@ class RentsController < ApplicationController
 
 		respond_to do |format|
 			if @rent.save
-				@travel = @rent.travel
-				@travel.status = :rent ## TODO: Need to change this...
-				@travel.save(:validate => false)
 				# format.html { redirect_to cgv_user_rent_path(@user, @rent), notice: t("success.created", :model => @rent.class.model_name.human) }
 				# format.html { redirect_to user_rents_path(@user), notice: t("rents.index.successfully_created") }
 				# format.json { render json: @rent, status: :created, location: @rent }
