@@ -8,7 +8,7 @@ class NotificationsController < ApplicationController
 		travel.status = :rent
 		travel.save( validate: false )
 
-		rent.status = "validated"
+		rent.status = :paid
 		rent.transaction_id = params[:txn_id]
 		rent.payment_params = params
 		rent.save

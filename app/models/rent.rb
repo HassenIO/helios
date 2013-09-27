@@ -33,7 +33,7 @@ class Rent < ActiveRecord::Base
 	include ActiveModel::Validations
 
 	# Define constants
-	STATUS = ["unpaid", "validated", "canceled"]
+	STATUS = [:unpaid, :paid, :canceled]
 
 	attr_accessible :endDate, :endDate_time, :endDate_date, :startDate, :startDate_time, :startDate_date, :travel_id,
 					:driver_attributes, :user_id, :airPort_id, :has_accepted_cgv, :comments,

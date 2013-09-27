@@ -511,7 +511,7 @@ fr:
         payment:
           status:
             unpaid: "Non payée"
-            validated: "Location payée"
+            paid: "Location payée"
             canceled: "Location annulée"
       user:
         first_name: "Prénom"

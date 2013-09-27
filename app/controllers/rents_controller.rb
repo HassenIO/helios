@@ -10,7 +10,7 @@ class RentsController < ApplicationController
 	# GET /rents
 	# GET /rents.json
 	def index
-		@rents = Rent.where user_id: current_user, status: "validated"
+		@rents = Rent.where user_id: current_user, status: :paid
 		respond_to do |format|
 			format.html # index.html.erb
 			format.json { render json: @rents }
@@ -62,6 +62,7 @@ class RentsController < ApplicationController
 
 		@rent.user = current_user
 		@rent.amount = price_for_rent(@rent)
+		@rent.status = :unpaid
 
 		respond_to do |format|
 			if @rent.save
