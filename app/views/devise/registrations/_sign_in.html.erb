@@ -1,6 +1,7 @@
 <br/>
 <a href="<%= omniauth_authorize_path(:user, :facebook, tc_action: "signup", invitation_code: params["code"]) %>" class="btn btn-facebook btn-large"><i class="icon-facebook"></i> | S'inscrire avec Facebook</a>
 
+<p style="font-size: 0.9em;"><br/>Nous nous engageons à ne rien poster sans votre permission.</p>
 
 <div class="separator">
   <h2>ou</h2>
@@ -35,8 +36,8 @@
       </div>
     </div>
     <div class="control-group">
-      <div class="controls">
-        <%= check_box_tag 'signup-accept-cgu' %> En cochant cette case, j'accepte les <%= link_to "Conditions Générales d'Utilisation", "#{ENV['WP_ROOT']}/conditions-generales-dutilisation-cgu/", class: "base", target: "_about" %>.
+      <div class="controls" style="font-size: 0.9em;">
+        <%= check_box_tag 'signup-accept-cgu' %> J'accepte les <%= link_to "Conditions Générales d'Utilisation", "#{ENV['WP_ROOT']}/conditions-generales-dutilisation-cgu/", class: "base", target: "_about" %>.
       </div>
     </div>
     <div class="control-group">
@@ -47,3 +48,4 @@
     </div>
 <% end %>
 <!--/sign-up-->
+<br/>
