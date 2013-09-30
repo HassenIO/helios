@@ -1,26 +1,6 @@
 <div class="row-fluid login">
 
-  <div class="span6">
-
-    <h1>S'inscrire</h1>
-    <p class="hero"><%= t(".title_create_account") %></p>
-    <br/>
-
-    <div class="login-wrapper"><!--login-->
-      <form action="<%= new_user_registration_path %>" method="GET" class="login-form">
-        <div class="control-group">
-          <div class="controls"><%= text_field_tag :code, nil, placeholder: "Code invitation" %></div>
-        </div>
-        <div class="control-group">
-          <div class="controls"><%= submit_tag "M'inscrire", class: "btn on-hover btn-large btn-block" %></div>
-        </div>
-      </form>
-    </div>
-
-    <hr/>
-    <p>Vous n'avez pas de code invitation ? <%= link_to "Vous pouvez en demander un ici", invitation_requests_path, class: "base" %>.</p>
-  </div>
-  <div class="span6">
+  <div class="span6 offset3">
 
     <h1><%= t(".title") %></h1>
     <div class="login-wrapper"><!--login-->
