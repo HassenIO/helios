@@ -70,7 +70,7 @@ class RentsController < ApplicationController
 				# format.html { redirect_to user_rents_path(@user), notice: t("rents.index.successfully_created") }
 				# format.json { render json: @rent, status: :created, location: @rent }
 
-				format.html { redirect_to @rent.paypal_url( user_rents_url( current_user ), payment_notification_path( @rent ) ) }
+				format.html { redirect_to @rent.paypal_url( user_rents_url( current_user ), payment_notification_url( @rent ) ) }
 
 				### TODO: Put here redirection to paypal, with the callback to rents list and IPN URL to the ipn method below.
 
