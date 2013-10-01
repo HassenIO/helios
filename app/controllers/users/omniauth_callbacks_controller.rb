@@ -29,7 +29,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 			user.birth_date ||= @auth.extra.raw_info.birthday
 			user.provider ||= @auth.provider
 			user.uid ||= @auth.uid
-			user.confirmed_at ||= Time.now,
+			user.confirmed_at ||= Time.now
 			user.confirmation_token ||= nil
 			user.save
 
