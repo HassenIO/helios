@@ -26,7 +26,7 @@ eval(ENV['AIRPORTS']).each do |airport|
 	puts 'create airport: ' << airport["name"]
 end
 
-puts 'DEFAULT CATEGORIES >>'
+puts 'DEFAULT CAR CATEGORIES >>'
 eval(ENV['CATEGORIES']).each do |cat|
 	db_cat = Category.find_or_create_by_name cat
 	'create category: ' << db_cat.name

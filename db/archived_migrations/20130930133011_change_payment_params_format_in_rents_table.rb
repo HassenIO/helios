@@ -3,7 +3,6 @@ class ChangePaymentParamsFormatInRentsTable < ActiveRecord::Migration
 		change_column :rents, :payment_params, :text
 	end
 
-	def down
-		change_column :rents, :payment_params, :string
+	def down		
 	end
 end
