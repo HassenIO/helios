@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 	attr_accessible :role_ids, :as => :admin
 	attr_accessible :name, :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :provider, :uid
 	attr_accessible :address, :city, :country, :zip_code, :license, :license_year, :birth_date
+	attr_accessible :confirmation_token, :confirmed_at
 
 
 	has_many :cars
