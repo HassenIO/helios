@@ -15,6 +15,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 								last_name: @auth.info.last_name,
 								provider: @auth.provider,
 								uid: @auth.uid,
+								email: @auth.info.email,
 								birth_date: @auth.extra.raw_info.birthday,
 								password: Devise.friendly_token[0, 20],
 								confirmed_at: Time.now,
@@ -36,7 +37,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		end
 
 		# In all cases (sign in or sign up), sign the user in and redirect him to his dashboard.
-		sign_in resource_name, user, :bypass => true
+		sign_in user, :bypass => true
 		redirect_to dashboards_path, notice: "Vous vous êtes correctement connecté via Facebook."
 
 	end
