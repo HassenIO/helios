@@ -26,7 +26,6 @@ TravelerCar::Application.routes.draw do
 		devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
 		
 		resources :dashboards
-		resources :invitation_requests
 
 		resources :users do
 			resources :travels do
@@ -36,7 +35,6 @@ TravelerCar::Application.routes.draw do
 			resources :rents do
 				resource :payment
 				get 'cgv', :on => :member
-				# post :ipn, on: :member	# Used for IPN
 			end
 		end
 		resources :rents, only: [:new]
@@ -57,7 +55,7 @@ TravelerCar::Application.routes.draw do
 	match "nav" => "navigations#index"
 
 	resources :notifications do
-		post :payment, on: :member
+		post :payment, on: :member # Used for IPN
 	end
 
 end

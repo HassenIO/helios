@@ -60,17 +60,7 @@ ActiveAdmin.register_page "Dashboard" do
 						column(:created_at, :sortable => :created_at)
 					end
 				end
-
-				panel "Active invitation codes" do
-					table_for Invitation.where( status: "ON" ).order('id desc').limit(10) do
-						column "Code", :code
-						column "Who use it?", :desc
-						column "Used", :count do |invitation|
-							"#{invitation.count} times"
-						end
-						column "Created at", :created_at
-					end
-				end
+				
 			end
 
 		end # content
