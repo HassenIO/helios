@@ -415,7 +415,6 @@ fr:
       login:
         title: "Se connecter"
         title_facebook: ""
-        title_create_account: "Vous avez besoin d'un code invitation pour vous inscrire."
         link_create_account: "Oui, je crée un compte !"
     passwords:
       edit:
@@ -528,12 +527,6 @@ fr:
         zip_code: "Code postal"
         email: "E-mail"
         remember_me: "Se rappeler de moi"
-
-  invitation_requests:
-    form:
-      title_get_invite: "Veuillez entrer votre adresse mail"
-      visitor_email: "Votre adresse email"
-      request_btn: "Demander mon code invitation"
 
   
 

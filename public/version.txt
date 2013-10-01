@@ -1,1 +1,1 @@
-Redirect to WP page when requesting an invitation code.
+Remove invitation code.
