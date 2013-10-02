@@ -10,7 +10,7 @@
 	@user.license_year.blank? %>
 	
 	<div class="alert">
-		<p>Votre profil est incomplet. <%= link_to "N'oubliez pas de le compléter", edit_user_registration_path, class: "base" %>.</p>
+		<p>Votre profil n'est pas encore complet. <%= link_to "N'oubliez pas de le compléter", edit_user_registration_path, class: "base" %>.</p>
 	</div>
 	<hr/>
 <% end %>
