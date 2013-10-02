@@ -1,14 +1,7 @@
 <div class="row-fluid">
 
   <div class="span8">
-    <h1><%= [@travel.car.year, @travel.car.brand, @travel.car.model].join(' - ') %>
-
-      <% if @user == current_user %>
-          <%= link_to user_travels_path(@user), class: "btn btn-primary btn-back pull-right" do %>
-            <i class="icon-arrow-left"></i><%= t ".back_to_list" %>
-          <% end %>
-      <% end %>
-    </h1>
+    <h1><%= [@travel.car.year, @travel.car.brand, @travel.car.model].join(' - ') %></h1>
 
     <%= render "cars/carroussel", :car => @travel.car %>
 
@@ -29,7 +22,7 @@
       </p>
 
       <h3><%= t(".when") %></h3>
-      
+
       <% unless @rent.nil? %>
 
           <p>
@@ -67,6 +60,12 @@
             <%= t :interval_datetime, :startDate => l(@travel.departure), :endDate => l(@travel.arrival) %>
           </p>
       <% end %>
+
+      <br/>
+      <% if @user == current_user %>
+          <%= link_to "Valider", user_travels_path(@user), class: "btn btn-primary btn-large btn-block" %>
+      <% end %>
+      
 
 
     </div>
