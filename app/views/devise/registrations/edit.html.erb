@@ -90,24 +90,18 @@
       <div class="row-fluid">
         <div class="span4">
           <label style="height: 20px"></label>
-
           <div class="control-group">
             <div class="controls">
               <%= f.text_field :license, :placeholder => t("helpers.label.user.phone") %>
             </div>
           </div>
-
-
         </div>
 
         <div class="span4">
           <div class="control-group">
             <%= f.label :birth_date, :class => "control-label" %>
-            <div class="controls input-append date" id="user_birthdate_datetimepicker">
-              <%= f.text_field :birth_date, 'data-format' => "yyyy-MM-dd" %>
-              <span class="add-on">
-                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-              </span>
+            <div class="controls">
+              <%= f.text_field :birth_date, value: system_to_human_date(resource.birth_date), placeholder: "jj/mm/aaaa" %>
             </div>
           </div>
         </div>

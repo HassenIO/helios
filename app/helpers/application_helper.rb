@@ -13,5 +13,10 @@ module ApplicationHelper
 	def system_to_homan_datetime datetime
 		datetime.strftime "%d/%m/%Y %H:%M"
 	end
+
+	# Convert System date (YYYY-mm-dd) to human format (dd/mm/YYYY)
+	def system_to_human_date date
+		date.blank? ? nil : date.strftime( "%d/%m/%Y" )
+	end
 	
 end

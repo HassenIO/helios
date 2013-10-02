@@ -1,5 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
+	before_filter :standardise_birthdate, only: [:update]
+
 	# Signup page
 	def new
 	end
@@ -33,6 +35,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 	def after_update_path
 		edit_user_registration_path
+	end
+
+private
+
+	def standardise_birthdate
+		birth_date = params[:user][:birth_date]
+		params[:user][:birth_date] = ( /\A\d{1,2}\/\d{1,2}\/\d{4}\z/.match(birth_date) ) ? Time.strptime(birth_date, "%d/%m/%Y") + 1.day : nil
 	end
 
 end

@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
 	attr_accessible :address, :city, :country, :zip_code, :license, :license_year, :birth_date
 	attr_accessible :confirmation_token, :confirmed_at
 
+	# validates :birth_date, format: { with: /\A\d{2}\/\d{2}\/\d{4}\z/, message: "Ne respecte pas le format jj/mm/aaaa"}
 
 	has_many :cars
 	has_many :travels
