@@ -20,7 +20,7 @@
             <%= f.label :departure, :class => "control-label" %>
             <div class="controls">
               <div class="input-append date form_datetime" id="travel_departure_datepicker">
-                <%= f.text_field :departure, :class => "input-large", size: "16", placeholder: "Sélectionnez une date", readonly: true, value: system_to_homan_datetime(@travel.departure) %>
+                <%= f.text_field :departure, :class => "input-large", size: "16", placeholder: "Sélectionnez une date", readonly: true, value: system_to_human_datetime(@travel.departure) %>
                 <span class="add-on"><i class="icon-calendar"></i></span>
               </div>
             </div>
@@ -32,7 +32,7 @@
             <%= f.label :arrival, :class => "control-label" %>
             <div class="controls">
               <div class="input-append date form_datetime" id="travel_arrival_datepicker">
-                <%= f.text_field :arrival, :class => "input-large", size: "16", placeholder: "Sélectionnez une date", readonly: true, value: system_to_homan_datetime(@travel.arrival) %>
+                <%= f.text_field :arrival, :class => "input-large", size: "16", placeholder: "Sélectionnez une date", readonly: true, value: system_to_human_datetime(@travel.arrival) %>
                 <span class="add-on"><i class="icon-calendar"></i></span>
               </div>
             </div>
