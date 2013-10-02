@@ -182,6 +182,11 @@
           <p>Pour valider vos modifications, veuillez introduire votre mot de passe.</p>
           <br/>
 
+          <div id="pswd-is-necessary" class="alert alert-error hide">
+            <a class="close" data-dismiss="alert" aria-hidden="true">×</a>
+            Votre mot de passe est indispensable pour valider vos changements.
+          </div>
+
           <fieldset name="User Information" class="well comment_form">
             <div class="row-fluid">
               <div class="span6">
@@ -197,9 +202,24 @@
         </div>
         <div class="modal-buttons pull-right">
           <a class="base" data-dismiss="modal" aria-hidden="true" style="margin-right: 20px">Annuler</a>
-          <%= f.submit value: "Valider mes modifications", class: "btn on-hover btn-large", id: "user-info-confirm", disabled: true %>
+          <%= f.submit value: "Valider mes modifications", class: "btn on-hover btn-large", id: "user-info-confirm" %>
         </div>
       </div>
+
+      <% content_for :footer do %>
+        <script type="text/javascript">
+          $(function () {
+
+            $('#edit_user').submit(function(e){
+              if($("#user_current_password").val().length < 8) {
+                $('#pswd-is-necessary').css('display', 'block');
+                e.preventDefault();
+              }
+            });
+
+          });
+        </script>
+      <% end %>
       
     <% end %>
 
@@ -216,28 +236,3 @@
   </div>
 </div>
 -->
-
-
-<% content_for :footer do %>
-    <%= javascript_include_tag 'bootstrap-datetimepicker' %>
-    <script type="text/javascript">
-        $(function () {
-
-            $('#user_birthdate_datetimepicker').datetimepicker({
-                language: 'pt-BR',
-                pickTime: false,
-                startDate: new Date(1900, 1, 1, 0, 0, 0)
-            });
-
-            $('#user_current_password').keyup(function(e){
-              if($(this).val().length >= 8) {
-                $('#user-info-confirm').removeAttr('disabled');
-              } else {
-                $('#user-info-confirm').attr('disabled', 'disabled');
-              }
-            });
-
-        });
-
-    </script>
-<% end %>
