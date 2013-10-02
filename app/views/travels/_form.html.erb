@@ -127,6 +127,7 @@
                 <div class="controls">
                   <%= car_fields.radio_button(:fuel, :essence) %>
                   <%= label_tag(:fuel_essence, t('helpers.label.car.essence')) %>
+                  <span class="space30"></span>
                   <%= car_fields.radio_button(:fuel, :diesel) %>
                   <%= label_tag(:fuel_diesel, t('helpers.label.car.diesel')) %>
                 </div>
@@ -141,6 +142,7 @@
                 <div class="controls">
                   <%= car_fields.radio_button(:transmission, :automatic) %>
                   <%= label_tag(:automatic, t('helpers.label.car.automatic')) %>
+                  <span class="space30"></span>
                   <%= car_fields.radio_button(:transmission, :manual) %>
                   <%= label_tag(:manual, t('helpers.label.car.manual')) %>
                 </div>
@@ -246,21 +248,21 @@
                 <div class="control-group controls-wrapper">
                   <%= car_fields.label :isSmoker, :class => "control-label" %>
                   <div class="controls">
-                    <label class="checkbox">
-                      <%= car_fields.check_box(:isSmoker) %><%= t :_yes %>
-                    </label>
+                    <%= car_fields.check_box(:isSmoker) %><%= t :_yes %>
                   </div>
                 </div>
               </div>
               <!--span6-->
 
+
+
+
+
               <div class="span6"><!--span6-->
                 <div class="control-group controls-wrapper">
                   <%= car_fields.label :acceptedPets, :class => "control-label" %>
                   <div class="controls">
-                    <label class="checkbox">
-                      <%= car_fields.check_box(:acceptedPets) %><%= t :_yes %>
-                    </label>
+                    <%= car_fields.check_box(:acceptedPets) %><%= t :_yes %>
                   </div>
                 </div>
               </div>
@@ -279,11 +281,8 @@
               <div class="span3"><!--span3-->
                 <div class="control-group controls-wrapper">
                   <%= car_fields.label :hasGps, :class => "control-label" %>
-
                   <div class="controls">
-                    <label class="checkbox">
-                      <%= car_fields.check_box(:hasGps) %><%= t :_yes %>
-                    </label>
+                    <%= car_fields.check_box(:hasGps) %><%= t :_yes %>
                   </div>
                 </div>
               </div>
@@ -293,11 +292,8 @@
 
                 <div class="control-group controls-wrapper">
                   <%= car_fields.label :hasCarRadio, :class => "control-label" %>
-
                   <div class="controls">
-                    <label class="checkbox">
-                      <%= car_fields.check_box(:hasCarRadio) %><%= t :_yes %>
-                    </label>
+                    <%= car_fields.check_box(:hasCarRadio) %><%= t :_yes %>
                   </div>
                 </div>
 
@@ -308,11 +304,8 @@
 
                 <div class="control-group controls-wrapper">
                   <%= car_fields.label :hasAirConditioning, :class => "control-label" %>
-
                   <div class="controls">
-                    <label class="checkbox">
-                      <%= car_fields.check_box(:hasAirConditioning) %><%= t :_yes %>
-                    </label>
+                    <%= car_fields.check_box(:hasAirConditioning) %><%= t :_yes %>
                   </div>
                 </div>
 
@@ -322,13 +315,9 @@
               <div class="span3"><!--span3-->
 
                 <div class="control-group controls-wrapper">
-
                   <%= car_fields.label :hasChildSeat, :class => "control-label" %>
-
                   <div class="controls">
-                    <label class="checkbox">
-                      <%= car_fields.check_box(:hasChildSeat) %><%= t :_yes %>
-                    </label>
+                    <%= car_fields.check_box(:hasChildSeat) %><%= t :_yes %>
                   </div>
                 </div>
 
