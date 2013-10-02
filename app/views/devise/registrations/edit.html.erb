@@ -161,7 +161,7 @@
       <div class="span12">
         <% if resource.provider.nil? %>
           <!-- Button to trigger modal -->
-          <a href="#myModal" role="button" class="btn on-hover btn-large" data-toggle="modal">Je confirme mes modifications</a>
+          <a href="#validate-pswd-modal" role="button" class="btn on-hover btn-large" data-toggle="modal">Je confirme mes modifications</a>
         <% else %>
           <%= f.submit value: "Valider mes modifications", :class => "btn on-hover btn-large" %>
         <% end %>
@@ -172,7 +172,7 @@
     <% if resource.provider.nil? %>
     
       <!-- Modal -->
-      <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div id="validate-pswd-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
           <a class="close" data-dismiss="modal" aria-hidden="true">×</a>
           <h3 id="myModalLabel"><%= t(".title_password_current") %></h3>

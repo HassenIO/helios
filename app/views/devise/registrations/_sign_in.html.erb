@@ -39,13 +39,35 @@
       <div class="controls" style="font-size: 0.9em;">
         <%= check_box_tag 'signup-accept-cgu' %> J'accepte les <%= link_to "Conditions Générales d'Utilisation", "#{ENV['WP_ROOT']}/conditions-generales-dutilisation-cgu/", class: "base", target: "_about" %>.
       </div>
+      <br/>
+      <div class="controls">
+        <div id="acceptance-is-necessary" class="alert alert-error hide" style="font-size: 0.8em; text-align: left">
+          <a class="close" data-dismiss="alert" aria-hidden="true">×</a>
+          Pour vous inscrire, vous devez accepter les Conditions Générales d'Utilisation en cochant la case ci-dessus.
+        </div>
+      </div>
     </div>
     <div class="control-group">
       <div class="controls">
         <!--<button type="submit" class="btn on-hover btn-large btn-block">Je valide et crée mon compte !</button>-->
-        <%= f.submit id: "signup-button", value: "M'inscrire", :class => "btn on-hover btn-large btn-block", disabled: "disabled" %>
+        <%= f.submit id: "signup-button", value: "M'inscrire", :class => "btn on-hover btn-large btn-block" %>
       </div>
     </div>
 <% end %>
 <!--/sign-up-->
 <br/>
+
+<% content_for :footer do %>
+  <script type="text/javascript">
+    $(function () {
+
+      $('#new_user').submit(function(e){
+        if(!$("#signup-accept-cgu").is(":checked")) {
+          $('#acceptance-is-necessary').css('display', 'block');
+          e.preventDefault();
+        }
+      });
+
+    });
+  </script>
+<% end %>
