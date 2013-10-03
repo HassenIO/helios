@@ -43,7 +43,7 @@
 
               <%= link_to t(".update"), edit_user_travel_path(@user, travel), :class => "btn on-hover btn-large btn-block" %>
           <% else %>
-              <p><%= link_to t(".contact_support"), root_path(anchor: "contact"), :class => "base" %></p>
+              <p><%= link_to t(".contact_support"), ENV["WP_ROOT"] + "#contact", class: "base" %></p>
           <% end %>
 
       <% elsif (!@rent.nil?) # elsif (!@rent.nil? and !@rent.id.nil?) %>
