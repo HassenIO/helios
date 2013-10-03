@@ -41,10 +41,11 @@
 
       <div class="row-fluid">
         <div class="span12 text-center">
-          <<%= (current_user.has_role?(:admin))? 'button' : 'a' %> class="btn btn-large btn-block" name="commit">
+          <% # (current_user.has_role?(:admin))? 'button' : 'a' %>
+          <button class="btn btn-large btn-block" name="commit">
             <div class="nav-hover"></div>
             <p style="margin-bottom: 0"><%= t('.find') %></p>
-          </<%= (current_user.has_role?(:admin))? 'button' : 'a' %>>
+          </button>
         </div>
       </div>
 
@@ -53,11 +54,6 @@
 <% end %>
 
 <br/><br/>
-<div class="row-fluid">
-  <div class="span12 hero-unit" style="text-align: center">
-    <p><strong>Le module de location de véhicule sera activé le 15 octobre 2013</strong></p>
-  </div>
-</div>
 
 <% content_for :footer do %>
 

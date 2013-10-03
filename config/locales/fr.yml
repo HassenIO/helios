@@ -385,7 +385,7 @@ fr:
     form:
       find: "Trouver"
     search:
-      no_results: "Aucun résultat trouvé, modifiez les critères"
+      no_results: "Aucun résultat trouvé. Veuillez modifier vos critères."
       incomplete_criteria: "Critères incomplets, veuillez les corriger"
       results: "%{nbCars} voitures trouvées au depart de %{airPort} du %{startDate}
                           au %{endDate}"
