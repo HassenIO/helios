@@ -12,7 +12,7 @@
 	</div>
 </div>
 
-<% @travels.each do |travel| %>
+<% @travels.sort_by{ |t| t.car.category.price }.each do |travel| %>
 	<%= render "travels/item", :travel => travel %>
 <% end %>
 
