@@ -13,6 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 			# Create the user on database using FB date.
 			user = User.create(	first_name: @auth.info.first_name,
 								last_name: @auth.info.last_name,
+								name: @auth.info.first_name,
 								provider: @auth.provider,
 								uid: @auth.uid,
 								email: @auth.info.email,
