@@ -67,4 +67,13 @@ TravelerCar::Application.configure do
 	# with SQLite, MySQL, and PostgreSQL)
 	# config.active_record.auto_explain_threshold_in_seconds = 0.5
 	
+	config.action_mailer.default_url_options = { host: ENV['HOST'], locale: I18n.locale }
+	config.action_mailer.delivery_method = :smtp
+	config.action_mailer.smtp_settings = {
+		:address        => "auth.smtp.1and1.fr",
+		:port           => "587",
+		:authentication => :plain,
+		:user_name      => ENV['1N1_USERNAME'],
+		:password       => ENV['1N1_PASSWORD']
+	}
 end
