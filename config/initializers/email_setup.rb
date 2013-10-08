@@ -10,6 +10,17 @@ ActionMailer::Base.smtp_settings = {
 }
 
 
+# In dev env, we create fake users for test
+# So, we redirect all mails to these users, into a valid email address
+if Rails.env.development?
+	class OverrideMailRecipient
+		def self.delivering_email(mail)
+			mail.to = "htaidirt+tc_dev@gmail.com"
+		end
+	end
+	AdminMailer.register_interceptor(OverrideMailRecipient)
+end
+
 
 
 # if Rails.env.production?
@@ -36,19 +47,6 @@ ActionMailer::Base.smtp_settings = {
 # 	}
 
 # end
-
-# # In dev env, we create fake users for test
-# # So, we redirect all mails to these users, into a valid email address
-# if Rails.env.development?
-# 	class OverrideMailRecipient
-# 		def self.delivering_email(mail)
-# 			mail.to = "admin@travelercar.com"
-# 		end
-# 	end
-# 	AdminMailer.register_interceptor(OverrideMailRecipient)
-# end
-
-
 
 
 # 	# Using SendGrid for Heroku. Source: https://devcenter.heroku.com/articles/sendgrid
