@@ -1,0 +1,104 @@
+<!doctype HTML>
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+		<style type="text/css">
+			body {
+				background: #f0f0f0;
+			}
+			a {
+				color: #e7501e;
+			}
+			#body {
+				background: #f0f0f0;
+				font-family: "Helvetica Neue", arial, sans-serif;
+				font-size: 13px;
+				width: 100%;
+			}
+			#body-content {
+				background: #fff;
+				border: 1px solid #d0d0d0;
+				width: 600px;
+			}
+			#content-header img {
+				height: 100px;
+				margin-left: 30px;
+				width: auto;
+			}
+			#content-main-yield {
+				width: 560px;
+			}
+			#content-footer {
+				background: #e7501e;
+				color: #fff;
+				padding: 10px;
+				width: 600px;
+			}
+			#footer {
+				color: #808080;
+				font-size: 12px;
+				text-align: center;
+			}
+			#footer p {
+				margin: 0 0 3px 0;
+				text-shadow: 0 1px 1px #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<table id="body">
+			<tr>
+				<td><img src="/assets/spacer.gif" height="30" width="100%"></td>
+			</tr>
+			<tr>
+				<td>
+					<table width="600" align="center">
+						<tr>
+							<td>
+								<table id="body-content">
+									<tr>
+										<td><img src="/assets/spacer.gif" height="20" width="100%"></td>
+									</tr>
+									<tr id="content-header">
+										<td><img src="/assets/travelercar-logo_big_image.png"></td>
+									</tr>
+									<tr>
+										<td><img src="/assets/spacer.gif" height="20" width="100%"></td>
+									</tr>
+									<tr id="content-main">
+										<td>
+											<table>
+												<tr>
+													<td><img src="/assets/spacer.gif" height="1" width="20"></td>
+													<td>
+														<div id="content-main-yield"><%= yield %></div>
+													</td>
+													<td><img src="/assets/spacer.gif" height="1" width="20"></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td><img src="/assets/spacer.gif" height="20" width="100%"></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td><img src="/assets/spacer.gif" height="20" width="100%"></td>
+						</tr>
+						<tr>
+							<td id="footer">
+								<p><%= link_to "TravelerCar", root_url %> ambitionne de révolutionner la consommation collaborative aux aéroports.</p>
+								<p>Rejoignez le mouvement. Suivez-nous sur <%= link_to "Facebook", "https://www.facebook.com/TravelerCar‎" %> et <%= link_to "Twitter", "https://twitter.com/TravelerCar‎" %>, puis passez le mot autour de vous.</p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td><img src="/assets/spacer.gif" height="50" width="100%"></td>
+			</tr>
+		</table>
+	</body>
+</html>

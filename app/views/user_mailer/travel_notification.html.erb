@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-</head>
-<body>
-
 <p>Bonjour <%= @user.name %>,</p>
 <p>Votre demande de parking a bien été prise en compte. Elle est en attente de validation par notre équipe.</p>
 <p>Nous reviendrons vers vous dans les plus brefs délais.</p>
+<p>Retrouvez la liste de vos demandes de parking en <%= link_to "cliquant sur ce lien", user_travels_url( I18n.locale, @user.id ) %>.</p>
 <p>Merci de votre confiance.</p>
-
 <p>TravelerCar team</p>
-</body>
-</html>
