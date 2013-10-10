@@ -33,6 +33,7 @@ gem "country-select"
 # gem "leetchi-wallet-services"	# MangoPay
 
 gem "ckeditor"
+gem "roadie"
 
 group :development, :test do
 	gem "mailcatcher"
