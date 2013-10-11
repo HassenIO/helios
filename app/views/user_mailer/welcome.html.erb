@@ -1,6 +1,8 @@
 <p>Bonjour <%= @user.name %>,</p>
 <p>Félicitation ! Vous êtes désormais membre de la communauté TrevelerCar.</p>
+<p>N'oubliez pas de <%= link_to "compléter les informations de votre profil", edit_user_registration_url %>.</p>
 <p>Vous voyagez prochainement ? N'attendez plus pour réserver votre place de parking gratuite, ou louer votre voiture :</p>
+<br/>
 <table id="congratulation-options">
 	<tr>
 		<td>
@@ -11,11 +13,13 @@
 		</td>
 	</tr>
 </table>
+<br/>
 <p>Pas encore sûre de ce qu'est TravelerCar ? Cette vidéo vous explique tout en 53 secondes.</p>
+<br/>
 <p>
 	<%= link_to "#{ENV["WP_ROOT"]}/#comment-ca-marche" do %>
 		<img src="/assets/travelercar-youtube.png" width="560" height="auto" />
 	<% end %>
 </p>
+<br/>
 <p>À bientôt, sur <%= link_to "TravelerCar", root_url %>.</p>
-<p>TravelerCar Team</p>
