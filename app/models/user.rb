@@ -44,7 +44,6 @@ class User < ActiveRecord::Base
 	#end
 
 	after_save :send_welcome_email, if: proc { |l| l.confirmed_at_changed? && l.confirmed_at_was.nil? }
-	# after_save :send_welcome_email
 
 	def is_omniauth
 		true
