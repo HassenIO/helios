@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
 	#  validates :last_name, :presence => true, :on => :create
 	#end
 
+	after_save :send_welcome_email, if: proc { |l| l.confirmed_at_changed? && l.confirmed_at_was.nil? }
 
 	def is_omniauth
 		true
@@ -89,6 +90,12 @@ class User < ActiveRecord::Base
 				user.last_name = data["last_name"] if user.last_name.blank?
 			end
 		end
+	end
+
+private
+
+	def send_welcome_email
+		UserMailer.welcome( self ).deliver
 	end
 
 end

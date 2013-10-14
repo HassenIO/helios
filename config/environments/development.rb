@@ -37,8 +37,22 @@ TravelerCar::Application.configure do
 	config.assets.debug = true
 
 	# Define ActionMailer URL host
-	config.action_mailer.default_url_options = { :host => 'localhost' }
+	config.action_mailer.default_url_options = { protocol: "http", host: "localhost", port: 3000, locale: I18n.locale }
 	config.action_mailer.raise_delivery_errors = true
+	config.action_mailer.delivery_method = :smtp
+
+	# Use MailCatcher gem for locale emailing.
+	config.action_mailer.smtp_settings = { address: "localhost", port: 1025 }
+
+	# In case we don't want to test emails locally with MailCatcher gem,
+	# here are production email settings
+	# config.action_mailer.smtp_settings = {
+	# 	:address        => "auth.smtp.1and1.fr",
+	# 	:port           => "587",
+	# 	:authentication => :plain,
+	# 	:user_name      => ENV['1N1_USERNAME'],
+	# 	:password       => ENV['1N1_PASSWORD']
+	# }
 
 	# Setting to enable SASS debug from Chrome
 	config.assets.debug = true

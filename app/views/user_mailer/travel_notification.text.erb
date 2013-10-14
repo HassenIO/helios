@@ -1,0 +1,12 @@
+Bonjour <%= @user.name %>,
+================================
+
+Votre demande de parking a bien été prise en compte. Elle est en attente de validation par notre équipe.
+
+Nous reviendrons vers vous dans les plus brefs délais.
+
+Retrouvez la liste de vos demandes de parking en copiant le lien suivant puis en le collant dans votre barre de navigation : <%= user_travels_url( I18n.locale, @user.id, @travel ) %>
+
+Merci de votre confiance.
+
+TravelerCar team
