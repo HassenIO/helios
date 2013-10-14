@@ -89,7 +89,7 @@ class Rent < ActiveRecord::Base
 		    amount_1: amount,
 		    currency_code: 'EUR'
 		}
-		"https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+		ENV["PAYPAL_CHECKOUT"] + values.to_query
 	end
 
 	def get_datetimes
