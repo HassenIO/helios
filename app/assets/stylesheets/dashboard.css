@@ -10,7 +10,7 @@
 }
 
 #dashboard .hero-unit {
-	height: 160px;
+	min-height: 160px;
 }
 
 #dashboard .hero-unit h3 {
