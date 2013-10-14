@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130930133011) do
+ActiveRecord::Schema.define(:version => 20131014124940) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20130930133011) do
     t.boolean  "hasCarRadio"
     t.boolean  "isSmoker"
     t.boolean  "acceptedPets"
-    t.string   "desc"
+    t.text     "desc"
     t.boolean  "hasChildSeat"
     t.boolean  "hasAirConditioning"
     t.string   "fuel"
