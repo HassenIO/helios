@@ -1,0 +1,10 @@
+Bonjour <%= @user.name %>,
+================================
+
+Les modifications apportées à votre demande de parking ont bien été prises en compte.
+
+Vous pouvez encore modifier les informations de votre demande en cliquant sur le lien suivant : <%= user_travels_url( I18n.locale, @user.id, @travel ) %>.
+
+Merci de votre confiance.
+
+TravelerCar team

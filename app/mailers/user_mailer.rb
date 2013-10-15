@@ -14,10 +14,17 @@ class UserMailer < ActionMailer::Base
 	end
 
 	# Notify the user about a new carpark request
-	def travel_notification travel
+	def travel_new travel
 		@travel = travel
 		@user = travel.user
 		mail to: @user.email, subject: "Votre demande de parking sur TravelerCar"
+	end
+
+	# Notify the user when he changes a carpark request
+	def travel_update travel
+		@travel = travel
+		@user = travel.user
+		mail to: @user.email, subject: "Modification de votre demande de parking sur TravelerCar"
 	end
 
 end

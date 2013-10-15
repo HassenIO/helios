@@ -1,0 +1,4 @@
+<p>Bonjour <%= @user.name %>,</p>
+<p>Les modifications apportées à votre demande de parking ont bien été prises en compte.</p>
+<p>Vous pouvez encore modifier les informations de votre demande en <%= link_to "cliquant sur ce lien", user_travels_url( I18n.locale, @user.id ) %>.</p>
+<p>Merci de votre confiance.</p>
