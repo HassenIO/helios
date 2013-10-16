@@ -1,45 +1,44 @@
 ActiveAdmin.register Travel do
 
-	scope :all, :default => true
+	action_item except: :index do
+		link_to "Voir sur le site publique", user_travel_url( travel.user, travel ), target: "_blank"
+	end
+
+
+	scope :all, default: true
 	scope :active do |travels|
-		travels.where(:status => Travel::STATUS[:active])
+		travels.where(status: Travel::STATUS[:active])
 	end
 	scope :pending do |travels|
-		travels.where(:status => Travel::STATUS[:pending])
+		travels.where(status: Travel::STATUS[:pending])
 	end
 	scope :rent do |travels|
-		travels.where(:status => Travel::STATUS[:rent])
+		travels.where(status: Travel::STATUS[:rent])
 	end
 
 
 	index do
 		column(:id) { |travel| link_to(travel.id, admin_travel_path(travel)) }
+		column(:car_id) { |travel| travel.car.try { |car| link_to( "#{car.brand} - #{car.model} (#{car.year})", user_travel_url(travel.user, travel), target: "about" ) } }
+		column(:car_category) { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} - #{category.price/100} €/day" } }
 		column(:airPort)
-		column(:departure_date, :sortable => :departure)
-		column(:departure_time, :sortable => :departure)
-		column(:arrival_date, :sortable => :arrival)
-		column(:arrival_time, :sortable => :arrival)
+		column(:departure, sortable: :departure) { |travel| "#{travel.departure_date} #{travel.departure_time}" }
+		column(:arrival, sortable: :arrival) { |travel| "#{travel.arrival_date} #{travel.arrival_time}" }
 		column(:status) { |travel| status_tag(travel.status.to_s) }
-		column(:car_id) { |travel| travel.car.try { |car| "#{car.brand} #{car.model} #{car.year}" } }
-		column(:car_category) { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} - #{category.price}euros /day" } }
-		column(:created_at, :sortable => :created_at)
 		default_actions
 	end
 
-	action_item :except => :index do
-		link_to "Voir sur le site publique", user_travel_url(travel.user, travel), :target => "blank"
-	end
+
+	
 
 
 	form do |f|
 
 		f.inputs :departure, :arrival, :airPort, :has_accepted_cgv, :user
 
-
 		f.inputs do
 			f.input :status, :as => :select, :collection => Travel::STATUS.keys
 		end
-
 
 		f.inputs "Car", for: [:car, f.object.car || Car.new] do |car_f|
 
@@ -80,7 +79,7 @@ ActiveAdmin.register Travel do
 	controller do
 
 		def update
-			@travel = Travel.find(params[:id])
+			@travel = Travel.find params[:id]
 
 			@travel.attributes = params[:travel]
 			if @travel.status == :active && @travel.car.category.nil?
