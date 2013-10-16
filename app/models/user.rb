@@ -43,7 +43,8 @@ class User < ActiveRecord::Base
 	#  validates :last_name, :presence => true, :on => :create
 	#end
 
-	after_save :send_welcome_email, if: proc { |l| l.confirmed_at_changed? && l.confirmed_at_was.nil? }
+	before_save :fill_name, if: proc { |u| u.name.nil? }
+	after_save :send_welcome_email, if: proc { |u| u.confirmed_at_changed? && u.confirmed_at_was.nil? }
 
 	def is_omniauth
 		true
@@ -94,6 +95,14 @@ class User < ActiveRecord::Base
 
 private
 
+	# Fill the :name attribute when the user registers without specifying it
+	# This happens when a user sign up using the classic way and provides a first and last name, instead of a name
+	# In this case, just concat the first and last name into name
+	def fill_name
+		self.name = "#{self.first_name} #{self.last_name}"
+	end
+
+	# Send a welcome email whan a user confirms his email
 	def send_welcome_email
 		UserMailer.welcome( self ).deliver
 	end
