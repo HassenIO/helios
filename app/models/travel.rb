@@ -88,4 +88,9 @@ class Travel < ActiveRecord::Base
 		end
 	end
 
+	# Check if the travel request has an image
+	def has_image?
+		!self.try(:car).try(:filepicker1_url).blank? || !self.try(:car).try(:filepicker2_url).blank? || !self.try(:car).try(:filepicker3_url).blank?
+	end
+
 end
