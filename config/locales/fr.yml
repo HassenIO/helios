@@ -272,6 +272,12 @@ fr:
     omniauth_callbacks:
       success_complete_profil: "Identification réussie depuis %{kind}, merci de compléter votre profil"
 
+  layouts:
+    mailer:
+      signature: "L'équipe TravelerCar,"
+      slogan: "Ne payez plus le parking à l'aéroport !"
+      ambition_html: "%{travelercar_link} ambitionne de révolutionner le parking et la location de véhicules aux aéroports."
+      social_html: "Rejoignez le mouvement ! Suivez-nous sur %{facebook_link} et %{twitter_link}."
 
   home:
     index:

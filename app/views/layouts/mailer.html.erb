@@ -86,7 +86,8 @@
 													<td><img src="/assets/spacer.gif" height="1" width="20"></td>
 													<td>
 														<div id="content-main-yield"><%= yield %></div>
-														<br/>TravelerCar team,<br/>Ne payez plus la parking à l'aéroport !
+														<br/><%= t ".signature" %>
+														<br/><%= t ".slogan" %>
 													</td>
 													<td><img src="/assets/spacer.gif" height="1" width="20"></td>
 												</tr>
@@ -104,8 +105,8 @@
 						</tr>
 						<tr>
 							<td id="footer">
-								<p><%= link_to "TravelerCar", root_url %> ambitionne de révolutionner le parking et la location de véhicules aux aéroports.</p>
-								<p>Rejoignez le mouvement ! Suivez-nous sur <%= link_to "Facebook", "https://www.facebook.com/TravelerCar‎" %> et <%= link_to "Twitter", "https://twitter.com/TravelerCar‎" %>.</p>
+								<p><%= t ".ambition_html", travelercar_link: link_to( "TravelerCar", root_url ) %></p>
+								<p><%= t ".social_html", facebook_link: link_to( "Facebook", "https://www.facebook.com/TravelerCar‎" ), twitter_link: link_to( "Twitter", "https://twitter.com/TravelerCar‎" ) %></p>
 							</td>
 						</tr>
 					</table>
