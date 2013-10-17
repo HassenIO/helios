@@ -6,7 +6,9 @@
 <p>Ceci est la dernière étape pour compléter votre dossier, merci donc de :</p>
 
 <ol>
-	<li>Mettre à jour vos informations personnelles, <%= link_to "en cliquant sur le lien suivant", edit_user_registration_url( I18n.locale ) %>.</li>
+	<% unless @user.has_complete_profile? %>
+		<li>Mettre à jour vos informations personnelles, <%= link_to "en cliquant sur le lien suivant", edit_user_registration_url( I18n.locale ) %>.</li>
+	<% end %>
 	<li>Mettre à jour votre réservation avec quelques photos de votre véhicule, <%= link_to "en cliquant sur le lien suivant", edit_user_travel_url( I18n.locale, @user, @travel ) %>.</li>
 	<li>Nous préciser, par retour de mail, vos numéros de vols (aller et retour)</li>
 	<li>Nous envoyer, par le même retour de mail, les pièces justificatives suivantes :
