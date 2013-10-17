@@ -347,6 +347,7 @@ fr:
     new:
       title: "Avec TravelerCar, ne Payez plus le parking à l'aéroport !"
       sub_title: "Je précise les informations de mon vol"
+      approximate_dates: "Votre billet d'avion n'est pas confirmé ? Mettez vos dates approximatives et merci de nous le préciser dans le champs \"Commentaires\"."
     item:
       rent: "Louer"
       cancel: "Annuler ce parking"
@@ -356,6 +357,7 @@ fr:
       car_legend: "J'enregistre ma voiture"
       car_options_legend: "Informations complémentaires"
       car_photos_legend: "J'ajoute des photos"
+      select_a_date: "Sélectionner une date"
     edit:
       title: "Je modifie ma demande de parking"
     show:
@@ -368,7 +370,8 @@ fr:
       back_to_list: "Ma Liste"
     index:
       title: "Gérer mes parkings"
-      no_travels: "Vous n'avez pas encore proposé de voiture"
+      no_travels: "Vous n'avez pas encore proposé de voiture."
+      waiting_for_validation: "Votre demande de réservation a été soumise à l'équipe de TravelerCar. Vous recevrez prochainement un mail de confirmation vous détaillant la suite de la procédure. Nous vous remercions pour votre confiance."
     cgv:
       title: "Conditions générales de vente"
       submit: "J'accepte et je valide mon parking"
@@ -409,7 +412,8 @@ fr:
 
   search:
     form:
-      find: "Trouver"
+      find: "Rechercher ma location"
+      select_a_date: "Sélectionner une date"
     search:
       no_results: "Aucun résultat trouvé. Veuillez modifier vos critères."
       incomplete_criteria: "Critères incomplets, veuillez les corriger"
