@@ -50,6 +50,17 @@ class User < ActiveRecord::Base
 		true
 	end
 
+	# Check if the user has a complete profile
+	def has_complete_profile?
+		!self.address.blank? &&
+			!self.city.blank? &&
+			!self.zip_code.blank? &&
+			!self.country.blank? &&
+			!self.license.blank? &&
+			!self.birth_date.blank? &&
+			!self.license_year.blank?
+	end
+
 	def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
 		user = User.where(:provider => auth.provider, :uid => auth.uid).first
 		unless user

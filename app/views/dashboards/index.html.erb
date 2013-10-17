@@ -1,13 +1,7 @@
 <h1>Bienvenue, <%= @user.first_name %></h1>
 <hr/>
 
-<% if @user.address.blank? ||
-	@user.city.blank? ||
-	@user.zip_code.blank? ||
-	@user.country.blank? ||
-	@user.license.blank? ||
-	@user.birth_date.blank? ||
-	@user.license_year.blank? %>
+<% unless @user.has_complete_profile? %>
 	
 	<div class="alert">
 		<p>Votre profil n'est pas encore complet. <%= link_to "N'oubliez pas de le compléter", edit_user_registration_path, class: "base" %>.</p>
