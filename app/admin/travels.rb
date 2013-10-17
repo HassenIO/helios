@@ -19,6 +19,7 @@ ActiveAdmin.register Travel do
 
 	index do
 		column(:id) { |travel| link_to(travel.id, admin_travel_path(travel)) }
+		column(:user)
 		column(:car_id) { |travel| travel.car.try { |car| link_to( "#{car.brand} - #{car.model} (#{car.year})", user_travel_url(travel.user, travel), target: "about" ) } }
 		column(:car_category) { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} - #{category.price/100} €/day" } }
 		column(:airPort)
