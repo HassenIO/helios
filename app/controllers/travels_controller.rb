@@ -76,9 +76,10 @@ class TravelsController < ApplicationController
 			if @travel.save
 				AdminMailer.travel_new(@travel).deliver
 				UserMailer.travel_new(@travel).deliver
-				format.html { redirect_to [@user, @travel], notice: "Votre demande a bien été prise en compte." }
+				format.html { redirect_to [@user, @travel], notice: t("flash.travels.create.success") }
 				format.json { render json: @travel, status: :created, location: @travel }
 			else
+				flash.now[:alert] = t("flash.travels.create.alert")
 				format.html { render action: "new" }
 				format.json { render json: @travel.errors, status: :unprocessable_entity }
 			end
@@ -93,9 +94,10 @@ class TravelsController < ApplicationController
 			if @travel.update_attributes(params[:travel])
 				AdminMailer.travel_update(@travel).deliver
 				# UserMailer.travel_update(@travel).deliver
-				format.html { redirect_to [@user, @travel], notice: 'Votre demande a bien été mise à jour.' }
+				format.html { redirect_to [@user, @travel], notice: t("flash.travels.update.success") }
 				format.json { head :no_content }
 			else
+				flash.now[:alert] = t("flash.travels.update.alert")
 				format.html { render action: "edit" }
 				format.json { render json: @travel.errors, status: :unprocessable_entity }
 			end
@@ -116,7 +118,7 @@ class TravelsController < ApplicationController
 
 
 
-	private
+private
 
 
 	def load_user
