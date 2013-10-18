@@ -58,63 +58,63 @@ fr:
       - :year
 
   time:
-      formats:
-        default: "%d/%m/%Y %H:%M"
-        short: "%d %b %H:%M"
-        long: "%A %d %B %Y %H:%M"
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      short: "%d %b %H:%M"
+      long: "%A %d %B %Y %H:%M"
 
-      am: 'am'
-      pm: 'pm'
+    am: 'am'
+    pm: 'pm'
 
 
   picker:
     format: "dd/MM/yyyy"
 
   datetime:
-      distance_in_words:
-        half_a_minute: "une demi-minute"
-        less_than_x_seconds:
-          zero:  "moins d'une seconde"
-          one:   "moins d'une seconde"
-          other: "moins de %{count} secondes"
-        x_seconds:
-          one:   "1 seconde"
-          other: "%{count} secondes"
-        less_than_x_minutes:
-          zero:  "moins d'une minute"
-          one:   "moins d'une minute"
-          other: "moins de %{count} minutes"
-        x_minutes:
-          one:   "1 minute"
-          other: "%{count} minutes"
-        about_x_hours:
-          one:   "environ une heure"
-          other: "environ %{count} heures"
-        x_days:
-          one:   "1 jour"
-          other: "%{count} jours"
-        about_x_months:
-          one:   "environ un mois"
-          other: "environ %{count} mois"
-        x_months:
-          one:   "1 mois"
-          other: "%{count} mois"
-        about_x_years:
-          one:   "environ un an"
-          other: "environ %{count} ans"
-        over_x_years:
-          one:   "plus d'un an"
-          other: "plus de %{count} ans"
-        almost_x_years:
-          one:   "presqu'un an"
-          other: "presque %{count} ans"
-      prompts:
-        year:   "Année"
-        month:  "Mois"
-        day:    "Jour"
-        hour:   "Heure"
-        minute: "Minute"
-        second: "Seconde"
+    distance_in_words:
+      half_a_minute: "une demi-minute"
+      less_than_x_seconds:
+        zero:  "moins d'une seconde"
+        one:   "moins d'une seconde"
+        other: "moins de %{count} secondes"
+      x_seconds:
+        one:   "1 seconde"
+        other: "%{count} secondes"
+      less_than_x_minutes:
+        zero:  "moins d'une minute"
+        one:   "moins d'une minute"
+        other: "moins de %{count} minutes"
+      x_minutes:
+        one:   "1 minute"
+        other: "%{count} minutes"
+      about_x_hours:
+        one:   "environ une heure"
+        other: "environ %{count} heures"
+      x_days:
+        one:   "1 jour"
+        other: "%{count} jours"
+      about_x_months:
+        one:   "environ un mois"
+        other: "environ %{count} mois"
+      x_months:
+        one:   "1 mois"
+        other: "%{count} mois"
+      about_x_years:
+        one:   "environ un an"
+        other: "environ %{count} ans"
+      over_x_years:
+        one:   "plus d'un an"
+        other: "plus de %{count} ans"
+      almost_x_years:
+        one:   "presqu'un an"
+        other: "presque %{count} ans"
+    prompts:
+      year:   "Année"
+      month:  "Mois"
+      day:    "Jour"
+      hour:   "Heure"
+      minute: "Minute"
+      second: "Seconde"
 
 
   number:
@@ -259,8 +259,8 @@ fr:
   register: "S'inscrire"
 
   success:
-   created: "Votre %{model} a bien été créé"
-   updated: "Votre %{model} a bien été modifié"
+    created: "Votre %{model} a bien été créé"
+    updated: "Votre %{model} a bien été modifié"
 
   sign_in_with: "Se connecter avec %{provider}"
   forgot_password: "Mot de passe oublié ?"
@@ -272,6 +272,12 @@ fr:
     omniauth_callbacks:
       success_complete_profil: "Identification réussie depuis %{kind}, merci de compléter votre profil"
 
+  layouts:
+    mailer:
+      signature: "L'équipe TravelerCar,"
+      slogan: "Ne payez plus le parking à l'aéroport !"
+      ambition_html: "%{travelercar_link} ambitionne de révolutionner le parking et la location de véhicules aux aéroports."
+      social_html: "Rejoignez le mouvement ! Suivez-nous sur %{facebook_link} et %{twitter_link}."
 
   home:
     index:
@@ -280,11 +286,38 @@ fr:
       rent_car: "Je loue une voiture"
       rent_car_msg: "Economiser jusqu'a XX% sur la location, 100% assuré, etc"
       how_its_work: "Comment ca marche"
-      how_its_work_msg: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                         magna aliqua.
-                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      how_its_work_msg: "Lorem Ipsum"
+
+  dashboards:
+    index:
+      title: "Bienvenue, %{first_name}"
+      incomplete_profile:
+        message: "Votre profil n'est pas encore complet."
+        link: "N'oubliez pas de le compléter."
+      travels:
+        title: "Mes réservations de parking"
+        link: "Réserver une place"
+        no_travels: "Vous n'avez aucune réservation confirmée."
+        next_travel: "Votre prochain stationnement est prévu le %{departure} (pour une durée de %{duration})"
+        requests:
+          zero: "Vous n'avez demandé aucune place de parking."
+          one: "Vous avez demandé 1 place de parking."
+          other: "Vous avez demandé %{count} places de parking."
+      rents:
+        title: "Mes locations de véhicule"
+        link: "Louer une voiture"
+        no_rents: "Vous n'avez pas prévu de location prochainement."
+        next_rent: "Votre prochaine location est prévue le %{start} (pour une durée de %{duration})"
+        requests:
+          zero: "Vous n'avez effectué aucune location de véhicule."
+          one: "Vous avez effectué 1 location de véhicule."
+          other: "Vous avez effectué %{count} locations de véhicule."
+      contact:
+        title: "Nous contacter"
+        phone: "Numéro de téléphone"
+        write_us: "Nous écrire"
+      news:
+        title: "Actualités"
 
   rents:
     index:
@@ -309,18 +342,18 @@ fr:
       driver_identity: "Le conducteur sera..."
       driver_contact: "Ses coordonnées sont..."
       driver_license: "et concernant son permis..."
-      conditions: "Important : afin de protéger les propriétaires des voitures nous effectuons des vérifications diverses pour
-              confirmer votre identité et votre historique de conduite"
+      conditions: "Important : afin de protéger les propriétaires des voitures nous effectuons des vérifications diverses pour confirmer votre identité et votre historique de conduite"
     cgv:
-          title: "Conditions générales de vente"
-          submit: "J'accepte et je valide ma location"
-          cancel: "Je refuse et j'annule ma location"
-          accept_cgv: "Vous devez accepter les conditions générales de vente pour continuer ou bien annuler votre location"
+      title: "Conditions générales de vente"
+      submit: "J'accepte et je valide ma location"
+      cancel: "Je refuse et j'annule ma location"
+      accept_cgv: "Vous devez accepter les conditions générales de vente pour continuer ou bien annuler votre location"
 
   travels:
     new:
       title: "Avec TravelerCar, ne Payez plus le parking à l'aéroport !"
       sub_title: "Je précise les informations de mon vol"
+      approximate_dates: "Votre billet d'avion n'est pas confirmé ? Mettez vos dates approximatives et merci de nous le préciser dans le champs \"Commentaires\"."
     item:
       rent: "Louer"
       cancel: "Annuler ce parking"
@@ -330,6 +363,7 @@ fr:
       car_legend: "J'enregistre ma voiture"
       car_options_legend: "Informations complémentaires"
       car_photos_legend: "J'ajoute des photos"
+      select_a_date: "Sélectionner une date"
     edit:
       title: "Je modifie ma demande de parking"
     show:
@@ -342,7 +376,8 @@ fr:
       back_to_list: "Ma Liste"
     index:
       title: "Gérer mes parkings"
-      no_travels: "Vous n'avez pas encore proposé de voiture"
+      no_travels: "Vous n'avez pas encore proposé de voiture."
+      waiting_for_validation: "Votre demande de réservation a été soumise à l'équipe de TravelerCar. Vous recevrez prochainement un mail de confirmation vous détaillant la suite de la procédure. Nous vous remercions pour votre confiance."
     cgv:
       title: "Conditions générales de vente"
       submit: "J'accepte et je valide mon parking"
@@ -383,12 +418,12 @@ fr:
 
   search:
     form:
-      find: "Trouver"
+      find: "Rechercher ma location"
+      select_a_date: "Sélectionner une date"
     search:
       no_results: "Aucun résultat trouvé. Veuillez modifier vos critères."
       incomplete_criteria: "Critères incomplets, veuillez les corriger"
-      results: "%{nbCars} voitures trouvées au depart de %{airPort} du %{startDate}
-                          au %{endDate}"
+      results: "%{nbCars} voitures trouvées au depart de %{airPort} du %{startDate} au %{endDate}"
       rent: "Louer"
       contact_us: "Vous ne trouvez pas ce qu'il vous faut ? Vous avez une demande spéciale ? Ecrivez nous directement pour recevoir un devis gratuit"
 
@@ -527,10 +562,4 @@ fr:
         zip_code: "Code postal"
         email: "E-mail"
         remember_me: "Se rappeler de moi"
-
-  
-
-
-
-
 

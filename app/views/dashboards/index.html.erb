@@ -1,10 +1,10 @@
-<h1>Bienvenue, <%= @user.first_name %></h1>
+<h1><%= t ".title", first_name: @user.first_name %></h1>
 <hr/>
 
 <% unless @user.has_complete_profile? %>
 	
 	<div class="alert">
-		<p>Votre profil n'est pas encore complet. <%= link_to "N'oubliez pas de le compléter", edit_user_registration_path, class: "base" %>.</p>
+		<p><%= t ".incomplete_profile.message" %> <%= link_to t(".incomplete_profile.link"), edit_user_registration_path, class: "base" %></p>
 	</div>
 	<hr/>
 <% end %>
@@ -12,34 +12,34 @@
 <div id="dashboard" class="row">
 	<div class="span6">
 		<div class="hero-unit">
-			<p><%= link_to "Réserver une place", travels_path, class: "base pull-right" %></p>
-			<h3>Mes réservations de parking</h3>
-			<p>Vous avez demandé <%= pluralize @travels.count, "place" %> de parking</p>
+			<p><%= link_to t(".travels.link"), travels_path, class: "base pull-right" %></p>
+			<h3><%= t ".travels.title" %></h3>
+			<p><%= t ".travels.requests", count: @travels.count %></p>
 			<% if @next_travel.blank? %>
-				<p>Vous n'avez aucune réservation confirmée.</p>
+				<p><%= t ".travels.no_travels" %></p>
 			<% else %>
-				<p>Votre prochain stationnement est prévu le <%= l @next_travel.departure, format: :long %> (pour une durée de <%= distance_of_time_in_words(@next_travel.departure, @next_travel.arrival) %>)</p>
+				<p><%= t ".travels.next_travel", departure: l( @next_travel.departure, format: :long ), duration: distance_of_time_in_words(@next_travel.departure, @next_travel.arrival) %></p>
 			<% end %>
 		</div>
 		<div class="hero-unit">
-			<h3>Nous contacter</h3>
-			<p>Numéro de téléphone : +33 (0)1 73 79 27 21</p>
-			<p>Nous écrire : contact@travelercar.com</p>
+			<h3><%= t ".contact.title" %></h3>
+			<p><%= t ".contact.phone" %> : +33 (0)1 73 79 27 21</p>
+			<p><%= t ".contact.write_us" %> : contact@travelercar.com</p>
 		</div>
 	</div>
 	<div class="span6">
 		<div class="hero-unit">
-			<p><%= link_to "Louer une voiture", search_path, class: "base pull-right" %></p>
-			<h3>Mes locations de véhicule</h3>
-			<p>Vous avez effectué <%= pluralize @rents.count, "location" %> de véhicule</p>
+			<p><%= link_to t(".rents.link"), search_path, class: "base pull-right" %></p>
+			<h3><%= t ".rents.title" %></h3>
+			<p><%= t ".rents.requests", count: @rents.count %></p>
 			<% if @next_rent.blank? %>
-				<p>Vous n'avez pas prévu de location prochainement.</p>
+				<p><%= t ".rents.no_rents" %></p>
 			<% else %>
-				<p>Votre prochaine location est prévu le <%= l @next_rent.startDate, format: :long %> (pour une durée de <%= distance_of_time_in_words(@next_rent.startDate, @next_rent.endDate) %>)</p>
+				<p><%= t ".rents.next_rent", start: l( @next_rent.startDate, format: :long ), duration: distance_of_time_in_words(@next_rent.startDate, @next_rent.endDate) %></p>
 			<% end %>
 		</div>
 		<div class="hero-unit">
-			<h3>Actualités</h3>
+			<h3><%= t ".news.title" %></h3>
 			<p>
 				<a class="social facebook" href="https://www.facebook.com/TravelerCar">
 					<i class="icon-facebook"></i>
