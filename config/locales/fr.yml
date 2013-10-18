@@ -275,8 +275,10 @@ fr:
     travels:
       create:
         success: "Votre demande de parking a bien été prise en compte."
+        alert: "Votre demande de parking ne peut aboutir car il existe des erreurs dans le formulaire."
       update:
         success: "Votre demande de parking a bien été mise à jour."
+        alert: "La mise à jour ne peut être prise en compte car il existe des erreurs dans le formulaire."
 
 
   layouts:

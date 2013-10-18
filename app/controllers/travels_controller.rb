@@ -79,6 +79,7 @@ class TravelsController < ApplicationController
 				format.html { redirect_to [@user, @travel], notice: t("flash.travels.create.success") }
 				format.json { render json: @travel, status: :created, location: @travel }
 			else
+				flash.now[:alert] = t("flash.travels.create.alert")
 				format.html { render action: "new" }
 				format.json { render json: @travel.errors, status: :unprocessable_entity }
 			end
@@ -96,6 +97,7 @@ class TravelsController < ApplicationController
 				format.html { redirect_to [@user, @travel], notice: t("flash.travels.update.success") }
 				format.json { head :no_content }
 			else
+				flash.now[:alert] = t("flash.travels.update.alert")
 				format.html { render action: "edit" }
 				format.json { render json: @travel.errors, status: :unprocessable_entity }
 			end
