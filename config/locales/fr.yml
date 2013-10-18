@@ -278,6 +278,15 @@ fr:
       slogan: "Ne payez plus le parking à l'aéroport !"
       ambition_html: "%{travelercar_link} ambitionne de révolutionner le parking et la location de véhicules aux aéroports."
       social_html: "Rejoignez le mouvement ! Suivez-nous sur %{facebook_link} et %{twitter_link}."
+    footer:
+      menu:
+        need_help: "Besoin d'aide ?"
+        blog: "Blog"
+        insurance: "Assurance"
+        press: "Presse"
+        terms: "CGU" # Terms of service
+        contact: "Nous contacter"
+      rights: "Tous droits réservés" # All rights reserved
 
   home:
     index:

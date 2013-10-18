@@ -10,14 +10,14 @@
 <footer id="footer">
   <div class="container">
     <ul id="menu-footer" class="menu">
-      <li class="menu-besoin-daide"><a href="<%= ENV['WP_ROOT'] %>/faqs/">Besoin d&rsquo;aide ?</a></li>
-      <li class="menu-blog"><a href="<%= ENV['WP_ROOT'] %>/blog/">Blog</a></li>
-      <li class="menu-assurance"><a href="<%= ENV['WP_ROOT'] %>/assurance/">Assurance</a></li>
-      <li class="menu-presse"><a href="<%= ENV['WP_ROOT'] %>/presse/">Presse</a></li>
-      <li class="menu-cgu"><a href="<%= ENV['WP_ROOT'] %>/conditions-generales-dutilisation-cgu/">CGU</a></li>
-      <li class="menu-contact"><a href="<%= ENV['WP_ROOT'] %>/#contact">Contact</a></li>
+      <li class="menu-besoin-daide"><a href="<%= ENV['WP_ROOT'] %>/faqs/"><%= t ".menu.need_help" %></a></li>
+      <li class="menu-blog"><a href="<%= ENV['WP_ROOT'] %>/blog/"><%= t ".menu.blog" %></a></li>
+      <li class="menu-assurance"><a href="<%= ENV['WP_ROOT'] %>/assurance/"><%= t ".menu.insurance" %></a></li>
+      <li class="menu-presse"><a href="<%= ENV['WP_ROOT'] %>/presse/"><%= t ".menu.press" %></a></li>
+      <li class="menu-cgu"><a href="<%= ENV['WP_ROOT'] %>/conditions-generales-dutilisation-cgu/"><%= t ".menu.terms" %></a></li>
+      <li class="menu-contact"><a href="<%= ENV['WP_ROOT'] %>/#contact"><%= t ".menu.contact" %></a></li>
     </ul>
-    <span>&copy; 2013 TravelerCar All rights reserved.</span>
+    <span>&copy; 2013 TravelerCar - <%= t ".rights" %>.</span>
   </div>
   <!--a href="#" id="btn_up">UP</a-->
   <a href="#" id="btn_up"><i class="icon-arrow-up"></i></a>
