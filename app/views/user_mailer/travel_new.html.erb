@@ -3,25 +3,19 @@
 
 <p>Votre demande de parking a été bien prise en compte.</p>
 
-<p>Ceci est la dernière étape pour compléter votre dossier, merci donc de :</p>
+<p>Toutefois, il vous reste quelques actions a effectuer :</p>
 
 <ol>
 	<% unless @user.has_complete_profile? %>
-		<li>Mettre à jour vos informations personnelles, <%= link_to "en cliquant sur le lien suivant", edit_user_registration_url( I18n.locale ) %>.</li>
+		<li>Mettre à jour vos informations personnelles <%= link_to "en cliquant ici", edit_user_registration_url( I18n.locale ) %>.</li>
 	<% end %>
 	<% unless @travel.has_image? %>
-		<li>Mettre à jour votre réservation avec quelques photos de votre véhicule, <%= link_to "en cliquant sur le lien suivant", edit_user_travel_url( I18n.locale, @user, @travel ) %>.</li>
+		<li>Mettre à jour votre réservation avec quelques photos de votre véhicule <%= link_to "en cliquant ici", edit_user_travel_url( I18n.locale, @user, @travel ) %>.</li>
 	<% end %>
 	<li>Nous préciser, par retour de mail, vos numéros de vols (aller et retour)</li>
-	<li>Nous envoyer, par le même retour de mail, les pièces justificatives suivantes :
-		<ul>
-			<li>Copie scannée de la carte grise du véhicule</li>
-			<li>Copie scannée de votre pièce d'identité</li>
-		</ul>
-	</li>
 </ol>
-
 <br/>
+
 <p>Dès réception de ces éléments, notre équipe validera votre demande et vous communiquera l'heure du rendez-vous, l'adresse du parking et le contact direct de l'agent TravelerCar qui sera en charge de vous accueillir le jour de votre départ.</p>
 
 <p>Nous restons à votre disposition pour tout complément d'information.</p>
