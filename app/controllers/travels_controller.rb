@@ -92,7 +92,7 @@ class TravelsController < ApplicationController
 		respond_to do |format|
 			if @travel.update_attributes(params[:travel])
 				AdminMailer.travel_update(@travel).deliver
-				UserMailer.travel_update(@travel).deliver
+				# UserMailer.travel_update(@travel).deliver
 				format.html { redirect_to [@user, @travel], notice: 'Votre demande a bien été mise à jour.' }
 				format.json { head :no_content }
 			else
