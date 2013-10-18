@@ -1,12 +1,15 @@
 <div id="footer-social">
   <div class="container">
-    <ul class="social-likes" data-url="<%= ENV["HOST"] %>" data-title="Avec TravelerCar, je ne paierai pas le parking à l'aéroport pour mon prochain voyage ! http://travelercar.com ">
-      <li class="facebook" title="Share link on Facebook">Facebook</li>
-      <li class="twitter" data-via="travelercar" title="Share link on Twitter">Twitter</li>
-      <li class="plusone" title="Share link on Google+">Google+</li>
-    </ul>
+
+    <div class="g-plusone" data-size="medium" data-href="https://plus.google.com/113031006436456237340"></div>
+
+    <a href="https://twitter.com/TravelerCar" class="twitter-follow-button" data-show-count="true" data-lang="fr">Follow @TravelerCar</a>
+
+    <div class="fb-like" data-href="http://facebook.com/TravelerCar" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="false" data-send="false"></div>
+
   </div>
 </div>
+<br/>
 <footer id="footer">
   <div class="container">
     <ul id="menu-footer" class="menu">
@@ -22,6 +25,8 @@
   <!--a href="#" id="btn_up">UP</a-->
   <a href="#" id="btn_up"><i class="icon-arrow-up"></i></a>
 </footer>
+
+<div id="fb-root"></div>
 <% content_for :footer do %>
-  <%= javascript_include_tag "social-likes.min" %>
+  <%= javascript_include_tag "social-likes" %>
 <% end %>
