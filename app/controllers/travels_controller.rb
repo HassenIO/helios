@@ -76,7 +76,7 @@ class TravelsController < ApplicationController
 			if @travel.save
 				AdminMailer.travel_new(@travel).deliver
 				UserMailer.travel_new(@travel).deliver
-				format.html { redirect_to [@user, @travel], notice: "Votre demande a bien été prise en compte." }
+				format.html { redirect_to [@user, @travel], notice: t("flash.travels.create.success") }
 				format.json { render json: @travel, status: :created, location: @travel }
 			else
 				format.html { render action: "new" }
@@ -93,7 +93,7 @@ class TravelsController < ApplicationController
 			if @travel.update_attributes(params[:travel])
 				AdminMailer.travel_update(@travel).deliver
 				UserMailer.travel_update(@travel).deliver
-				format.html { redirect_to [@user, @travel], notice: 'Votre demande a bien été mise à jour.' }
+				format.html { redirect_to [@user, @travel], notice: t("flash.travels.update.success") }
 				format.json { head :no_content }
 			else
 				format.html { render action: "edit" }
@@ -116,7 +116,7 @@ class TravelsController < ApplicationController
 
 
 
-	private
+private
 
 
 	def load_user

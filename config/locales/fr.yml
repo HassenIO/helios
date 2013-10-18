@@ -268,9 +268,16 @@ fr:
   no_receive_confirmation: "Vous n'avez pas recu l'email de confirmation ?"
 
 
-  devise:
+  flash:
     omniauth_callbacks:
-      success_complete_profil: "Identification réussie depuis %{kind}, merci de compléter votre profil"
+      facebook:
+        success: "Vous vous êtes correctement connecté via Facebook."
+    travels:
+      create:
+        success: "Votre demande de parking a bien été prise en compte."
+      update:
+        success: "Votre demande de parking a bien été mise à jour."
+
 
   layouts:
     mailer:
