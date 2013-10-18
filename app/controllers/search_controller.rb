@@ -23,12 +23,16 @@ class SearchController < ApplicationController
 
 		@travels = []
 		@rent = Rent.new(params[:rent])
+		min_days = 2
 
 		respond_to do |format|
 			if !rent_partial_validation(@rent)
 				@rent.valid?
 				format.html # search.html.erb
 				format.json { render json: @rent.errors, status: :unprocessable_entity }
+			elsif !min_days(min_days)
+				flash.now[:alert] = "Vous devez louer pour au moins #{min_days} jours."
+				format.html # search.html.erb
 			else
 				@travels = Travel.where('arrival > :end AND departure < :start AND "airPort_id" = :airPort_id AND status = 1',
 					{:start => @rent.startDate,
@@ -49,13 +53,18 @@ class SearchController < ApplicationController
 private
 
 	def rent_partial_validation(rent)
-
 		unless rent.valid?
 			errors = rent.errors
 			return (!errors.get(:airPort_id).present? or !errors.get(:startDate).present? or !errors.get(:endDate).present?)
 		end
-		
 		true
+	end
 
+	# Get how many days between two dates
+	def min_days days 
+		start_date = human_to_system_datetime params[:rent][:startDate_date]
+		end_date = human_to_system_datetime params[:rent][:endDate_date]
+		
+		return ((end_date - start_date)/24/60/60).to_i >= days
 	end
 end
