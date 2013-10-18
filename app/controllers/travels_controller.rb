@@ -42,15 +42,12 @@ class TravelsController < ApplicationController
 			session.delete(:travel)
 		else
 			@travel= @user.travels.new
-			@travel.departure = "01/11/2013 09:00"
-			@travel.arrival = "10/11/2013 18:00"
-			# Uncomment after the 01/11/2013 and remove the two lines above.
-			# @travel.departure = Time.now + 1.days
-			# @travel.arrival = Time.now + 10.days
+			@travel.departure = 7.days.from_now
+			@travel.arrival = 17.days.from_now
 		end
 
 		@travel.car ||= Car.new
-		# @travel.airPort ||= AirPort.find(1) # WHY THIS ???
+		
 		respond_to do |format|
 			format.html # new.html.erb
 			format.json { render json: @travel }

@@ -21,8 +21,7 @@ jQuery(function($){
 	    format: "dd/mm/yyyy hh:ii",
 	    minuteStep: 15,
 	    autoclose: true,
-	    pickerPosition: "bottom-left",
-	    startDate: "2013-11-01"
+	    pickerPosition: "bottom-left"
 	});
 	
 });

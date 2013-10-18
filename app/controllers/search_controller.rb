@@ -44,14 +44,17 @@ class SearchController < ApplicationController
 
 	end
 
-	private
+
+
+private
+
 	def rent_partial_validation(rent)
-		#!Rent.valid_attribute?(:airPort_id, rent.airPort_id) or !Rent.valid_attribute?(:startDate, rent.startDate) or !Rent.valid_attribute?(:startDate, rent.endDate)
 
 		unless rent.valid?
 			errors = rent.errors
 			return (!errors.get(:airPort_id).present? or !errors.get(:startDate).present? or !errors.get(:endDate).present?)
 		end
+		
 		true
 
 	end
