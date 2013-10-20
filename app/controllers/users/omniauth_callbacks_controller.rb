@@ -38,8 +38,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		end
 
 		# In all cases (sign in or sign up), sign the user in and redirect him to his dashboard.
-		sign_in user, :bypass => true
-		redirect_to dashboards_path, notice: t("flash.omniauth_callbacks.facebook.success")
+		sign_in user, bypass: true
+		redirect_to get_redirect_path(user), notice: t("flash.omniauth_callbacks.facebook.success")
 
 	end
 

@@ -1,7 +1,7 @@
 class RentsController < ApplicationController
 	include PricingHelper
 
-	before_filter :authenticate_user!
+	before_filter :authenticate_user!, except: :new
 	load_and_authorize_resource :user, :except => :new
 	load_and_authorize_resource :through => :user, :except => :new
 
@@ -29,23 +29,28 @@ class RentsController < ApplicationController
 	end
 
 	def new
-		@user = current_user
+		if user_signed_in?
+			@user = current_user
 
-		if params[:rent]
-			@rent = Rent.new(params[:rent])
+			if params[:rent]
+				@rent = Rent.new(params[:rent])
 
-			@rent.travel = Travel.find(params[:rent][:travel_id])
+				@rent.travel = Travel.find(params[:rent][:travel_id])
 
-			#Fill driver info with user ones
-			@rent.driver = Driver.new(@user.attributes.select{ |key, _| COMMON_DRIVER_USER_FIELDS.include?(key) })
+				#Fill driver info with user ones
+				@rent.driver = Driver.new(@user.attributes.select{ |key, _| COMMON_DRIVER_USER_FIELDS.include?(key) })
 
 
-			respond_to do |format|
-				format.html # register.html.erb
-				format.json { render json: @rent }
+				respond_to do |format|
+					format.html # register.html.erb
+					format.json { render json: @rent }
+				end
+			else
+				redirect_to '/search'
 			end
 		else
-			redirect_to '/search'
+			session[:redirect_rent] = request.original_url
+			redirect_to new_user_session_path, notice: "Veuillez vous connecter (ou vous inscrire) pour poursuivre."
 		end
 	end
 

@@ -42,17 +42,29 @@ class ApplicationController < ActionController::Base
 	
 	# Redirect after sign in
 	def after_sign_in_path_for resource
-		dashboards_path
+		get_redirect_path dashboards_path
 	end
 
 	# Redirect after sign up
 	def after_sign_up_path_for resource
-		dashboards_path
+		get_redirect_path dashboards_path
 	end
 
 	# Redirect after sign out
 	def after_sign_out_path_for resource
 		new_user_session_path
+	end
+
+	# The default redirection on signin/signup is different if the user tried to
+	# perform a rent before being asked for a signin/signup
+	def get_redirect_path path
+		if session[:redirect_rent].blank?
+			path
+		else
+			path = session[:redirect_rent]
+			session[:redirect_rent] = nil
+			path
+		end
 	end
 
 end
