@@ -14,6 +14,9 @@ class NotificationsController < ApplicationController
 		rent.payment_params = params
 		rent.save
 
+		UserMailer.rent_new(rent, rent.user.email).deliver
+		UserMailer.rent_new(rent, ENV["MAILER_ADMIN"]).deliver
+
 		render nothing: true
 	end
 

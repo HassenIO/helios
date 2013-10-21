@@ -1,0 +1,37 @@
+<p>Bonjour <%= @user.name %>,</p>
+<br/>
+
+<p>Nous avons le plaisir de vous confirmer votre location de voiture sur TravelerCar.</p>
+
+<p>Récapitulatif de votre location :</p>
+<ul>
+	<li>Aéroport : <%= @rent.travel.airPort.name %></li>
+	<li>Début de location: <%= @rent.startDate.strftime "%d/%m/%Y %H:%M" %></li>
+	<li>Fin de location: <%= @rent.endDate.strftime "%d/%m/%Y %H:%M" %></li>
+	<li>Total : <%= @rent.amount %> €</li>
+	<% if !@rent.comments.blank? %>
+		<li>Votre commentaire : <%= @rent.comments %></li>
+	<% end %>
+</ul>
+<br/>
+
+<p>Les informations sur le véhicule loué :</p>
+<ul>
+	<li>Marque et modéle : <%= "#{@rent.travel.car.brand} #{@rent.travel.car.model} (année #{@rent.travel.car.year})" %></li>
+	<li>Type de carburant : <%= @rent.travel.car.fuel %></li>
+	<li>Nombre de places : <%= @rent.travel.car.nbSeats %></li>
+	<% if @rent.travel.car.hasGps %><li>GPS inclus</li><% end %>
+	<% if @rent.travel.car.hasCarRadio %><li>Autoradio incluse</li><% end %>
+	<% if @rent.travel.car.hasAirConditioning %><li>Air Conditionné disponible</li><% end %>
+	<% if @rent.travel.car.isSmoker %><li>Fumeurs autorisés</li><% end %>
+	<% if @rent.travel.car.hasChildSeat %><li>Siége enfant inclus</li><% end %>
+	<% if @rent.travel.car.acceptedPets %><li>Animaux autorisés</li><% end %>
+	<% if !@rent.travel.car.desc.blank? %>
+		<li>Commentaire du propriétaire : <%= @rent.travel.car.desc %></li>
+	<% end %>
+</ul>
+<br/>
+
+<p>Nous restons à votre disposition pour tout complément d'information.</p>
+
+<p>Bien à vous,</p>

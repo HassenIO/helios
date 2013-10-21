@@ -10,6 +10,7 @@ class UserMailer < ActionMailer::Base
 	# Congratulate the new user after email confirmation or facebook signup.
 	def welcome user
 		@user = user
+
 		mail to: @user.email, subject: "Bienvenue sur TravelerCar"
 	end
 
@@ -17,6 +18,7 @@ class UserMailer < ActionMailer::Base
 	def travel_new travel
 		@travel = travel
 		@user = travel.user
+
 		mail to: @user.email, subject: "Votre demande de parking sur TravelerCar"
 	end
 
@@ -24,7 +26,16 @@ class UserMailer < ActionMailer::Base
 	def travel_update travel
 		@travel = travel
 		@user = travel.user
+
 		mail to: @user.email, subject: "Modification de votre demande de parking sur TravelerCar"
+	end
+
+	# Notify the user about their new Rent
+	def rent_new rent, email
+		@rent = rent
+		@user = rent.user
+
+		mail to: email, subject: "Confirmation de votre location TrevelerCar"
 	end
 
 end
