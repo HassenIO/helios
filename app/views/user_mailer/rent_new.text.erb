@@ -1,0 +1,32 @@
+Bonjour <%= @user.name %>,
+=====================================
+
+Nous avons le plaisir de vous confirmer votre location de voiture sur TravelerCar.
+
+Récapitulatif de votre location :
+
+- Aéroport : <%= @rent.travel.airPort.name %>
+- Début de location: <%= @rent.startDate.strftime "%d/%m/%Y %H:%M" %>
+- Fin de location: <%= @rent.endDate.strftime "%d/%m/%Y %H:%M" %>
+- Total : <%= @rent.amount %> €
+<% if !@rent.comments.blank? %>
+- Votre commentaire : <%= @rent.comments %>
+<% end %>
+
+
+Les informations sur le véhicule loué :
+
+- Marque et modéle : <%= "#{@rent.travel.car.brand} #{@rent.travel.car.model} (année #{@rent.travel.car.year})" %>
+- Type de carburant : <%= @rent.travel.car.fuel %>
+- Nombre de places : <%= @rent.travel.car.nbSeats %>
+<% if @rent.travel.car.hasGps %>- GPS inclus
+<% end %><% if @rent.travel.car.hasCarRadio %>- Autoradio incluse
+<% end %><% if @rent.travel.car.hasAirConditioning %>- Air Conditionné disponible
+<% end %><% if @rent.travel.car.isSmoker %>- Fumeurs autorisés
+<% end %><% if @rent.travel.car.hasChildSeat %>- Siége enfant inclus
+<% end %><% if @rent.travel.car.acceptedPets %>- Animaux autorisés
+<% end %><% if !@rent.travel.car.desc.blank? %>- Commentaire du propriétaire : <%= @rent.travel.car.desc %>
+<% end %>
+
+
+Nous restons à votre disposition pour tout complément d'information.

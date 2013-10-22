@@ -1,12 +1,16 @@
 Bonjour <%= @user.name %>,
-================================
+=====================================
 
-Votre demande de parking a bien été prise en compte. Elle est en attente de validation par notre équipe.
+Votre demande de parking a été bien prise en compte.
 
-Nous reviendrons vers vous dans les plus brefs délais.
+Toutefois, il vous reste quelques actions a effectuer :
 
-Retrouvez la liste de vos demandes de parking en copiant le lien suivant puis en le collant dans votre barre de navigation : <%= user_travels_url( I18n.locale, @user.id, @travel ) %>
+<% unless @user.has_complete_profile? %>- Mettre à jour vos informations personnelles en cliquant sur le lien suivant : <%= edit_user_registration_url( I18n.locale ) %><% end %>
+<% unless @travel.has_image? %>- Mettre à jour votre réservation avec quelques photos de votre véhicule en cliquant sur le lien suivant : <%= edit_user_travel_url( I18n.locale, @user, @travel ) %><% end %>
+- Nous préciser, par retour de mail, vos numéros de vols (aller et retour)
+- Nous préciser, par le même retour de mail, le nombre de personnes partant en voyage
 
-Merci de votre confiance.
 
-TravelerCar team
+Dès réception de ces éléments, notre équipe validera votre demande et vous communiquera l'heure du rendez-vous, l'adresse du parking et le contact direct de l'agent TravelerCar qui sera en charge de vous accueillir le jour de votre départ.
+
+Nous restons à votre disposition pour tout complément d'information.
