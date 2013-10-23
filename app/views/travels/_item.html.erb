@@ -41,9 +41,8 @@
           </h4>
 
           <% if travel.status == :pending %>
-              <%= link_to t(".cancel"), [@user, travel], method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-primary btn-large btn-block" %>
-
-              <%= link_to t(".update"), edit_user_travel_path(@user, travel), :class => "btn on-hover btn-large btn-block" %>
+              <%= link_to t(".update"), edit_user_travel_path(@user, travel), :class => "btn on-hover btn-large btn-block btn-primary" %>
+              <%= link_to t(".cancel"), [@user, travel], method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-large btn-block" %>
           <% else %>
               <p><%= link_to t(".contact_support"), ENV["WP_ROOT"] + "#contact", class: "base" %></p>
           <% end %>

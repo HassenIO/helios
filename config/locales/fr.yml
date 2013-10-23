@@ -374,9 +374,9 @@ fr:
       approximate_dates: "Votre billet d'avion n'est pas confirmé ? Mettez vos dates approximatives et merci de nous le préciser dans le champs \"Commentaires\"."
     item:
       rent: "Louer"
-      cancel: "Annuler ce parking"
-      update: "Modifier ce parking"
-      contact_support: "Pour modifier ou annuler ce parking, merci de contacter le support"
+      cancel: "Annuler cette demande"
+      update: "Modifier cette demande"
+      contact_support: "Pour modifier ou annuler cette demande de parking, merci de contacter le support."
     form:
       car_legend: "J'enregistre ma voiture"
       car_options_legend: "Informations complémentaires"
@@ -393,7 +393,7 @@ fr:
       how_many: "Combien ça coûte ?"
       back_to_list: "Ma Liste"
     index:
-      title: "Gérer mes parkings"
+      title: "Mes demandes de parkings"
       no_travels: "Vous n'avez pas encore proposé de voiture."
       waiting_for_validation: "Votre demande de réservation a été soumise à l'équipe de TravelerCar. Vous recevrez prochainement un mail de confirmation vous détaillant la suite de la procédure. Nous vous remercions pour votre confiance."
     cgv:
@@ -512,8 +512,8 @@ fr:
         has_accepted_cgv: "J'ai lu les conditions générales de vente et je les accepte"
         status: "Etat"
         status:
-          pending: "Validation en cours"
-          active: "Activé"
+          pending: "Demandes en cours de validation"
+          active: "Demandes validées"
           rent: "Loué"
       category:
         name: "Nom"
