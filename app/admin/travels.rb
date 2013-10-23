@@ -1,5 +1,7 @@
 ActiveAdmin.register Travel do
 
+	config.clear_sidebar_sections!
+
 	action_item except: :index do
 		link_to "Voir sur le site publique", user_travel_url( travel.user, travel ), target: "_blank"
 	end
@@ -18,15 +20,19 @@ ActiveAdmin.register Travel do
 
 
 	index do
-		column(:id) { |travel| link_to(travel.id, admin_travel_path(travel)) }
+		column(:id, sortable: :id) { |travel| link_to(travel.id, admin_travel_path(travel)) }
 		column(:user)
+		column(:city) { |travel| travel.user.city }
+		column(:phone) { |travel| travel.user.license }
+		column(:email) { |travel| link_to(travel.user.email, "mailto:#{travel.user.email}") }
 		column(:car_id) { |travel| travel.car.try { |car| link_to( "#{car.brand} - #{car.model} (#{car.year})", user_travel_url(travel.user, travel), target: "about" ) } }
-		column(:car_category) { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} - #{category.price/100} €/day" } }
+		column(:car_category) { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} (#{category.price/100}€/day)" } }
 		column(:airPort)
 		column(:departure, sortable: :departure) { |travel| "#{travel.departure_date} #{travel.departure_time}" }
 		column(:arrival, sortable: :arrival) { |travel| "#{travel.arrival_date} #{travel.arrival_time}" }
+		column(:ph) { |travel| (travel.has_image?) ? status_tag("OK", :on) : status_tag("NO", :pending) }
+		column(:pr) { |travel| (travel.user.has_complete_profile?) ? status_tag("OK", :on) : status_tag("NO", :pending) }
 		column(:status) { |travel| status_tag(travel.status.to_s) }
-		default_actions
 	end
 
 
