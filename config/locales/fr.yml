@@ -507,6 +507,7 @@ fr:
     label:
       travel:
         airPort: "Aéroport"
+        count_person: "Nombre de personnes"
         flight_n_departure: "Numéro de vol Aller"
         flight_n_arrival: "Numéro de vol Retour"
         departure: "Date et Heure du vol Aller"

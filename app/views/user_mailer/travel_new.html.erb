@@ -3,21 +3,34 @@
 
 <p>Votre demande de parking a été bien prise en compte.</p>
 
-<p>Toutefois, il vous reste quelques actions a effectuer :</p>
+<% if 	!@user.has_complete_profile? ||
+		!@travel.has_image? ||
+		@travel.flight_n_departure.blank? || @travel.flight_n_arrival.blank? ||
+		@travel.count_person.nil? %>
 
-<ol>
-	<% unless @user.has_complete_profile? %>
-		<li>Mettre à jour vos informations personnelles <%= link_to "en cliquant ici", edit_user_registration_url( I18n.locale ) %>.</li>
-	<% end %>
-	<% unless @travel.has_image? %>
-		<li>Mettre à jour votre réservation avec quelques photos de votre véhicule <%= link_to "en cliquant ici", edit_user_travel_url( I18n.locale, @user, @travel ) %>.</li>
-	<% end %>
-	<li>Nous préciser, par retour de mail, vos numéros de vols (aller et retour)</li>
-	<li>Nous préciser, par le même retour de mail, le nombre de personnes partant en voyage</li>
-</ol>
-<br/>
+	<p>Toutefois, il vous reste quelques actions a effectuer :</p>
 
-<p>Dès réception de ces éléments, notre équipe validera votre demande et vous communiquera l'heure du rendez-vous, l'adresse du parking et le contact direct de l'agent TravelerCar qui sera en charge de vous accueillir le jour de votre départ.</p>
+	<ol>
+		<% unless @user.has_complete_profile? %>
+			<li>Mettre à jour vos informations personnelles <%= link_to "en cliquant ici", edit_user_registration_url( I18n.locale ) %>.</li>
+		<% end %>
+		<% unless @travel.has_image? %>
+			<li>Mettre à jour votre réservation avec quelques photos de votre véhicule <%= link_to "en cliquant ici", edit_user_travel_url( I18n.locale, @user, @travel ) %>.</li>
+		<% end %>
+		<% if @travel.flight_n_departure.blank? || @travel.flight_n_arrival.blank? %>
+			<li>Préciser vos numéros de vols (aller et retour) <%= link_to "en cliquant ici", edit_user_registration_url( I18n.locale ) %>.</li>
+		<% end %>
+		<% if @travel.count_person.nil? %>
+			<li>Nous préciser le nombre de personnes partant en voyage <%= link_to "en cliquant ici", edit_user_registration_url( I18n.locale ) %>.</li>
+		<% end %>
+	</ol>
+	<br/>
+
+	<p>Dès réception de ces éléments, notre équipe validera votre demande et vous communiquera l'heure du rendez-vous, l'adresse du parking et le contact direct de l'agent TravelerCar qui sera en charge de vous accueillir le jour de votre départ.</p>
+
+<% else %>
+	<p>Notre équipe validera votre demande dans les plus brefs délais et vous communiquera l'heure du rendez-vous, l'adresse du parking et le contact direct de l'agent TravelerCar qui sera en charge de vous accueillir le jour de votre départ.</p>
+<% end %>
 
 <p>Nous restons à votre disposition pour tout complément d'information.</p>
 
