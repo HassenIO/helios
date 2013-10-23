@@ -17,6 +17,15 @@
 
         <div class="span4">
           <div class="control-group">
+            <%= f.label :flight_n_departure, :class => "control-label" %>
+            <div class="controls">
+              <div class="input-append" id="travel_flight_n_departure">
+                <%= f.text_field :flight_n_departure, :class => "input-large", size: "16", placeholder: "Ex : AB123", value: @travel.flight_n_departure %>
+                <span class="add-on"><i class="icon-plane"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
             <%= f.label :departure, :class => "control-label" %>
             <div class="controls">
               <div class="input-append date form_datetime" id="travel_departure_datepicker">
@@ -28,6 +37,15 @@
         </div>
 
         <div class="span4">
+          <div class="control-group">
+            <%= f.label :flight_n_arrival, :class => "control-label" %>
+            <div class="controls">
+              <div class="input-append" id="travel_flight_n_departure">
+                <%= f.text_field :flight_n_arrival, :class => "input-large", size: "16", placeholder: "Ex : AB123", value: @travel.flight_n_arrival %>
+                <span class="add-on"><i class="icon-plane"></i></span>
+              </div>
+            </div>
+          </div>
           <div class="control-group">
             <%= f.label :arrival, :class => "control-label" %>
             <div class="controls">
@@ -348,10 +366,6 @@
 
     <script type="text/javascript">
         $(function () {
-
-            $("#travel_departure_datepicker").on("changeDate", function(ev) {
-                $("#travel_arrival_datepicker").datetimepicker('show');
-            });
 
             filepicker.setKey("<%= ENV["FILEPICKER_KEY"] %>");
 

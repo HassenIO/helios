@@ -507,8 +507,10 @@ fr:
     label:
       travel:
         airPort: "Aéroport"
-        departure: "Date de départ (présence à l'aéroport)"
-        arrival: "Date de retour"
+        flight_n_departure: "Numéro de vol Aller"
+        flight_n_arrival: "Numéro de vol Retour"
+        departure: "Date et Heure du vol Aller"
+        arrival: "Date et Heure du vol Retour"
         has_accepted_cgv: "J'ai lu les conditions générales de vente et je les accepte"
         status: "Etat"
         status:
