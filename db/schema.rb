@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131014124940) do
+ActiveRecord::Schema.define(:version => 20131023111258) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -121,13 +121,18 @@ ActiveRecord::Schema.define(:version => 20131014124940) do
   create_table "travels", :force => true do |t|
     t.datetime "departure"
     t.datetime "arrival"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "user_id"
     t.integer  "airPort_id"
     t.integer  "status"
     t.boolean  "has_accepted_cgv"
     t.text     "commercial_text"
+    t.datetime "rdv"
+    t.string   "flight_n_departure"
+    t.string   "flight_n_arrival"
+    t.string   "contacted"
+    t.string   "reg_document"
   end
 
   create_table "users", :force => true do |t|
