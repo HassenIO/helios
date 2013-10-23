@@ -30,6 +30,7 @@ ActiveAdmin.register Travel do
 		column(:airPort)
 		column(:departure, sortable: :departure) { |travel| "#{travel.departure_date} #{travel.departure_time}" }
 		column(:arrival, sortable: :arrival) { |travel| "#{travel.arrival_date} #{travel.arrival_time}" }
+		column("nb") { |travel| (travel.count_person.nil?) ? "-" : travel.count_person }
 		column(:ph) { |travel| (travel.has_image?) ? status_tag("OK", :on) : status_tag("NO", :pending) }
 		column(:pr) { |travel| (travel.user.has_complete_profile?) ? status_tag("OK", :on) : status_tag("NO", :pending) }
 		column(:status) { |travel| status_tag(travel.status.to_s) }

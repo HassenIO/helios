@@ -42,7 +42,7 @@ class Travel < ActiveRecord::Base
 
 	attr_accessible :arrival, :arrival_time, :arrival_date, :departure, :departure_date, :departure_time,
 					:car_attributes, :airPort_id, :status, :has_accepted_cgv, :user_id, :commercial_text,
-					:flight_n_departure, :flight_n_arrival
+					:flight_n_departure, :flight_n_arrival, :count_person
 
 	# add the accessors for the two fields
 	attr_accessor :departure_date, :departure_time, :arrival_time, :arrival_date
