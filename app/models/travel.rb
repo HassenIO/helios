@@ -53,13 +53,16 @@ class Travel < ActiveRecord::Base
 	validates :airPort, :presence => true
 	validates :arrival, :presence => true
 	validates :departure, :presence => true
+	validates :contacted, inclusion: { in: %w(YES NO) }
 	validates_associated :car
 	validates_with TravelPeriodValidator
 
 	# add some callbacks
 	after_initialize :get_datetimes # convert db format to accessors
 	before_validation :set_datetimes # convert accessors back to db format
+	before_validation :set_default_contacted
 	before_save :set_datetimes # convert accessors back to db format
+	before_create :set_default_rdv
 
 	def status
 		STATUS.key(read_attribute(:status))
@@ -87,6 +90,14 @@ class Travel < ActiveRecord::Base
 			self.departure = "#{self.departure_date} #{self.departure_time}:00" # convert the two fields back to db
 			self.arrival = "#{self.arrival_date} #{self.arrival_time}:00" # convert the two fields back to db
 		end
+	end
+
+	def set_default_contacted
+		self.contacted = "NO"
+	end
+
+	def set_default_rdv
+		self.rdv = self.departure - 3.hours
 	end
 
 	# Check if the travel request has an image
