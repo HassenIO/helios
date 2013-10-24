@@ -34,7 +34,7 @@ class Travel < ActiveRecord::Base
 
 	include ActiveModel::Validations
 
-	STATUS = {pending: 0, active: 1, rent: 2}
+	STATUS = {pending: 0, active: 1, rent: 2, canceled:3, terminated:4}
 
 	has_one :car
 	belongs_to :user
