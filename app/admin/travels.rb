@@ -42,10 +42,23 @@ ActiveAdmin.register Travel do
 
 	form do |f|
 
-		f.inputs :departure, :arrival, :airPort, :has_accepted_cgv, :user
+		f.inputs do
+			f.input :airPort
+			f.input :departure
+			f.input :flight_n_departure, label: "Num. de vol Allée"
+			f.input :arrival
+			f.input :flight_n_arrival, label: "Num. de vol Retour"
+		end
 
 		f.inputs do
-			f.input :status, :as => :select, :collection => Travel::STATUS.keys
+			f.input :user, label: "Nom de l'utilisateur"
+			f.input :count_person, label: "Nombre de personnes attendues", as: :select, collection: (1..9)
+			f.input :contacted, as: :select, collection: ["YES", "NO"], label: "A-t-on prit contact avec le client ?"
+			f.input :rdv, label: "Date/Heure de RDV"
+		end
+
+		f.inputs do
+			f.input :reg_document, label: "URL carte grise"
 		end
 
 		f.inputs "Car", for: [:car, f.object.car || Car.new] do |car_f|
@@ -78,6 +91,10 @@ ActiveAdmin.register Travel do
 
 		f.inputs do
 			f.input :commercial_text, :as => :ckeditor
+		end
+
+		f.inputs do
+			f.input :status, :as => :select, :collection => Travel::STATUS.keys
 		end
 
 		f.buttons
