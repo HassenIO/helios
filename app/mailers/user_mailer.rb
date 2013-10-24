@@ -2,7 +2,7 @@ class UserMailer < ActionMailer::Base
 
 	layout "mailer"
 
-	default from: ENV["MAILER_SUPPORT"]
+	default from: ENV["MAILER_SUPPORT"], bcc: ENV["MAILER_ADMIN"]
 	# default :from => "contact@travelercar.com"
 
 
