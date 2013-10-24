@@ -80,7 +80,7 @@ class Rent < ActiveRecord::Base
 
 	def paypal_url redirect_url, notify_url
 		values = {
-		    business: 'admin@travelercar.com',
+		    business: ENV["PAYPAL_ACCOUNT"],
 		    cmd: '_cart',
 		    upload: 1,
 		    return: redirect_url,
