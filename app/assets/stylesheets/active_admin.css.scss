@@ -44,10 +44,13 @@
 
 body.active_admin {
 	.status_tag {
-		&.pending, &.failed {
+		border-radius: 3px;
+		text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.3);
+
+		&.failed, &.canceled {
 			background: red;
 		}
-		&.unpaid {
+		&.pending, &.unpaid {
 			background: orange;
 		}
 		&.active, &.paid, &.on {
@@ -58,6 +61,18 @@ body.active_admin {
 		}
 		&.off {
 			background: #bbb;
+		}
+		&.terminated {
+			background: #5518ee;
+		}
+
+		&.bullet {
+			border-radius: 8px;
+			display:block;
+			height: 15px;
+			padding: 0;
+			text-indent: -9999px;
+			width: 15px;
 		}
 	}
 }

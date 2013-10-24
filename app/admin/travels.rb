@@ -31,8 +31,8 @@ ActiveAdmin.register Travel do
 		column(:departure, sortable: :departure)
 		column(:arrival, sortable: :arrival)
 		column("nb") { |travel| (travel.count_person.nil?) ? "-" : travel.count_person }
-		column(:ph) { |travel| (travel.has_image?) ? status_tag("OK", :on) : status_tag("NO", :pending) }
-		column(:pr) { |travel| (travel.user.has_complete_profile?) ? status_tag("OK", :on) : status_tag("NO", :pending) }
+		column(:ph) { |travel| (travel.has_image?) ? status_tag("OK", :on, class: "bullet") : status_tag("NO", :canceled, class: "bullet") }
+		column(:pr) { |travel| (travel.user.has_complete_profile?) ? status_tag("OK", :on, class: "bullet") : status_tag("NO", :canceled, class: "bullet") }
 		column(:status) { |travel| status_tag(travel.status.to_s) }
 		column(:car_category) { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} (#{category.price/100}€/day)" } }
 	end
