@@ -35,7 +35,6 @@ ActiveAdmin.register Travel do
 		column(:pr) { |travel| (travel.user.has_complete_profile?) ? status_tag("OK", :on) : status_tag("NO", :pending) }
 		column(:status) { |travel| status_tag(travel.status.to_s) }
 		column(:car_category) { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} (#{category.price/100}€/day)" } }
-		
 	end
 
 
