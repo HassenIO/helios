@@ -53,7 +53,7 @@ class Travel < ActiveRecord::Base
 	validates :airPort, :presence => true
 	validates :arrival, :presence => true
 	validates :departure, :presence => true
-	validates :contacted, inclusion: { in: %w(YES NO) }
+	validates :contacted, presence: true, inclusion: { in: %w(YES NO) }
 	validates_associated :car
 	validates_with TravelPeriodValidator
 
