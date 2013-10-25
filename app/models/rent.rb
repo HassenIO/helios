@@ -79,7 +79,7 @@ class Rent < ActiveRecord::Base
 	end
 
 	def paypal_url redirect_url, notify_url
-		values = {
+		pp_params = {
 		    business: ENV["PAYPAL_ACCOUNT"],
 		    cmd: '_cart',
 		    upload: 1,
@@ -87,9 +87,9 @@ class Rent < ActiveRecord::Base
 		    notify_url: notify_url,
 		    item_name_1: [self.travel.car.brand, self.travel.car.model].join(' - '),
 		    amount_1: amount,
-		    currency_code: 'EUR'
+		    currency_code: "EUR"
 		}
-		ENV["PAYPAL_CHECKOUT"] + values.to_query
+		ENV["PAYPAL_CHECKOUT"] + pp_params.to_query
 	end
 
 	def get_datetimes

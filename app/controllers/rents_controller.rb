@@ -71,14 +71,7 @@ class RentsController < ApplicationController
 
 		respond_to do |format|
 			if @rent.save
-				# format.html { redirect_to cgv_user_rent_path(@user, @rent), notice: t("success.created", :model => @rent.class.model_name.human) }
-				# format.html { redirect_to user_rents_path(@user), notice: t("rents.index.successfully_created") }
-				# format.json { render json: @rent, status: :created, location: @rent }
-
-				format.html { redirect_to @rent.paypal_url( user_rents_url( current_user ), payment_notification_url( @rent ) ) }
-
-				### TODO: Put here redirection to paypal, with the callback to rents list and IPN URL to the ipn method below.
-
+				format.html { redirect_to @rent.paypal_url( user_rents_url(current_user), payment_notification_url(@rent) ) }
 			else
 				format.html { render action: "new" }
 				format.json { render json: @rent.errors, status: :unprocessable_entity }
