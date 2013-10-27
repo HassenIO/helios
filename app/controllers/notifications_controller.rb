@@ -5,8 +5,9 @@ class NotificationsController < ApplicationController
 	def payment
 		rent = Rent.find_by_id params[:id]
 
-		# Notify the user by email
+		# Notify the admin and user by email
 		UserMailer.rent_new(rent, rent.user.email).deliver
+		AdminMailer.rent_paid(params).deliver
 
 		# Update the Travel status of the car
 		travel = rent.travel
@@ -17,7 +18,7 @@ class NotificationsController < ApplicationController
 		rent.status = :paid
 		rent.transaction_id = params[:txn_id]
 		rent.payment_params = params
-		rent.save
+		rent.save( validate: false )
 
 		# Render nothing (status code 200)
 		render nothing: true, status: 200

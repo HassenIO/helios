@@ -28,4 +28,9 @@ class AdminMailer < ActionMailer::Base
 		mail( :subject => "Update on parking request - TravelerCar.com")
 	end
 
+	def rent_paid params
+		@params = params
+		mail( subject: "New payment made - PayPal params" )
+	end
+
 end
