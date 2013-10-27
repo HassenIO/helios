@@ -10,4 +10,8 @@ class NavigationsController < ApplicationController
 		end
 	end
 
+	def log
+		render text: File.read("#{Rails.root}/log/#{Rails.env}.log")
+	end
+
 end

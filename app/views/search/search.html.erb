@@ -4,10 +4,12 @@
 
 <div class="row-fluid">
 	<div class="span12">
-		<% if @travels.empty? %>
-				<h3><%= t(".no_results") %></h3>
+		<% if flash.now[:alert] %>
+			<h3><%= flash.now[:alert] %></h3>
+		<% elsif @travels.empty? %>
+			<h3><%= t(".no_results") %></h3>
 		<% else %>
-				<h3><%= t(".results", :nbCars => @travels.size, :airPort => @rent.airPort.name, :startDate => @rent.startDate, :endDate => @rent.endDate) %></h3>
+			<h3><%= t(".results", :nbCars => @travels.size, :airPort => @rent.airPort.name, :startDate => @rent.startDate, :endDate => @rent.endDate) %></h3>
 		<% end %>
 	</div>
 </div>
