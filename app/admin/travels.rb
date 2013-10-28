@@ -30,7 +30,7 @@ ActiveAdmin.register Travel do
         column(:user)
         column(:city) { |travel| travel.user.city }
         column(:phone) { |travel| travel.user.license }
-        column(:email) { |travel| link_to(travel.user.email, "mailto:#{travel.user.email}") }
+        column(:email) { |travel| link_to(travel.user.email, "mailto:#{travel.user.email}?body=Bonjour #{travel.user.name},%0A%0A%0A") }
         column(:car_id) { |travel| travel.car.try { |car| link_to( "#{car.brand} - #{car.model} (#{car.year})", user_travel_url(travel.user, travel), target: "about" ) } }
         column(:airPort)
         column(:rdv, sortable: :rdv)
@@ -81,7 +81,10 @@ ActiveAdmin.register Travel do
     end
 
     sidebar "Admin Super Powers", only: :show do
-        link_to "Send \"New Travel\" email", admin_powers_new_travel_email_path(travel), remote: true
+        ul do
+            li link_to "Email to #{travel.user.name}", "mailto:#{travel.user.email}?body=Bonjour #{travel.user.name},%0A%0A%0A"
+            li link_to "Send \"New Travel\" email", admin_powers_new_travel_email_path(travel), remote: true
+        end
     end
 
 
