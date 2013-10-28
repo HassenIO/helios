@@ -74,13 +74,14 @@ ActiveAdmin.register Travel do
                 row("Do we have regulatory document?") { travel.reg_document }
                 row(:car) { "#{travel.car.brand} #{travel.car.model} (#{travel.car.year})" }
                 row(:commercial_text) { travel.commercial_text }
+                row(:status) { travel.status }
             end
         end
         active_admin_comments
     end
 
     sidebar "Admin Super Powers", only: :show do
-        link_to "id", user_travel_path(I18n.locale, travel.user, travel)
+        link_to "Send \"New Travel\" email", admin_powers_new_travel_email_path(travel), remote: true
     end
 
 

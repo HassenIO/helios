@@ -1,49 +1,50 @@
 TravelerCar::Application.routes.draw do
 
-	root to: "dashboards#index"
+    root to: "dashboards#index"
 
-	ActiveAdmin.routes(self)
+    ActiveAdmin.routes(self)
+    namespace :admin_powers do
+        get "new_travel_email/:id", action: "new_travel_email", as: "new_travel_email"
+    end
 
-	resources :home # Used only for dev (Equivalent of WordPress on prod)
+    scope "/:locale", :constraints => {:locale => /[a-z]{2}(-[A-Z]{2})?/} do
 
-	scope "/:locale", :constraints => {:locale => /[a-z]{2}(-[A-Z]{2})?/} do
+        root to: "dashboards#index"
 
-		root to: "dashboards#index"
+        devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
 
-		devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" }
-		
-		resources :dashboards
+        resources :dashboards
 
-		resources :users do
-			resources :travels do
-				get 'cgv', :on => :member
-			end
-			resources :cars
-			resources :rents do
-				resource :payment
-				get 'cgv', :on => :member
-			end
-		end
-		resources :rents, only: [:new]
-		resources :travels, only: [:new]
+        resources :users do
+            resources :travels do
+                get 'cgv', :on => :member
+            end
+            resources :cars
+            resources :rents do
+                resource :payment
+                get 'cgv', :on => :member
+            end
+        end
+        resources :rents, only: [:new]
+        resources :travels, only: [:new]
 
-		authenticated :user do
-			match "/travels", to: redirect { |p, req| "/#{p[:locale]}/users/#{req.env["warden"].user(:user).id}/travels/new" }, :as => 'travels'
-		end
+        authenticated :user do
+            match "/travels", to: redirect { |p, req| "/#{p[:locale]}/users/#{req.env["warden"].user(:user).id}/travels/new" }, :as => 'travels'
+        end
 
-		unauthenticated :user do
-			match '/travels(/:action)' => 'anonymous_travels', :as => 'travels'
-		end
+        unauthenticated :user do
+            match '/travels(/:action)' => 'anonymous_travels', :as => 'travels'
+        end
 
-		match '/search(/:action)' => 'search', :as => 'search'
+        match '/search(/:action)' => 'search', :as => 'search'
 
-	end
+    end
 
-	match "nav" => "navigations#index"
-	match "log" => "navigations#log"
+    match "nav" => "navigations#index"
+    match "log" => "navigations#log"
 
-	resources :notifications do
-		post :payment, on: :member # Used for IPN
-	end
+    resources :notifications do
+        post :payment, on: :member # Used for IPN
+    end
 
 end
