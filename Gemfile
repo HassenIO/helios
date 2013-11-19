@@ -6,10 +6,10 @@ gem "pg"
 gem "nokogiri"
 
 group :assets do
-	gem "sass-rails"
-	gem "less-rails", "~> 2.3.3"
-	gem "coffee-rails", "~> 3.2.1"
-	gem "uglifier", ">= 1.0.3"
+    gem "sass-rails"
+    gem "less-rails", "~> 2.3.3"
+    gem "coffee-rails", "~> 3.2.1"
+    gem "uglifier", ">= 1.0.3"
 end
 
 gem "jquery-rails", "2.3.0"
@@ -36,13 +36,9 @@ gem "ckeditor"
 gem "roadie"
 
 group :development, :test do
-	gem "mailcatcher"
-	gem "quiet_assets", ">= 1.0.2"
-	# gem "better_errors", ">= 0.7.2"
-	# gem "binding_of_caller", ">= 0.7.1"
-	# gem "meta_request"
+    gem "mailcatcher"
+    gem "quiet_assets", ">= 1.0.2"
+    gem "better_errors", ">= 0.7.2"
+    gem "binding_of_caller", ">= 0.7.1"
+    gem "meta_request"
 end
-
-gem "better_errors", ">= 0.7.2"
-gem "binding_of_caller", ">= 0.7.1"
-gem "meta_request"
