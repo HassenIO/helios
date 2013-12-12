@@ -47,4 +47,6 @@ TravelerCar::Application.routes.draw do
         post :payment, on: :member # Used for IPN
     end
 
+    get "api/cars", to: "search#api_search", as: "api_search"
+
 end

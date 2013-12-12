@@ -40,10 +40,11 @@ class SearchController < ApplicationController
 
                 format.html # search.html.erb
                 format.json { render json: [@rent, @travels] }
-
             end
         end
+    end
 
+    def api_search
 
     end
 
