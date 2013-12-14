@@ -45,7 +45,9 @@ class SearchController < ApplicationController
 	end
 
 	def api_search
-
+		respond_to do |format|
+			format.xml { render file: "search/api/liligo", content_type: "application/xml" }
+		end
 	end
 
 
