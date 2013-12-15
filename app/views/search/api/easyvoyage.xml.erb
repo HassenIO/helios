@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<voitures>
+	<% @travels.each do |travel| %>
+	<voiture>
+		<id><%= travel.id %></id>
+		<nom><%= "#{travel.car.brand} #{travel.car.model}" %></nom>
+		<photo>
+			<% if !travel.car.filepicker1_url.blank? %>
+				<%= travel.car.filepicker1_url %>
+			<% elsif !travel.car.filepicker2_url.blank? %>
+				<%= travel.car.filepicker2_url %>
+			<% else %>
+				<%= travel.car.filepicker3_url %>
+			<% end %>
+		</photo>
+		<boite><%= (travel.car.transmission == "automatic") ? "automatique" : "manuelle" %></boite>
+		<climatisation><%= (travel.car.hasAirConditioning) ? "oui" : "non" %></climatisation>
+		<nbpassagers><%= travel.car.nbSeats %></nbpassagers>
+		<description>
+			<%= "#{travel.car.brand} #{travel.car.model} (#{travel.car.year}) #{travel.car.fuel}. " %>
+			<%= "GPS inclus. " if travel.car.hasGps %>
+			<%= (travel.car.isSmoker) ? "Fumeurs autorisés. " : "Non fumeur. " %>
+			<%= (travel.car.acceptedPets) ? "Animaux autorisés. " : "Animaux non autorisés. " %>
+			<%= "Siége bébé inclus." if travel.car.hasChildSeat %>
+		</description>
+		<categorie><%= travel.car.category.name %></categorie>
+		<prix><%= travel.car.category.price * @nb_days / 100 %></prix>
+		<url><%= user_travel_url(travel.user, travel) %></url>
+	</voiture>
+	<% end %>
+</voitures>
