@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cars>
+	<% @travels.each do |travel| %>
 	<car>
-		<Acrisscode>EBMR</Acrisscode>
-		<Description><![CDATA[Citroen C2 or similar]]></Description>
-		<Capacity>4</Capacity>
+		<Acrisscode></Acrisscode>
+		<Description><![CDATA[<%= "#{travel.car.brand} #{travel.car.model}" %>]]></Description>
+		<Capacity><%= travel.car.nbSeats %></Capacity>
 		<Luggage>
-			<Big>1</Big>
-			<Small>2</Small>
+			<Big></Big>
+			<Small></Small>
 		</Luggage>
-		<Price>125</Price>
+		<Price><%= travel.car.category.price * @nb_days / 100 %></Price>
 		<Currency>EUR</Currency>
-		<Supplier>AVIS</Supplier>
+		<Supplier>TravelerCar</Supplier>
 		<Pickup>
-			<Address><![CDATA[1 Avenue des Champs-Elysées]]></Address>
-			<Id>AA100</Id>
+			<Address><![CDATA[Aéroport <%= travel.airPort.name %>]]></Address>
+			<Id><%= params[:airport_id] %></Id>
 		</Pickup>
 		<Dropoff>
-			<Address><![CDATA[1 Avenue des Champs-Elysées]]></Address>
-			<Id>AA100</Id>
+			<Address><![CDATA[Aéroport <%= travel.airPort.name %>]]></Address>
+			<Id><%= params[:airport_id] %></Id>
 		</Dropoff>
-		<Image>http://www.example.com/carimages/cc2.jpg</Image>
-		<Deep_link><![CDATA[http://www.example.com/carrental.php?productcode=1&pickupdate=2010-11-05&dropoffdate=2010-11-10&pickuptime=1000&dropofftime=1000&pickupplace=AA100&dropoffplace=AA100&driverage=30&cur=EUR&affiliateID=liligo4234&lang=it]]></Deep_link>
+		<Image>
+			<% if !travel.car.filepicker1_url.blank? %>
+				<%= travel.car.filepicker1_url %>
+			<% elsif !travel.car.filepicker2_url.blank? %>
+				<%= travel.car.filepicker2_url %>
+			<% else %>
+				<%= travel.car.filepicker3_url %>
+			<% end %>
+		</Image>
+		<Deep_link><![CDATA[<%= user_travel_url(travel.user, travel) %>]]></Deep_link>
 	</car>
+	<% end %>
 </cars>
