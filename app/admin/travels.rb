@@ -45,10 +45,11 @@ ActiveAdmin.register Travel do
 		column("D f n") { |travel| travel.flight_n_departure }
 		column(:arrival, sortable: :arrival)
 		column("A f n") { |travel| travel.flight_n_arrival }
+		column("days") { |travel| ((travel.arrival - travel.departure)/1.day).ceil }
+		column("Cat.") { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} (#{category.price/100}€/day)" } }
 		column(:ph) { |travel| (travel.has_image?) ? status_tag("OK", :on, class: "bullet") : status_tag("NO", :canceled, class: "bullet") }
 		column(:pr) { |travel| (travel.user.has_complete_profile?) ? status_tag("OK", :on, class: "bullet") : status_tag("NO", :canceled, class: "bullet") }
 		column(:status) { |travel| status_tag(travel.status.to_s) }
-		column(:car_category) { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} (#{category.price/100}€/day)" } }
 	end
 
 	show do
