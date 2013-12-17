@@ -1,6 +1,6 @@
 ActiveAdmin.register Travel do
 
-	# config.clear_sidebar_sections!
+	config.clear_sidebar_sections!
 
 	action_item except: :index do
 		link_to "Voir sur le site publique", user_travel_url( travel.user, travel ), target: "_blank"
@@ -28,6 +28,7 @@ ActiveAdmin.register Travel do
 	index do
 		column(:id, sortable: :id) { |travel| link_to(travel.id, admin_travel_path(travel)) }
 		column(:user)
+		column("nb") { |travel| (travel.count_person.nil?) ? "-" : travel.count_person }
 		column(:city) { |travel| travel.user.city }
 		column(:phone) { |travel| travel.user.license }
 		column(:email) { |travel| link_to(travel.user.email, "mailto:#{travel.user.email}?body=Bonjour #{travel.user.name},%0A%0A%0A") }
@@ -35,8 +36,9 @@ ActiveAdmin.register Travel do
 		column(:airPort)
 		column(:rdv, sortable: :rdv)
 		column(:departure, sortable: :departure)
+		column("D f n") { |travel| travel.flight_n_departure }
 		column(:arrival, sortable: :arrival)
-		column("nb") { |travel| (travel.count_person.nil?) ? "-" : travel.count_person }
+		column("A f n") { |travel| travel.flight_n_arrival }
 		column(:ph) { |travel| (travel.has_image?) ? status_tag("OK", :on, class: "bullet") : status_tag("NO", :canceled, class: "bullet") }
 		column(:pr) { |travel| (travel.user.has_complete_profile?) ? status_tag("OK", :on, class: "bullet") : status_tag("NO", :canceled, class: "bullet") }
 		column(:status) { |travel| status_tag(travel.status.to_s) }
