@@ -14,14 +14,20 @@ ActiveAdmin.register Travel do
 	scope :active do |travels|
 		travels.where(status: Travel::STATUS[:active])
 	end
-	scope :rent do |travels|
-		travels.where(status: Travel::STATUS[:rent])
+	# scope :rent do |travels|
+	# 	travels.where(status: Travel::STATUS[:rent])
+	# end
+	# scope :canceled do |travels|
+	# 	travels.where(status: Travel::STATUS[:canceled])
+	# end
+	# scope :terminated do |travels|
+	# 	travels.where(status: Travel::STATUS[:terminated])
+	# end
+	scope "Next departures" do |travels|
+		travels.where("status = #{Travel::STATUS[:active]} AND departure > '#{Time.now}'").order(:departure)
 	end
-	scope :canceled do |travels|
-		travels.where(status: Travel::STATUS[:canceled])
-	end
-	scope :terminated do |travels|
-		travels.where(status: Travel::STATUS[:terminated])
+	scope "Next arrivals" do |travels|
+		travels.where("status = #{Travel::STATUS[:active]} AND arrival > '#{Time.now}'").order(:arrival)
 	end
 
 
