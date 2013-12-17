@@ -62,7 +62,7 @@ class Travel < ActiveRecord::Base
 	before_validation :set_datetimes # convert accessors back to db format
 	before_validation :set_default_contacted
 	before_save :set_datetimes # convert accessors back to db format
-	before_create :set_default_rdv
+	# before_create :set_default_rdv
 
 	def status
 		STATUS.key(read_attribute(:status))
@@ -96,9 +96,9 @@ class Travel < ActiveRecord::Base
 		self.contacted = "NO"
 	end
 
-	def set_default_rdv
-		self.rdv = self.departure - 3.hours
-	end
+	# def set_default_rdv
+	# 	self.rdv = self.departure - 3.hours
+	# end
 
 	# Check if the travel request has an image
 	def has_image?

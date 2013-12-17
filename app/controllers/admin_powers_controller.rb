@@ -18,7 +18,7 @@ class AdminPowersController < ApplicationController
 		new_car.travel_id = new_travel.id
 		new_car.save
 
-		flash[:notice] = "Travel ##{new_car.id} a été dupliqué avec succés du Travel ##{travel.id} avec “#{current_user.name}” comme propriétaire."
+		flash[:notice] = "Travel ##{new_car.id} was successfully duplicated from Travel ##{travel.id} with “#{current_user.name}” as proprietary."
 		redirect_to admin_travel_path new_travel
 	end
 
