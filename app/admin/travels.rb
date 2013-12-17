@@ -50,6 +50,7 @@ ActiveAdmin.register Travel do
 		column(:ph) { |travel| (travel.has_image?) ? status_tag("OK", :on, class: "bullet") : status_tag("NO", :canceled, class: "bullet") }
 		column(:pr) { |travel| (travel.user.has_complete_profile?) ? status_tag("OK", :on, class: "bullet") : status_tag("NO", :canceled, class: "bullet") }
 		column(:status) { |travel| status_tag(travel.status.to_s) }
+		column(:created_at)
 	end
 
 	show do
