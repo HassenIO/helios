@@ -5,6 +5,7 @@ TravelerCar::Application.routes.draw do
 	ActiveAdmin.routes(self)
 	namespace :admin_powers do
 		get "new_travel_email/:id", action: "new_travel_email", as: "new_travel_email"
+		get "duplicate_travel/:id", action: "duplicate_travel", as: "duplicate_travel"
 	end
 
 	scope "/:locale", :constraints => {:locale => /[a-z]{2}(-[A-Z]{2})?/} do

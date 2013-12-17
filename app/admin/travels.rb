@@ -94,6 +94,7 @@ ActiveAdmin.register Travel do
 		ul do
 			li link_to "Email to #{travel.user.name}", "mailto:#{travel.user.email}?body=Bonjour #{travel.user.name},%0A%0A%0A"
 			li link_to "Send \"New Travel\" email", admin_powers_new_travel_email_path(travel), remote: true
+			li link_to "Duplicate this Travel", admin_powers_duplicate_travel_path(travel)
 		end
 	end
 
