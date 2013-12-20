@@ -66,9 +66,14 @@ ActiveAdmin.register Travel do
 						travel.flight_n_departure
 					end
 				end
+				row("Contacted client?") { travel.contacted }
 				row(:rdv) do
-					h = ((travel.departure - travel.rdv).to_i)/3600
-					"#{l travel.rdv, format: :long} (#{h} hours before departure)"
+					if travel.rdv.blank?
+						strong "No RDV fixed"
+					else
+						h = ((travel.departure - travel.rdv).to_i)/3600
+						"#{l travel.rdv, format: :long} (#{h} hours before departure)"
+					end
 				end
 				row(:return) { travel.arrival }
 				row("Return flight num.") do
@@ -79,7 +84,6 @@ ActiveAdmin.register Travel do
 					end
 				end
 				row(:user) { link_to travel.user.name, admin_user_path(travel.user) }
-				row("Did we contact the client?") { travel.contacted }
 				row("How many people?") { travel.count_person }
 				row("Do we have regulatory document?") { travel.reg_document }
 				row(:car) { "#{travel.car.brand} #{travel.car.model} (#{travel.car.year})" }

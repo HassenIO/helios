@@ -128,6 +128,7 @@ en:
       cannot_be_past: "cannot be past"
       cannot_be_before_departure: "cannot be before departure"
       cannot_be_before_start: "cannot be before beginning"
+      cannot_be_so_short: "cannot be so short"
     template:
       body: ! 'There were problems with the following fields:'
       header:
