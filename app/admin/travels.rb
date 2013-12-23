@@ -24,10 +24,10 @@ ActiveAdmin.register Travel do
 	# 	travels.where(status: Travel::STATUS[:terminated])
 	# end
 	scope "Next departures" do |travels|
-		travels.where("status = #{Travel::STATUS[:active]} AND departure > '#{Time.now}'").order(:departure)
+		travels.where("departure > '#{Time.now}'").order("departure ASC")
 	end
 	scope "Next arrivals" do |travels|
-		travels.where("status = #{Travel::STATUS[:active]} AND arrival > '#{Time.now}'").order(:arrival)
+		travels.where("status = #{Travel::STATUS[:active]} AND arrival > '#{Time.now}' AND contacted = 'YES'").order("arrival ASC")
 	end
 
 
