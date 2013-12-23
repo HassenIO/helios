@@ -32,7 +32,8 @@ ActiveAdmin.register Travel do
 
 
 	index do
-		column(:id, sortable: :id) { |travel| link_to(travel.id, admin_travel_path(travel)) }
+		column(:id) { |travel| link_to(travel.id, admin_travel_path(travel)) }
+		column(:created_at)
 		column(:user)
 		column("nb") { |travel| (travel.count_person.nil?) ? "-" : travel.count_person }
 		column(:city) { |travel| travel.user.city }
@@ -50,7 +51,6 @@ ActiveAdmin.register Travel do
 		column(:ph) { |travel| (travel.has_image?) ? status_tag("OK", :on, class: "bullet") : status_tag("NO", :canceled, class: "bullet") }
 		column(:pr) { |travel| (travel.user.has_complete_profile?) ? status_tag("OK", :on, class: "bullet") : status_tag("NO", :canceled, class: "bullet") }
 		column(:status) { |travel| status_tag(travel.status.to_s) }
-		column(:created_at)
 	end
 
 	show do
@@ -66,7 +66,9 @@ ActiveAdmin.register Travel do
 						travel.flight_n_departure
 					end
 				end
-				row("Contacted client?") { travel.contacted }
+				row("Client venu ?") do
+					(travel.contacted.blank?) ? "" : travel.contacted
+				end
 				row(:rdv) do
 					if travel.rdv.blank?
 						strong "No RDV fixed"
@@ -173,9 +175,11 @@ ActiveAdmin.register Travel do
 
 				@travel.attributes = params[:travel]
 				if @travel.status == :active && @travel.car.category.nil?
-					render action: "edit", :notice => "If 'active' you should select a category"
+					flash.now[:notice] = "If 'active' you should select a category."
+					render action: "edit"
 				elsif @travel.save(:validate => false)
-					redirect_to :action => :show, :notice => "Travel was successfully updated."
+					flash.now[:notice] = "Travel was successfully updated."
+					redirect_to :action => :show
 				else
 					render action: "edit"
 				end
