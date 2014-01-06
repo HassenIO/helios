@@ -66,7 +66,7 @@ class RentsController < ApplicationController
 		@rent = Rent.new(params[:rent])
 
 		@rent.user = current_user
-		@rent.amount = price_for_rent(@rent)
+		@rent.amount = price_for_rent(@rent, price: @rent.travel.car.category.price * reduc(@rent, @rent.travel.car.category))
 		@rent.status = :unpaid
 
 		respond_to do |format|

@@ -7,7 +7,7 @@ module PricingHelper
 	def price_for_rent_in_cents(rent, options = {})
 		# price = rent.try(:travel).try(:car).try(:category).try(:price) || options[:price] || 0
 		# price = options[:price] || rent.try(:travel).try(:car).try(:category).try(:price) || 0
-		price = options[:category].price || rent.try(:travel).try(:car).try(:category).try(:price) || 0
+		price = options[:price] || options[:category].price || rent.try(:travel).try(:car).try(:category).try(:price) || 0
 		price*reduc(rent, options[:category])*number_of_days(rent)
 	end
 
