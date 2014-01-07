@@ -37,13 +37,13 @@
           <p><%= t(:interval_datetime, :startDate => l(rent.startDate), :endDate => l(rent.endDate)) %>
 
           <h4><%= t(:x_days, :count => number_of_days(rent)) %>
-            <%= t(:byDay, :price => number_to_currency(rent.travel.car.category.price_in_euros)) %></h4>
+            <%= t(:byDay, :price => number_to_currency(rent.travel.car.category.price_in_euros * reduc(rent, rent.travel.car.category))) %></h4>
 
           <% if @user == current_user %>
               <span class="label <%= rent.status || :unpaid %> pull-right"><%= t("helpers.label.rent.payment.status." + (rent.status || :unpaid).to_s) %></span>
           <% end %>
 
-          <h3><%= t(:total, :total => number_to_currency(price_for_rent(rent, :price => rent.travel.car.category.price))) %></h3>
+          <h3><%= t(:total, :total => number_to_currency(price_for_rent(rent, :price => rent.travel.car.category.price) * reduc(rent, rent.travel.car.category))) %></h3>
 
           </p>
           <% if rent.persisted? %>

@@ -32,7 +32,7 @@
           <% if @travel.car.category %>
               <h3><%= t(".how_many") %></h3>
 
-              <p><%= [t(:x_days, :count => number_of_days(@rent)), t(:byDay, :price => number_to_currency(@travel.car.category.price_in_euros))].join(", ") %>
+              <p><%= [t(:x_days, :count => number_of_days(@rent)), t(:byDay, :price => number_to_currency(@travel.car.category.price_in_euros * reduc(@rent, @travel.car.category)))].join(", ") %>
               </p>
 
               <% unless @travel.commercial_text.blank? %>
@@ -48,7 +48,7 @@
               <% end %>
 
 
-              <h2><%= t(:total, :total => number_to_currency(price_for_rent(@rent, :price => @travel.car.category.price))) %> </h2>
+              <h2><%= t(:total, :total => number_to_currency(price_for_rent(@rent, :price => @travel.car.category.price) * reduc(@rent, @travel.car.category))) %> </h2>
 
               <p>
                 <%= link_to t(".yes_i_do"), new_rent_path(:rent => params[:rent].merge(:travel_id => @travel.id)), :class => "btn btn-large on-hover btn-block" %>
