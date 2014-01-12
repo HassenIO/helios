@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023131846) do
+ActiveRecord::Schema.define(:version => 20140112175308) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -33,6 +33,27 @@ ActiveRecord::Schema.define(:version => 20131023131846) do
     t.string "city"
     t.string "country"
     t.string "status",  :default => "ON"
+  end
+
+  create_table "api_mgts", :force => true do |t|
+    t.string   "pickup_date"
+    t.string   "pickup_time"
+    t.string   "dropoff_date"
+    t.string   "dropoff_time"
+    t.integer  "airport_id"
+    t.integer  "driver_age"
+    t.string   "affiliate_id"
+    t.integer  "nb_travels"
+    t.integer  "nb_days"
+    t.integer  "min_price"
+    t.integer  "max_price"
+    t.string   "response"
+    t.string   "token"
+    t.boolean  "click",        :default => false
+    t.integer  "nb_clicks",    :default => 0
+    t.string   "travels"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "cars", :force => true do |t|
@@ -90,6 +111,17 @@ ActiveRecord::Schema.define(:version => 20131023131846) do
     t.text    "contribution_details"
     t.integer "status"
   end
+
+  create_table "rent_options", :force => true do |t|
+    t.string   "code"
+    t.integer  "price",         :default => 0
+    t.boolean  "daily_price",   :default => false
+    t.string   "default_label"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "rent_options", ["code"], :name => "index_rent_options_on_code", :unique => true
 
   create_table "rents", :force => true do |t|
     t.datetime "startDate"

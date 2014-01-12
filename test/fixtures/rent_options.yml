@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  code: MyString
+  price: 1
+  daily_price: false
+  default_label: MyString
+
+two:
+  code: MyString
+  price: 1
+  daily_price: false
+  default_label: MyString
