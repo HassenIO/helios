@@ -104,7 +104,12 @@ class TravelsController < ApplicationController
 	# DELETE /travels/1
 	# DELETE /travels/1.json
 	def destroy
-		@travel.destroy
+		@travel.status = :canceled_by_user
+		if @travel.save
+			flash[:notice] = t("flash.travels.delete.success")
+		else
+			flash[:alert] = t("flash.travels.delete.failure")
+		end
 
 		respond_to do |format|
 			format.html { redirect_to user_travels_url(@user) }

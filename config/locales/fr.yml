@@ -280,6 +280,9 @@ fr:
       update:
         success: "Votre demande de parking a bien été mise à jour."
         alert: "La mise à jour ne peut être prise en compte car il existe des erreurs dans le formulaire."
+      delete:
+        success: "Votre demande de parking a été annulée."
+        failure: "Impossible d'annuler cette demande, veuillez contacter le support."
 
 
   layouts:
