@@ -52,8 +52,27 @@ class SearchController < ApplicationController
 		@travels = Travel.where('arrival > :end AND departure < :start AND "airPort_id" = :airPort_id AND status = 1',
 										{:start => "#{params[:pickup_date]} #{params[:pickup_time]}",
 											:end => "#{params[:dropoff_date]} #{params[:dropoff_time]}",
-											:airPort_id => airports[params[:airport_id]] })
+											:airPort_id => airports[params[:airport_id]] }).sort_by { |travel| travel.car.category.price }
 
+		api = ApiMgt.new
+		api.affiliate_id = params[:affiliate_id]
+		api.airport_id = airports[params[:airport_id]]
+		api.click = false
+		api.driver_age = params[:driver_age]
+		api.dropoff_date = params[:dropoff_date]
+		api.dropoff_time = params[:dropoff_time]
+		api.max_price = @travels.last.car.category.price * @nb_days
+		api.min_price = @travels.first.car.category.price * @nb_days
+		api.nb_clicks = 0
+		api.nb_days = @nb_days
+		api.nb_travels = @travels.count
+		api.pickup_date = params[:pickup_date]
+		api.pickup_time = params[:pickup_time]
+		api.response = @travels
+		api.token = Digest::SHA1.hexdigest("aB #{params[:affiliate_id]} % #{Time.now} (#{rand(0..999)}) yZ")
+		api.travels = ""
+
+		api.save
 		
 		respond_to do |format|
 			format.xml { render file: "search/api/#{params[:affiliate_id]}", content_type: "application/xml" }

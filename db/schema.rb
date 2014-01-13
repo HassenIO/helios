@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140112175308) do
+ActiveRecord::Schema.define(:version => 20140113112930) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20140112175308) do
     t.integer  "nb_days"
     t.integer  "min_price"
     t.integer  "max_price"
-    t.string   "response"
+    t.text     "response"
     t.string   "token"
     t.boolean  "click",        :default => false
     t.integer  "nb_clicks",    :default => 0
