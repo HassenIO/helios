@@ -9,16 +9,14 @@ ActiveAdmin.register_page "Dashboard" do
 		#
 		columns do
 			column do
-				panel "Pending Parking" do
-					table_for Travel.find_all_by_status(Travel::STATUS[:pending], :order => 'created_at asc').each do |travel|
-						column(:id) {|travel| link_to(travel.id, admin_travel_path(travel)) }
-						column(:airPort)
-						column(:departure_date)
-						column(:departure_time)
-						column(:arrival_date)
-						column(:arrival_time)
-						column(:status) {|travel| status_tag(travel.status.to_s) }
-						column(:created_at, :sortable => :created_at)
+				panel "Pending travels" do
+					table_for Travel.where("departure > '#{Time.now}' AND status = #{Travel::STATUS[:pending]}").order('departure asc').each do |travel|
+						column(:id) { |travel| link_to "Travel ##{travel.id}", admin_travel_path(travel) }
+						column(:airPort) { |travel| travel.airPort.name }
+						column(:car) { |travel| link_to "#{travel.car.brand} #{travel.car.model} (#{travel.car.year})", user_travel_path( travel.user, travel ) }
+						column(:departure, sortable: :departure)
+						column(:arrival)
+						column(:created_at, sortable: :created_at)
 					end
 				end
 			end
