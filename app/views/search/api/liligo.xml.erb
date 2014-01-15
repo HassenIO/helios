@@ -9,7 +9,7 @@
 			<Big></Big>
 			<Small></Small>
 		</Luggage>
-		<Price><%= travel.car.category.price * @nb_days / 100 %></Price>
+		<Price><%= (travel.car.category.price * @nb_days / 100).ceil %></Price>
 		<Currency>EUR</Currency>
 		<Supplier>TravelerCar</Supplier>
 		<Pickup>
