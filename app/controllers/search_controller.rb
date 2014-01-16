@@ -47,7 +47,7 @@ class SearchController < ApplicationController
 	def api_search
 		airports = { "CDG" => 1, "ORY" => 2, "BVA" => 3 }
 
-		@nb_days = (params[:dropoff_date].to_date - params[:pickup_date].to_date).to_i + 1
+		@nb_days = ((params[:dropoff_date].to_time - params[:pickup_date].to_time)/1.day).ceil
 
 		@travels = Travel.where('arrival > :end AND departure < :start AND "airPort_id" = :airPort_id AND status = 1',
 										{:start => "#{params[:pickup_date]} #{params[:pickup_time]}",
