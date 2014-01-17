@@ -4,7 +4,24 @@
       <div class="row-fluid">
 
 
-        <div class="span3">
+        <div class="span4">
+          <div class="control-group">
+            <%= f.label :airPort, :class => "control-label" %>
+            <div class="controls">
+              <%= f.collection_select(:airPort_id, AirPort.all, :id, :name) %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :count_person, :class => "control-label" %>
+            <div class="controls">
+              <%= f.select(:count_person, (1..6), selected: ((@travel.count_person.nil?) ? 2 : @travel.count_person)) %>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="span4">
           <div class="control-group">
             <%= f.label :departure, :class => "control-label" %>
             <div class="controls">
@@ -25,7 +42,7 @@
           </div>
         </div>
 
-        <div class="span3">
+        <div class="span4">
           <div class="control-group">
             <%= f.label :arrival, :class => "control-label" %>
             <div class="controls">
@@ -44,37 +61,7 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="span3">
-          <div class="control-group">
-            <%= f.label :airPort, :class => "control-label" %>
-            <div class="controls">
-              <%= f.collection_select(:airPort_id, AirPort.all, :id, :name) %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= f.label "Arrivée souhaitée à l'aéroport", :class => "control-label" %>
-            <div class="controls">
-              <%= f.select(:count_person, (1..6), selected: ((@travel.count_person.nil?) ? 2 : @travel.count_person)) %>
-            </div>
-          </div>
-        </div>
-
-        <div class="span3">
-          <div class="control-group">
-            <%= f.label :count_person, :class => "control-label" %>
-            <div class="controls">
-              <%= f.select(:count_person, (1..6), selected: ((@travel.count_person.nil?) ? 2 : @travel.count_person)) %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= f.label "Votre numéro de téléphone", :class => "control-label" %>
-            <div class="controls">
-              <div class="input-append" id="travel_flight_n_departure">
-                <%= f.text_field :flight_n_arrival, :class => "input-large", size: "16", placeholder: "Ex : AB123", value: @travel.flight_n_arrival %>
-              </div>
-            </div>
-          </div>
+          
         </div>
 
       </div>
