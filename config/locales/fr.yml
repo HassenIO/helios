@@ -530,7 +530,7 @@ fr:
         brand: "Marque"
         model: "Modèle"
         year: "Année"
-        nbSeats: "Nombre de places"
+        nbSeats: "places"
         km: "Kilométrage"
         fuel: "Carburant"
         essence: "Essence"

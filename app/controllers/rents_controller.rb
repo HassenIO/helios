@@ -40,6 +40,9 @@ class RentsController < ApplicationController
 				#Fill driver info with user ones
 				@rent.driver = Driver.new(@user.attributes.select{ |key, _| COMMON_DRIVER_USER_FIELDS.include?(key) })
 
+				@options = RentOptions.all
+				@rentPrice = number_of_days(@rent) * @rent.travel.car.category.price_in_euros * reduc(@rent, @rent.travel.car.category)
+				@rentPrice = @rentPrice.to_i if @rentPrice == @rentPrice.to_i
 
 				respond_to do |format|
 					format.html # register.html.erb
