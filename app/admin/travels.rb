@@ -70,7 +70,7 @@ ActiveAdmin.register Travel do
 				row("Client venu ?") do
 					(travel.contacted.blank?) ? "" : travel.contacted
 				end
-				row("Desired arrival") { travel.departure - travel.presence.hour }
+				row("Desired arrival") { travel.presence.blank? ? "" : "#{travel.departure - travel.presence.hour} (#{travel.presence}h before takeoff)" }
 				row(:rdv) do
 					if travel.rdv.blank?
 						strong "No RDV fixed"
@@ -88,7 +88,7 @@ ActiveAdmin.register Travel do
 					end
 				end
 				row(:user) { link_to travel.user.name, admin_user_path(travel.user) }
-				row(:phone)
+				row(:phone_number) { travel.phone.blank? ? "" : travel.phone }
 				row("How many people?") { travel.count_person }
 				row("Do we have regulatory document?") { travel.reg_document }
 				row(:car) { "#{travel.car.brand} #{travel.car.model} (#{travel.car.year})" }
