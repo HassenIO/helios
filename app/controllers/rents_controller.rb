@@ -68,9 +68,17 @@ class RentsController < ApplicationController
 
 		@rent = Rent.new(params[:rent])
 
+		price = price_for_rent(@rent, price: @rent.travel.car.category.price * reduc(@rent, @rent.travel.car.category))
+		params[:options].each { |option| price += option[1].to_f } if !params[:options].blank?
+
 		@rent.user = current_user
-		@rent.amount = price_for_rent(@rent, price: @rent.travel.car.category.price * reduc(@rent, @rent.travel.car.category))
+		@rent.amount = price
 		@rent.status = :unpaid
+
+		@options = RentOptions.all
+		@rentPrice = number_of_days(@rent) * @rent.travel.car.category.price_in_euros * reduc(@rent, @rent.travel.car.category)
+		@rentPrice = @rentPrice.to_i if @rentPrice == @rentPrice.to_i
+
 
 		respond_to do |format|
 			if @rent.save
