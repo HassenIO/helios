@@ -1,89 +1,58 @@
 <div class="well-list ">
   <div class="row-fluid">
 
+
     <div class="span3">
       <% if rent.travel.car %>
-        <% img = rent.travel.car.filepicker1_url || travel.car.filepicker2_url ||travel.car.filepicker3_url %>
+          <% img = rent.travel.car.filepicker1_url || travel.car.filepicker2_url ||travel.car.filepicker3_url %>
 
-        <div class="img-polaroid" style="height: 200px; text-align: center;">
-          <% if img.blank? %>
+          <div class="img-polaroid" style="height: 200px; text-align: center;">
+            <% if img.blank? %>
 
-              <i class="icon-camera-retro" style="line-height: 200px; font-size: 100px; color: graytext"></i>
+                <i class="icon-camera-retro" style="line-height: 200px; font-size: 100px; color: graytext"></i>
 
-          <% else %>
-              <%= filepicker_image_tag img, h: 250, fit: 'clip', :class => 'img-polaroid' %>
-          <% end %>
-        </div>
+            <% else %>
+                <%= filepicker_image_tag img, h: 250, fit: 'clip', :class => 'img-polaroid' %>
+            <% end %>
+          </div>
       <% end %>
     </div>
 
     <div class="span5">
+
       <% if rent.travel.car %>
-        <h3><%= link_to rent.travel.car.try { |car| "#{car.brand} #{car.model} - #{car.year}" }, user_travel_url(rent.travel.user, rent.travel, :rent => params[:rent]), :class => "base" %></h3>
+          <h3><%= link_to rent.travel.car.try { |car| [car.year, car.brand, car.model].join(' - ') }, user_travel_url(rent.travel.user, rent.travel, :rent => params[:rent]), :class => "base" %>  </h3>
 
-        <p><%= rent.travel.car.category.try { |category| category.name } %>,  <%= rent.travel.car.nbSeats %> <%= t("helpers.label.car.nbSeats") %></p>
+          <p> <%= rent.travel.car.category.try { |category| category.name } %>,  <%= t("helpers.label.car.nbSeats") %>
+            : <%= rent.travel.car.nbSeats %></p>
 
-        <h4> <%= [km_to_human(rent.travel.car.km), t(rent.travel.car.fuel, :scope => [:helpers, :label, :car]), t(rent.travel.car.transmission, :scope => [:helpers, :label, :car])].join(', ') %></h4>
-
-        <p><%= t(:interval_datetime, :startDate => l(rent.startDate), :endDate => l(rent.endDate)) %>
-
-        <h4>Prix de location : <%= t(:x_days, :count => number_of_days(rent)) %> &times; 
-          <%= t(:byDay, :price => number_to_currency(rent.travel.car.category.price_in_euros * reduc(rent, rent.travel.car.category))) %> = 
-          <%= @rentPrice %> €</h4>
+          <h4> <%= [km_to_human(rent.travel.car.km), t(rent.travel.car.fuel, :scope => [:helpers, :label, :car]), t(rent.travel.car.transmission, :scope => [:helpers, :label, :car])].join(', ') %></h4>
       <% end %>
+
     </div>
 
     <div class="span4">
       <% if rent.travel.car.category %>
 
-        <table>
-          <tr>
-            <td class="option-label">Prix de location</td>
-            <td class="option-price"><%= @rentPrice %> €</td>
-          </tr>
-          <% @options.each do |option| %>
-            <tr>
-              <td class="option-label"><input type="checkbox" name="rent-option-<%= option.code %>" value="<%= number_of_days(rent) * option.price / 100 %>" class="rent-option-checkbox"> <%= option.default_label %></td>
-              <td class="option-price">-</td>
-            </tr>
+          <p><%= t(:interval_datetime, :startDate => l(rent.startDate), :endDate => l(rent.endDate)) %>
+
+          <h4><%= t(:x_days, :count => number_of_days(rent)) %>
+            <%= t(:byDay, :price => number_to_currency(rent.travel.car.category.price_in_euros * reduc(rent, rent.travel.car.category))) %></h4>
+
+          <% if @user == current_user %>
+              <span class="label <%= rent.status || :unpaid %> pull-right"><%= t("helpers.label.rent.payment.status." + (rent.status || :unpaid).to_s) %></span>
           <% end %>
-          <tr>
-            <td><hr/></td>
-            <td><hr/></td>
-          </tr>
-          <tr>
-            <td><strong>TOTAL</strong></td>
-            <td><strong id="total-price" data-total="<%= number_of_days(rent) * rent.travel.car.category.price_in_euros * reduc(rent, rent.travel.car.category) %>"><%= @rentPrice %> €</strong></td>
-          </tr>
-        </table>
-          
+
+          <h3><%= t(:total, :total => number_to_currency(price_for_rent(rent, :price => rent.travel.car.category.price) * reduc(rent, rent.travel.car.category))) %></h3>
+
+          </p>
+          <% if rent.persisted? %>
+              <%= link_to t('.go_rent'), user_rent_url(rent.user, rent), :class => "btn on-hover btn-large btn-block" %>
+          <% end %>
       <% end %>
     </div>
 
   </div>
 </div>
 
-
-<script type="text/javascript">
-  $(function(){
-    $("input.rent-option-checkbox").click(function(){
-      $this = $(this);
-      previousTotal = parseFloat($("#total-price").attr("data-total"));
-
-      if($this.is(":checked")) {
-
-        $this.parent().parent().children("td.option-price").html($this.attr("value") + " €");
-        newTotal = previousTotal + parseFloat($this.attr("value"));
-
-      } else {
-
-        $this.parent().parent().children("td.option-price").html("-");
-        newTotal = previousTotal - parseFloat($this.attr("value"));
-
-      }
-
-      $("#total-price").html(newTotal + " €").attr("data-total", newTotal);
-    });
-  });
-</script>
 
