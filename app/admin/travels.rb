@@ -46,7 +46,7 @@ ActiveAdmin.register Travel do
 		column("D f n") { |travel| travel.flight_n_departure }
 		column(:arrival, sortable: :arrival)
 		column("A f n") { |travel| travel.flight_n_arrival }
-		column("days") { |travel| ((travel.arrival - travel.departure)/1.day).ceil }
+		column("days") { |travel| (travel.arrival.to_date - travel.departure.to_date).to_i + 1 }
 		column("Cat.") { |travel| travel.try(:car).try(:category).try { |category| "#{category.name} (#{category.price/100}€/day)" } }
 		column(:ph) { |travel| (travel.has_image?) ? status_tag("OK", :on, class: "bullet") : status_tag("NO", :canceled, class: "bullet") }
 		column(:pr) { |travel| (travel.user.has_complete_profile?) ? status_tag("OK", :on, class: "bullet") : status_tag("NO", :canceled, class: "bullet") }
@@ -58,6 +58,7 @@ ActiveAdmin.register Travel do
 			attributes_table_for travel do
 				row(:id) { link_to "#{travel.id} (click to view)", user_travel_path(I18n.locale, travel.user, travel), target: "_blank" }
 				row(:airport) { link_to travel.airPort.name, admin_air_port_path(travel.airPort) }
+				row(:duration) { "#{(travel.arrival.to_date - travel.departure.to_date).to_i + 1} days" }
 				row(:departure) { travel.departure }
 				row("Departure flight num.") do
 					if travel.flight_n_departure.blank?
