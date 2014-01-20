@@ -19,7 +19,7 @@ class SearchController < ApplicationController
 		@travels = []
 		@rent = Rent.new(params[:rent])
 		min_waiting = 1
-		min_days = 3
+		min_days = 1
 
 		respond_to do |format|
 			if !rent_partial_validation(@rent)
