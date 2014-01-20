@@ -38,7 +38,7 @@ ActiveAdmin.register User, as: "Stats" do
 
 		days = 0
 		Travel.all.each do |t|
-			days = days + ((t.arrival - t.departure)/1.days).ceil
+			days = days + (t.arrival.to_date - t.departure.to_date).to_i + 1
 		end
 
 		h3 "Nombre de jours de parking demandés : #{days} jours"
@@ -50,7 +50,7 @@ ActiveAdmin.register User, as: "Stats" do
 		days_30 = 0
 		days_999 = 0
 		Travel.all.each do |t|
-			d = ((t.arrival - t.departure)/1.day).ceil
+			d = (t.arrival.to_date - t.departure.to_date).to_i + 1
 			days_7 += 1 if d <= 7
 			days_15 += 1 if (d > 7 && d <= 15)
 			days_30 += 1 if (d > 15 && d <= 30)
@@ -74,7 +74,7 @@ ActiveAdmin.register User, as: "Stats" do
 		days_30 = 0
 		days_999 = 0
 		Travel.all.each do |t|
-			d = ((t.departure - t.created_at)/1.day).ceil
+			d = (t.arrival.to_date - t.departure.to_date).to_i + 1
 			days_3 += 1 if d <= 3
 			days_7 += 1 if (d > 3 && d <= 7)
 			days_15 += 1 if (d > 7 && d <= 15)
