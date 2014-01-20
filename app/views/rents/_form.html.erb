@@ -51,12 +51,13 @@
             <table width="100%">
               <tr>
                 <td class="option-label">Prix de location</td>
-                <td class="option-price"><%= @rentPrice %> €</td>
+                <td class="option-price" style="text-align:right"><%= @rentPrice %> €</td>
               </tr>
               <% @options.each do |option| %>
+                <% option_price = option.daily_price ? number_of_days(@rent) * option.price.to_f / 100 : option.price.to_f / 100 %>
                 <tr>
-                  <td class="option-label"><input style="margin-top:-4px" type="checkbox" name="options[<%= option.code %>]" value="<%= (option.daily_price) ? number_of_days(@rent) * option.price.to_f / 100 : option.price.to_f / 100 %>" class="rent-option-checkbox"> <%= option.default_label %></td>
-                  <td class="option-price">-</td>
+                  <td class="option-label"><input style="margin-top:-4px" type="checkbox" name="options[<%= option.code %>]" value="<%= (option_price == option_price.to_i) ? option_price.to_i : option_price.round(2) %>" class="rent-option-checkbox"> <%= option.default_label %></td>
+                  <td class="option-price" style="text-align:right">-</td>
                 </tr>
               <% end %>
               <tr>
@@ -65,7 +66,7 @@
               </tr>
               <tr id="total-line">
                 <td><strong>TOTAL</strong></td>
-                <td><strong id="total-price" data-total="<%= number_of_days(@rent) * @rent.travel.car.category.price_in_euros * reduc(@rent, @rent.travel.car.category) %>"><%= @rentPrice %> €</strong></td>
+                <td style="text-align:right"><strong id="total-price" data-total="<%= number_of_days(@rent) * @rent.travel.car.category.price_in_euros * reduc(@rent, @rent.travel.car.category) %>"><%= @rentPrice %> €</strong></td>
               </tr>
             </table>
               
