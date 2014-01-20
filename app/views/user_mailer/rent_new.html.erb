@@ -32,6 +32,16 @@
 </ul>
 <br/>
 
+<% if !@rent.rent_options.blank? %>
+	<p>D'autre part, vous avez demandé à bénéficier des options de location suivantes :</p>
+	<ul>
+		<% @rent.rent_options.each do |option| %>
+			<li><%= option.default_label %></li>
+		<% end %>
+	</ul>
+	<br/>
+<% end %>
+
 <p>Nous restons à votre disposition pour tout complément d'information.</p>
 
 <p>Bien à vous,</p>

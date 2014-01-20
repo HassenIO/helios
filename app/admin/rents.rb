@@ -5,7 +5,7 @@ ActiveAdmin.register Rent do
 		column(:airPort)
 		column("From:", :startDate)
 		column("To", :endDate)
-		column(:user_id) { |rent| link_to([rent.user.first_name, rent.user.last_name].join(' '), admin_user_path(rent.user)) }
+		column(:user_id) { |rent| link_to(rent.user.name || [rent.user.first_name, rent.user.last_name].join(' '), admin_user_path(rent.user)) }
 		column(:travel_id) { |rent| link_to(rent.try(:travel).car.try { |car| "#{car.brand} #{car.model} #{car.year}" }, admin_travel_path(rent.travel)) }
 		column(:amount)
 		column(:transaction_id)
