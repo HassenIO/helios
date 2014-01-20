@@ -48,7 +48,7 @@
 
         <div class="span4">
           
-            <table>
+            <table width="100%">
               <tr>
                 <td class="option-label">Prix de location</td>
                 <td class="option-price"><%= @rentPrice %> €</td>
@@ -63,7 +63,7 @@
                 <td><hr/></td>
                 <td><hr/></td>
               </tr>
-              <tr>
+              <tr id="total-line">
                 <td><strong>TOTAL</strong></td>
                 <td><strong id="total-price" data-total="<%= number_of_days(@rent) * @rent.travel.car.category.price_in_euros * reduc(@rent, @rent.travel.car.category) %>"><%= @rentPrice %> €</strong></td>
               </tr>
