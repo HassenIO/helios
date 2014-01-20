@@ -8,7 +8,7 @@ class TravelPeriodValidator < ActiveModel::Validator
 				record.errors.add(:departure_date, :cannot_be_past)
 				record.errors.add(:departure_time, :cannot_be_past)
 			end
-			unless record.departure > Date.today + 4.days
+			unless record.departure > Date.today + 1.days
 				record.errors.add(:departure, :cannot_be_so_short)
 				record.errors.add(:departure_date, :cannot_be_so_short)
 				record.errors.add(:departure_time, :cannot_be_so_short)
@@ -16,12 +16,12 @@ class TravelPeriodValidator < ActiveModel::Validator
 		end
 
 		unless record.arrival.blank?
-			unless  record.arrival > Date.today
+			unless record.arrival > Date.today
 				record.errors.add(:arrival, :cannot_be_past)
 				record.errors.add(:arrival_date, :cannot_be_past)
 				record.errors.add(:arrival_time, :cannot_be_past)
 			end
-			unless record.arrival > Date.today + 4.days
+			unless record.arrival > Date.today + 2.days
 				record.errors.add(:arrival, :cannot_be_so_short)
 				record.errors.add(:arrival_date, :cannot_be_so_short)
 				record.errors.add(:arrival_time, :cannot_be_so_short)
