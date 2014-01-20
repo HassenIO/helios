@@ -1,2 +1,2 @@
-ActiveAdmin.register RentOptions do
+ActiveAdmin.register RentOption do
 end

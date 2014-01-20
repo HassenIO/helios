@@ -40,7 +40,7 @@ class RentsController < ApplicationController
 				#Fill driver info with user ones
 				@rent.driver = Driver.new(@user.attributes.select{ |key, _| COMMON_DRIVER_USER_FIELDS.include?(key) })
 
-				@options = RentOptions.all
+				@options = RentOption.all
 				@rentPrice = number_of_days(@rent) * @rent.travel.car.category.price_in_euros * reduc(@rent, @rent.travel.car.category)
 				@rentPrice = @rentPrice.to_i if @rentPrice == @rentPrice.to_i
 
@@ -75,13 +75,14 @@ class RentsController < ApplicationController
 		@rent.amount = price
 		@rent.status = :unpaid
 
-		@options = RentOptions.all
+		@options = RentOption.all
 		@rentPrice = number_of_days(@rent) * @rent.travel.car.category.price_in_euros * reduc(@rent, @rent.travel.car.category)
 		@rentPrice = @rentPrice.to_i if @rentPrice == @rentPrice.to_i
 
 
 		respond_to do |format|
 			if @rent.save
+				params[:options].each { |code, _| RentOptionsRent.create({ rent_id: @rent.id, rent_option_id: RentOption.find_by_code( code ).id }) } if !params[:options].blank?
 				format.html { redirect_to @rent.paypal_url( user_rents_url(current_user), payment_notification_url(@rent) ) }
 			else
 				format.html { render action: "new" }

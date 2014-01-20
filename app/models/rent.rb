@@ -51,6 +51,9 @@ class Rent < ActiveRecord::Base
 	belongs_to :travel
 	belongs_to :airPort
 
+	has_many :rent_options_rents
+	has_many :rent_options, through: :rent_options_rents
+
 	accepts_nested_attributes_for :driver
 
 	validates :endDate, :presence => true

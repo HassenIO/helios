@@ -20,8 +20,21 @@ ActiveAdmin.register Rent do
 
 
 	action_item  :except => :index do
-		link_to "Voir sur le site publique", user_rent_url(rent.user, rent), :target => "blank"
+		link_to "Voir sur le site publique", user_rent_url(rent.user, rent), :target => "_blank"
 	end
 
+	show do |rent|
+		default_main_content
+		if !rent.rent_options.blank?
+			h3 "Liste des options"
+			ul do
+				rent.rent_options.each do |option|
+					li "#{option.default_label}"
+				end
+			end
+		else
+			h3 "Pas d'options"
+		end
+	end
 
 end
