@@ -44,6 +44,8 @@ class RentsController < ApplicationController
 				@rentPrice = number_of_days(@rent) * @rent.travel.car.category.price_in_euros * reduc(@rent, @rent.travel.car.category)
 				@rentPrice = @rentPrice.to_i if @rentPrice == @rentPrice.to_i
 
+				@nb_days = number_of_days @rent
+
 				respond_to do |format|
 					format.html # register.html.erb
 					format.json { render json: @rent }
@@ -77,7 +79,9 @@ class RentsController < ApplicationController
 
 		@options = RentOption.all
 		@rentPrice = number_of_days(@rent) * @rent.travel.car.category.price_in_euros * reduc(@rent, @rent.travel.car.category)
-		@rentPrice = @rentPrice.to_i if @rentPrice == @rentPrice.to_i
+		@rentPrice = @rentPrice.to_i 
+
+		@nb_days = number_of_days if @rentPrice == @rentPrice.to_i
 
 
 		respond_to do |format|

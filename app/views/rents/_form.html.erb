@@ -53,13 +53,21 @@
                 <td class="option-label">Prix de location</td>
                 <td class="option-price" style="text-align:right"><%= @rentPrice %> €</td>
               </tr>
-              <% @options.each do |option| %>
-                <% option_price = option.daily_price ? number_of_days(@rent) * option.price.to_f / 100 : option.price.to_f / 100 %>
-                <tr>
-                  <td class="option-label"><input style="margin-top:-4px" type="checkbox" name="options[<%= option.code %>]" value="<%= (option_price == option_price.to_i) ? option_price.to_i : option_price.round(2) %>" class="rent-option-checkbox"> <%= option.default_label %></td>
-                  <td class="option-price" style="text-align:right">-</td>
-                </tr>
-              <% end %>
+              <tr>
+                <td><h4>Options voiture</h4></td>
+                <td></td>
+              </tr>
+              <%= new_option RentOption.info("GPS"), @nb_days %>
+              <%= new_option RentOption.info("BABY_SEAT"), @nb_days %>
+              <%= new_option RentOption.info("REHAUSSEUR"), @nb_days %>
+              <%= new_option RentOption.info("FRANCHISE"), @nb_days %>
+              <%= new_option RentOption.info("CONDUCTEUR"), @nb_days %>
+              <tr>
+                <td><h4>Options compensation carbonne</h4></td>
+                <td></td>
+              </tr>
+              <%= new_option RentOption.info("COMPENSATION"), @nb_days %>
+              <%= new_option RentOption.info("ARBRE"), @nb_days %>
               <tr>
                 <td><hr/></td>
                 <td><hr/></td>
