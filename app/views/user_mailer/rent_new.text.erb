@@ -28,5 +28,16 @@ Les informations sur le véhicule loué :
 <% end %><% if !@rent.travel.car.desc.blank? %>- Commentaire du propriétaire : <%= @rent.travel.car.desc %>
 <% end %>
 
+<% if !@rent.rent_options.blank? %>
+
+D'autre part, vous avez demandé à bénéficier des options de location suivantes :
+
+<% @rent.rent_options.each do |option| %>
+- <%= option.default_label %>
+<% end %>
+
+<% end %>
+
+
 
 Nous restons à votre disposition pour tout complément d'information.

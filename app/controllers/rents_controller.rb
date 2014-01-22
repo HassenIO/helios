@@ -40,6 +40,11 @@ class RentsController < ApplicationController
 				#Fill driver info with user ones
 				@rent.driver = Driver.new(@user.attributes.select{ |key, _| COMMON_DRIVER_USER_FIELDS.include?(key) })
 
+				@options = RentOption.all
+				@rentPrice = number_of_days(@rent) * @rent.travel.car.category.price_in_euros * reduc(@rent, @rent.travel.car.category)
+				@rentPrice = @rentPrice.to_i if @rentPrice == @rentPrice.to_i
+
+				@nb_days = number_of_days @rent
 
 				respond_to do |format|
 					format.html # register.html.erb
@@ -65,12 +70,23 @@ class RentsController < ApplicationController
 
 		@rent = Rent.new(params[:rent])
 
+		price = price_for_rent(@rent, price: @rent.travel.car.category.price * reduc(@rent, @rent.travel.car.category))
+		params[:options].each { |option| price += option[1].to_f } if !params[:options].blank?
+
 		@rent.user = current_user
-		@rent.amount = price_for_rent(@rent, price: @rent.travel.car.category.price * reduc(@rent, @rent.travel.car.category))
+		@rent.amount = price
 		@rent.status = :unpaid
+
+		@options = RentOption.all
+		@rentPrice = number_of_days(@rent) * @rent.travel.car.category.price_in_euros * reduc(@rent, @rent.travel.car.category)
+		@rentPrice = @rentPrice.to_i 
+
+		@nb_days = number_of_days if @rentPrice == @rentPrice.to_i
+
 
 		respond_to do |format|
 			if @rent.save
+				params[:options].each { |code, _| RentOptionsRent.create({ rent_id: @rent.id, rent_option_id: RentOption.find_by_code( code ).id }) } if !params[:options].blank?
 				format.html { redirect_to @rent.paypal_url( user_rents_url(current_user), payment_notification_url(@rent) ) }
 			else
 				format.html { render action: "new" }

@@ -324,7 +324,7 @@ en:
         brand: "Brand"
         model: "Model"
         year: "Year"
-        nbSeats: "Number of seats"
+        nbSeats: "seats"
         km: "km"
         fuel: "Fuel"
         license: "license"

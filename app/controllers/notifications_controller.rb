@@ -8,7 +8,7 @@ class NotificationsController < ApplicationController
 		# See https://www.paypal.com/fr/cgi-bin/webscr?cmd=p/acc/ipn-info-outside
 
 		# The IPN should be for the Completed payment, not the refund
-		if params[:payment_status] == "Completed"
+		if params[:payment_status] == "Completed" || ( Rails.env == "development" && params[:payment_status] == "Pending" )
 
 			# Check if the payment transaction_id exists, to avoid ducplicate payment
 			if Rent.find_by_transaction_id( params[:txn_id] ).nil?
