@@ -37,11 +37,10 @@ ActiveAdmin.register User, as: "Stats" do
 
 
 		days = 0
-		Travel.all.each do |t|
-			days = days + (t.arrival.to_date - t.departure.to_date).to_i + 1
-		end
+		Travel.all.each { |t| days += (t.arrival.to_date - t.departure.to_date).to_i + 1 }
 
-		h3 "Nombre de jours de parking demandés : #{days} jours"
+		h3 "Nombre de jours de parking demandés :  jours"
+
 
 		h3 "Répartition des durées de parking"
 
@@ -93,13 +92,19 @@ ActiveAdmin.register User, as: "Stats" do
 
 		br
 		h3 "Répartition de l'âge des véhicules"
-		cars_new = Car.where("year >= 2009").count
+
+		this_year = Date.today.year
 		count_cars = Car.count
-		r = (cars_new*100/count_cars).ceil
+		cars_new = Car.where("year >= #{this_year - 5}").count
+		cars_old = Car.where("year <= #{this_year - 9}").count
+
+		r_new = (cars_new*100/count_cars).ceil
+		r_old = (cars_old*100/count_cars).ceil
 
 		ul do
-			li "Voitures entre 2009 et maintenant : #{cars_new} (#{r}%)"
-			li "Voitures plus ancienne que 2009 : #{count_cars - cars_new} (#{ 100 - r }%)"
+			li "Voitures entre #{this_year - 5} (inclus) et maintenant : #{cars_new} (#{r_new}%)"
+			li "Voitures entre #{this_year - 8} (inclus) et #{this_year - 6} (inclus) : #{count_cars - cars_new - cars_old} (#{ 100 - r_new - r_old }%)"
+			li "Voitures plus anciennes que #{this_year - 9} (inclus) : #{cars_old} (#{r_old}%)"
 		end
 
 	end

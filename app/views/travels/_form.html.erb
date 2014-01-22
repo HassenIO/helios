@@ -255,24 +255,6 @@
           <!--/Photos-->
 
 
-          <!--Commentaire-->
-          <div class="row-fluid"><!--row-fluid-->
-            <h3>Un commentaire ou une description ?</h3>
-          </div>
-          <!--/row-fluid-->
-
-
-          <div class="row-fluid">
-            <div class="span12">
-              <%= car_fields.text_area :desc, :class => "full-width", :rows => 5, :placeholder => t("helpers.label.car.desc") %>
-              <span class="help-block"></span>
-            </div>
-            <!--/span12-->
-          </div>
-          <!--/row-fluid-->
-          <!--/Commentaire-->
-
-
           <!--Informations complémentaires-->
           <fieldset class="well">
             <div class="row-fluid"><!--row-fluid-->
@@ -372,6 +354,28 @@
 
           </fieldset>
           <!--Informations complémentaires-->
+
+          <!--Commentaire-->
+          <div class="row-fluid"><!--row-fluid-->
+            <h3>Un commentaire ou une description ?</h3>
+          </div>
+          <!--/row-fluid-->
+
+
+
+
+          <div class="row-fluid">
+            <div class="span12">
+              <%= car_fields.text_area :desc, :class => "full-width", :rows => 5, :placeholder => t("helpers.label.car.desc") %>
+              <span class="help-block"></span>
+            </div>
+            <!--/span12-->
+          </div>
+          <!--/row-fluid-->
+          <!--/Commentaire-->
+
+
+          
 
       <% end %>
 
