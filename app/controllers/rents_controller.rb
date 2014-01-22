@@ -81,7 +81,7 @@ class RentsController < ApplicationController
 		@rentPrice = number_of_days(@rent) * @rent.travel.car.category.price_in_euros * reduc(@rent, @rent.travel.car.category)
 		@rentPrice = @rentPrice.to_i 
 
-		@nb_days = number_of_days if @rentPrice == @rentPrice.to_i
+		@nb_days = number_of_days(@rent) if @rentPrice == @rentPrice.to_i
 
 
 		respond_to do |format|
