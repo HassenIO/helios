@@ -206,7 +206,7 @@ fr:
       cannot_be_before_departure: "ne peut être avant la date de départ"
       cannot_be_before_start: "ne peut être avant la date de début"
       cannot_be_so_short: "ne peut être si proche"
-
+      phone_number_must_be_filled: "Vous devez fournir un munéro de téléphone"
     template: &errors_template
       header:
         one:   "Impossible d'enregistrer ce(tte) %{model} : 1 erreur"

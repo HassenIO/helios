@@ -57,7 +57,7 @@
           <div class="control-group">
             <%= f.label "Arrivée souhaitée à l'aéroport", :class => "control-label" %>
             <div class="controls">
-              <%= f.select(:presence, (1..6).map { |p| ["#{p}h avant le vol", p] }, selected: ((@travel.presence.nil?) ? 2 : @travel.presence)) %>
+              <%= f.select(:presence, (6.downto(1).map { |p| ["#{p}h avant le vol", p] } << ["Sélectionner une heure", ""]).reverse, selected: ((@travel.presence.nil?) ? "" : @travel.presence)) %>
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@
             </div>
           </div>
           <div class="control-group">
-            <%= f.label "Votre numéro de téléphone", :class => "control-label" %>
+            <%= f.label :phone, "Votre numéro de téléphone", :class => "control-label" %>
             <div class="controls">
               <div class="input-append" id="travel_phone">
                 <%= f.text_field :phone, :class => "input-large", size: "16", placeholder: "Ex : 06.12.34.56.78", value: @travel.phone %>

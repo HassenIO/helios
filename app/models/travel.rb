@@ -35,6 +35,10 @@ class TravelPeriodValidator < ActiveModel::Validator
 				record.errors.add(:arrival_time, :cannot_be_before_departure)
 			end
 		end
+
+		if record.phone.blank?
+			record.errors.add(:phone, :phone_number_must_be_filled)
+		end
 	end
 
 end
