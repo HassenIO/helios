@@ -5,7 +5,7 @@ class SearchController < ApplicationController
 
 	def index
 		@rent = Rent.new
-		@rent.startDate = Time.now + 1.days
+		@rent.startDate = Time.now + 2.days
 		@rent.endDate = Time.now + 9.days
 		# @rent.airPort = AirPort.find(1)
 

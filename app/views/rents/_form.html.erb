@@ -30,7 +30,7 @@
           <% end %>
         </div>
 
-        <div class="span5">
+        <div class="span4">
           <% if @rent.travel.car %>
             <h3><%= link_to @rent.travel.car.try { |car| "#{car.brand} #{car.model} - #{car.year}" }, user_travel_url(@rent.travel.user, @rent.travel, :rent => params[:rent]), :class => "base" %></h3>
 
@@ -46,7 +46,7 @@
           <% end %>
         </div>
 
-        <div class="span4">
+        <div class="span5">
           
             <table width="100%">
               <tr>

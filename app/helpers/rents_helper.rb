@@ -2,9 +2,11 @@ module RentsHelper
 	include ::PricingHelper
 
 	def new_option option, nb_days
-		option_price = option.daily_price ? nb_days * option.price.to_f / 100 : option.price.to_f / 100
+		daily_price = option.price.to_f / 100
+		daily_price = (daily_price == daily_price.to_i) ? daily_price.to_i : daily_price.round(2)
+		option_price = daily_price * (option.daily_price ? nb_days : 1)
 
-		"<tr> <td class=\"option-label\"> <input style=\"margin-top:-4px\" type=\"checkbox\" name=\"options[#{option.code}]\" value=\"#{ (option_price == option_price.to_i) ? option_price.to_i : option_price.round(2) }\" class=\"rent-option-checkbox\"> #{option.default_label}<span style=\"color:#0090ff;font-size:0.7em\"> (#{option.price.to_f / 100} € par jour)</span></td> <td class=\"option-price\" style=\"text-align:right\">-</td> </tr>".html_safe
+		"<tr> <td class=\"option-label\"> <input style=\"margin-top:-4px\" type=\"checkbox\" name=\"options[#{option.code}]\" value=\"#{ option_price }\" class=\"rent-option-checkbox\"> #{option.default_label}<em style=\"color:#0090ff;font-size:0.7em\"> #{ daily_price } €#{" par jour" if option.daily_price}</em></td> <td class=\"option-price\" style=\"text-align:right\">-</td> </tr>".html_safe
 	end
 
 end
