@@ -50,4 +50,6 @@ TravelerCar::Application.routes.draw do
 
 	get "api/cars", to: "search#api_search", as: "api_search"
 
+	resources :parkings
+
 end
