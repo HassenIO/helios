@@ -5,7 +5,13 @@ class Parking < ActiveRecord::Base
 
 	validates_presence_of :airport, :brand, :dropoff, :email, :model, :name, :phone, :pickup, :year, :nb_people, :comment, :price
 
-	def price
+	before_create :calculate_price
+
+	def self.airports
+		[["Sélectionner un aéroport", ""], ["Roissy Charles de Gaulle", "CDG"]]
+	end
+
+	def get_price
 		nb_days = (self.pickup.to_date - self.dropoff.to_date).to_i
 
 		return 40 if nb_days <= 4
@@ -14,6 +20,14 @@ class Parking < ActiveRecord::Base
 		daily_price = 5 if nb_days >= 32
 
 		return daily_price * nb_days
+	end
+
+
+
+	private
+
+	def calculate_price
+		self.price = self.get_price
 	end
 
 end
