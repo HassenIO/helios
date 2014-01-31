@@ -4,6 +4,11 @@ class AdminMailer < ActionMailer::Base
 	# default :from => "contact@travelercar.com", :to => "support@travelercar.com"
 
 
+	def parking_request parking
+		@parking = parking
+		mail(:subject => "Nouvelle demande de parking payant")
+	end
+
 	# Notify the admin about a new Rent
 	def rent_notification rent
 		@user = rent.user

@@ -7,7 +7,7 @@ class ParkingsController < ApplicationController
 		@parking = Parking.new params[:parking]
 
 		if @parking.save
-			
+			AdminMailer.parking_request(@parking).deliver
 		else
 			flash[:error] = "Erreur dans votre formulaire"
 			render "index"

@@ -1,0 +1,21 @@
+<h3>Une nouvelle demande de parking payant... What a beautiful day :D</h3>
+<p><%= @parking.name %> vient de faire une demande de parking payant, dont voici le détail :</p>
+<ul>
+	<li>Aéroport : <%= @parking.airport %></li>
+	<li>Date/Heure de dépôt du véhicule : <%= @parking.dropoff.strftime "%d/%m/%Y %H:%M" %></li>
+	<li>Date/Heure de reprise du véhicule : <%= @parking.pickup.strftime "%d/%m/%Y %H:%M" %></li>
+	<li>Nombre de jours : <%= (@parking.pickup.to_date - @parking.dropoff.to_date).to_i %> jours</li>
+	<li>Prix du parking : <%= @parking.price %> €</li>
+	<li>Nombre de personnes attendues : <%= @parking.nb_people %></li>
+	<li>Nom/prénom du demandeur : <%= @parking.name %></li>
+	<li>Adresse mail : <%= @parking.email %></li>
+	<li>Numéro de tel. : <%= @parking.phone %></li>
+	<li>Marque du véhicule : <%= @parking.brand %></li>
+	<li>Modèle du véhicule : <%= @parking.model %></li>
+	<li>Année de premiére mise en circulation : <%= @parking.year %></li>
+	<li>Commentaire : <%= @parking.comment %></li>
+</ul>
+<p>Le demandeur a été prévenu du traitement de sa demande. Il faut donc lui envoyer un paiement PayPal de <%= @parking.price %> €.</p>
+
+<br/>
+<p>Bonne continuation</p>
