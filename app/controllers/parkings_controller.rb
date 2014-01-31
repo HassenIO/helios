@@ -4,11 +4,13 @@ class ParkingsController < ApplicationController
 	end
 
 	def create
-		if (@parking = Parking.create params[:parking])
+		@parking = Parking.new params[:parking]
+
+		if @parking.save
+			render text: "parking crée !!!"
 		else
-			flash.now[:error] = "Erreur dans votre formulaire"
+			flash[:error] = "Erreur dans votre formulaire"
 			render "index"
-			return
 		end
 	end
 end

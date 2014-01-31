@@ -1,3 +1,10 @@
+<% if @parking && @parking.errors.any? %>
+	<ul>
+		<% @parking.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		<% end %>
+	</ul>
+<% end %>
 <h2>Réservez votre place de parking près de l'aéroport</h2>
 <%= form_for Parking.new do |f| %>
 
@@ -36,7 +43,7 @@
 			<div class="control-group">
 				<%= f.label :nb_people, "Nombre de personnes", :class => "control-label" %>
 				<div class="controls">
-					<%= f.select :airport, (15.downto(1).map{ |n| [n, n] } << ["Sélectionner un nombre", ""]).reverse, :class => "input-large", size: "16" %>
+					<%= f.select :nb_people, (15.downto(1).map{ |n| [n, n] } << ["Sélectionner un nombre", ""]).reverse, :class => "input-large", size: "16" %>
 				</div>
 			</div>
 		</div>
@@ -45,7 +52,7 @@
 	<div class="row-fluid">
 		<div class="span4">
 			<div class="control-group">
-				<%= f.label :name, "Votre nom", :class => "control-label" %>
+				<%= f.label :name, "Votre nom et prénom", :class => "control-label" %>
 				<div class="controls">
 					<%= f.text_field :name, :class => "input-large", size: "16" %>
 				</div>
