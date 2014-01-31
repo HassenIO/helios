@@ -17,16 +17,28 @@ class Parking < ActiveRecord::Base
 	before_save :calculate_price
 
 	def self.airports
-		[["Sélectionner un aéroport", ""], ["Roissy Charles de Gaulle", "CDG"]]
+		[["Sélectionner un aéroport", ""], ["Roissy Charles de Gaulle", "CDG"], ["Paris Orly", "ORY"]]
+	end
+
+	def get_nb_days
+		(self.pickup.to_date - self.dropoff.to_date).to_i + 1
 	end
 
 	def get_price
-		nb_days = (self.pickup.to_date - self.dropoff.to_date).to_i
+		nb_days = self.get_nb_days
 
-		return 40 if nb_days <= 4
-		daily_price = 8 if nb_days >= 5 && nb_days <= 15
-		daily_price = 6 if nb_days >= 16 && nb_days <= 31
-		daily_price = 5 if nb_days >= 32
+		case self.airport
+		when "CDG"
+			return 40 if nb_days <= 4
+			daily_price = 8 if nb_days >= 5 && nb_days <= 15
+			daily_price = 6 if nb_days >= 16 && nb_days <= 31
+			daily_price = 5 if nb_days >= 32
+		when "ORY"
+			daily_price = 10 if nb_days <= 4
+			daily_price = 8 if nb_days >= 5 && nb_days <= 15
+			daily_price = 7 if nb_days >= 16 && nb_days <= 31
+			daily_price = 6 if nb_days >= 32
+		end
 
 		return daily_price * nb_days
 	end

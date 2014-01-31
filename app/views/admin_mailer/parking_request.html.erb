@@ -4,7 +4,7 @@
 	<li>Aéroport : <%= @parking.airport %></li>
 	<li>Date/Heure de dépôt du véhicule : <%= @parking.dropoff.strftime "%d/%m/%Y %H:%M" %></li>
 	<li>Date/Heure de reprise du véhicule : <%= @parking.pickup.strftime "%d/%m/%Y %H:%M" %></li>
-	<li>Nombre de jours : <%= (@parking.pickup.to_date - @parking.dropoff.to_date).to_i %> jours</li>
+	<li>Nombre de jours : <%= @parking.get_nb_days %> jours</li>
 	<li>Prix du parking : <%= @parking.price %> €</li>
 	<li>Nombre de personnes attendues : <%= @parking.nb_people %></li>
 	<li>Nom/prénom du demandeur : <%= @parking.name %></li>
