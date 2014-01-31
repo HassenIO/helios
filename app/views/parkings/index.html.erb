@@ -1,9 +1,9 @@
 <% if @parking && @parking.errors.any? %>
-	<ul>
+	<!--<ul>
 		<% @parking.errors.full_messages.each do |message| %>
 			<li><%= message %></li>
 		<% end %>
-	</ul>
+	</ul>-->
 <% end %>
 <h2>Réservez votre place de parking près de l'aéroport</h2>
 <%= form_for Parking.new do |f| %>

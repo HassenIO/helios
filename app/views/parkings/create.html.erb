@@ -1,0 +1,9 @@
+<p>Bonjour,</p>
+<br/>
+
+<p>Nous avons bien pris en compte votre demande de parking du <%= @parking.dropoff.strftime "%d/%m/%Y %H:%M" %> au <%= @parking.pickup.strftime "%d/%m/%Y %H:%M" %> (<%= (@parking.pickup.to_date - @parking.dropoff.to_date).to_i %> jours).</p>
+<p>Notre équipe traitera votre demande dans les plus brefs délais, et vous enverra une demande de paiement de <%= @parking.price %> € correspondant au parking.</p>
+<p>Bien cordialement,</p>
+
+<br/>
+<p>L'équipe TravelerCar</p>
