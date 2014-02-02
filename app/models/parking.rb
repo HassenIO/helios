@@ -13,8 +13,7 @@ class Parking < ActiveRecord::Base
 	validates :year, presence: true
 	validates :nb_people, presence: true
 
-	before_save :change_date_format
-	before_save :calculate_price
+	before_save :adjust_params
 
 	def self.airports
 		[["Sélectionner un aéroport", ""], ["Roissy Charles de Gaulle", "CDG"], ["Paris Orly", "ORY"]]
@@ -61,12 +60,9 @@ class Parking < ActiveRecord::Base
 
 	private
 
-	def change_date_format
+	def adjust_params
 		self.dropoff = Time.strptime self.dropoff, "%d/%m/%Y %H:%M"
 		self.pickup = Time.strptime self.pickup, "%d/%m/%Y %H:%M"
-	end
-
-	def calculate_price
 		self.price = self.get_price
 	end
 
