@@ -1,5 +1,5 @@
-<h3>Une nouvelle demande de parking payant... What a beautiful day :D</h3>
-<p><%= @parking.name %> vient de faire une demande de parking payant, dont voici le détail :</p>
+<h3>Un client viens de réserver et payer une place de parking... What a beautiful day :D</h3>
+<p><%= @parking.name %> vient de faire une demande de parking payant et l'a payée sur PayPal. Voici le détail :</p>
 <ul>
 	<li>Aéroport : <%= @parking.airport %></li>
 	<li>Date/Heure de dépôt du véhicule : <%= @parking.dropoff.strftime "%d/%m/%Y %H:%M" %></li>
@@ -15,7 +15,7 @@
 	<li>Année de premiére mise en circulation : <%= @parking.year %></li>
 	<li>Commentaire : <%= @parking.comment %></li>
 </ul>
-<p>Le demandeur a été prévenu du traitement de sa demande. Il faut donc lui envoyer un paiement PayPal de <%= @parking.price %> €.</p>
+<p>Le paiement de <%= @parking.price %> € sur PayPal a correctement été effectué.</p>
 
 <br/>
 <p>Bonne continuation</p>
