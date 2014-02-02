@@ -1,9 +1,9 @@
 <p>Bonjour <%= @parking.name %>,</p>
 <br/>
 
-<p>Nous avons bien pris en compte votre demande de parking du <%= @parking.dropoff.strftime "%d/%m/%Y %H:%M" %> au <%= @parking.pickup.strftime "%d/%m/%Y %H:%M" %> (<%= @parking.get_nb_days %> jours) ainsi que son paiement sur PayPal de <%= @parking.price %>.</p>
+<p>Nous avons bien pris en compte votre demande de parking du <%= @parking.dropoff.strftime "%d/%m/%Y %H:%M" %> au <%= @parking.pickup.strftime "%d/%m/%Y %H:%M" %> (<%= @parking.get_nb_days %> jours) ainsi que son paiement sur PayPal de <%= @parking.price %> €.</p>
 <p>Notre équipe reviendra vers vous dans les plus brefs délais, via l'adresse e-mail <%= @parking.email %>, pour vous fournir d'avantage d'informations sur votre parking.</p>
-<p>Bien cordialement,</p>
 
 <br/>
+<p>Bien cordialement,</p>
 <p>L'équipe TravelerCar</p>

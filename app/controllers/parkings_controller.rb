@@ -1,6 +1,12 @@
 class ParkingsController < ApplicationController
 
-	def index	
+	def index
+		@parking = Parking.new
+	end
+
+	def show
+		@parking = Parking.new airport: params[:id]
+		render "index"
 	end
 
 	def create
@@ -9,7 +15,7 @@ class ParkingsController < ApplicationController
 		if @parking.save
 			redirect_to @parking.paypal_url parkings_success_url(@parking.id)
 		else
-			flash[:error] = "Erreur dans votre formulaire"
+			flash[:error] = "Erreur(s) dans votre formulaire"
 			render "index"
 		end
 	end

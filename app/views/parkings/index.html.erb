@@ -6,7 +6,7 @@
 	</ul>-->
 <% end %>
 <h2>Réservez votre place de parking près de l'aéroport</h2>
-<%= form_for Parking.new do |f| %>
+<%= form_for @parking do |f| %>
 
 	<div class="well well-blue row-fluid">
 		<div class="span3">
@@ -19,7 +19,7 @@
 		</div>
 		<div class="span3">
 			<div class="control-group">
-				<%= f.label :dropoff, "Date de dépôt de véhicule", :class => "control-label" %>
+				<%= f.label :dropoff, "Date de dépôt du véhicule", :class => "control-label" %>
 				<div class="controls">
 					<div class="input-append date form_datetime" id="datetime-picker-dropoff">
 						<%= f.text_field :dropoff, :class => "input-large", size: "16" %>
@@ -30,7 +30,7 @@
 		</div>
 		<div class="span3">
 			<div class="control-group">
-				<%= f.label :pickup, "Date de reprise de véhicule", :class => "control-label" %>
+				<%= f.label :pickup, "Date de reprise du véhicule", :class => "control-label" %>
 				<div class="controls">
 					<div class="input-append date form_datetime" id="datetime-picker-pickup">
 						<%= f.text_field :pickup, :class => "input-large", size: "16" %>
@@ -43,7 +43,7 @@
 			<div class="control-group">
 				<%= f.label :nb_people, "Nombre de personnes", :class => "control-label" %>
 				<div class="controls">
-					<%= f.select :nb_people, (15.downto(1).map{ |n| [n, n] } << ["Sélectionner un nombre", ""]).reverse, :class => "input-large", size: "16" %>
+					<%= f.select :nb_people, (7.downto(1).map{ |n| [n, n] } << ["Sélectionner un nombre", ""]).reverse, :class => "input-large", size: "16" %>
 				</div>
 			</div>
 		</div>
