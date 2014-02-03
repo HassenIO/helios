@@ -27,5 +27,6 @@ class ParkingsController < ApplicationController
 		@parking.pickup = Time.strptime @parking.pickup, "%Y-%m-%d %H:%M:00.000000"
 		
 		AdminMailer.parking_request(@parking).deliver
+		AdminMailer.parking_confirmation(@parking).deliver
 	end
 end
