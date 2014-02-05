@@ -25,7 +25,7 @@
 			<%= "Siége bébé inclus." if travel.car.hasChildSeat %>
 		</description>
 		<categorie><%= travel.car.category.name %></categorie>
-		<prix><%= (travel.car.category.price * @nb_days / 100).ceil %></prix>
+		<prix><%= price_for_rent(@rent, category: travel.car.category).ceil %></prix>
 		<url><%= user_travel_url(travel.user, travel) %></url>
 	</voiture>
 	<% end %>

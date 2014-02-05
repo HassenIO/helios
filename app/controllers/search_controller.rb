@@ -73,6 +73,10 @@ class SearchController < ApplicationController
 		api.travels = ""
 
 		api.save
+
+		@rent = Rent.new
+		@rent.startDate = Time.strptime( "#{params[:pickup_date]} #{params[:pickup_time]}", "%Y-%m-%d %H:%M" )
+		@rent.endDate = Time.strptime( "#{params[:dropoff_date]} #{params[:dropoff_time]}", "%Y-%m-%d %H:%M" )
 		
 		respond_to do |format|
 			format.xml { render file: "search/api/#{params[:affiliate_id]}", content_type: "application/xml" }
