@@ -30,8 +30,6 @@ gem "activeadmin"
 gem "meta_search",    ">= 1.1.0.pre"
 gem "country-select"
 
-# gem "leetchi-wallet-services"	# MangoPay
-
 gem "ckeditor"
 gem "roadie"
 
