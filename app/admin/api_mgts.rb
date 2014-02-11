@@ -2,6 +2,8 @@ ActiveAdmin.register ApiMgt do
 
 	AIRPORT = { 1 => "CDG", 2 => "ORY", 3 => "BVA" }
 
+	config.filters = false
+
 	index do
 		column(:id)
 		column(:affiliate_id)
@@ -16,6 +18,7 @@ ActiveAdmin.register ApiMgt do
 		column(:created_at)
 		# column(:anticipation) { |api_mgt| (api_mgt.pickup_date - api_mgt.created_at)/1.day }
 		column(:updated_at)
+		default_actions
 	end
 
 end

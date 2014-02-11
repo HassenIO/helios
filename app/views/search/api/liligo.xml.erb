@@ -29,7 +29,7 @@
 				<%= travel.car.filepicker3_url %>
 			<% end %>
 		</Image>
-		<Deep_link><![CDATA[<%= user_travel_url(travel.user, travel) %>]]></Deep_link>
+		<Deep_link><![CDATA[<%= api_redirect_url(@api.token, travel.id) %>]]></Deep_link>
 	</car>
 	<% end %>
 </cars>

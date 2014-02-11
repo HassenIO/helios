@@ -15,7 +15,7 @@ end
 gem "jquery-rails", "2.3.0"
 gem "less-rails-bootstrap", "~> 2.3.2"
 gem "less-rails-fontawesome", "~> 0.4.3"
-gem "therubyracer" # Ruby
+gem "therubyracer"
 
 gem "devise", ">= 2.2.3"
 gem "omniauth"

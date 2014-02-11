@@ -26,7 +26,7 @@
 		</description>
 		<categorie><%= travel.car.category.name %></categorie>
 		<prix><%= price_for_rent(@rent, category: travel.car.category).ceil %></prix>
-		<url><%= user_travel_url(travel.user, travel) %></url>
+		<url><%= api_redirect_url(@api.token, travel.id) %></url>
 	</voiture>
 	<% end %>
 </voitures>

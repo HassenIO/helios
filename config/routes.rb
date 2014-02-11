@@ -48,9 +48,10 @@ TravelerCar::Application.routes.draw do
 		post :payment, on: :member # Used for IPN
 	end
 
-	get "api/cars", to: "search#api_search", as: "api_search"
-
 	resources :parkings
 	get '/parkings/success/:id' => 'parkings#success', as: 'parkings_success'
+
+	get "api/cars", to: "search#api_search", as: "api_search"
+	get '/api/:token/travel/:travel', to: 'search#api_redirect', as: 'api_redirect'
 
 end
