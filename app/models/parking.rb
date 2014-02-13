@@ -1,6 +1,6 @@
 class Parking < ActiveRecord::Base
 	
-	attr_accessible :airport, :brand, :dropoff, :email, :model, :name, :phone, :pickup, :year, :nb_people, :comment, :price
+	attr_accessible :airport, :brand, :dropoff, :email, :model, :name, :phone, :pickup, :year, :nb_people, :comment, :price, :status, :paid
 
 	validates :airport, presence: true
 	validates :brand, presence: true
@@ -12,6 +12,7 @@ class Parking < ActiveRecord::Base
 	validates :pickup, presence: true
 	validates :year, presence: true
 	validates :nb_people, presence: true
+	validates :status, inclusion: { in: %w(pending paid canceled) }
 
 	before_save :adjust_params
 
@@ -61,9 +62,9 @@ class Parking < ActiveRecord::Base
 	private
 
 	def adjust_params
-		self.dropoff = Time.strptime self.dropoff, "%d/%m/%Y %H:%M"
-		self.pickup = Time.strptime self.pickup, "%d/%m/%Y %H:%M"
-		self.price = self.get_price
+		self.dropoff = Time.strptime self.dropoff, "%d/%m/%Y %H:%M" if self.dropoff.nil?
+		self.pickup = Time.strptime self.pickup, "%d/%m/%Y %H:%M" if self.pickup.nil?
+		self.price = self.get_price if self.price.nil?
 	end
 
 end
