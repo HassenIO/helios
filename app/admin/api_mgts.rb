@@ -1,14 +1,12 @@
 ActiveAdmin.register ApiMgt do
 
-	AIRPORT = { 1 => "CDG", 2 => "ORY", 3 => "BVA" }
-
 	config.filters = false
 
 	index do
 		column(:id)
 		column(:affiliate_id)
 		column(:clicks) { |api_mgt| api_mgt.nb_clicks }
-		column(:airport) { |api_mgt| AIRPORT[api_mgt.airport_id] }
+		column(:airport) { |api_mgt| ApiMgt::AIRPORT[api_mgt.airport_id] }
 		column(:pickup) { |api_mgt| "#{api_mgt.pickup_date} #{api_mgt.pickup_time}" }
 		column(:dropoff) { |api_mgt| "#{api_mgt.dropoff_date} #{api_mgt.dropoff_time}" }
 		column(:nb_days)

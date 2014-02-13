@@ -39,7 +39,7 @@ ActiveAdmin.register User, as: "Stats" do
 		days = 0
 		Travel.all.each { |t| days += (t.arrival.to_date - t.departure.to_date).to_i + 1 }
 
-		h3 "Nombre de jours de parking demandés :  jours"
+		h3 "Nombre de jours de parking demandés : #{days} jours"
 
 
 		h3 "Répartition des durées de parking"
@@ -105,6 +105,39 @@ ActiveAdmin.register User, as: "Stats" do
 			li "Voitures entre #{this_year - 5} (inclus) et maintenant : #{cars_new} (#{r_new}%)"
 			li "Voitures entre #{this_year - 8} (inclus) et #{this_year - 6} (inclus) : #{count_cars - cars_new - cars_old} (#{ 100 - r_new - r_old }%)"
 			li "Voitures plus anciennes que #{this_year - 9} (inclus) : #{cars_old} (#{r_old}%)"
+		end
+
+
+
+		br
+		h3 "Requêtes sur l'API"
+
+		count_requests = ApiMgt.count
+		requests = ApiMgt.group(:affiliate_id, :airport_id).count
+		count_requests_by_aa = {}
+
+		ul do
+			requests.each do |request, count|
+				count_requests_by_aa["#{request[0]}#{request[1]}"] = count
+				li "#{request[0]} à #{ApiMgt::AIRPORT[request[1]]} : #{count} requêtes ( #{ sprintf "%.2f", 100 * count / count_requests }% )"
+			end
+			li "Total : #{count_requests} requêtes"
+		end
+
+
+		br
+		h3 "Clics par affilié"
+
+		requests = ApiMgt.group(:affiliate_id, :airport_id).sum(:nb_clicks)
+		total_clicks = 0
+
+		ul do
+			requests.each do |request, count|
+				total_requests_for_this_aa = count_requests_by_aa["#{request[0]}#{request[1]}"]
+				li "#{request[0]} à #{ApiMgt::AIRPORT[request[1]]} : #{count} clics (#{ sprintf "%.2f", 100 * count / total_requests_for_this_aa }%)"
+				total_clicks += count
+			end
+			li "Total : #{total_clicks} clics"
 		end
 
 	end

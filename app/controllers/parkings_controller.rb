@@ -23,8 +23,6 @@ class ParkingsController < ApplicationController
 	def ipn
 		@parking = Parking.find_by_id params[:id]
 		
-		# @parking.dropoff = Time.strptime @parking.dropoff, "%Y-%m-%d %H:%M:00.000000"
-		# @parking.pickup = Time.strptime @parking.pickup, "%Y-%m-%d %H:%M:00.000000"
 		@parking.paid = true
 		@parking.status = "paid"
 		@parking.save
