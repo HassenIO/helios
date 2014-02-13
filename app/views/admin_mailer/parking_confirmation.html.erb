@@ -6,7 +6,7 @@
 <strong>Coordonées GPS</strong> : Latitude : 49.036667 / Longitude : 2.581667</p>
 
 <p>Nous allons réserver la navette qui vous conduira à votre terminal de départ.<br/>
-Le trajet de la navette dure une dizaine de minutes, aussi je vous propose de réserver votre navette pour <%= @parking.dropoff.strftime "%Hh%M le %d/%m/%Y" %>, de manière à ce que vous soyez au plus tard à l'aéroport à <%= (@parking.dropoff + 15.minutes).strftime "%Hh%M" %>. Cela vous convient-il ?</p>
+Le trajet de la navette dure une dizaine de minutes, aussi je vous propose de réserver votre navette pour <%= @parking.dropoff %>, de manière à ce que vous soyez au plus tard à l'aéroport à <%= (Time.strptime(@parking.dropoff, "%d/%m/%Y %H:%M") + 20.minutes).strftime "%Hh%M" %>. Cela vous convient-il ?</p>
 
 <p>Nous vous conseillons d'arriver une quinzaine de minutes avant l'heure de départ de la navette, afin de pouvoir vous garer tranquillement.</p>
 

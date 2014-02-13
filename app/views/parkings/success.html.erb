@@ -1,7 +1,7 @@
 <p>Bonjour <%= @parking.name %>,</p>
 <br/>
 
-<p>Nous vous remercions pour votre intérêt pour TravelerCar. Votre demande de parking du <%= @parking.dropoff.strftime "%d/%m/%Y %H:%M" %> au <%= @parking.pickup.strftime "%d/%m/%Y %H:%M" %>, soit une période de <%= @parking.get_nb_days %> jours, a été validée suite au paiement sur Paypal de <%= @parking.price %> euros.</p>
+<p>Nous vous remercions pour votre intérêt pour TravelerCar. Votre demande de parking du <%= @parking.dropoff %> au <%= @parking.pickup %>, soit une période de <%= @parking.get_nb_days %> jours, a été validée suite au paiement sur Paypal de <%= @parking.price %> euros.</p>
 <p>Notre service client va revenir vers vous au plus vite par email pour vous fournir l'adresse du parking et les détails concernant le jour de votre départ.</p>
 
 <br/>

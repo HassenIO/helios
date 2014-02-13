@@ -43,13 +43,13 @@ class Parking < ActiveRecord::Base
 		return daily_price * nb_days
 	end
 
-	def paypal_url redirect_url
+	def paypal_url redirect_url, notify_url
 		pp_params = {
 		    business: ENV["PAYPAL_ACCOUNT"],
 		    cmd: '_cart',
 		    upload: 1,
 		    return: redirect_url,
-		    # notify_url: notify_url,
+		    notify_url: notify_url,
 		    item_name_1: "Parking TravelerCar #{self.airport} #{self.get_nb_days} #{'jour'.pluralize self.get_nb_days}",
 		    amount_1: self.price,
 		    currency_code: "EUR"

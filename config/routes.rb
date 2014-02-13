@@ -49,6 +49,7 @@ TravelerCar::Application.routes.draw do
 	end
 
 	resources :parkings
+	post '/parkings/ipn/:id' => 'parkings#ipn', as: 'parkings_ipn'
 	get '/parkings/success/:id' => 'parkings#success', as: 'parkings_success'
 
 	get "api/cars", to: "search#api_search", as: "api_search"
