@@ -197,9 +197,9 @@ ActiveAdmin.register User, as: "Stats" do
 
 		ul do
 			li "1 jour et moins : #{days_1} (#{ (100 * days_1 / count_requests).ceil }%)"
-			li "2 jours et moins : #{days_2} (#{ (100 * days_2 / count_requests).ceil }%)"
-			li "3 jours et moins : #{days_3} (#{ (100 * days_3 / count_requests).ceil }%)"
-			li "4 jours et moins : #{days_4} (#{ (100 * days_4 / count_requests).ceil }%)"
+			li "2 jours : #{days_2} (#{ (100 * days_2 / count_requests).ceil }%)"
+			li "3 jours : #{days_3} (#{ (100 * days_3 / count_requests).ceil }%)"
+			li "4 jours : #{days_4} (#{ (100 * days_4 / count_requests).ceil }%)"
 			li "Entre 5 et 7 jours : #{days_7} (#{ (100 * days_7 / count_requests).ceil }%)"
 			li "Entre 8 et 10 jours : #{days_10} (#{ (100 * days_10 / count_requests).ceil }%)"
 			li "Entre 11 et 15 jours : #{days_15} (#{ (100 * days_15 / count_requests).ceil }%)"

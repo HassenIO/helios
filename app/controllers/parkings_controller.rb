@@ -23,14 +23,13 @@ class ParkingsController < ApplicationController
 	def ipn
 		@parking = Parking.find_by_id params[:id]
 		
-		@parking.paid = true
 		@parking.status = "paid"
 		@parking.save
 		
 		AdminMailer.parking_request(@parking).deliver
 		AdminMailer.parking_confirmation(@parking).deliver
 
-		render nothing: true
+		render nothing: true, status: 200
 	end
 
 	def success
