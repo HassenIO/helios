@@ -24,12 +24,15 @@ class ParkingsController < ApplicationController
 		@parking = Parking.find_by_id params[:id]
 		
 		@parking.status = "paid"
-		@parking.save
-		
-		AdminMailer.parking_request(@parking).deliver
-		AdminMailer.parking_confirmation(@parking).deliver
+		if @parking.save
+			AdminMailer.parking_request(@parking).deliver
+			AdminMailer.parking_confirmation(@parking).deliver
+			UserMailer.parking_confirmation(@parking).deliver
 
-		render nothing: true, status: 200
+			render nothing: true, status: 200
+		else
+			render nothing: true, status: 500
+		end
 	end
 
 	def success

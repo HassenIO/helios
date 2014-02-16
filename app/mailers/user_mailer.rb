@@ -3,9 +3,12 @@ class UserMailer < ActionMailer::Base
 	layout "mailer"
 
 	default from: ENV["MAILER_SUPPORT"], bcc: ENV["MAILER_ADMIN"]
-	# default :from => "contact@travelercar.com"
+	
 
-
+	def parking_confirmation parking
+		@parking = parking
+		mail(:subject => "Votre réservation de parking TravelerCar")
+	end
 
 	# Congratulate the new user after email confirmation or facebook signup.
 	def welcome user
