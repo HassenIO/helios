@@ -36,7 +36,7 @@ class SearchController < ApplicationController
 				@travels = Travel.where('arrival > :end AND departure < :start AND "airPort_id" = :airPort_id AND status = 1',
 										{:start => @rent.startDate,
 											:end => @rent.endDate,
-											:airPort_id => @rent.airPort_id})
+											:airPort_id => @rent.airPort_id}).sort_by { |travel| travel.car.category.price }
 
 				format.html # search.html.erb
 				format.json { render json: [@rent, @travels] }

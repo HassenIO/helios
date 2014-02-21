@@ -11,15 +11,29 @@ class ParkingsController < ApplicationController
 
 	def create
 		@parking = Parking.new params[:parking]
+		pickup_time = @parking.pickup.split(" ")[1]
+		dropoff_time = @parking.dropoff.split(" ")[1]
 
 		if @parking.save
-			redirect_to @parking.paypal_url( parkings_success_url(@parking.id), parkings_ipn_url(@parking.id) )
+			if @parking.airport == "CDG" && ((pickup_time >= "00:00" && pickup_time < "05:00") || (dropoff_time >= "00:00" && dropoff_time < "05:00"))
+				flash[:error] = "Désolé, mais aucune navette n'est disponible entre minuit et 05:00 du matin."
+				render "index"
+			elsif @parking.airport == "ORY" && ((pickup_time >= "00:00" && pickup_time < "06:00") || (dropoff_time >= "00:00" && dropoff_time < "06:00"))
+				flash[:error] = "Désolé, mais aucune navette n'est disponible entre minuit et 06:00 du matin."
+				render "index"
+			else
+				redirect_to @parking.paypal_url( parkings_success_url(@parking.id), parkings_ipn_url(@parking.id) )
+			end
 		else
 			flash[:error] = "Erreur(s) dans votre formulaire"
 			render "index"
 		end
 	end
-
+	
+	def update
+		create
+	end
+	
 	def ipn
 		@parking = Parking.find_by_id params[:id]
 		

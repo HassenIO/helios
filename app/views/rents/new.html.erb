@@ -1,3 +1,23 @@
 <h2><%= t(".title") %></h2>
 
 <%= render 'form' %>
+
+<div id="compensation-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<a class="close" data-dismiss="modal" aria-hidden="true">×</a>
+		<h3 id="myModalLabel">TravelerCar vous informe sur la compensation de trajet</h3>
+	</div>
+	<div class="modal-body">
+		<p>TravelerCar vous propose de compenser votre trajet en carbone grâce à son partenariat avec Pur Projet. La compensation est calculée selon la moyenne établie pour un jour de location, soit : 1 jour de location = 100 kilomètres parcourus = 26kg CO2 émis = 0,39 euros. Le montant proposé correspond à ce montant multiplié par le nombre de jours de votre location.</p>
+	</div>
+</div>
+
+<div id="arbre-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<a class="close" data-dismiss="modal" aria-hidden="true">×</a>
+		<h3 id="myModalLabel">Plantez un arbre avec l'aide de TravelerCar</h3>
+	</div>
+	<div class="modal-body">
+		<p>Vous pouvez choisir de planter un arbre pour 5 euros grâce au partenariat entre TravelerCar et Pur Projet. Vous pouvez visualiser le lieu où sera planté l'arbre sur la page du site dédiée au projet.</p>
+	</div>
+</div>

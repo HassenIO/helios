@@ -11,7 +11,7 @@ class AdminMailer < ActionMailer::Base
 
 	def parking_confirmation parking
 		@parking = parking
-		mail(:subject => "Votre réservation de parking TravelerCar")
+		mail(subject: "Votre réservation de parking TravelerCar", template_name: "parking_confirmation_#{parking.airport}")
 	end
 
 	# Notify the admin about a new Rent

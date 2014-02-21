@@ -1,6 +1,7 @@
 class UserMailer < ActionMailer::Base
 
-	layout "mailer"
+	layout "mailer", except: [:parking_confirmation]
+	layout "paid_parking", only: [:parking_confirmation]
 
 	default from: ENV["MAILER_SUPPORT"], bcc: ENV["MAILER_ADMIN"]
 	
