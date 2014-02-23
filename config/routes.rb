@@ -45,7 +45,7 @@ TravelerCar::Application.routes.draw do
 	match "log" => "navigations#log"
 
 	resources :notifications do
-		post :payment, on: :member # Used for IPN
+		post :payment, on: :member
 	end
 
 	resources :parkings

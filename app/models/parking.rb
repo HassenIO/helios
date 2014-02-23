@@ -17,7 +17,7 @@ class Parking < ActiveRecord::Base
 	before_save :adjust_params
 
 	def self.airports
-		[["Sélectionner un aéroport", ""], ["Roissy Charles de Gaulle", "CDG"], ["Paris Orly", "ORY"]]
+		[["Sélectionner un aéroport", ""], ["Charles de Gaulle", "CDG"], ["Paris Orly", "ORY"]]
 	end
 
 	def get_nb_days
@@ -44,21 +44,10 @@ class Parking < ActiveRecord::Base
 	end
 
 	def paypal_url redirect_url, notify_url
-		pp_params = {
-		    business: ENV["PAYPAL_ACCOUNT"],
-		    cmd: '_cart',
-		    upload: 1,
-		    return: redirect_url,
-		    notify_url: notify_url,
-		    item_name_1: "Parking TravelerCar #{self.airport} #{self.get_nb_days} #{'jour'.pluralize self.get_nb_days}",
-		    amount_1: self.price,
-		    currency_code: "EUR"
-		}
+		pp_params = {business: ENV["PAYPAL_ACCOUNT"], cmd: '_cart', upload: 1, return: redirect_url, notify_url: notify_url, item_name_1: "Parking TravelerCar #{self.airport} #{self.get_nb_days} #{'jour'.pluralize self.get_nb_days}", amount_1: self.price, currency_code: "EUR"}
 		ENV["PAYPAL_CHECKOUT"] + pp_params.to_query
 	end
-
-
-
+	
 	private
 
 	def adjust_params

@@ -11,11 +11,6 @@ ActiveAdmin.register Rent do
 		column(:transaction_id)
 		column(:status)
 		default_actions
-
-		# column(:car_category) { |rent| rent.try(:travel).try(:car).try(:category).try { |category| "#{category.name} - #{number_to_currency(category.price/100, :precision => 2)}/day" } }
-		# column(:price) { |rent| rent.try(:payment).try{ |payment| number_to_currency(payment.amount/100, :precision => 2) }}
-		# column(:status) { |rent| rent.try(:payment).try{ |payment| status_tag(payment.status.to_s) }}
-		# column(:created_at, :sortable => :created_at)
 	end
 
 

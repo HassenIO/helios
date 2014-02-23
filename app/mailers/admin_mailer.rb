@@ -1,8 +1,6 @@
 class AdminMailer < ActionMailer::Base
 
 	default from: ENV["MAILER_SUPPORT"], to: ENV["MAILER_ADMIN"]
-	# default :from => "contact@travelercar.com", :to => "support@travelercar.com"
-
 
 	def parking_request parking
 		@parking = parking
@@ -14,7 +12,6 @@ class AdminMailer < ActionMailer::Base
 		mail(subject: "Votre réservation de parking TravelerCar", template_name: "parking_confirmation_#{parking.airport}")
 	end
 
-	# Notify the admin about a new Rent
 	def rent_notification rent
 		@user = rent.user
 		@url  = user_rent_url(I18n.locale, rent.user, rent)
@@ -22,7 +19,6 @@ class AdminMailer < ActionMailer::Base
 		mail(:subject => "New rent on TravelerCar.com")
 	end
 
-	# Notify the admin about a new carpark request
 	def travel_new travel
 		@user = travel.user
 		@url  = user_travel_url(I18n.locale, travel.user, travel)
@@ -30,7 +26,6 @@ class AdminMailer < ActionMailer::Base
 		mail( :subject => "New parking on TravelerCar.com")
 	end
 
-	# Notify the admin about an update on carpark request
 	def travel_update travel
 		@user = travel.user
 		@url  = user_travel_url(I18n.locale, travel.user, travel)

@@ -1,8 +1,5 @@
 class SearchController < ApplicationController
 
-	# before_filter :must_sign_in
-	# before_filter :authenticate_user!
-
 	def index
 		@rent = Rent.new
 		@rent.startDate = Time.now + 2.days
@@ -10,7 +7,7 @@ class SearchController < ApplicationController
 		# @rent.airPort = AirPort.find(1)
 
 		respond_to do |format|
-			format.html # index.html.erb
+			format.html
 			format.json { render json: @rent }
 		end
 	end
@@ -24,21 +21,21 @@ class SearchController < ApplicationController
 		respond_to do |format|
 			if !rent_partial_validation(@rent)
 				@rent.valid?
-				format.html # search.html.erb
+				format.html
 				format.json { render json: @rent.errors, status: :unprocessable_entity }
 			elsif !min_waiting(min_waiting)
 				flash.now[:alert] = "Pour un début de location à moins de #{min_waiting} jours, veuillez contacter notre support <a href=\"#{ENV["WP_ROOT"]}/#contact\" class=\"base\">en cliquant ici</a>.".html_safe
-				format.html # search.html.erb
+				format.html
 			elsif !min_days(min_days)
 				flash.now[:alert] = "Vous devez louer pour au moins #{min_days} jours."
-				format.html # search.html.erb
+				format.html
 			else
 				@travels = Travel.where('arrival > :end AND departure < :start AND "airPort_id" = :airPort_id AND status = 1',
 										{:start => @rent.startDate,
 											:end => @rent.endDate,
 											:airPort_id => @rent.airPort_id}).sort_by { |travel| travel.car.category.price }
 
-				format.html # search.html.erb
+				format.html
 				format.json { render json: [@rent, @travels] }
 			end
 		end
@@ -107,7 +104,6 @@ class SearchController < ApplicationController
 		true
 	end
 
-	# Get how many days between departure and arrival
 	def min_days days 
 		start_date = human_to_system_datetime params[:rent][:startDate_date]
 		end_date = human_to_system_datetime params[:rent][:endDate_date]
@@ -115,7 +111,6 @@ class SearchController < ApplicationController
 		return ((end_date - start_date)/24/60/60).to_i >= days
 	end
 
-	# Get how many days between two dates
 	def min_waiting days 
 		start_date = Time.now
 		end_date = human_to_system_datetime params[:rent][:startDate_date]

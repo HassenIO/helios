@@ -5,25 +5,11 @@
 	<voiture>
 		<id><%= travel.id %></id>
 		<nom><%= "#{travel.car.brand} #{travel.car.model}" %></nom>
-		<photo>
-			<% if !travel.car.filepicker1_url.blank? %>
-				<%= travel.car.filepicker1_url %>
-			<% elsif !travel.car.filepicker2_url.blank? %>
-				<%= travel.car.filepicker2_url %>
-			<% else %>
-				<%= travel.car.filepicker3_url %>
-			<% end %>
-		</photo>
+		<photo> <% travel.car.filepicker1_url %> </photo>
 		<boite><%= (travel.car.transmission == "automatic") ? "automatique" : "manuelle" %></boite>
 		<climatisation><%= (travel.car.hasAirConditioning) ? "oui" : "non" %></climatisation>
 		<nbpassagers><%= travel.car.nbSeats %></nbpassagers>
-		<description>
-			<%= "#{travel.car.brand} #{travel.car.model} (#{travel.car.year}) #{travel.car.fuel}. " %>
-			<%= "GPS inclus. " if travel.car.hasGps %>
-			<%= (travel.car.isSmoker) ? "Fumeurs autorisés. " : "Non fumeur. " %>
-			<%= (travel.car.acceptedPets) ? "Animaux autorisés. " : "Animaux non autorisés. " %>
-			<%= "Siége bébé inclus." if travel.car.hasChildSeat %>
-		</description>
+		<description> <%= "#{travel.car.brand} #{travel.car.model} (#{travel.car.year}) #{travel.car.fuel}. " %> </description>
 		<categorie><%= travel.car.category.name %></categorie>
 		<prix><%= price_for_rent(@rent, category: travel.car.category).ceil %></prix>
 		<url><%= api_redirect_url(@api.token, travel.id) %></url>

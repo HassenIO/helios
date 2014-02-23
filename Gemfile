@@ -32,12 +32,3 @@ gem "country-select"
 
 gem "ckeditor"
 gem "roadie"
-
-group :development, :test do
-	gem "mailcatcher"
-	gem "quiet_assets", ">= 1.0.2"
-end
-
-gem "better_errors", ">= 0.7.2"
-gem "binding_of_caller", ">= 0.7.1"
-gem "meta_request"

@@ -14,7 +14,7 @@ ActiveAdmin.register User, as: "Stats" do
 				th "Nb RDV pris"
 			end
 
-			date = Time.zone.local(2013, 9, 1, 0, 0, 0) # Start date
+			date = Time.zone.local(2013, 9, 1, 0, 0, 0)
 			end_date = Time.zone.now
 
 			while date < end_date

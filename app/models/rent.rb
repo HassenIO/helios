@@ -32,16 +32,13 @@ class Rent < ActiveRecord::Base
 
 	include ActiveModel::Validations
 
-	# Define constants
 	STATUS = [:unpaid, :paid, :canceled]
 
 	attr_accessible :endDate, :endDate_time, :endDate_date, :startDate, :startDate_time, :startDate_date, :travel_id,
 					:driver_attributes, :user_id, :airPort_id, :has_accepted_cgv, :comments,
 					:status, :amount, :transaction_id, :payment_params
 
-	# add the accessors for the two fields
 	attr_accessor :startDate_time, :startDate_date, :endDate_time, :endDate_date
-
 
 	belongs_to :user
 
@@ -68,9 +65,8 @@ class Rent < ActiveRecord::Base
 
 	validates_associated :driver
 
-	# add some callbacks
-	after_initialize :get_datetimes # convert db format to accessors
-	before_validation :set_datetimes # convert accessors back to db format
+	after_initialize :get_datetimes
+	before_validation :set_datetimes
 
 
 	def self.valid_attribute?(attrib, value)
@@ -82,31 +78,19 @@ class Rent < ActiveRecord::Base
 	end
 
 	def paypal_url redirect_url, notify_url
-		pp_params = {
-		    business: ENV["PAYPAL_ACCOUNT"],
-		    cmd: '_cart',
-		    upload: 1,
-		    return: redirect_url,
-		    notify_url: notify_url,
-		    item_name_1: [self.travel.car.brand, self.travel.car.model].join(' - '),
-		    amount_1: amount,
-		    currency_code: "EUR"
-		}
+		pp_params = {business: ENV["PAYPAL_ACCOUNT"], cmd: '_cart', upload: 1, return: redirect_url, notify_url: notify_url, item_name_1: [self.travel.car.brand, self.travel.car.model].join(' - '), amount_1: amount, currency_code: "EUR"}
 		ENV["PAYPAL_CHECKOUT"] + pp_params.to_query
 	end
 
 	def get_datetimes
 
 		if startDate_date.nil? && startDate_time.nil?
-			self.startDate ||= Time.now + 2.days # if the startDate time is not set, set it to now + 2 days
-
-			self.startDate_date ||= self.startDate.to_date.to_s(:db) # extract the date is yyyy-mm-dd format
-			self.startDate_time ||= "#{'%02d' % self.startDate.hour}:#{'%02d' % self.startDate.min}" # extract the time
-
-			self.endDate ||= Time.now + 9.days # if the endDate time is not set, set it to now
-
-			self.endDate_date ||= self.endDate.to_date.to_s(:db) # extract the date is yyyy-mm-dd format
-			self.endDate_time ||= "#{'%02d' % self.endDate.hour}:#{'%02d' % self.endDate.min}" # extract the time
+			self.startDate ||= Time.now + 2.days
+			self.startDate_date ||= self.startDate.to_date.to_s(:db)
+			self.startDate_time ||= "#{'%02d' % self.startDate.hour}:#{'%02d' % self.startDate.min}"
+			self.endDate ||= Time.now + 9.days
+			self.endDate_date ||= self.endDate.to_date.to_s(:db)
+			self.endDate_time ||= "#{'%02d' % self.endDate.hour}:#{'%02d' % self.endDate.min}"
 		else
 			self.set_datetimes
 		end
@@ -114,8 +98,8 @@ class Rent < ActiveRecord::Base
 	end
 
 	def set_datetimes
-		self.startDate = "#{self.startDate_date} #{self.startDate_time}:00" # convert the two fields back to db
-		self.endDate = "#{self.endDate_date} #{self.endDate_time}:00" # convert the two fields back to db
+		self.startDate = "#{self.startDate_date} #{self.startDate_time}:00"
+		self.endDate = "#{self.endDate_date} #{self.endDate_time}:00"
 	end
 
 end

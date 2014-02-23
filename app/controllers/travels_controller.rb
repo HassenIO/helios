@@ -2,7 +2,6 @@ class TravelsController < ApplicationController
 
 	load_and_authorize_resource
 
-	# before_filter :must_sign_in
 	before_filter :authenticate_user!, :except => :show
 	before_filter :load_user, :only => [:index, :show]
 	before_filter :load_current_user, :except => [:index, :show]
@@ -90,7 +89,6 @@ class TravelsController < ApplicationController
 		respond_to do |format|
 			if @travel.update_attributes(params[:travel])
 				AdminMailer.travel_update(@travel).deliver
-				# UserMailer.travel_update(@travel).deliver
 				format.html { redirect_to [@user, @travel], notice: t("flash.travels.update.success") }
 				format.json { head :no_content }
 			else

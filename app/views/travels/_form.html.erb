@@ -398,19 +398,14 @@
 
             $('a[data-filepicker]').click(function (e) {
                 var $current = $(this);
-                e.preventDefault(); // This keeps the normal link
-                // behavior from happening
                 filepicker.pickAndStore({
-                    services: [ 'COMPUTER', 'IMAGE_SEARCH', 'FACEBOOK', 'DROPBOX', 'PICASA', 'INSTAGRAM' ]
+                    services: [ 'COMPUTER', 'IMAGE_SEARCH', 'FACEBOOK' ]
                 }, {
                     location: 's3'
                 }, function (fpfiles) {
                     if (fpfiles.length > 0) {
-                        //check if one file
-                        //save into input
                         var target = $current.data('target-input');
                         $('#' + target).val(fpfiles[0].url);
-                        //insert thumbnail of this file
                         $current.html('<img src=\"' + fpfiles[0].url + '\" class=\"img-rounded\">');
                     }
                 });

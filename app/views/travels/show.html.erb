@@ -38,12 +38,7 @@
               <% unless @travel.commercial_text.blank? %>
                   <div class="block-mktn">
 
-                    <!--h3> titre (h3) de la promo !!!</h3-->
-
                     <%= @travel.commercial_text.html_safe %>
-
-
-                    <!--a class="btn btn-large btn-block" href="#"><div class="nav-hover"></div>un CTA dans la promo</a-->
                   </div>
               <% end %>
 
@@ -52,7 +47,7 @@
 
               <p>
                 <%= link_to t(".yes_i_do"), new_rent_path(:rent => params[:rent].merge(:travel_id => @travel.id)), :class => "btn btn-large on-hover btn-block" %>
-                <% # link_to t(".yes_i_do"), paypal_url(price_for_rent(@rent, price: @travel.car.category.price), [@travel.car.brand, @travel.car.model].join(' - '), user_rents_url( current_user )), class: "btn btn-large on-hover btn-block" %>
+                
               </p>
           <% end %>
       <% else %>
@@ -81,8 +76,7 @@
 <%= render 'cars/details', :car => @travel.car %>
 
 
-<!-- Google Code for 2eme formulaire Conversion Page --> <script type="text/javascript">
-/* <![CDATA[ */
+<script type="text/javascript">
 var google_conversion_id = 974833807;
 var google_conversion_language = "en";
 var google_conversion_format = "3";
@@ -90,7 +84,6 @@ var google_conversion_color = "ffffff";
 var google_conversion_label = "d4joCJmN5AcQj5Hr0AM";
 var google_conversion_value = 0;
 var google_remarketing_only = false;
-/* ]]> */
 </script>
 <script type="text/javascript"  
 src="//www.googleadservices.com/pagead/conversion.js">
