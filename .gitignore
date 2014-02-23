@@ -35,6 +35,7 @@ db/*.sqlite3
 /coverage/
 /db/*.javadb/
 /db/*.sqlite3
+/db/seeds.rb
 /doc/api/
 /doc/app/
 /doc/features.html
@@ -62,9 +63,6 @@ pickle-email-*.html
 # scm revert files
 **.orig
 
-# Mac finder artifacts
-.DS_Store
-
 # Netbeans project directory
 /nbproject/
 
@@ -78,7 +76,7 @@ pickle-email-*.html
 **.swp
 
 # Ignore application configuration
-# /config/application.yml
+/config/application.yml
 logfile
 
-db/schema.rb
+# db/schema.rb
