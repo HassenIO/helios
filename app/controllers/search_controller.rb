@@ -89,7 +89,12 @@ class SearchController < ApplicationController
 		api.travels = "#{api.travels}#{travel.id},"
 		api.save
 
-		redirect_to user_travel_url(travel.user, travel)
+		end_date = api.dropoff_date.split "-"
+		end_time = api.dropoff_time.split ":"
+		start_time = api.pickup_time.split ":"
+		start_date = api.pickup_date.split "-"
+
+		redirect_to "#{user_travel_url(travel.user, travel)}?rent%5BairPort_id%5D=#{api.airport_id}&rent%5BendDate_date%5D=#{end_date[2]}%2F#{end_date[1]}%2F#{end_date[0]}+#{end_time[0]}%3A#{end_time[1]}&rent%5BstartDate_date%5D=#{start_date[2]}%2F#{start_date[1]}%2F#{start_date[0]}+#{start_time[0]}%3A#{start_time[1]}"
 	end
 
 
