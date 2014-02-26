@@ -5,7 +5,7 @@
 	<voiture>
 		<id><%= travel.id %></id>
 		<nom><%= "#{travel.car.brand} #{travel.car.model}" %></nom>
-		<photo> <% travel.car.filepicker1_url %> </photo>
+		<photo><%= travel.car.filepicker1_url %></photo>
 		<boite><%= (travel.car.transmission == "automatic") ? "automatique" : "manuelle" %></boite>
 		<climatisation><%= (travel.car.hasAirConditioning) ? "oui" : "non" %></climatisation>
 		<nbpassagers><%= travel.car.nbSeats %></nbpassagers>

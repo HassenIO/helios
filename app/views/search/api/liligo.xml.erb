@@ -20,7 +20,7 @@
 			<Address><![CDATA[Aéroport <%= travel.airPort.name %>]]></Address>
 			<Id><%= params[:airport_id] %></Id>
 		</Dropoff>
-		<Image> <%= travel.car.filepicker1_url %> </Image>
+		<Image><%= travel.car.filepicker1_url %></Image>
 		<Deep_link><![CDATA[<%= api_redirect_url(@api.token, travel.id) %>]]></Deep_link>
 	</car>
 	<% end %>
