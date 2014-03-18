@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-TravelerCar::Application.load_tasks
+helios::Application.load_tasks

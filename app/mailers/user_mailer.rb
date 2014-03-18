@@ -9,27 +9,27 @@ class UserMailer < ActionMailer::Base
 	def parking_confirmation parking
 		@parking = parking
 
-		mail to: @parking.email, subject: "Votre réservation de parking TravelerCar"
+		mail to: @parking.email, subject: "Votre réservation de parking helios"
 	end
 
 	def welcome user
 		@user = user
 
-		mail to: @user.email, subject: "Bienvenue sur TravelerCar"
+		mail to: @user.email, subject: "Bienvenue sur helios"
 	end
 
 	def travel_new travel
 		@travel = travel
 		@user = travel.user
 
-		mail to: @user.email, subject: "Votre demande de parking sur TravelerCar"
+		mail to: @user.email, subject: "Votre demande de parking sur helios"
 	end
 
 	def travel_update travel
 		@travel = travel
 		@user = travel.user
 
-		mail to: @user.email, subject: "Modification de votre demande de parking sur TravelerCar"
+		mail to: @user.email, subject: "Modification de votre demande de parking sur helios"
 	end
 
 	def rent_new rent, email

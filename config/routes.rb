@@ -1,4 +1,4 @@
-TravelerCar::Application.routes.draw do
+helios::Application.routes.draw do
 
 	root to: "dashboards#index"
 

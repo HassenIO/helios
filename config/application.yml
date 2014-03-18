@@ -1,61 +1,49 @@
 ADMIN_NAME: Admin
-ADMIN_EMAIL: admin@travelercar.com
-ADMIN_PASSWORD: jokercar2013
+ADMIN_EMAIL: admin@helios.com
+ADMIN_PASSWORD: test123
 ROLES: [admin, user, VIP]
 
-MAILER_ADMIN: "admin@travelercar.com"
-MAILER_SUPPORT: "support@travelercar.com"
-1N1_USERNAME: "admin@travelercar.com"
-1N1_PASSWORD: "jokercar2013"
+MAILER_ADMIN: "admin@helios.com"
+MAILER_SUPPORT: "support@helios.com"
+1N1_USERNAME: "admin@helios.com"
+1N1_PASSWORD: "test123"
 
 FILEPICKER_KEY: "AejWBw1JhTOa65sdi1uuQz"
-# FILEPICKER_KEY: "A68xA26uYSfO6TDJM0Qp3z"
 
 CATEGORIES:
-  - name: "Citadine"
-    price: 2000
-  - name: "Berline"
-    price: 3000
-  - name: "Monospace"
-    price: 4500
-  - name: "Haut de gamme"
-    price: 6000
-
-AIRPORTS:
-  - name: "Charles de Gaulle"
-    city: "Paris"
-    country: "France"
-  - name: "Paris Orly"
-    city: "Paris"
-    country: "France"
-  - name: "Beauvais Tille"
-    city: "Beauvais"
-    country: "France"
+  - name: "A"
+    price: 1
+  - name: "B"
+    price: 2
+  - name: "C"
+    price: 3
+  - name: "D"
+    price: 4
 
 
 development:
   HOST: "localhost:3000"
-  WP_ROOT: "http://localhost:8888/travelercar"
+  WP_ROOT: "http://localhost:8888/helios"
   FACEBOOK_ID: "654796907877180"
   FACEBOOK_SECRET: "c945c7a3479637346d04fff4a32b1916"
-  PAYPAL_ACCOUNT: "admin-facilitator@travelercar.com"
+  PAYPAL_ACCOUNT: "admin-facilitator@helios.com"
   PAYPAL_CHECKOUT: "https://www.sandbox.paypal.com/cgi-bin/webscr?"
   LEETCHI_TARGET_USER_ID: "334140"
 
 
 integration:
-    HOST: "travelercar.com"
-    WP_ROOT: "http://travelercar.com/wp"
+    HOST: "helios.com"
+    WP_ROOT: "http://helios.com/wp"
     FACEBOOK_ID: "370298486423058"
     FACEBOOK_SECRET: "0a5ede29b2d6f31165b5f3be0f119e52"
-    PAYPAL_ACCOUNT: "admin-facilitator@travelercar.com"
+    PAYPAL_ACCOUNT: "admin-facilitator@helios.com"
     PAYPAL_CHECKOUT: "https://www.sandbox.paypal.com/cgi-bin/webscr?"
     LEETCHI_TARGET_USER_ID: "334140"
 
 production:
-    HOST: "travelercar.com"
-    WP_ROOT: "http://travelercar.com/wp"
+    HOST: "helios.com"
+    WP_ROOT: "http://helios.com/wp"
     FACEBOOK_ID: "334219330058004"
     FACEBOOK_SECRET: "8486758b62a184d57c249ae0bda71084"
-    PAYPAL_ACCOUNT: "admin@travelercar.com"
+    PAYPAL_ACCOUNT: "admin@helios.com"
     PAYPAL_CHECKOUT: "https://www.paypal.com/cgi-bin/webscr?"

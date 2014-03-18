@@ -243,7 +243,7 @@ fr:
   register_travel: "Je propose ma voiture"
   rent_car:  "Je loue une voiture"
   how_its_work: "Comment ça marche?"
-  why: "C'est quoi TravelerCar?"
+  why: "C'est quoi helios?"
   dashboard: "Tableau de bord"
   contact: "Contact"
   account: "Mon compte"
@@ -287,12 +287,12 @@ fr:
 
   layouts:
     mailer:
-      signature: "L'équipe TravelerCar,"
+      signature: "L'équipe helios,"
       slogan: "Ne payez plus le parking à l'aéroport !"
-      ambition_html: "%{travelercar_link} ambitionne de révolutionner le parking et la location de véhicules aux aéroports."
+      ambition_html: "%{helios_link} ambitionne de révolutionner le parking et la location de véhicules aux aéroports."
       social_html: "Suivez-nous sur %{facebook_link} et %{twitter_link}."
     paid_parking:
-      ambition_html: "%{travelercar_link} ambitionne de révolutionner le parking et la location de véhicules aux aéroports."
+      ambition_html: "%{helios_link} ambitionne de révolutionner le parking et la location de véhicules aux aéroports."
       social_html: "Suivez-nous sur %{facebook_link} et %{twitter_link}."
     footer:
       menu:
@@ -376,7 +376,7 @@ fr:
 
   travels:
     new:
-      title: "Avec TravelerCar, ne Payez plus le parking à l'aéroport !"
+      title: "Avec helios, ne Payez plus le parking à l'aéroport !"
       sub_title: "Je précise les informations de mon vol"
       approximate_dates: "Votre billet d'avion n'est pas confirmé ? Mettez vos dates approximatives et merci de nous le préciser dans le champ \"Commentaires\"."
     item:
@@ -402,7 +402,7 @@ fr:
     index:
       title: "Mes demandes de parkings"
       no_travels: "Vous n'avez pas encore proposé de voiture."
-      waiting_for_validation: "Votre demande de réservation a été soumise à l'équipe de TravelerCar. Vous recevrez prochainement un mail de confirmation vous détaillant la suite de la procédure. Nous vous remercions pour votre confiance."
+      waiting_for_validation: "Votre demande de réservation a été soumise à l'équipe de helios. Vous recevrez prochainement un mail de confirmation vous détaillant la suite de la procédure. Nous vous remercions pour votre confiance."
     cgv:
       title: "Conditions générales de vente"
       submit: "J'accepte et je valide mon parking"
@@ -428,7 +428,7 @@ fr:
       payment_info_paid: "Votre paiement de %{amount} a été validé"
       payment_info_unpaid: "Votre paiement de %{amount} n'a pas été enregistré"
       payment_info_failed: "Votre paiement de %{amount} a échoué, vous pouvez nous contacter pour plus d'informations"
-      thank_you: "L'équipe de TravelerCar vous remercie"
+      thank_you: "L'équipe de helios vous remercie"
       payment_existing: "Un paiement a déjà été enregistré"
 
   cars:
@@ -464,7 +464,7 @@ fr:
         title_password_current: "Je confirme avec le mot de passe actuel..."
         current_password_msg: (nous avons besoin de votre mot de passe actuel pour confirmer les changements)
         do_not_fill: "Laissez vide si vous ne souhaitez pas changer"
-        delete_account: "Je ne veux plus être inscrit sur TravelerCar!"
+        delete_account: "Je ne veux plus être inscrit sur helios!"
       new:
         title: "Créer mon compte"
         address: "Adresse"
